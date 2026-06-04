@@ -1,0 +1,208 @@
+========================================================================
+PARTIDO: Mexico vs South Africa
+
+DECISIÓN PRINCIPAL:
+Jugar solo bajo
+
+JUGADA:
+Gana equipo A
+
+MEJOR CASA PARA ESTA JUGADA:
+Casa Demo C
+
+MEJOR CUOTA ENCONTRADA:
+1.66
+
+CUOTA MÍNIMA PARA QUE VALGA:
+1.62
+
+PROBABILIDAD DEL MODELO:
+61.66%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+57.84%
+
+VALOR ESPERADO:
+0.0235
+
+CLASIFICACIÓN:
+sin ventaja clara
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡16,600
+Ganancia limpia: ₡6,600
+
+EXPLICACIÓN SIMPLE:
+La cuota alcanza el mínimo justo, pero la ventaja es pequeña.
+
+MEJOR CUOTA POR RESULTADO:
+- Gana equipo A: 1.66 en Casa Demo C
+- Empate: 3.75 en Casa Demo B
+- Gana equipo B: 5.8 en Casa Demo B
+
+COMPARACIÓN DE CASAS:
+- Casa Demo A: local 1.58, empate 3.65, visita 5.6 | margen estimado 8.55%
+- Casa Demo B: local 1.62, empate 3.75, visita 5.8 | margen estimado 5.64%
+- Casa Demo C: local 1.66, empate 3.55, visita 5.5 | margen estimado 6.59%
+
+TODAS LAS OPCIONES EVALUADAS:
+- Gana equipo A: modelo 61.66%, mejor cuota 1.66 en Casa Demo C, mínima 1.62, EV 0.0235, decisión: Jugar solo bajo
+- Empate: modelo 22.66%, mejor cuota 3.75 en Casa Demo B, mínima 4.41, EV -0.1501, decisión: No jugar
+- Gana equipo B: modelo 15.68%, mejor cuota 5.8 en Casa Demo B, mínima 6.38, EV -0.0905, decisión: No jugar
+
+========================================================================
+PARTIDO: Brazil vs Morocco
+
+DECISIÓN PRINCIPAL:
+Sí jugar
+
+JUGADA:
+Gana equipo B
+
+MEJOR CASA PARA ESTA JUGADA:
+Casa Demo C
+
+MEJOR CUOTA ENCONTRADA:
+4.05
+
+CUOTA MÍNIMA PARA QUE VALGA:
+2.6
+
+PROBABILIDAD DEL MODELO:
+38.46%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+23.9%
+
+VALOR ESPERADO:
+0.5575
+
+CLASIFICACIÓN:
+valor alto
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡40,500
+Ganancia limpia: ₡30,500
+
+EXPLICACIÓN SIMPLE:
+La cuota actual paga más de lo que el modelo considera justo.
+
+MEJOR CUOTA POR RESULTADO:
+- Gana equipo A: 2.05 en Casa Demo B
+- Empate: 3.35 en Casa Demo C
+- Gana equipo B: 4.05 en Casa Demo C
+
+COMPARACIÓN DE CASAS:
+- Casa Demo A: local 1.95, empate 3.25, visita 3.7 | margen estimado 9.08%
+- Casa Demo B: local 2.05, empate 3.2, visita 3.8 | margen estimado 6.35%
+- Casa Demo C: local 2.0, empate 3.35, visita 4.05 | margen estimado 4.54%
+
+TODAS LAS OPCIONES EVALUADAS:
+- Gana equipo A: modelo 34.79%, mejor cuota 2.05 en Casa Demo B, mínima 2.87, EV -0.2869, decisión: No jugar
+- Empate: modelo 26.76%, mejor cuota 3.35 en Casa Demo C, mínima 3.74, EV -0.1037, decisión: No jugar
+- Gana equipo B: modelo 38.46%, mejor cuota 4.05 en Casa Demo C, mínima 2.6, EV 0.5575, decisión: Sí jugar
+
+========================================================================
+PARTIDO: Spain vs Uruguay
+
+DECISIÓN PRINCIPAL:
+Sí jugar
+
+JUGADA:
+Gana equipo A
+
+MEJOR CASA PARA ESTA JUGADA:
+Casa Demo C
+
+MEJOR CUOTA ENCONTRADA:
+1.88
+
+CUOTA MÍNIMA PARA QUE VALGA:
+1.77
+
+PROBABILIDAD DEL MODELO:
+56.48%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+51.15%
+
+VALOR ESPERADO:
+0.0618
+
+CLASIFICACIÓN:
+valor positivo
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡18,800
+Ganancia limpia: ₡8,800
+
+EXPLICACIÓN SIMPLE:
+La cuota actual paga más de lo que el modelo considera justo.
+
+MEJOR CUOTA POR RESULTADO:
+- Gana equipo A: 1.88 en Casa Demo C
+- Empate: 3.5 en Casa Demo A
+- Gana equipo B: 4.5 en Casa Demo B
+
+COMPARACIÓN DE CASAS:
+- Casa Demo A: local 1.78, empate 3.5, visita 4.4 | margen estimado 7.48%
+- Casa Demo B: local 1.82, empate 3.45, visita 4.5 | margen estimado 6.15%
+- Casa Demo C: local 1.88, empate 3.35, visita 4.35 | margen estimado 6.03%
+
+TODAS LAS OPCIONES EVALUADAS:
+- Gana equipo A: modelo 56.48%, mejor cuota 1.88 en Casa Demo C, mínima 1.77, EV 0.0618, decisión: Sí jugar
+- Empate: modelo 23.97%, mejor cuota 3.5 en Casa Demo A, mínima 4.17, EV -0.1609, decisión: No jugar
+- Gana equipo B: modelo 19.55%, mejor cuota 4.5 en Casa Demo B, mínima 5.12, EV -0.1203, decisión: No jugar
+
+========================================================================
+PARTIDO: France vs Senegal
+
+DECISIÓN PRINCIPAL:
+Sí jugar
+
+JUGADA:
+Gana equipo B
+
+MEJOR CASA PARA ESTA JUGADA:
+Casa Demo A
+
+MEJOR CUOTA ENCONTRADA:
+6.2
+
+CUOTA MÍNIMA PARA QUE VALGA:
+4.13
+
+PROBABILIDAD DEL MODELO:
+24.23%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+15.53%
+
+VALOR ESPERADO:
+0.5021
+
+CLASIFICACIÓN:
+valor alto
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡62,000
+Ganancia limpia: ₡52,000
+
+EXPLICACIÓN SIMPLE:
+La cuota actual paga más de lo que el modelo considera justo.
+
+MEJOR CUOTA POR RESULTADO:
+- Gana equipo A: 1.61 en Casa Demo C
+- Empate: 3.9 en Casa Demo B
+- Gana equipo B: 6.2 en Casa Demo A
+
+COMPARACIÓN DE CASAS:
+- Casa Demo A: local 1.54, empate 3.8, visita 6.2 | margen estimado 7.38%
+- Casa Demo B: local 1.58, empate 3.9, visita 6.0 | margen estimado 5.6%
+- Casa Demo C: local 1.61, empate 3.7, visita 5.9 | margen estimado 6.09%
+
+TODAS LAS OPCIONES EVALUADAS:
+- Gana equipo A: modelo 50.4%, mejor cuota 1.61 en Casa Demo C, mínima 1.98, EV -0.1886, decisión: No jugar
+- Empate: modelo 25.38%, mejor cuota 3.9 en Casa Demo B, mínima 3.94, EV -0.0103, decisión: No jugar
+- Gana equipo B: modelo 24.23%, mejor cuota 6.2 en Casa Demo A, mínima 4.13, EV 0.5021, decisión: Sí jugar
+

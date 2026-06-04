@@ -1,0 +1,11 @@
+NOVA DATA QUALITY SUMMARY
+
+xg: missing: 48
+squad: missing: 48
+injuries: missing: 48
+odds: missing: 48
+tactics: placeholder: 48
+world_football_elo: not_integrated_yet: 43
+fifa_ranking: exact_from_ranking_page: 37
+fifa_ranking: rank_only_points_estimated: 11
+world_football_elo: exact_top5_from_world_football_elo: 5

@@ -1,0 +1,212 @@
+NOVA MUNDIAL PREDICTOR — FASE DE GRUPOS + MEJORES TERCEROS
+Simulaciones: 10,000
+
+GRUPO A
+DECISIÓN RECOMENDADA:
+1. Mexico
+2. South Korea
+3. Czechia
+4. South Africa
+QUÉ HACER:
+- Poner a Mexico como 1.º.
+- Poner a South Korea como 2.º.
+- No confiar demasiado en Czechia como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Mexico: clasifica total 87.93% | 1.º 46.82% | 2.º 28.08% | 3.º clasificado 13.03% | 3.º eliminado 3.83% | 4.º 8.24%
+- South Korea: clasifica total 77.27% | 1.º 28.87% | 2.º 30.34% | 3.º clasificado 18.06% | 3.º eliminado 6.78% | 4.º 15.95%
+- Czechia: clasifica total 61.31% | 1.º 16.13% | 2.º 24.51% | 3.º clasificado 20.67% | 3.º eliminado 9.99% | 4.º 28.7%
+- South Africa: clasifica total 42.25% | 1.º 8.18% | 2.º 17.07% | 3.º clasificado 17.0% | 3.º eliminado 10.64% | 4.º 47.11%
+
+GRUPO B
+DECISIÓN RECOMENDADA:
+1. Switzerland
+2. Canada
+3. Qatar
+4. Bosnia and Herzegovina
+QUÉ HACER:
+- Poner a Switzerland como 1.º.
+- Poner a Canada como 2.º.
+- No confiar demasiado en Qatar como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Switzerland: clasifica total 89.25% | 1.º 48.66% | 2.º 28.33% | 3.º clasificado 12.26% | 3.º eliminado 3.1% | 4.º 7.65%
+- Canada: clasifica total 78.28% | 1.º 28.85% | 2.º 32.37% | 3.º clasificado 17.06% | 3.º eliminado 6.42% | 4.º 15.3%
+- Qatar: clasifica total 56.64% | 1.º 13.23% | 2.º 22.29% | 3.º clasificado 21.12% | 3.º eliminado 11.57% | 4.º 31.79%
+- Bosnia and Herzegovina: clasifica total 43.68% | 1.º 9.26% | 2.º 17.01% | 3.º clasificado 17.41% | 3.º eliminado 11.06% | 4.º 45.26%
+
+GRUPO C
+DECISIÓN RECOMENDADA:
+1. Morocco
+2. Brazil
+3. Scotland
+4. Haiti
+QUÉ HACER:
+- Poner a Morocco como 1.º.
+- Poner a Brazil como 2.º.
+- Marcar a Scotland como 3.º posible, pero no seguro.
+PROBABILIDADES CLAVE:
+- Morocco: clasifica total 90.54% | 1.º 44.87% | 2.º 33.34% | 3.º clasificado 12.33% | 3.º eliminado 3.7% | 4.º 5.76%
+- Brazil: clasifica total 88.76% | 1.º 41.35% | 2.º 34.58% | 3.º clasificado 12.83% | 3.º eliminado 4.42% | 4.º 6.82%
+- Scotland: clasifica total 59.15% | 1.º 10.51% | 2.º 22.42% | 3.º clasificado 26.22% | 3.º eliminado 15.03% | 4.º 25.82%
+- Haiti: clasifica total 25.95% | 1.º 3.27% | 2.º 9.66% | 3.º clasificado 13.02% | 3.º eliminado 12.45% | 4.º 61.6%
+
+GRUPO D
+DECISIÓN RECOMENDADA:
+1. USA
+2. Türkiye
+3. Australia
+4. Paraguay
+QUÉ HACER:
+- Poner a USA como 1.º.
+- Poner a Türkiye como 2.º.
+- No confiar demasiado en Australia como mejor 3.º.
+PROBABILIDADES CLAVE:
+- USA: clasifica total 81.75% | 1.º 39.49% | 2.º 27.14% | 3.º clasificado 15.12% | 3.º eliminado 4.63% | 4.º 13.62%
+- Türkiye: clasifica total 70.02% | 1.º 24.96% | 2.º 27.01% | 3.º clasificado 18.05% | 3.º eliminado 7.75% | 4.º 22.23%
+- Australia: clasifica total 66.33% | 1.º 22.21% | 2.º 25.83% | 3.º clasificado 18.29% | 3.º eliminado 8.08% | 4.º 25.59%
+- Paraguay: clasifica total 52.42% | 1.º 13.34% | 2.º 20.02% | 3.º clasificado 19.06% | 3.º eliminado 9.02% | 4.º 38.56%
+
+GRUPO E
+DECISIÓN RECOMENDADA:
+1. Germany
+2. Ecuador
+3. Cote d'Ivoire
+4. Curacao
+QUÉ HACER:
+- Poner a Germany como 1.º.
+- Poner a Ecuador como 2.º.
+- No confiar demasiado en Cote d'Ivoire como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Germany: clasifica total 90.78% | 1.º 50.91% | 2.º 27.92% | 3.º clasificado 11.95% | 3.º eliminado 3.18% | 4.º 6.04%
+- Ecuador: clasifica total 79.48% | 1.º 26.62% | 2.º 32.44% | 3.º clasificado 20.42% | 3.º eliminado 7.64% | 4.º 12.88%
+- Cote d'Ivoire: clasifica total 71.04% | 1.º 18.6% | 2.º 29.61% | 3.º clasificado 22.83% | 3.º eliminado 10.12% | 4.º 18.84%
+- Curacao: clasifica total 27.17% | 1.º 3.87% | 2.º 10.03% | 3.º clasificado 13.27% | 3.º eliminado 10.59% | 4.º 62.24%
+
+GRUPO F
+DECISIÓN RECOMENDADA:
+1. Netherlands
+2. Japan
+3. Sweden
+4. Tunisia
+QUÉ HACER:
+- Poner a Netherlands como 1.º.
+- Poner a Japan como 2.º.
+- No confiar demasiado en Sweden como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Netherlands: clasifica total 89.41% | 1.º 50.23% | 2.º 27.4% | 3.º clasificado 11.78% | 3.º eliminado 3.13% | 4.º 7.46%
+- Japan: clasifica total 79.0% | 1.º 29.69% | 2.º 32.74% | 3.º clasificado 16.57% | 3.º eliminado 6.22% | 4.º 14.78%
+- Sweden: clasifica total 52.82% | 1.º 11.41% | 2.º 21.2% | 3.º clasificado 20.21% | 3.º eliminado 11.57% | 4.º 35.61%
+- Tunisia: clasifica total 45.76% | 1.º 8.67% | 2.º 18.66% | 3.º clasificado 18.43% | 3.º eliminado 12.09% | 4.º 42.15%
+
+GRUPO G
+DECISIÓN RECOMENDADA:
+1. Belgium
+2. Iran
+3. Egypt
+4. New Zealand
+QUÉ HACER:
+- Poner a Belgium como 1.º.
+- Poner a Iran como 2.º.
+- No confiar demasiado en Egypt como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Belgium: clasifica total 90.42% | 1.º 48.36% | 2.º 28.66% | 3.º clasificado 13.4% | 3.º eliminado 3.28% | 4.º 6.3%
+- Iran: clasifica total 79.78% | 1.º 26.67% | 2.º 32.57% | 3.º clasificado 20.54% | 3.º eliminado 7.51% | 4.º 12.71%
+- Egypt: clasifica total 74.99% | 1.º 21.37% | 2.º 29.64% | 3.º clasificado 23.98% | 3.º eliminado 9.46% | 4.º 15.55%
+- New Zealand: clasifica total 24.78% | 1.º 3.6% | 2.º 9.13% | 3.º clasificado 12.05% | 3.º eliminado 9.78% | 4.º 65.44%
+
+GRUPO H
+DECISIÓN RECOMENDADA:
+1. Spain
+2. Uruguay
+3. Saudi Arabia
+4. Cape Verde
+QUÉ HACER:
+- Poner a Spain como 1.º.
+- Poner a Uruguay como 2.º.
+- No confiar demasiado en Saudi Arabia como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Spain: clasifica total 95.31% | 1.º 62.15% | 2.º 25.93% | 3.º clasificado 7.23% | 3.º eliminado 1.82% | 4.º 2.87%
+- Uruguay: clasifica total 85.23% | 1.º 27.48% | 2.º 42.9% | 3.º clasificado 14.85% | 3.º eliminado 5.79% | 4.º 8.98%
+- Saudi Arabia: clasifica total 43.46% | 1.º 5.8% | 2.º 16.91% | 3.º clasificado 20.75% | 3.º eliminado 16.0% | 4.º 40.54%
+- Cape Verde: clasifica total 36.57% | 1.º 4.57% | 2.º 14.26% | 3.º clasificado 17.74% | 3.º eliminado 15.82% | 4.º 47.61%
+
+GRUPO I
+DECISIÓN RECOMENDADA:
+1. France
+2. Senegal
+3. Norway
+4. Iraq
+QUÉ HACER:
+- Poner a France como 1.º.
+- Poner a Senegal como 2.º.
+- No confiar demasiado en Norway como mejor 3.º.
+PROBABILIDADES CLAVE:
+- France: clasifica total 92.82% | 1.º 55.79% | 2.º 26.91% | 3.º clasificado 10.12% | 3.º eliminado 2.3% | 4.º 4.88%
+- Senegal: clasifica total 80.95% | 1.º 28.36% | 2.º 35.79% | 3.º clasificado 16.8% | 3.º eliminado 6.78% | 4.º 12.27%
+- Norway: clasifica total 56.59% | 1.º 10.97% | 2.º 23.58% | 3.º clasificado 22.04% | 3.º eliminado 13.5% | 4.º 29.91%
+- Iraq: clasifica total 34.46% | 1.º 4.88% | 2.º 13.72% | 3.º clasificado 15.86% | 3.º eliminado 12.6% | 4.º 52.94%
+
+GRUPO J
+DECISIÓN RECOMENDADA:
+1. Argentina
+2. Austria
+3. Algeria
+4. Jordan
+QUÉ HACER:
+- Poner a Argentina como 1.º.
+- Poner a Austria como 2.º.
+- No confiar demasiado en Algeria como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Argentina: clasifica total 94.48% | 1.º 62.99% | 2.º 22.67% | 3.º clasificado 8.82% | 3.º eliminado 1.56% | 4.º 3.96%
+- Austria: clasifica total 70.75% | 1.º 17.87% | 2.º 32.73% | 3.º clasificado 20.15% | 3.º eliminado 10.17% | 4.º 19.08%
+- Algeria: clasifica total 65.46% | 1.º 14.15% | 2.º 30.3% | 3.º clasificado 21.01% | 3.º eliminado 11.18% | 4.º 23.36%
+- Jordan: clasifica total 34.28% | 1.º 4.99% | 2.º 14.3% | 3.º clasificado 14.99% | 3.º eliminado 12.12% | 4.º 53.6%
+
+GRUPO K
+DECISIÓN RECOMENDADA:
+1. Portugal
+2. Colombia
+3. DR Congo
+4. Uzbekistan
+QUÉ HACER:
+- Poner a Portugal como 1.º.
+- Poner a Colombia como 2.º.
+- No confiar demasiado en DR Congo como mejor 3.º.
+PROBABILIDADES CLAVE:
+- Portugal: clasifica total 91.57% | 1.º 49.44% | 2.º 30.51% | 3.º clasificado 11.62% | 3.º eliminado 2.68% | 4.º 5.75%
+- Colombia: clasifica total 84.46% | 1.º 34.54% | 2.º 35.02% | 3.º clasificado 14.9% | 3.º eliminado 5.17% | 4.º 10.37%
+- DR Congo: clasifica total 46.85% | 1.º 8.49% | 2.º 17.98% | 3.º clasificado 20.38% | 3.º eliminado 13.2% | 4.º 39.95%
+- Uzbekistan: clasifica total 43.67% | 1.º 7.53% | 2.º 16.49% | 3.º clasificado 19.65% | 3.º eliminado 12.4% | 4.º 43.93%
+
+GRUPO L
+DECISIÓN RECOMENDADA:
+1. England
+2. Croatia
+3. Panama
+4. Ghana
+QUÉ HACER:
+- Poner a England como 1.º.
+- Poner a Croatia como 2.º.
+- No confiar demasiado en Panama como mejor 3.º.
+PROBABILIDADES CLAVE:
+- England: clasifica total 90.64% | 1.º 47.39% | 2.º 31.21% | 3.º clasificado 12.04% | 3.º eliminado 3.4% | 4.º 5.96%
+- Croatia: clasifica total 85.67% | 1.º 35.4% | 2.º 33.74% | 3.º clasificado 16.53% | 3.º eliminado 5.49% | 4.º 8.84%
+- Panama: clasifica total 62.13% | 1.º 13.44% | 2.º 24.62% | 3.º clasificado 24.07% | 3.º eliminado 13.55% | 4.º 24.32%
+- Ghana: clasifica total 27.69% | 1.º 3.77% | 2.º 10.43% | 3.º clasificado 13.49% | 3.º eliminado 11.43% | 4.º 60.88%
+
+MEJORES CANDIDATOS A 3.º CLASIFICADO:
+- Scotland: 26.22%
+- Panama: 24.07%
+- Egypt: 23.98%
+- Cote d'Ivoire: 22.83%
+- Norway: 22.04%
+- Qatar: 21.12%
+- Algeria: 21.01%
+- Saudi Arabia: 20.75%
+- Czechia: 20.67%
+- Iran: 20.54%
+- Ecuador: 20.42%
+- DR Congo: 20.38%
+
+NOTA NOVA:
+MVP Fase 3: simula grupos y mejores terceros. Todavía no construye automáticamente el bracket de ronda de 32.
+La siguiente fase debe construir la ruta de ronda de 32, octavos, cuartos, semifinales y final.

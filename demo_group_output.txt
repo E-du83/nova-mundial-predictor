@@ -1,0 +1,62 @@
+GRUPO Demo
+Simulaciones: 100,000
+
+DECISIÓN RECOMENDADA PARA QUINIELA:
+1. Argentina
+2. Japón
+3. México
+4. Panamá
+
+QUÉ HACER:
+Poner a Argentina como 1.º del grupo.
+Poner a Japón como 2.º del grupo.
+Marcar a México como candidato a 3.º con opción, pero pendiente de comparación contra otros grupos.
+
+PROBABILIDADES POR EQUIPO:
+
+Argentina:
+- 1.º: 76.52%
+- 2.º: 16.81%
+- 3.º: 5.2%
+- 4.º: 1.47%
+- Clasifica directo, 1.º o 2.º: 93.33%
+- Puntos esperados: 7.09
+- Diferencia de gol esperada: 4.71
+
+Japón:
+- 1.º: 12.13%
+- 2.º: 37.88%
+- 3.º: 30.13%
+- 4.º: 19.86%
+- Clasifica directo, 1.º o 2.º: 50.02%
+- Puntos esperados: 3.93
+- Diferencia de gol esperada: -0.45
+
+México:
+- 1.º: 7.65%
+- 2.º: 28.63%
+- 3.º: 34.84%
+- 4.º: 28.88%
+- Clasifica directo, 1.º o 2.º: 36.27%
+- Puntos esperados: 3.31
+- Diferencia de gol esperada: -1.42
+
+Panamá:
+- 1.º: 3.7%
+- 2.º: 16.68%
+- 3.º: 29.83%
+- 4.º: 49.79%
+- Clasifica directo, 1.º o 2.º: 20.38%
+- Puntos esperados: 2.38
+- Diferencia de gol esperada: -2.85
+
+ÓRDENES MÁS REPETIDOS EN LA SIMULACIÓN:
+- Argentina / Japón / México / Panamá: 21.17%
+- Argentina / México / Japón / Panamá: 16.84%
+- Argentina / Japón / Panamá / México: 14.37%
+- Argentina / México / Panamá / Japón: 9.25%
+- Argentina / Panamá / Japón / México: 8.13%
+
+NOTA NOVA:
+En este MVP, los dos primeros clasifican directo. La clasificación como mejor tercero requiere simular los 12 grupos juntos; se agregará en la siguiente fase.
+La siguiente fase agregará comparación real de mejores terceros entre todos los grupos.

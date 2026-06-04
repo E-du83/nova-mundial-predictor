@@ -1,0 +1,168 @@
+========================================================================
+PARTIDO: Mexico vs South Africa
+
+DECISIÓN PRINCIPAL:
+No jugar
+
+JUGADA:
+Gana equipo A
+
+CUOTA ACTUAL:
+1.62
+
+CUOTA MÍNIMA PARA QUE VALGA:
+1.62
+
+PROBABILIDAD DEL MODELO:
+61.66%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+58.43%
+
+VALOR ESPERADO:
+-0.0012
+
+CLASIFICACIÓN:
+sin ventaja clara
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡16,200
+Ganancia limpia: ₡6,200
+
+MARGEN ESTIMADO DE LA CASA:
+5.64%
+
+EXPLICACIÓN SIMPLE:
+La apuesta puede ocurrir, pero la cuota paga poco para el riesgo.
+
+TODAS LAS OPCIONES:
+- Gana equipo A: modelo 61.66%, cuota 1.62, mínima 1.62, EV -0.0012, decisión: No jugar
+- Empate: modelo 22.66%, cuota 3.75, mínima 4.41, EV -0.1501, decisión: No jugar
+- Gana equipo B: modelo 15.68%, cuota 5.8, mínima 6.38, EV -0.0905, decisión: No jugar
+
+========================================================================
+PARTIDO: Brazil vs Morocco
+
+DECISIÓN PRINCIPAL:
+Sí jugar
+
+JUGADA:
+Gana equipo B
+
+CUOTA ACTUAL:
+3.8
+
+CUOTA MÍNIMA PARA QUE VALGA:
+2.6
+
+PROBABILIDAD DEL MODELO:
+38.46%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+24.75%
+
+VALOR ESPERADO:
+0.4614
+
+CLASIFICACIÓN:
+valor alto
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡38,000
+Ganancia limpia: ₡28,000
+
+MARGEN ESTIMADO DE LA CASA:
+6.35%
+
+EXPLICACIÓN SIMPLE:
+La cuota actual paga más de lo que el modelo considera justo.
+
+TODAS LAS OPCIONES:
+- Gana equipo A: modelo 34.79%, cuota 2.05, mínima 2.87, EV -0.2869, decisión: No jugar
+- Empate: modelo 26.76%, cuota 3.2, mínima 3.74, EV -0.1438, decisión: No jugar
+- Gana equipo B: modelo 38.46%, cuota 3.8, mínima 2.6, EV 0.4614, decisión: Sí jugar
+
+========================================================================
+PARTIDO: Spain vs Uruguay
+
+DECISIÓN PRINCIPAL:
+Jugar solo bajo
+
+JUGADA:
+Gana equipo A
+
+CUOTA ACTUAL:
+1.82
+
+CUOTA MÍNIMA PARA QUE VALGA:
+1.77
+
+PROBABILIDAD DEL MODELO:
+56.48%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+51.76%
+
+VALOR ESPERADO:
+0.0279
+
+CLASIFICACIÓN:
+sin ventaja clara
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡18,200
+Ganancia limpia: ₡8,200
+
+MARGEN ESTIMADO DE LA CASA:
+6.15%
+
+EXPLICACIÓN SIMPLE:
+La cuota alcanza el mínimo justo, pero la ventaja es pequeña.
+
+TODAS LAS OPCIONES:
+- Gana equipo A: modelo 56.48%, cuota 1.82, mínima 1.77, EV 0.0279, decisión: Jugar solo bajo
+- Empate: modelo 23.97%, cuota 3.45, mínima 4.17, EV -0.1729, decisión: No jugar
+- Gana equipo B: modelo 19.55%, cuota 4.5, mínima 5.12, EV -0.1203, decisión: No jugar
+
+========================================================================
+PARTIDO: France vs Senegal
+
+DECISIÓN PRINCIPAL:
+Sí jugar
+
+JUGADA:
+Gana equipo B
+
+CUOTA ACTUAL:
+6.0
+
+CUOTA MÍNIMA PARA QUE VALGA:
+4.13
+
+PROBABILIDAD DEL MODELO:
+24.23%
+
+PROBABILIDAD DEL MERCADO, SIN MARGEN:
+15.78%
+
+VALOR ESPERADO:
+0.4536
+
+CLASIFICACIÓN:
+valor alto
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡60,000
+Ganancia limpia: ₡50,000
+
+MARGEN ESTIMADO DE LA CASA:
+5.6%
+
+EXPLICACIÓN SIMPLE:
+La cuota actual paga más de lo que el modelo considera justo.
+
+TODAS LAS OPCIONES:
+- Gana equipo A: modelo 50.4%, cuota 1.58, mínima 1.98, EV -0.2037, decisión: No jugar
+- Empate: modelo 25.38%, cuota 3.9, mínima 3.94, EV -0.0103, decisión: No jugar
+- Gana equipo B: modelo 24.23%, cuota 6.0, mínima 4.13, EV 0.4536, decisión: Sí jugar
+

@@ -1,0 +1,108 @@
+========================================================================
+PARTIDO: Spain vs Uruguay
+MERCADO: Spain gana
+
+DECISIÓN:
+Jugar solo bajo
+
+CUOTA MÍNIMA DEL MODELO:
+1.77
+
+CUOTA ACTUAL:
+1.8
+
+VALOR ESPERADO:
+0.0166
+
+MOVIMIENTO DE CUOTA:
+Apertura: 1.95
+Actual: 1.8
+Cierre: 1.8
+Dirección: bajó la cuota
+
+CLOSING LINE VALUE:
+0.0%
+Neutral: agarraste la misma cuota que el cierre.
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡18,000
+Ganancia limpia: ₡8,000
+
+EXPLICACIÓN SIMPLE:
+La cuota alcanza el mínimo justo, pero la ventaja es pequeña.
+
+LECTURA PRÁCTICA:
+Entrar solo con monto bajo o esperar mejor precio.
+
+========================================================================
+PARTIDO: Mexico vs South Africa
+MERCADO: Mexico gana
+
+DECISIÓN:
+Se pasó la oportunidad
+
+CUOTA MÍNIMA DEL MODELO:
+1.62
+
+CUOTA ACTUAL:
+1.58
+
+VALOR ESPERADO:
+-0.0258
+
+MOVIMIENTO DE CUOTA:
+Apertura: 1.72
+Actual: 1.58
+Cierre: 1.58
+Dirección: bajó la cuota
+
+CLOSING LINE VALUE:
+0.0%
+Neutral: agarraste la misma cuota que el cierre.
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡15,800
+Ganancia limpia: ₡5,800
+
+EXPLICACIÓN SIMPLE:
+La cuota bajó y ahora está por debajo de la cuota mínima del modelo.
+
+LECTURA PRÁCTICA:
+La cuota buena probablemente ya se fue. Mejor no perseguir una cuota peor.
+
+========================================================================
+PARTIDO: France vs Senegal
+MERCADO: Senegal gana
+
+DECISIÓN:
+Sí jugar ahora
+
+CUOTA MÍNIMA DEL MODELO:
+4.13
+
+CUOTA ACTUAL:
+5.8
+
+VALOR ESPERADO:
+0.4053
+
+MOVIMIENTO DE CUOTA:
+Apertura: 5.4
+Actual: 5.8
+Cierre: 5.8
+Dirección: subió la cuota
+
+CLOSING LINE VALUE:
+0.0%
+Neutral: agarraste la misma cuota que el cierre.
+
+SI APOSTÁS ₡10,000:
+Cobrarías: ₡58,000
+Ganancia limpia: ₡48,000
+
+EXPLICACIÓN SIMPLE:
+La cuota actual todavía paga más de lo que el modelo considera justo.
+
+LECTURA PRÁCTICA:
+La cuota sigue siendo jugable. Si vas a entrar, esta es una ventana razonable.
+
