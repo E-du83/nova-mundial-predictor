@@ -1,0 +1,16 @@
+NOVA MUNDIAL PREDICTOR — CORE SUMMARY
+
+OK - src/match_simulator.py
+OK - src/group_simulator.py
+OK - src/tournament_simulator.py
+OK - src/knockout_simulator.py
+OK - src/odds_engine.py
+OK - src/odds_history_engine.py
+OK - src/official_bracket_2026.py
+OK - src/storage/database.py
+OK - src/backtesting/backtest_engine.py
+
+Data files:
+OK - data/worldcup_2026_real_groups.json
+OK - data/worldcup_2026_real_teams_baseline_v1.json
+OK - data/source_manifest_v1.json

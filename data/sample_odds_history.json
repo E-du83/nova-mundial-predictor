@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "note": "Histórico de cuotas demo. NO son cuotas reales en vivo.",
+    "format": "decimal",
+    "source": "manual_demo_odds_history"
+  },
+  "markets": [
+    {
+      "match": "Spain vs Uruguay",
+      "market": "Spain gana",
+      "model_probability": 0.5648,
+      "records": [
+        {
+          "timestamp": "2026-06-01T08:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.95,
+          "label": "open"
+        },
+        {
+          "timestamp": "2026-06-02T08:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.88,
+          "label": "current"
+        },
+        {
+          "timestamp": "2026-06-03T10:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.8,
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "match": "Mexico vs South Africa",
+      "market": "Mexico gana",
+      "model_probability": 0.6166,
+      "records": [
+        {
+          "timestamp": "2026-06-01T08:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.72,
+          "label": "open"
+        },
+        {
+          "timestamp": "2026-06-02T08:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.66,
+          "label": "current"
+        },
+        {
+          "timestamp": "2026-06-03T10:00:00-06:00",
+          "bookmaker": "Casa Demo C",
+          "odds": 1.58,
+          "label": "close"
+        }
+      ]
+    },
+    {
+      "match": "France vs Senegal",
+      "market": "Senegal gana",
+      "model_probability": 0.2423,
+      "records": [
+        {
+          "timestamp": "2026-06-01T08:00:00-06:00",
+          "bookmaker": "Casa Demo A",
+          "odds": 5.4,
+          "label": "open"
+        },
+        {
+          "timestamp": "2026-06-02T08:00:00-06:00",
+          "bookmaker": "Casa Demo A",
+          "odds": 6.2,
+          "label": "current"
+        },
+        {
+          "timestamp": "2026-06-03T10:00:00-06:00",
+          "bookmaker": "Casa Demo A",
+          "odds": 5.8,
+          "label": "close"
+        }
+      ]
+    }
+  ]
+}

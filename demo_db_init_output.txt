@@ -1,0 +1,1 @@
+Base de datos creada/lista: /mnt/data/nova_v150_work/nova_mundial_predictor/nova_mundial_predictor.sqlite3

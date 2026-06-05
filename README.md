@@ -1,6 +1,6 @@
 # NOVA Mundial Predictor
 
-Versión inicial pública: **v1.0.0**
+Versión actual: **v1.5.0**
 
 Este proyecto es un motor probabilístico para analizar el Mundial 2026 con simulación de partidos, grupos, mejores terceros, cuotas, comparación entre casas, movimiento de cuotas y CLV.
 
@@ -277,3 +277,42 @@ Ahora el sistema puede decir:
 - cuándo no vale en ninguna
 - cuánto se cobra con ₡10.000
 - qué opción tiene mejor valor esperado
+
+
+## Fase 4 agregada: eliminatorias y campeón probable
+
+Archivos nuevos:
+
+```txt
+src/knockout_simulator.py
+src/run_knockout_demo.py
+docs/PHASE_4_KNOCKOUT.md
+```
+
+Ejecutar:
+
+```bash
+python src/run_knockout_demo.py
+```
+
+Nota:
+Esta fase usa un bracket genérico por seeding. Todavía falta integrar el bracket oficial FIFA 2026 completo.
+
+
+## Versión v1.5.0 — Core Complete
+
+Esta versión agrega estructura completa para seguir el desarrollo sin crear más paquetes pequeños:
+
+- SQLite.
+- Backtesting scaffold.
+- API de cuotas scaffold.
+- Bracket oficial 2026 scaffold.
+- Reality Check.
+- Pipeline summary.
+- Eliminatorias MVP.
+
+Ejecutar resumen del core:
+
+```bash
+python src/pipelines/run_core_summary.py
+```

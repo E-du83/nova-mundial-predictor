@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "note": "Cuotas de ejemplo para probar el motor. NO son cuotas reales en vivo.",
+    "format": "decimal",
+    "source": "manual_demo"
+  },
+  "matches": [
+    {
+      "match_id": "A1",
+      "home": "Mexico",
+      "away": "South Africa",
+      "odds": {
+        "home": 1.62,
+        "draw": 3.75,
+        "away": 5.8
+      }
+    },
+    {
+      "match_id": "C1",
+      "home": "Brazil",
+      "away": "Morocco",
+      "odds": {
+        "home": 2.05,
+        "draw": 3.2,
+        "away": 3.8
+      }
+    },
+    {
+      "match_id": "H1",
+      "home": "Spain",
+      "away": "Uruguay",
+      "odds": {
+        "home": 1.82,
+        "draw": 3.45,
+        "away": 4.5
+      }
+    },
+    {
+      "match_id": "I1",
+      "home": "France",
+      "away": "Senegal",
+      "odds": {
+        "home": 1.58,
+        "draw": 3.9,
+        "away": 6.0
+      }
+    }
+  ]
+}

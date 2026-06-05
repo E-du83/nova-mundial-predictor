@@ -1,0 +1,57 @@
+NOVA MUNDIAL PREDICTOR — FASE 4: ELIMINATORIAS + CAMPEÓN
+Simulaciones: 2,000
+
+DECISIÓN PARA QUINIELA — CAMPEÓN PRINCIPAL:
+Spain — 14.85%
+
+TOP CANDIDATOS A CAMPEÓN:
+- Spain: 14.85%
+- Argentina: 13.15%
+- France: 11.3%
+- England: 7.05%
+- Morocco: 5.5%
+- Portugal: 4.95%
+- Netherlands: 4.8%
+- Belgium: 4.6%
+- Brazil: 4.15%
+- Germany: 3.45%
+- Croatia: 2.75%
+- Colombia: 2.6%
+- USA: 2.4%
+- Uruguay: 2.4%
+- Senegal: 2.25%
+- Japan: 1.85%
+
+FINALES MÁS PROBABLES:
+- Argentina vs Spain: 3.0%
+- Argentina vs France: 2.15%
+- France vs Spain: 2.05%
+- Portugal vs Spain: 1.8%
+- England vs Spain: 1.65%
+- Morocco vs Spain: 1.55%
+- England vs France: 1.35%
+- Argentina vs Netherlands: 1.35%
+- Argentina vs England: 1.35%
+- Argentina vs Morocco: 1.2%
+
+PROBABILIDAD POR FASE — TOP:
+- Spain: R32 94.8% | R16 72.4% | QF 50.5% | SF 34.9% | Final 23.8% | Campeón 14.85%
+- Argentina: R32 95.0% | R16 69.9% | QF 49.0% | SF 32.0% | Final 21.3% | Campeón 13.15%
+- France: R32 93.5% | R16 68.3% | QF 44.9% | SF 29.6% | Final 18.2% | Campeón 11.3%
+- England: R32 90.5% | R16 61.1% | QF 37.6% | SF 21.9% | Final 12.2% | Campeón 7.05%
+- Morocco: R32 89.8% | R16 56.6% | QF 32.5% | SF 18.9% | Final 10.5% | Campeón 5.5%
+- Portugal: R32 90.0% | R16 60.8% | QF 35.9% | SF 20.1% | Final 10.5% | Campeón 4.95%
+- Netherlands: R32 90.9% | R16 59.8% | QF 35.2% | SF 19.9% | Final 10.2% | Campeón 4.8%
+- Belgium: R32 90.1% | R16 56.0% | QF 33.3% | SF 16.9% | Final 8.4% | Campeón 4.6%
+- Brazil: R32 89.4% | R16 53.6% | QF 31.9% | SF 16.6% | Final 8.6% | Campeón 4.15%
+- Germany: R32 91.2% | R16 57.3% | QF 31.8% | SF 16.7% | Final 8.2% | Campeón 3.45%
+- Croatia: R32 86.0% | R16 51.6% | QF 29.3% | SF 14.6% | Final 6.9% | Campeón 2.75%
+- Colombia: R32 85.4% | R16 47.9% | QF 23.9% | SF 12.7% | Final 5.9% | Campeón 2.6%
+- USA: R32 82.9% | R16 45.9% | QF 22.8% | SF 10.2% | Final 4.8% | Campeón 2.4%
+- Uruguay: R32 86.8% | R16 48.1% | QF 24.2% | SF 12.4% | Final 6.0% | Campeón 2.4%
+- Senegal: R32 82.0% | R16 44.7% | QF 23.1% | SF 11.7% | Final 5.3% | Campeón 2.25%
+- Japan: R32 79.0% | R16 42.1% | QF 19.3% | SF 10.2% | Final 4.5% | Campeón 1.85%
+
+NOTA NOVA:
+Fase 4 MVP usa bracket genérico por seeding. Pendiente integrar bracket oficial FIFA 2026 y asignación exacta de terceros.
+Lectura práctica: usar este módulo como primera ruta probabilística; no como bracket oficial final hasta integrar la asignación exacta FIFA.

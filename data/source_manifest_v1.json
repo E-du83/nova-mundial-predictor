@@ -1,0 +1,51 @@
+{
+  "created": "2026-06-02",
+  "groups": {
+    "file": "worldcup_2026_real_groups.json",
+    "source": "FIFA final draw / GOAL group listing",
+    "quality": "official/confirmed groups"
+  },
+  "fifa_rankings": {
+    "file": "worldcup_2026_real_teams_baseline_v1.json",
+    "source": "FIFA ranking page as mirrored/listed by Sofascore, last updated 03/06/26",
+    "quality": "exact points for teams visible with points; rank-only teams estimated"
+  },
+  "world_football_elo": {
+    "source": "World Football Elo Ratings as of Sun May 31 2026",
+    "quality": "exact top five integrated; full-table automation pending"
+  },
+  "missing_high_value_data": [
+    "xG for/against",
+    "player availability",
+    "final squads verification per team",
+    "injuries",
+    "odds from multiple bookmakers",
+    "tactical style profile",
+    "lineups probable/confirmed",
+    "backtesting calibration"
+  ],
+  "rule": "Never present baseline v1 as final truth; it is the first traceable model input layer.",
+  "odds_layer": {
+    "file": "sample_odds_manual.json",
+    "quality": "manual demo only, not live odds",
+    "engine": "odds_engine.py",
+    "calculates": [
+      "implied probability",
+      "no-vig market probability",
+      "bookmaker margin",
+      "fair odds",
+      "expected value",
+      "clear decision",
+      "fractional Kelly"
+    ]
+  },
+  "multi_bookmaker_layer": {
+    "file": "sample_odds_multi_bookmaker.json",
+    "quality": "manual demo only, not live odds",
+    "engine_functions": [
+      "best_odds_by_market",
+      "evaluate_1x2_multi_bookmaker",
+      "format_multi_bookmaker_report"
+    ]
+  }
+}

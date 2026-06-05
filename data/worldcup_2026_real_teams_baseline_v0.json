@@ -1,0 +1,434 @@
+{
+  "Argentina": {
+    "elo": 2110,
+    "attack": 1.094,
+    "defense": 0.924,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "France": {
+    "elo": 2085,
+    "attack": 1.084,
+    "defense": 0.933,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Spain": {
+    "elo": 2075,
+    "attack": 1.08,
+    "defense": 0.936,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Brazil": {
+    "elo": 2065,
+    "attack": 1.076,
+    "defense": 0.94,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "England": {
+    "elo": 2055,
+    "attack": 1.072,
+    "defense": 0.943,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Portugal": {
+    "elo": 2025,
+    "attack": 1.06,
+    "defense": 0.954,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Netherlands": {
+    "elo": 2015,
+    "attack": 1.056,
+    "defense": 0.957,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Germany": {
+    "elo": 1995,
+    "attack": 1.048,
+    "defense": 0.964,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Belgium": {
+    "elo": 1950,
+    "attack": 1.03,
+    "defense": 0.98,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Uruguay": {
+    "elo": 1945,
+    "attack": 1.028,
+    "defense": 0.982,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Croatia": {
+    "elo": 1935,
+    "attack": 1.024,
+    "defense": 0.985,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Colombia": {
+    "elo": 1925,
+    "attack": 1.02,
+    "defense": 0.989,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Morocco": {
+    "elo": 1905,
+    "attack": 1.012,
+    "defense": 0.996,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Switzerland": {
+    "elo": 1895,
+    "attack": 1.008,
+    "defense": 0.999,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "USA": {
+    "elo": 1865,
+    "attack": 0.996,
+    "defense": 1.01,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Mexico": {
+    "elo": 1845,
+    "attack": 0.988,
+    "defense": 1.017,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Japan": {
+    "elo": 1855,
+    "attack": 0.992,
+    "defense": 1.013,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Austria": {
+    "elo": 1875,
+    "attack": 1.0,
+    "defense": 1.006,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Senegal": {
+    "elo": 1840,
+    "attack": 0.986,
+    "defense": 1.018,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Sweden": {
+    "elo": 1830,
+    "attack": 0.982,
+    "defense": 1.022,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Turkey": {
+    "elo": 1835,
+    "attack": 0.984,
+    "defense": 1.02,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Ecuador": {
+    "elo": 1845,
+    "attack": 0.988,
+    "defense": 1.017,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Paraguay": {
+    "elo": 1790,
+    "attack": 0.966,
+    "defense": 1.036,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Korea Republic": {
+    "elo": 1805,
+    "attack": 0.972,
+    "defense": 1.031,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Australia": {
+    "elo": 1765,
+    "attack": 0.956,
+    "defense": 1.045,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Iran": {
+    "elo": 1775,
+    "attack": 0.96,
+    "defense": 1.041,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Scotland": {
+    "elo": 1760,
+    "attack": 0.954,
+    "defense": 1.046,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Cote d'Ivoire": {
+    "elo": 1765,
+    "attack": 0.956,
+    "defense": 1.045,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Egypt": {
+    "elo": 1755,
+    "attack": 0.952,
+    "defense": 1.048,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Canada": {
+    "elo": 1745,
+    "attack": 0.948,
+    "defense": 1.052,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Tunisia": {
+    "elo": 1740,
+    "attack": 0.946,
+    "defense": 1.054,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Algeria": {
+    "elo": 1735,
+    "attack": 0.944,
+    "defense": 1.055,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Qatar": {
+    "elo": 1690,
+    "attack": 0.926,
+    "defense": 1.071,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Panama": {
+    "elo": 1715,
+    "attack": 0.936,
+    "defense": 1.062,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Bosnia and Herzegovina": {
+    "elo": 1710,
+    "attack": 0.934,
+    "defense": 1.064,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Saudi Arabia": {
+    "elo": 1685,
+    "attack": 0.924,
+    "defense": 1.073,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Ghana": {
+    "elo": 1720,
+    "attack": 0.938,
+    "defense": 1.06,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "South Africa": {
+    "elo": 1695,
+    "attack": 0.928,
+    "defense": 1.069,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Czechia": {
+    "elo": 1815,
+    "attack": 0.976,
+    "defense": 1.027,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Norway": {
+    "elo": 1850,
+    "attack": 0.99,
+    "defense": 1.015,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Iraq": {
+    "elo": 1665,
+    "attack": 0.916,
+    "defense": 1.08,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Uzbekistan": {
+    "elo": 1680,
+    "attack": 0.922,
+    "defense": 1.075,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Cape Verde": {
+    "elo": 1675,
+    "attack": 0.92,
+    "defense": 1.076,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Haiti": {
+    "elo": 1610,
+    "attack": 0.894,
+    "defense": 1.099,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Jordan": {
+    "elo": 1625,
+    "attack": 0.9,
+    "defense": 1.094,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "Curacao": {
+    "elo": 1605,
+    "attack": 0.892,
+    "defense": 1.101,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "DR Congo": {
+    "elo": 1700,
+    "attack": 0.93,
+    "defense": 1.068,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  },
+  "New Zealand": {
+    "elo": 1585,
+    "attack": 0.884,
+    "defense": 1.108,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Rating inicial v0. Sustituir por datos reales cruzados: Elo actual, FIFA ranking, xG, forma, jugadores, tácticas y cuotas."
+  }
+}

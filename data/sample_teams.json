@@ -1,0 +1,516 @@
+{
+  "Argentina": {
+    "elo": 2110,
+    "attack": 1.18,
+    "defense": 0.82,
+    "form": 1.08,
+    "tactical_attack_adjustment": 1.03,
+    "tactical_defense_adjustment": 0.97,
+    "style_note": "Equipo con buena creación interior, experiencia y capacidad para controlar ritmo."
+  },
+  "Japón": {
+    "elo": 1850,
+    "attack": 0.98,
+    "defense": 1.02,
+    "form": 1.04,
+    "tactical_attack_adjustment": 1.02,
+    "tactical_defense_adjustment": 1.01,
+    "style_note": "Equipo intenso, ordenado, fuerte en presión y transiciones rápidas."
+  },
+  "Francia": {
+    "elo": 2080,
+    "attack": 1.22,
+    "defense": 0.86,
+    "form": 1.05,
+    "tactical_attack_adjustment": 1.04,
+    "tactical_defense_adjustment": 0.98,
+    "style_note": "Equipo de alto poder ofensivo, transición veloz y mucho talento individual."
+  },
+  "Marruecos": {
+    "elo": 1885,
+    "attack": 0.94,
+    "defense": 0.92,
+    "form": 1.02,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 0.95,
+    "style_note": "Equipo compacto, defensivamente fuerte y peligroso en transición."
+  },
+  "México": {
+    "elo": 1805,
+    "attack": 0.97,
+    "defense": 1.04,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 1.02,
+    "style_note": "Equipo competitivo, emocionalmente fuerte, con presión media y buen impulso cuando juega en contexto favorable."
+  },
+  "Estados Unidos": {
+    "elo": 1815,
+    "attack": 1.0,
+    "defense": 1.02,
+    "form": 1.01,
+    "tactical_attack_adjustment": 1.01,
+    "tactical_defense_adjustment": 1.0,
+    "style_note": "Equipo físico, vertical, con buen ritmo, transiciones rápidas y presión alta por tramos."
+  },
+  "Croacia": {
+    "elo": 1945,
+    "attack": 1.02,
+    "defense": 0.95,
+    "form": 1.0,
+    "tactical_attack_adjustment": 1.0,
+    "tactical_defense_adjustment": 0.98,
+    "style_note": "Equipo de mucho control, experiencia, mediocampo fuerte y capacidad para partidos cerrados."
+  },
+  "Costa Rica": {
+    "elo": 1645,
+    "attack": 0.82,
+    "defense": 1.15,
+    "form": 0.96,
+    "tactical_attack_adjustment": 0.96,
+    "tactical_defense_adjustment": 1.04,
+    "style_note": "Equipo que suele competir desde bloque medio/bajo, orden defensivo y búsqueda de transiciones.",
+    "demo_note": "Equipo incluido solo para pruebas históricas/demo. No usar como selección mundialista 2026 sin validar lista oficial."
+  },
+  "Panamá": {
+    "elo": 1715,
+    "attack": 0.89,
+    "defense": 1.09,
+    "form": 1.0,
+    "tactical_attack_adjustment": 0.99,
+    "tactical_defense_adjustment": 1.02,
+    "style_note": "Equipo competitivo de Concacaf, físico, ordenado y con capacidad de incomodar en partidos cerrados."
+  },
+  "Equipo A1": {
+    "elo": 2007,
+    "attack": 1.161,
+    "defense": 0.896,
+    "form": 0.955,
+    "tactical_attack_adjustment": 0.963,
+    "tactical_defense_adjustment": 1.036,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo A2": {
+    "elo": 1814,
+    "attack": 0.963,
+    "defense": 0.981,
+    "form": 1.038,
+    "tactical_attack_adjustment": 0.964,
+    "tactical_defense_adjustment": 0.972,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo A3": {
+    "elo": 1737,
+    "attack": 0.927,
+    "defense": 1.05,
+    "form": 1.034,
+    "tactical_attack_adjustment": 1.017,
+    "tactical_defense_adjustment": 1.034,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo A4": {
+    "elo": 1674,
+    "attack": 0.896,
+    "defense": 1.114,
+    "form": 0.944,
+    "tactical_attack_adjustment": 1.037,
+    "tactical_defense_adjustment": 0.997,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo B1": {
+    "elo": 1978,
+    "attack": 1.129,
+    "defense": 0.869,
+    "form": 1.052,
+    "tactical_attack_adjustment": 0.985,
+    "tactical_defense_adjustment": 0.996,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo B2": {
+    "elo": 1912,
+    "attack": 1.042,
+    "defense": 0.994,
+    "form": 0.956,
+    "tactical_attack_adjustment": 1.02,
+    "tactical_defense_adjustment": 0.993,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo B3": {
+    "elo": 1790,
+    "attack": 0.927,
+    "defense": 1.122,
+    "form": 0.955,
+    "tactical_attack_adjustment": 0.99,
+    "tactical_defense_adjustment": 1.025,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo B4": {
+    "elo": 1674,
+    "attack": 0.854,
+    "defense": 1.176,
+    "form": 0.997,
+    "tactical_attack_adjustment": 1.005,
+    "tactical_defense_adjustment": 0.994,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo C1": {
+    "elo": 1934,
+    "attack": 1.093,
+    "defense": 0.876,
+    "form": 0.978,
+    "tactical_attack_adjustment": 0.973,
+    "tactical_defense_adjustment": 1.009,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo C2": {
+    "elo": 1908,
+    "attack": 1.012,
+    "defense": 0.968,
+    "form": 1.037,
+    "tactical_attack_adjustment": 0.997,
+    "tactical_defense_adjustment": 0.986,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo C3": {
+    "elo": 1765,
+    "attack": 0.92,
+    "defense": 1.087,
+    "form": 0.981,
+    "tactical_attack_adjustment": 1.006,
+    "tactical_defense_adjustment": 1.004,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo C4": {
+    "elo": 1636,
+    "attack": 0.852,
+    "defense": 1.195,
+    "form": 1.001,
+    "tactical_attack_adjustment": 0.996,
+    "tactical_defense_adjustment": 0.992,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo D1": {
+    "elo": 1906,
+    "attack": 1.169,
+    "defense": 0.937,
+    "form": 0.953,
+    "tactical_attack_adjustment": 1.017,
+    "tactical_defense_adjustment": 0.973,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo D2": {
+    "elo": 1882,
+    "attack": 0.972,
+    "defense": 1.02,
+    "form": 1.003,
+    "tactical_attack_adjustment": 1.036,
+    "tactical_defense_adjustment": 0.964,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo D3": {
+    "elo": 1817,
+    "attack": 0.877,
+    "defense": 1.1,
+    "form": 0.985,
+    "tactical_attack_adjustment": 0.983,
+    "tactical_defense_adjustment": 1.025,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo D4": {
+    "elo": 1657,
+    "attack": 0.8,
+    "defense": 1.194,
+    "form": 0.951,
+    "tactical_attack_adjustment": 0.963,
+    "tactical_defense_adjustment": 1.032,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo E1": {
+    "elo": 2010,
+    "attack": 1.138,
+    "defense": 0.901,
+    "form": 1.026,
+    "tactical_attack_adjustment": 0.964,
+    "tactical_defense_adjustment": 0.98,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo E2": {
+    "elo": 1885,
+    "attack": 0.992,
+    "defense": 1.024,
+    "form": 0.947,
+    "tactical_attack_adjustment": 1.005,
+    "tactical_defense_adjustment": 1.034,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo E3": {
+    "elo": 1767,
+    "attack": 0.961,
+    "defense": 1.095,
+    "form": 1.046,
+    "tactical_attack_adjustment": 1.022,
+    "tactical_defense_adjustment": 1.004,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo E4": {
+    "elo": 1700,
+    "attack": 0.886,
+    "defense": 1.138,
+    "form": 0.966,
+    "tactical_attack_adjustment": 0.972,
+    "tactical_defense_adjustment": 1.017,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo F1": {
+    "elo": 1989,
+    "attack": 1.124,
+    "defense": 0.949,
+    "form": 0.98,
+    "tactical_attack_adjustment": 0.978,
+    "tactical_defense_adjustment": 0.988,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo F2": {
+    "elo": 1873,
+    "attack": 0.993,
+    "defense": 1.042,
+    "form": 0.984,
+    "tactical_attack_adjustment": 1.03,
+    "tactical_defense_adjustment": 1.017,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo F3": {
+    "elo": 1794,
+    "attack": 0.929,
+    "defense": 1.108,
+    "form": 1.02,
+    "tactical_attack_adjustment": 0.989,
+    "tactical_defense_adjustment": 1.006,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo F4": {
+    "elo": 1684,
+    "attack": 0.832,
+    "defense": 1.138,
+    "form": 1.053,
+    "tactical_attack_adjustment": 0.989,
+    "tactical_defense_adjustment": 1.035,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo G1": {
+    "elo": 1954,
+    "attack": 1.125,
+    "defense": 0.932,
+    "form": 0.97,
+    "tactical_attack_adjustment": 0.971,
+    "tactical_defense_adjustment": 1.025,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo G2": {
+    "elo": 1849,
+    "attack": 0.968,
+    "defense": 0.993,
+    "form": 1.019,
+    "tactical_attack_adjustment": 1.015,
+    "tactical_defense_adjustment": 1.031,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo G3": {
+    "elo": 1712,
+    "attack": 0.898,
+    "defense": 1.062,
+    "form": 1.058,
+    "tactical_attack_adjustment": 1.003,
+    "tactical_defense_adjustment": 1.019,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo G4": {
+    "elo": 1596,
+    "attack": 0.859,
+    "defense": 1.127,
+    "form": 0.948,
+    "tactical_attack_adjustment": 0.975,
+    "tactical_defense_adjustment": 1.039,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo H1": {
+    "elo": 1955,
+    "attack": 1.15,
+    "defense": 0.901,
+    "form": 1.055,
+    "tactical_attack_adjustment": 1.039,
+    "tactical_defense_adjustment": 1.036,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo H2": {
+    "elo": 1810,
+    "attack": 1.057,
+    "defense": 1.036,
+    "form": 0.995,
+    "tactical_attack_adjustment": 0.985,
+    "tactical_defense_adjustment": 0.964,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo H3": {
+    "elo": 1666,
+    "attack": 0.941,
+    "defense": 1.031,
+    "form": 1.04,
+    "tactical_attack_adjustment": 0.965,
+    "tactical_defense_adjustment": 1.011,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo H4": {
+    "elo": 1658,
+    "attack": 0.814,
+    "defense": 1.166,
+    "form": 1.0,
+    "tactical_attack_adjustment": 0.99,
+    "tactical_defense_adjustment": 1.032,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo I1": {
+    "elo": 1966,
+    "attack": 1.16,
+    "defense": 0.938,
+    "form": 1.004,
+    "tactical_attack_adjustment": 1.014,
+    "tactical_defense_adjustment": 1.014,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo I2": {
+    "elo": 1810,
+    "attack": 1.019,
+    "defense": 1.005,
+    "form": 0.973,
+    "tactical_attack_adjustment": 0.963,
+    "tactical_defense_adjustment": 0.997,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo I3": {
+    "elo": 1777,
+    "attack": 0.91,
+    "defense": 1.108,
+    "form": 0.971,
+    "tactical_attack_adjustment": 1.013,
+    "tactical_defense_adjustment": 0.988,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo I4": {
+    "elo": 1573,
+    "attack": 0.849,
+    "defense": 1.137,
+    "form": 1.034,
+    "tactical_attack_adjustment": 1.01,
+    "tactical_defense_adjustment": 0.98,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo J1": {
+    "elo": 1967,
+    "attack": 1.155,
+    "defense": 0.851,
+    "form": 0.986,
+    "tactical_attack_adjustment": 1.02,
+    "tactical_defense_adjustment": 0.977,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo J2": {
+    "elo": 1784,
+    "attack": 1.023,
+    "defense": 1.045,
+    "form": 1.028,
+    "tactical_attack_adjustment": 0.975,
+    "tactical_defense_adjustment": 0.998,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo J3": {
+    "elo": 1709,
+    "attack": 0.939,
+    "defense": 1.04,
+    "form": 1.033,
+    "tactical_attack_adjustment": 1.001,
+    "tactical_defense_adjustment": 1.024,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo J4": {
+    "elo": 1607,
+    "attack": 0.893,
+    "defense": 1.195,
+    "form": 1.058,
+    "tactical_attack_adjustment": 0.968,
+    "tactical_defense_adjustment": 0.968,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo K1": {
+    "elo": 2030,
+    "attack": 1.163,
+    "defense": 0.901,
+    "form": 1.006,
+    "tactical_attack_adjustment": 1.027,
+    "tactical_defense_adjustment": 1.005,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo K2": {
+    "elo": 1844,
+    "attack": 1.017,
+    "defense": 0.983,
+    "form": 0.975,
+    "tactical_attack_adjustment": 1.012,
+    "tactical_defense_adjustment": 1.006,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo K3": {
+    "elo": 1766,
+    "attack": 0.868,
+    "defense": 1.061,
+    "form": 0.962,
+    "tactical_attack_adjustment": 0.981,
+    "tactical_defense_adjustment": 1.02,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo K4": {
+    "elo": 1715,
+    "attack": 0.861,
+    "defense": 1.156,
+    "form": 0.96,
+    "tactical_attack_adjustment": 1.014,
+    "tactical_defense_adjustment": 0.967,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo L1": {
+    "elo": 1939,
+    "attack": 1.134,
+    "defense": 0.875,
+    "form": 0.954,
+    "tactical_attack_adjustment": 0.967,
+    "tactical_defense_adjustment": 1.008,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo L2": {
+    "elo": 1898,
+    "attack": 0.989,
+    "defense": 1.023,
+    "form": 0.966,
+    "tactical_attack_adjustment": 1.02,
+    "tactical_defense_adjustment": 0.967,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo L3": {
+    "elo": 1698,
+    "attack": 0.864,
+    "defense": 1.122,
+    "form": 1.008,
+    "tactical_attack_adjustment": 1.026,
+    "tactical_defense_adjustment": 0.978,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  },
+  "Equipo L4": {
+    "elo": 1591,
+    "attack": 0.876,
+    "defense": 1.169,
+    "form": 1.002,
+    "tactical_attack_adjustment": 1.035,
+    "tactical_defense_adjustment": 1.016,
+    "style_note": "Equipo ficticio de prueba para validar el motor de torneo. Sustituir por selecciones reales y datos oficiales."
+  }
+}
