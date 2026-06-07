@@ -1,0 +1,51 @@
+{
+  "data_status": "pre_tournament_context",
+  "source": "data/worldcup_2026_real_groups.json",
+  "notes": "Contexto inicial para demos. No contiene calendario FIFA final, tabla de puntos ni sedes reales.",
+  "fixtures": [
+    {
+      "match": "Mexico vs South Africa",
+      "team_a": "Mexico",
+      "team_b": "South Africa",
+      "phase": "fase de grupos",
+      "group": "A",
+      "matchday": "pending_real_schedule",
+      "match_order": "pending_real_schedule",
+      "venue": "pending_real_venue",
+      "context_status": "pre_tournament_context"
+    },
+    {
+      "match": "Brazil vs Morocco",
+      "team_a": "Brazil",
+      "team_b": "Morocco",
+      "phase": "fase de grupos",
+      "group": "C",
+      "matchday": "pending_real_schedule",
+      "match_order": "pending_real_schedule",
+      "venue": "pending_real_venue",
+      "context_status": "pre_tournament_context"
+    },
+    {
+      "match": "Argentina vs Austria",
+      "team_a": "Argentina",
+      "team_b": "Austria",
+      "phase": "fase de grupos",
+      "group": "J",
+      "matchday": "pending_real_schedule",
+      "match_order": "pending_real_schedule",
+      "venue": "pending_real_venue",
+      "context_status": "pre_tournament_context"
+    },
+    {
+      "match": "England vs Croatia",
+      "team_a": "England",
+      "team_b": "Croatia",
+      "phase": "fase de grupos",
+      "group": "L",
+      "matchday": "pending_real_schedule",
+      "match_order": "pending_real_schedule",
+      "venue": "pending_real_venue",
+      "context_status": "pre_tournament_context"
+    }
+  ]
+}
