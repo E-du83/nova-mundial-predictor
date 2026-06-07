@@ -15,6 +15,14 @@ simple: si un dato no esta disponible gratis o no esta verificado, se marca como
 | Open-Meteo | clima historico por sede sin API key | free_api | Requiere coordenadas, fechas y validacion del periodo |
 | The Odds API | cuotas si existe plan/API key | optional_limited_api | No es dependencia obligatoria; puede requerir pago |
 | GitHub football datasets | descubrimiento de datasets | reference_registry | Calidad y licencia variable |
+| 365Scores snapshot manual | cuotas visibles, alineaciones, stats si el usuario las copia | manual_snapshot | No scraping; algunos datos pueden venir de proveedores premium |
+
+## Lectura API key
+
+- `requires_api_key: false` significa que la fuente no requiere llave. Es un
+  punto positivo para pruebas gratis.
+- `requires_api_key: true` significa fuente opcional. Si implica pago o limite
+  estricto, no se usa como dependencia obligatoria.
 
 ## Como evitan humo
 
@@ -24,6 +32,8 @@ simple: si un dato no esta disponible gratis o no esta verificado, se marca como
 - Las APIs pagadas o limitadas no bloquean el flujo principal.
 - El clima usa perfil historico o normal de sede, no clima del dia para demos.
 - Cada fuente tiene tipo, costo, confiabilidad, limitaciones y uso previsto.
+- 365Scores se usa solo como snapshot manual verificado por el usuario, nunca
+  como scraping automatico.
 
 ## Que falta todavia
 
@@ -34,3 +44,4 @@ simple: si un dato no esta disponible gratis o no esta verificado, se marca como
 - Snapshots Elo completos y actualizados.
 - Cuotas 1X2 verificadas si el usuario decide aportarlas manualmente.
 - Alineaciones, lesiones, sanciones y contexto tactico real.
+- Resultado real de amistosos cuando se jueguen para comparar contra el pick.

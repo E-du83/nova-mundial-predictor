@@ -1,0 +1,167 @@
+{
+  "data_status": "pending_real_data",
+  "source": "FIFA official venues, structure prepared for verified coordinates",
+  "notes": "No climate values included. Latitude, longitude and altitude must be verified before Open-Meteo use.",
+  "venues": [
+    {
+      "venue_name": "Estadio Azteca",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Estadio Akron",
+      "city": "Guadalajara",
+      "country": "Mexico",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Estadio BBVA",
+      "city": "Monterrey",
+      "country": "Mexico",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "BMO Field",
+      "city": "Toronto",
+      "country": "Canada",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "BC Place",
+      "city": "Vancouver",
+      "country": "Canada",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Mercedes-Benz Stadium",
+      "city": "Atlanta",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Gillette Stadium",
+      "city": "Boston",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "AT&T Stadium",
+      "city": "Dallas",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "NRG Stadium",
+      "city": "Houston",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Arrowhead Stadium",
+      "city": "Kansas City",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "SoFi Stadium",
+      "city": "Los Angeles",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Hard Rock Stadium",
+      "city": "Miami",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "MetLife Stadium",
+      "city": "New York/New Jersey",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Lincoln Financial Field",
+      "city": "Philadelphia",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Levi's Stadium",
+      "city": "San Francisco Bay Area",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    },
+    {
+      "venue_name": "Lumen Field",
+      "city": "Seattle",
+      "country": "USA",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
+      "altitude_m": "pending_real_data",
+      "data_status": "pending_real_data",
+      "source": "FIFA official venues"
+    }
+  ]
+}

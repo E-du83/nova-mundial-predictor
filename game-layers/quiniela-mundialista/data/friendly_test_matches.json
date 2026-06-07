@@ -13,6 +13,8 @@
       "source_status": "manually_verified_from_user_screenshot",
       "kickoff_time_local": "pending_or_manual",
       "odds_1x2": "pending_manual_snapshot",
+      "excluded_from_current_test": false,
+      "reason": "active_worldcup_baseline_teams",
       "notes": "Prueba amistosa; confirmar horario, sede y cuotas antes de usar como snapshot real."
     },
     {
@@ -24,6 +26,8 @@
       "source_status": "manually_verified_from_user_screenshot",
       "kickoff_time_local": "pending_or_manual",
       "odds_1x2": "pending_manual_snapshot",
+      "excluded_from_current_test": false,
+      "reason": "active_worldcup_baseline_teams",
       "notes": "Prueba amistosa; confirmar horario, sede y cuotas antes de usar como snapshot real."
     },
     {
@@ -35,6 +39,8 @@
       "source_status": "manually_verified_from_user_screenshot",
       "kickoff_time_local": "pending_or_manual",
       "odds_1x2": "pending_manual_snapshot",
+      "excluded_from_current_test": true,
+      "reason": "not_both_worldcup_baseline_teams",
       "notes": "Prueba amistosa; Slovenia no esta garantizado en baseline v1."
     },
     {
@@ -46,6 +52,8 @@
       "source_status": "manually_verified_from_user_screenshot",
       "kickoff_time_local": "pending_or_manual",
       "odds_1x2": "pending_manual_snapshot",
+      "excluded_from_current_test": true,
+      "reason": "not_both_worldcup_baseline_teams",
       "notes": "Prueba amistosa; Guatemala no esta garantizado en baseline v1."
     }
   ]

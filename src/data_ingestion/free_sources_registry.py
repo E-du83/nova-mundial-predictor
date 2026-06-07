@@ -140,6 +140,27 @@ FREE_SOURCES = [
         "url_reference_text": "https://github.com/topics/football-data",
         "status": "reference_registry",
     },
+    {
+        "source_id": "365scores_manual_snapshot",
+        "name": "365Scores manual snapshot",
+        "type": "manual_snapshot",
+        "cost": "free_manual_user_input",
+        "requires_api_key": False,
+        "reliability": "media_si_verificado",
+        "intended_use": [
+            "cuotas visibles copiadas manualmente",
+            "alineaciones visibles",
+            "formaciones",
+            "estadisticas visibles",
+        ],
+        "limitations": [
+            "No usar scraping automatico.",
+            "Algunos datos visibles pueden provenir de proveedores premium.",
+            "No asumir que existe API gratis.",
+        ],
+        "url_reference_text": "365Scores app/site, manual user snapshot",
+        "status": "manual_snapshot",
+    },
 ]
 
 
@@ -151,7 +172,7 @@ def get_free_sources() -> list[dict]:
     return [
         source
         for source in FREE_SOURCES
-        if source["cost"] in ("free", "free_public_reference")
+        if source["cost"] in ("free", "free_public_reference", "free_manual_user_input")
         and not source["requires_api_key"]
     ]
 

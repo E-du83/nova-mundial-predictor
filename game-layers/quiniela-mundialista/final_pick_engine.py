@@ -2,6 +2,7 @@ from pathlib import Path
 
 from quiniela_engine import ROOT, load_teams, recommend_match
 from scoring_rules import parse_score, result_key
+from simulation_config import infer_simulation_mode, resolve_simulation_mode
 from tournament_context_engine import (
     build_tournament_context,
     load_fixture_contexts,
@@ -193,7 +194,13 @@ def build_final_pick(
     climate_profiles: dict | None = None,
     simulations: int = 50_000,
     seed: int = 2026,
+    simulation_mode: str | None = None,
 ) -> dict:
+    if simulation_mode is not None:
+        simulation_mode, simulations = resolve_simulation_mode(simulation_mode)
+    else:
+        simulation_mode = infer_simulation_mode(simulations)
+
     context = build_tournament_context(team_a, team_b, fixtures_data)
     climate = build_venue_climate_profile(context["venue"], climate_profiles)
 
@@ -205,6 +212,7 @@ def build_final_pick(
             strategy=strategy,
             simulations=simulations,
             seed=seed,
+            simulation_mode=simulation_mode,
         )
         for strategy in STRATEGIES
     ]
@@ -240,6 +248,8 @@ def build_final_pick(
         "matchday": context["matchday"],
         "match_order": context["match_order"],
         "venue": context["venue"],
+        "simulation_mode": simulation_mode,
+        "simulations_used": simulations,
         "final_quiniela_recommendation": quiniela["result"],
         "final_score": quiniela["recommended_score"],
         "final_quinigol": quinigol["recommended"],
@@ -286,6 +296,8 @@ def format_final_pick(final_pick: dict) -> str:
         f"Grupo: {final_pick['group']}",
         f"Jornada: {final_pick['matchday']}",
         f"Sede: {final_pick['venue']}",
+        f"Modo de simulacion: {final_pick['simulation_mode']}",
+        f"Simulaciones usadas: {final_pick['simulations_used']}",
         f"Recomendacion final quiniela: {final_pick['final_quiniela_recommendation']}",
         f"Marcador final recomendado: {final_pick['final_score']}",
         f"Quinigol final recomendado: {final_pick['final_quinigol']}",

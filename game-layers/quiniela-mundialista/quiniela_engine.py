@@ -9,6 +9,7 @@ if str(SRC_PATH) not in sys.path:
 
 from match_simulator import load_teams, simulate_match  # noqa: E402
 from quinigol_engine import recommend_quinigol  # noqa: E402
+from simulation_config import infer_simulation_mode  # noqa: E402
 from strategy_engine import choose_quiniela_strategy, normalize_strategy  # noqa: E402
 
 
@@ -51,6 +52,7 @@ def recommend_match(
     strategy: str = "balanceado",
     simulations: int = 50_000,
     seed: int = 2026,
+    simulation_mode: str | None = None,
 ) -> dict:
     """
     Build a Quiniela Mundialista recommendation from the Core match simulator.
@@ -79,6 +81,7 @@ def recommend_match(
         "quinigol": quinigol,
         "core": {
             "simulations": core_result["simulations"],
+            "simulation_mode": simulation_mode or infer_simulation_mode(core_result["simulations"]),
             "expected_goals": core_result["expected_goals"],
             "probabilities": core_result["probabilities"],
             "top_scores": core_result["top_scores"],
@@ -111,6 +114,8 @@ def format_quiniela_recommendation(recommendation: dict) -> str:
         f"Confianza: {quiniela['confidence']}%",
         f"Riesgo: {quiniela['risk']}",
         f"Estrategia: {recommendation['strategy']}",
+        f"Modo de simulacion: {core['simulation_mode']}",
+        f"Simulaciones usadas: {core['simulations']}",
         f"Quinigol recomendado: {quinigol['recommended']}",
         f"Minuto probable: {quinigol['minute_label']}",
         (
@@ -140,6 +145,7 @@ def recommend_many_matches(
     teams: dict,
     simulations: int = 50_000,
     seed: int = 2026,
+    simulation_mode: str | None = None,
 ) -> list[dict]:
     recommendations = []
     for index, (team_a, team_b, strategy) in enumerate(matches):
@@ -151,6 +157,7 @@ def recommend_many_matches(
                 strategy=strategy,
                 simulations=simulations,
                 seed=seed + index,
+                simulation_mode=simulation_mode,
             )
         )
     return recommendations

@@ -80,5 +80,18 @@
     "source_status": "manually_verified_from_user_screenshot",
     "competition_type": "international_friendly",
     "rule": "Not official World Cup matches. Adjust confidence for rotation, tactical tests and lower competitive intensity."
+  },
+  "real_data_activation_manual_snapshot_v1": {
+    "manual_snapshots": "game-layers/quiniela-mundialista/data/manual_match_snapshots.json",
+    "manual_snapshot_engine": "game-layers/quiniela-mundialista/manual_snapshot_engine.py",
+    "venues_seed": "game-layers/quiniela-mundialista/data/worldcup_venues_seed.json",
+    "world_elo_template": "game-layers/quiniela-mundialista/data/world_elo_snapshot_template.csv",
+    "openfootball_notes": "game-layers/quiniela-mundialista/data/openfootball_snapshot_README.md",
+    "simulation_modes": {
+      "quick": 10000,
+      "standard": 100000,
+      "final": 1000000
+    },
+    "rule": "Manual snapshots are allowed only as user-verified visible data. No scraping, no paid API dependency, no invented values."
   }
 }

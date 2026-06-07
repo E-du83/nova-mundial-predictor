@@ -67,3 +67,23 @@ el impacto esperado.
 | Alineaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Alto impacto por rotacion |
 | Lesiones amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Ajusta riesgo y disponibilidad |
 | Sede amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Necesaria para clima historico |
+| Snapshot manual 365Scores | Usuario copia datos visibles | Si, manual | manual_snapshot_required | Permite cuotas, lineups y stats sin scraping |
+| Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
+| Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
+| Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
+
+## Reglas de activacion real
+
+- `requires_api_key: false` significa que la fuente no requiere llave y es
+  preferible para pruebas gratis.
+- `requires_api_key: true` significa que la fuente puede ser opcional, pero no
+  se usara como dependencia obligatoria si implica pago.
+- Para friendly test solo se simulan partidos con ambos equipos clasificados al
+  Mundial 2026 y presentes en `worldcup_2026_real_teams_baseline_v1.json`.
+- Open-Meteo se usara para clima historico por sede, no clima del dia.
+- openfootball y FIFA se usaran para calendario, sedes y fixtures cuando exista
+  snapshot/verificacion.
+- World Elo se usara para fuerza solo si hay CSV local verificado.
+- 365Scores se usara solo como snapshot manual verificado, no scraping
+  automatico. Algunos datos visibles pueden venir de proveedores premium, asi
+  que no se asume API gratis.

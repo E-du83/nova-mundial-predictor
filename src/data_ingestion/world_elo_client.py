@@ -18,7 +18,8 @@ def load_world_elo_csv(path: str | Path) -> dict:
     if not csv_path.exists():
         return {
             "source_id": SOURCE_ID,
-            "status": "pending_manual_snapshot",
+            "source_status": "manual_snapshot_required",
+            "status": "manual_snapshot_required",
             "usable": False,
             "path": str(csv_path),
             "message": "No verified local World Football Elo CSV found.",
@@ -47,6 +48,7 @@ def load_world_elo_csv(path: str | Path) -> dict:
         "path": str(csv_path),
         "rows": rows,
         "row_count": len(rows),
+        "source_status": "manual_snapshot_loaded",
         "freshness": "pending_freshness_verification",
         "reference": WORLD_ELO_REFERENCE,
     }

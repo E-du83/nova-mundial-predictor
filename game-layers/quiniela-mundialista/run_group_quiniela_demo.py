@@ -7,6 +7,7 @@ from quiniela_engine import (
     load_teams,
     recommend_match,
 )
+from simulation_config import resolve_simulation_mode
 
 
 STRATEGIES = ("conservador", "balanceado", "agresivo")
@@ -40,6 +41,7 @@ def main() -> None:
     teams = load_teams(teams_path)
     groups = load_groups(groups_path)
     validate_selected_matches(groups)
+    simulation_mode, simulations = resolve_simulation_mode("quick")
 
     print("NOVA QUINIELA MUNDIALISTA - DEMO GRUPOS 2026")
     print("Seleccion parcial de partidos reales por grupo.")
@@ -56,7 +58,8 @@ def main() -> None:
                 team_b,
                 teams,
                 strategy=strategy,
-                simulations=20_000,
+                simulations=simulations,
+                simulation_mode=simulation_mode,
                 seed=seed,
             )
             print(format_quiniela_recommendation(recommendation))

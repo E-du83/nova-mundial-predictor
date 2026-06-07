@@ -9,6 +9,7 @@ from pathlib import Path
 PENDING_STATUSES = {
     "pending_real_data",
     "pending_manual_snapshot",
+    "manual_snapshot_required",
     "not_available_free",
     "pre_tournament_context",
 }

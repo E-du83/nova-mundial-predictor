@@ -1,0 +1,70 @@
+{
+  "data_status": "manual_snapshot_required",
+  "source": "365Scores",
+  "source_status": "manual_snapshot",
+  "notes": "Archivo para datos copiados manualmente por el usuario desde paginas visibles. No usar scraping automatico.",
+  "snapshots": [
+    {
+      "source": "365Scores",
+      "source_status": "manual_snapshot",
+      "captured_at": "pending_manual_input",
+      "captured_by": "pending_manual_input",
+      "match": "Morocco vs Norway",
+      "team_a": "Morocco",
+      "team_b": "Norway",
+      "odds_1x2": {
+        "home": "pending_manual_input",
+        "draw": "pending_manual_input",
+        "away": "pending_manual_input"
+      },
+      "probable_lineups": {
+        "team_a_formation": "pending_manual_input",
+        "team_b_formation": "pending_manual_input",
+        "team_a_players": "pending_manual_input",
+        "team_b_players": "pending_manual_input"
+      },
+      "stats_snapshot": {
+        "both_teams_to_score_percent": "pending_manual_input",
+        "over_2_5_percent": "pending_manual_input",
+        "avg_goals_for_team_a": "pending_manual_input",
+        "avg_goals_for_team_b": "pending_manual_input",
+        "avg_goals_against_team_a": "pending_manual_input",
+        "avg_goals_against_team_b": "pending_manual_input",
+        "h2h_notes": "pending_manual_input",
+        "trends": "pending_manual_input"
+      },
+      "data_status": "pending_manual_input"
+    },
+    {
+      "source": "365Scores",
+      "source_status": "manual_snapshot",
+      "captured_at": "pending_manual_input",
+      "captured_by": "pending_manual_input",
+      "match": "Colombia vs Jordan",
+      "team_a": "Colombia",
+      "team_b": "Jordan",
+      "odds_1x2": {
+        "home": "pending_manual_input",
+        "draw": "pending_manual_input",
+        "away": "pending_manual_input"
+      },
+      "probable_lineups": {
+        "team_a_formation": "pending_manual_input",
+        "team_b_formation": "pending_manual_input",
+        "team_a_players": "pending_manual_input",
+        "team_b_players": "pending_manual_input"
+      },
+      "stats_snapshot": {
+        "both_teams_to_score_percent": "pending_manual_input",
+        "over_2_5_percent": "pending_manual_input",
+        "avg_goals_for_team_a": "pending_manual_input",
+        "avg_goals_for_team_b": "pending_manual_input",
+        "avg_goals_against_team_a": "pending_manual_input",
+        "avg_goals_against_team_b": "pending_manual_input",
+        "h2h_notes": "pending_manual_input",
+        "trends": "pending_manual_input"
+      },
+      "data_status": "pending_manual_input"
+    }
+  ]
+}

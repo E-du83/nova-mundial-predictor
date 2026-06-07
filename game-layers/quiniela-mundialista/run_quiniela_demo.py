@@ -7,6 +7,7 @@ from quiniela_engine import (
     recommend_many_matches,
 )
 from scoring_rules import score_game
+from simulation_config import resolve_simulation_mode
 
 
 def run_validation() -> None:
@@ -22,6 +23,7 @@ def run_validation() -> None:
 def main() -> None:
     teams_path = ROOT / "data" / "worldcup_2026_real_teams_baseline_v1.json"
     teams = load_teams(teams_path)
+    simulation_mode, simulations = resolve_simulation_mode("quick")
 
     matches = [
         ("Mexico", "South Africa", "conservador"),
@@ -32,7 +34,8 @@ def main() -> None:
     recommendations = recommend_many_matches(
         matches,
         teams,
-        simulations=25_000,
+        simulations=simulations,
+        simulation_mode=simulation_mode,
         seed=2026,
     )
 

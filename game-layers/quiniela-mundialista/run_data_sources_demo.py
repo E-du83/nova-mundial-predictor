@@ -13,7 +13,10 @@ from data_ingestion.free_sources_registry import (  # noqa: E402
     get_sources,
     get_sources_requiring_api_key,
 )
-from data_ingestion.open_meteo_client import offline_profile_scaffold  # noqa: E402
+from data_ingestion.open_meteo_client import (  # noqa: E402
+    build_historical_weather_request,
+    offline_profile_scaffold,
+)
 from data_ingestion.openfootball_client import connection_notes  # noqa: E402
 from data_ingestion.world_elo_client import manual_snapshot_requirements  # noqa: E402
 
@@ -48,6 +51,10 @@ def main() -> None:
     for source in get_sources_requiring_api_key():
         print(f"- {source['source_id']}: {source['name']}")
     print("")
+    print("LECTURA API KEY")
+    print("- API key false: no requiere llave, es positivo para pruebas gratis.")
+    print("- API key true: fuente opcional; no debe ser dependencia obligatoria si implica pago.")
+    print("")
 
     print("LISTAS / PENDIENTES")
     print(f"Listas: {', '.join(summary['ready_sources'])}")
@@ -63,6 +70,19 @@ def main() -> None:
     print(
         "open_meteo status: "
         f"{offline_profile_scaffold('pending_real_venue')['status']}"
+    )
+    open_meteo_request = build_historical_weather_request(
+        venue="pending_real_venue",
+        latitude=None,
+        longitude=None,
+        start_date="2026-06-01",
+        end_date="2026-06-30",
+    )
+    print(
+        "open_meteo metadata: "
+        f"source={open_meteo_request['source']} | cost={open_meteo_request['cost']} | "
+        f"requires_api_key={open_meteo_request['requires_api_key']} | "
+        f"data_status={open_meteo_request['data_status']}"
     )
     print("")
 

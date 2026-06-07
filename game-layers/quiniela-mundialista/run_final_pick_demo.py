@@ -3,6 +3,7 @@ from final_pick_engine import (
     format_final_pick,
     load_default_final_pick_inputs,
 )
+from simulation_config import resolve_simulation_mode
 
 
 DEMO_MATCHES = [
@@ -15,6 +16,7 @@ DEMO_MATCHES = [
 
 def main() -> None:
     teams, fixtures_data, climate_profiles = load_default_final_pick_inputs()
+    simulation_mode, simulations = resolve_simulation_mode("quick")
 
     print("NOVA QUINIELA MUNDIALISTA v1.2 - FINAL PICK DEMO")
     print("Salida: un pick final unico por partido.")
@@ -28,7 +30,8 @@ def main() -> None:
             teams,
             fixtures_data=fixtures_data,
             climate_profiles=climate_profiles,
-            simulations=25_000,
+            simulations=simulations,
+            simulation_mode=simulation_mode,
             seed=2026 + index,
         )
         print(format_final_pick(final_pick))

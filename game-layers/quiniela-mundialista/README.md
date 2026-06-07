@@ -11,6 +11,10 @@ Tambien incluye el bloque **Datos Open Source + Friendly Test Domingo v1** para
 registrar fuentes gratis y correr una prueba real con amistosos internacionales
 sin pagar APIs y sin inventar datos.
 
+El bloque **Real Data Activation + Manual Match Snapshot v1** agrega filtros
+para usar solo amistosos con ambos equipos en baseline mundialista, snapshots
+manuales de paginas como 365Scores, sedes semilla y modos de simulacion.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -40,6 +44,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   manuales.
 - Permite probar amistosos internacionales como contexto separado, no como
   partidos oficiales del Mundial.
+- Permite snapshots manuales de cuotas, alineaciones y stats sin scraping.
+- Expone modos de simulacion `quick`, `standard` y `final`.
 
 ## Final Pick
 
@@ -95,6 +101,10 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `final_pick_engine.py`: combina escenarios y contexto para elegir un pick final.
 - `friendly_context_engine.py`: ajusta partidos amistosos por rotacion,
   intensidad menor, pruebas tacticas y mayor riesgo de sorpresa.
+- `manual_snapshot_engine.py`: lee snapshots manuales tolerando datos
+  incompletos.
+- `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
+  `final=1000000`.
 - `src/data_ingestion/free_sources_registry.py`: registro estructurado de
   fuentes gratis u opcionales.
 - `src/data_ingestion/openfootball_client.py`: scaffold offline para snapshots
@@ -126,6 +136,28 @@ Partidos amistosos cargados para prueba:
 Estos partidos tienen `competition_type: international_friendly`. El motor los
 trata como amistosos: baja la confianza, sube el riesgo por rotacion y pruebas
 tacticas, y aclara que no son partidos oficiales del Mundial.
+
+Para la prueba actual solo quedan activos:
+
+- Morocco vs Norway.
+- Colombia vs Jordan.
+
+Se excluyen partidos donde no ambos equipos estan en baseline mundialista, o
+partidos ya jugados. Los excluidos se informan con razon en el demo.
+
+## Snapshots manuales 365Scores
+
+`manual_match_snapshots.json` permite cargar datos visibles copiados por el
+usuario:
+
+- cuotas 1X2;
+- formaciones y jugadores probables;
+- BTTS, over 2.5, promedios de goles, H2H y tendencias.
+
+No hay scraping automatico. 365Scores puede mostrar datos provenientes de
+proveedores premium, por eso no se asume que exista API gratis.
+
+Si un dato no esta cargado, queda como `pending_manual_input`.
 
 ## Salida Final Pick
 
@@ -166,16 +198,23 @@ game-layers/quiniela-mundialista/
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
 |-- friendly_context_engine.py
+|-- manual_snapshot_engine.py
+|-- simulation_config.py
 |-- run_quiniela_demo.py
 |-- run_group_quiniela_demo.py
 |-- run_final_pick_demo.py
 |-- run_data_sources_demo.py
 |-- run_friendly_test_demo.py
+|-- run_project_status_report.py
 `-- data/
     |-- fixtures_context.json
     |-- friendly_test_matches.json
     |-- free_data_sources.md
-    `-- venue_climate_profiles.json
+    |-- manual_match_snapshots.json
+    |-- openfootball_snapshot_README.md
+    |-- venue_climate_profiles.json
+    |-- world_elo_snapshot_template.csv
+    `-- worldcup_venues_seed.json
 ```
 
 ## Ejecutar demos
@@ -186,9 +225,19 @@ Desde la raiz del repositorio:
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
+python -B game-layers/quiniela-mundialista/run_project_status_report.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py
 python -B game-layers/quiniela-mundialista/run_group_quiniela_demo.py
 ```
+
+## Modos de simulacion
+
+- `quick`: 10000 simulaciones, recomendado para demos rapidas.
+- `standard`: 100000 simulaciones, recomendado para pruebas mas estables.
+- `final`: 1000000 simulaciones, disponible para picks finales aunque no se
+  ejecuta por defecto en demos si el runtime local puede tardar demasiado.
+
+Toda salida principal imprime modo y simulaciones usadas.
 
 El demo final usa:
 
@@ -220,5 +269,7 @@ detalladas, calendario FIFA completo, sedes reales, clima historico real ni
 cuotas reales de mercado.
 
 Cuando un dato no esta disponible, la capa lo marca como `pending_real_data` o
-`pre_tournament_context`. Las recomendaciones son una capa de juego basada en el
+`pre_tournament_context`. Para snapshots manuales tambien puede usar
+`pending_manual_snapshot`, `manual_snapshot_required`, `pending_manual_input` o
+`not_available_free`. Las recomendaciones son una capa de juego basada en el
 modelo disponible, no una garantia de resultado.
