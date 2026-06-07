@@ -43,6 +43,9 @@ def main() -> None:
         "final_pick_engine.py",
         "friendly_context_engine.py",
         "manual_snapshot_engine.py",
+        "half_time_engine.py",
+        "result_review_engine.py",
+        "pick_robustness_engine.py",
         "player_rating_engine.py",
         "lineup_strength_engine.py",
         "tactical_weighting_engine.py",
@@ -60,6 +63,7 @@ def main() -> None:
     demos = [
         "run_data_sources_demo.py",
         "run_lineup_weighting_demo.py",
+        "run_match_intelligence_demo.py",
         "run_research_snapshot_demo.py",
         "run_friendly_test_demo.py",
         "run_project_status_report.py",
@@ -86,6 +90,7 @@ def main() -> None:
     print("- friendly_test_matches activos: " + ", ".join(match["match"] for match in active))
     print("- manual_match_snapshots.json: " + _exists(LAYER_ROOT / "data" / "manual_match_snapshots.json"))
     print("- player_ratings_seed.json: " + _exists(LAYER_ROOT / "data" / "player_ratings_seed.json"))
+    print("- friendly_test_results.json: " + _exists(LAYER_ROOT / "data" / "friendly_test_results.json"))
     print("")
 
     print("DATOS PENDIENTES")
@@ -93,6 +98,8 @@ def main() -> None:
     print("- alineaciones/formaciones: pending_manual_input")
     print("- ratings reales de jugadores: parcial; replacement_level_estimate donde falta dato")
     print("- resultado real post-partido: pending_real_result")
+    print("- Morocco vs Norway resultado real: registrado 1-1")
+    print("- Colombia vs Jordan resultado real: pending_real_result")
     print("- sedes/coordenadas verificadas: pending_real_data")
     print("- World Elo CSV verificado: manual_snapshot_required")
     print("- openfootball JSON local: manual_snapshot_required")

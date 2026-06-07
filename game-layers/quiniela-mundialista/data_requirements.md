@@ -74,6 +74,8 @@ el impacto esperado.
 | Ratings jugadores clave | Snapshot manual verificado/local | Si, manual | parcial | Rating real pesa mas; replacement estimate pesa menos |
 | Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
+| Descanso/final | Derivado de Core + Quinigol | Si | parcial | Agrega lectura HT/FT sin nuevo motor Core |
+| Robustez pick | Derivado de top_scores Core | Si | disponible si hay top_scores | Detecta pick fragil y alerta de empate |
 | Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
 | Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
 
@@ -97,3 +99,5 @@ el impacto esperado.
   motor aplica peso conservador y mantiene advertencia de dato faltante.
 - El weighting de alineacion queda `incomplete` cuando faltan demasiados ratings
   o no hay XI/formacion probable. En ese estado el pick del Core no cambia.
+- `friendly_test_results.json` registra resultados reales solo para revision
+  post-partido. No entrena ni recalibra automaticamente el Core.

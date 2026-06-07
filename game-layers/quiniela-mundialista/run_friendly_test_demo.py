@@ -16,9 +16,23 @@ from manual_snapshot_engine import (
     load_manual_snapshots,
     summarize_manual_snapshot,
 )
+from half_time_engine import (  # noqa: E402
+    build_half_time_pick,
+    format_half_time_lines,
+)
+from pick_robustness_engine import (  # noqa: E402
+    build_pick_robustness,
+    format_robustness_lines,
+)
 from research_intelligence_engine import (  # noqa: E402
     build_research_intelligence,
     format_research_lines,
+)
+from result_review_engine import (  # noqa: E402
+    build_result_review,
+    find_real_result,
+    format_result_review_lines,
+    load_friendly_results,
 )
 from research_weighting_engine import (  # noqa: E402
     build_research_weighting,
@@ -29,6 +43,7 @@ from simulation_config import resolve_simulation_mode
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_matches.json"
 SNAPSHOTS_PATH = Path(__file__).resolve().parent / "data" / "manual_match_snapshots.json"
+RESULTS_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_results.json"
 
 
 def load_friendly_matches(path: Path = DATA_PATH) -> list[dict]:
@@ -118,6 +133,7 @@ def _build_friendly_recommendation(
     match: dict,
     teams: dict,
     snapshots_data: dict,
+    results_data: dict,
     simulation_mode: str,
     simulations: int,
 ) -> dict:
@@ -156,6 +172,24 @@ def _build_friendly_recommendation(
         base_confidence=base_confidence,
         base_risk=base_risk,
     )
+    half_time = build_half_time_pick(final_pick, context["match_type"])
+    robustness = build_pick_robustness(
+        final_pick,
+        adjusted_confidence=base_confidence,
+        friendly_risk=base_risk,
+        match_type=context["match_type"],
+    )
+    real_result = find_real_result(results_data, match["team_a"], match["team_b"])
+    result_review = build_result_review(
+        recommendation={
+            "raw_final_pick": final_pick,
+            "recommended_score": final_pick["final_score"],
+            "final_recommendation": final_pick["final_quiniela_recommendation"],
+            "friendly_risk": base_risk,
+        },
+        real_result=real_result,
+        robustness=robustness,
+    )
 
     return {
         "match": match["match"],
@@ -179,6 +213,10 @@ def _build_friendly_recommendation(
         "market_reading": research["market_warning"],
         "research": research,
         "research_weighting": weighting,
+        "half_time": half_time,
+        "robustness": robustness,
+        "real_result": real_result,
+        "result_review": result_review,
         "pick_change_status": (
             "no cambio marcador recomendado; research/lineup/tactica solo ajustan confianza, riesgo y contexto"
         ),
@@ -283,6 +321,13 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         ),
         f"Market alignment: {recommendation['research_weighting']['market_alignment']}",
         f"Model fragility: {recommendation['research_weighting']['model_fragility']}",
+        f"Descanso recomendado: {recommendation['half_time']['half_time_score']}",
+        f"Descanso/final recomendado: {recommendation['half_time']['half_time_full_time']}",
+        f"Robustez del pick: {recommendation['robustness']['pick_robustness']}",
+        f"Alerta de empate: {'si' if recommendation['robustness']['draw_warning'] else 'no'}",
+        f"Motivo alerta empate: {recommendation['robustness']['draw_warning_reason']}",
+        f"Resultado real registrado: {recommendation['result_review']['real_score']}",
+        f"Revision resultado: {recommendation['result_review']['summary']}",
         f"Cambio de pick: {recommendation['pick_change_status']}",
         f"Comparacion futura resultado real: {recommendation['future_real_result']}",
         "Datos usados: " + "; ".join(recommendation["data_used"]),
@@ -291,16 +336,36 @@ def format_friendly_recommendation(recommendation: dict) -> str:
     ]
     lines.extend(format_research_lines(recommendation["research"]))
     lines.extend(format_research_weighting_lines(recommendation["research_weighting"]))
+    lines.extend(format_half_time_lines(recommendation["half_time"]))
+    lines.extend(format_robustness_lines(recommendation["robustness"]))
+    lines.extend(format_result_review_lines(recommendation["result_review"]))
     return "\n".join(lines)
 
 
-def run_friendly_test(mode: str = "quick") -> None:
+def build_friendly_recommendations(mode: str = "quick") -> tuple[list[dict], list[dict], str, int]:
     teams, _, _ = load_default_final_pick_inputs()
     matches = load_friendly_matches()
     snapshots_data = load_manual_snapshots(SNAPSHOTS_PATH)
+    results_data = load_friendly_results(RESULTS_PATH)
     simulation_mode, simulations = resolve_simulation_mode(mode)
     active = active_matches(matches, teams)
     excluded = excluded_matches(matches, teams)
+    recommendations = [
+        _build_friendly_recommendation(
+            match,
+            teams,
+            snapshots_data,
+            results_data,
+            simulation_mode,
+            simulations,
+        )
+        for match in active
+    ]
+    return recommendations, excluded, simulation_mode, simulations
+
+
+def run_friendly_test(mode: str = "quick") -> None:
+    recommendations, excluded, simulation_mode, simulations = build_friendly_recommendations(mode)
 
     print("NOVA FRIENDLY TEST DEMO - DOMINGO")
     print("Esto es una prueba amistosa, no una prediccion oficial del Mundial.")
@@ -310,8 +375,8 @@ def run_friendly_test(mode: str = "quick") -> None:
     print("")
 
     print("PARTIDOS ACTIVOS PARA PRUEBA")
-    for match in active:
-        print(f"- {match['match']}")
+    for recommendation in recommendations:
+        print(f"- {recommendation['match']}")
     print("")
 
     print("PARTIDOS EXCLUIDOS")
@@ -320,14 +385,7 @@ def run_friendly_test(mode: str = "quick") -> None:
         print(f"- {match['match']} | razon: {match.get('reason')} | faltantes: {missing}")
     print("")
 
-    for match in active:
-        recommendation = _build_friendly_recommendation(
-            match,
-            teams,
-            snapshots_data,
-            simulation_mode,
-            simulations,
-        )
+    for recommendation in recommendations:
         print(format_friendly_recommendation(recommendation))
         print("")
         print("-" * 72)

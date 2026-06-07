@@ -1,0 +1,45 @@
+{
+  "data_status": "manual_real_result_snapshot",
+  "source": "user_verified_screenshot",
+  "source_status": "manual_verified_result",
+  "notes": "Resultados reales cargados manualmente para revisar aciertos/errores. No se usa como entrenamiento automatico.",
+  "results": [
+    {
+      "match": "Morocco vs Norway",
+      "team_a": "Morocco",
+      "team_b": "Norway",
+      "real_score": "1-1",
+      "real_result": "draw",
+      "goals": {
+        "Morocco": [
+          {
+            "player": "Brahim Diaz",
+            "minute": 8
+          }
+        ],
+        "Norway": [
+          {
+            "player": "Martin Odegaard",
+            "minute": 75
+          }
+        ]
+      },
+      "status": "final",
+      "source_status": "user_verified_screenshot",
+      "captured_at": "2026-06-07",
+      "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway."
+    },
+    {
+      "match": "Colombia vs Jordan",
+      "team_a": "Colombia",
+      "team_b": "Jordan",
+      "real_score": "pending_real_result",
+      "real_result": "pending_real_result",
+      "goals": {},
+      "status": "pending",
+      "source_status": "pending_manual_input",
+      "captured_at": "pending_manual_input",
+      "learning_note": "pending_real_result"
+    }
+  ]
+}

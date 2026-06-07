@@ -26,6 +26,11 @@ alineaciones en variables medibles. Si un jugador no tiene rating real en la
 base local, se marca como `missing_rating_required` y no recibe peso matematico
 fuerte.
 
+El bloque **Match Intelligence Final Test v1** agrega descanso/final, robustez
+del pick, alerta de empate y revision contra resultado real. Los resultados
+reales se usan para evaluacion y aprendizaje manual, no para entrenamiento
+automatico.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -60,6 +65,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
 - Muestra research snapshots manuales como contexto de mercado y noticias.
 - Convierte jugadores clave, alineaciones, tactica y mercado en capas de
   weighting auditables.
+- Registra resultado real de amistosos y revisa acierto/error sin modificar el
+  Core.
 
 ## Final Pick
 
@@ -127,6 +134,11 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   tacticas; si falta formacion, queda en modo cualitativo.
 - `research_weighting_engine.py`: combina seis capas de informacion en ajustes,
   alineacion con mercado, fragilidad y calidad de datos.
+- `half_time_engine.py`: estima marcador al descanso y descanso/final desde
+  xG, marcador final recomendado y Quinigol.
+- `pick_robustness_engine.py`: muestra top scores, estabilidad del pick y
+  alerta de empate.
+- `result_review_engine.py`: compara prediccion vs resultado real registrado.
 - `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
   `final=1000000`.
 - `src/data_ingestion/free_sources_registry.py`: registro estructurado de
@@ -289,12 +301,16 @@ game-layers/quiniela-mundialista/
 |-- tactical_weighting_engine.py
 |-- research_intelligence_engine.py
 |-- research_weighting_engine.py
+|-- half_time_engine.py
+|-- pick_robustness_engine.py
+|-- result_review_engine.py
 |-- simulation_config.py
 |-- run_quiniela_demo.py
 |-- run_group_quiniela_demo.py
 |-- run_final_pick_demo.py
 |-- run_data_sources_demo.py
 |-- run_lineup_weighting_demo.py
+|-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
 |-- run_research_snapshot_demo.py
 |-- run_project_status_report.py
@@ -303,6 +319,7 @@ game-layers/quiniela-mundialista/
     |-- friendly_test_matches.json
     |-- free_data_sources.md
     |-- manual_match_snapshots.json
+    |-- friendly_test_results.json
     |-- player_ratings_seed.json
     |-- openfootball_snapshot_README.md
     |-- venue_climate_profiles.json
@@ -318,6 +335,7 @@ Desde la raiz del repositorio:
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
+python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
 python -B game-layers/quiniela-mundialista/run_project_status_report.py
