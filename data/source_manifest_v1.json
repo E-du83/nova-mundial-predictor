@@ -47,5 +47,38 @@
       "evaluate_1x2_multi_bookmaker",
       "format_multi_bookmaker_report"
     ]
+  },
+  "free_open_source_sources_v1": {
+    "registry": "src/data_ingestion/free_sources_registry.py",
+    "documentation": "game-layers/quiniela-mundialista/data/free_data_sources.md",
+    "rule": "Free/open sources are preferred. Paid or API-key sources are optional and must not block demos.",
+    "statuses": [
+      "official",
+      "open_data",
+      "open_web_data",
+      "open_source_repo",
+      "free_api",
+      "optional_limited_api",
+      "reference_registry",
+      "pending_real_data",
+      "pending_manual_snapshot",
+      "not_available_free"
+    ],
+    "sources": [
+      "FIFA official",
+      "openfootball/worldcup.json",
+      "World Football Elo Ratings",
+      "JGravier/soccer-elo",
+      "Open-Meteo",
+      "The Odds API optional",
+      "GitHub football datasets"
+    ]
+  },
+  "friendly_test_domingo_v1": {
+    "file": "game-layers/quiniela-mundialista/data/friendly_test_matches.json",
+    "source": "365Scores screenshot/manual",
+    "source_status": "manually_verified_from_user_screenshot",
+    "competition_type": "international_friendly",
+    "rule": "Not official World Cup matches. Adjust confidence for rotation, tactical tests and lower competitive intensity."
   }
 }

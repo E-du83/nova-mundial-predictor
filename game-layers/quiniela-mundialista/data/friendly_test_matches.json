@@ -1,0 +1,52 @@
+{
+  "data_status": "manual_user_snapshot",
+  "source": "365Scores screenshot/manual",
+  "source_status": "manually_verified_from_user_screenshot",
+  "notes": "Partidos amistosos internacionales del domingo indicados por el usuario. No usar como partidos oficiales del Mundial.",
+  "matches": [
+    {
+      "match": "Morocco vs Norway",
+      "team_a": "Morocco",
+      "team_b": "Norway",
+      "competition_type": "international_friendly",
+      "source": "365Scores screenshot/manual",
+      "source_status": "manually_verified_from_user_screenshot",
+      "kickoff_time_local": "pending_or_manual",
+      "odds_1x2": "pending_manual_snapshot",
+      "notes": "Prueba amistosa; confirmar horario, sede y cuotas antes de usar como snapshot real."
+    },
+    {
+      "match": "Colombia vs Jordan",
+      "team_a": "Colombia",
+      "team_b": "Jordan",
+      "competition_type": "international_friendly",
+      "source": "365Scores screenshot/manual",
+      "source_status": "manually_verified_from_user_screenshot",
+      "kickoff_time_local": "pending_or_manual",
+      "odds_1x2": "pending_manual_snapshot",
+      "notes": "Prueba amistosa; confirmar horario, sede y cuotas antes de usar como snapshot real."
+    },
+    {
+      "match": "Croatia vs Slovenia",
+      "team_a": "Croatia",
+      "team_b": "Slovenia",
+      "competition_type": "international_friendly",
+      "source": "365Scores screenshot/manual",
+      "source_status": "manually_verified_from_user_screenshot",
+      "kickoff_time_local": "pending_or_manual",
+      "odds_1x2": "pending_manual_snapshot",
+      "notes": "Prueba amistosa; Slovenia no esta garantizado en baseline v1."
+    },
+    {
+      "match": "Ecuador vs Guatemala",
+      "team_a": "Ecuador",
+      "team_b": "Guatemala",
+      "competition_type": "international_friendly",
+      "source": "365Scores screenshot/manual",
+      "source_status": "manually_verified_from_user_screenshot",
+      "kickoff_time_local": "pending_or_manual",
+      "odds_1x2": "pending_manual_snapshot",
+      "notes": "Prueba amistosa; Guatemala no esta garantizado en baseline v1."
+    }
+  ]
+}

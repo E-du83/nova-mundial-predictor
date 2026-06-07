@@ -1,0 +1,36 @@
+# Free Data Sources - Quiniela Mundialista
+
+Este bloque prioriza fuentes gratis, verificables y documentadas. La regla es
+simple: si un dato no esta disponible gratis o no esta verificado, se marca como
+`pending_real_data`, `pending_manual_snapshot` o `not_available_free`.
+
+## Fuentes principales
+
+| Fuente | Que aporta | Estado | Limitaciones |
+| --- | --- | --- | --- |
+| FIFA oficial | calendario, sedes, grupos, fixtures, fase y horarios | official | Puede requerir captura manual; no hacer scraping agresivo |
+| openfootball/worldcup.json | datos open source de World Cup en JSON | open_data | Depende de actualizacion del repo y verificacion de licencia |
+| World Football Elo Ratings | rating de selecciones y fuerza relativa | open_web_data | Necesita snapshot verificado para evitar scraping |
+| JGravier/soccer-elo | historico Elo para backtesting | open_source_repo | Puede no estar actualizado a 2026 final |
+| Open-Meteo | clima historico por sede sin API key | free_api | Requiere coordenadas, fechas y validacion del periodo |
+| The Odds API | cuotas si existe plan/API key | optional_limited_api | No es dependencia obligatoria; puede requerir pago |
+| GitHub football datasets | descubrimiento de datasets | reference_registry | Calidad y licencia variable |
+
+## Como evitan humo
+
+- No se inventan temperaturas, cuotas, sedes ni horarios.
+- Los snapshots manuales quedan marcados como `pending_manual_snapshot` hasta
+  verificar fuente, fecha y campos.
+- Las APIs pagadas o limitadas no bloquean el flujo principal.
+- El clima usa perfil historico o normal de sede, no clima del dia para demos.
+- Cada fuente tiene tipo, costo, confiabilidad, limitaciones y uso previsto.
+
+## Que falta todavia
+
+- Calendario FIFA final completo.
+- Sedes reales por partido.
+- Coordenadas de sedes.
+- Clima historico normal por sede y mes.
+- Snapshots Elo completos y actualizados.
+- Cuotas 1X2 verificadas si el usuario decide aportarlas manualmente.
+- Alineaciones, lesiones, sanciones y contexto tactico real.

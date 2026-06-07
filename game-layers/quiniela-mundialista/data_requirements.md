@@ -47,3 +47,23 @@ el impacto esperado.
   lesiones, alineaciones, cuotas, xG real y tabla por jornada.
 - Regla operativa: cuando un dato no existe, el motor debe marcarlo como
   `pending_real_data` o `pre_tournament_context`; no debe inventarlo.
+
+## Fuentes sugeridas v1 - open source y amistosos
+
+| Dato | Fuente sugerida | Gratis | Estado | Impacto en prediccion |
+| --- | --- | --- | --- | --- |
+| Calendario FIFA | FIFA oficial | Si | official / pendiente snapshot | Define fecha, fase, jornada y horarios |
+| Sedes | FIFA oficial | Si | pending_real_data | Permite clima y adaptacion |
+| Grupos | FIFA oficial + `data/worldcup_2026_real_groups.json` | Si | disponible baseline | Contexto de fase de grupos |
+| Fixtures World Cup JSON | openfootball/worldcup.json | Si | pending_manual_snapshot | Fuente abierta alternativa para fixtures |
+| Rating selecciones | World Football Elo Ratings | Si | open_web_data / snapshot parcial | Mejora fuerza relativa |
+| Historico Elo | JGravier/soccer-elo | Si | open_source_repo | Backtesting y calibracion historica |
+| Clima historico | Open-Meteo | Si | free_api / pending coordinates | Ajusta calor, humedad y ritmo |
+| Cuotas 1X2 | The Odds API o snapshot manual | Parcial | optional_limited_api / pending_manual_snapshot | Contrasta mercado vs modelo |
+| Datasets football | GitHub football datasets | Si | reference_registry | Descubrimiento de fuentes complementarias |
+| Amistosos del domingo | 365Scores screenshot/manual del usuario | Si, manual | manually_verified_from_user_screenshot | Permite prueba real sin API pagada |
+| Horario amistoso | Snapshot manual o fuente oficial del partido | Si, manual | pending_or_manual | Evita confundir partidos ya jugados |
+| Odds amistoso | Snapshot manual visible | Si, manual | pending_manual_snapshot | Lectura de mercado si el usuario aporta cuotas |
+| Alineaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Alto impacto por rotacion |
+| Lesiones amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Ajusta riesgo y disponibilidad |
+| Sede amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Necesaria para clima historico |

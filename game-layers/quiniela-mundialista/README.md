@@ -7,6 +7,10 @@ La quiniela real se llena una sola vez. Por eso v1.2 agrega un motor de
 `Final Pick`: evalua internamente los escenarios conservador, balanceado y
 agresivo, pero entrega una sola recomendacion final clara para jugar.
 
+Tambien incluye el bloque **Datos Open Source + Friendly Test Domingo v1** para
+registrar fuentes gratis y correr una prueba real con amistosos internacionales
+sin pagar APIs y sin inventar datos.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -32,6 +36,10 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
 - Agrega contexto de fase, grupo, jornada y presion estimada.
 - Agrega estructura para sede y clima historico sin usar clima del dia.
 - Marca datos faltantes con `pending_real_data` o `pre_tournament_context`.
+- Registra fuentes open source/gratis para fixtures, Elo, clima y snapshots
+  manuales.
+- Permite probar amistosos internacionales como contexto separado, no como
+  partidos oficiales del Mundial.
 
 ## Final Pick
 
@@ -85,6 +93,39 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
 - `final_pick_engine.py`: combina escenarios y contexto para elegir un pick final.
+- `friendly_context_engine.py`: ajusta partidos amistosos por rotacion,
+  intensidad menor, pruebas tacticas y mayor riesgo de sorpresa.
+- `src/data_ingestion/free_sources_registry.py`: registro estructurado de
+  fuentes gratis u opcionales.
+- `src/data_ingestion/openfootball_client.py`: scaffold offline para snapshots
+  de openfootball.
+- `src/data_ingestion/world_elo_client.py`: loader offline para CSV Elo manual.
+- `src/data_ingestion/open_meteo_client.py`: constructor offline de parametros
+  Open-Meteo.
+- `src/data_ingestion/data_source_validator.py`: validadores de fuente y campos.
+
+## Datos Open Source + Friendly Test Domingo
+
+Fuentes registradas:
+
+- FIFA oficial.
+- openfootball/worldcup.json.
+- World Football Elo Ratings.
+- JGravier/soccer-elo.
+- Open-Meteo.
+- The Odds API como fuente opcional, no obligatoria.
+- GitHub football datasets como registro de referencia.
+
+Partidos amistosos cargados para prueba:
+
+- Morocco vs Norway.
+- Colombia vs Jordan.
+- Croatia vs Slovenia.
+- Ecuador vs Guatemala.
+
+Estos partidos tienen `competition_type: international_friendly`. El motor los
+trata como amistosos: baja la confianza, sube el riesgo por rotacion y pruebas
+tacticas, y aclara que no son partidos oficiales del Mundial.
 
 ## Salida Final Pick
 
@@ -124,11 +165,16 @@ game-layers/quiniela-mundialista/
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
+|-- friendly_context_engine.py
 |-- run_quiniela_demo.py
 |-- run_group_quiniela_demo.py
 |-- run_final_pick_demo.py
+|-- run_data_sources_demo.py
+|-- run_friendly_test_demo.py
 `-- data/
     |-- fixtures_context.json
+    |-- friendly_test_matches.json
+    |-- free_data_sources.md
     `-- venue_climate_profiles.json
 ```
 
@@ -138,6 +184,8 @@ Desde la raiz del repositorio:
 
 ```bash
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
+python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
+python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py
 python -B game-layers/quiniela-mundialista/run_group_quiniela_demo.py
 ```
