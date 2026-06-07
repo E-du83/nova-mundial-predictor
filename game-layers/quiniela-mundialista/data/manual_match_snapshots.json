@@ -1,27 +1,83 @@
 {
-  "data_status": "manual_snapshot_required",
-  "source": "365Scores",
-  "source_status": "manual_snapshot",
-  "notes": "Archivo para datos copiados manualmente por el usuario desde paginas visibles. No usar scraping automatico.",
+  "data_status": "manual_researched_public_snapshot",
+  "source": "public_manual_research",
+  "source_status": "manual_researched_snapshot",
+  "notes": "Archivo para datos copiados o investigados manualmente desde paginas publicas visibles. No usar scraping automatico ni APIs pagadas. Las cuotas pueden moverse despues de capturadas.",
   "snapshots": [
     {
-      "source": "365Scores",
-      "source_status": "manual_snapshot",
-      "captured_at": "pending_manual_input",
-      "captured_by": "pending_manual_input",
+      "source": "FotMob; ESPN; FOX Sports; Sports Mole; SportyTrader; TalkSport",
+      "source_status": "manual_researched_snapshot",
+      "captured_at": "2026-06-07",
+      "captured_by": "ChatGPT web research",
+      "sources_used": [
+        "FotMob: confirma Morocco vs Norway, Sports Illustrated Stadium, 2026-06-07, 19:00 UTC, Friendly.",
+        "ESPN: pagina live del partido.",
+        "FOX Sports: odds/mercado visible.",
+        "Sports Mole: preview/prediccion 1-1.",
+        "SportyTrader: probabilidades externas.",
+        "TalkSport: lectura externa de empate/BTTS."
+      ],
       "match": "Morocco vs Norway",
       "team_a": "Morocco",
       "team_b": "Norway",
+      "competition_type": "international_friendly",
+      "kickoff_time_utc": "2026-06-07 19:00 UTC",
+      "venue": "Sports Illustrated Stadium",
+      "venue_status": "manual_researched_public_snapshot",
       "odds_1x2": {
         "home": "pending_manual_input",
         "draw": "pending_manual_input",
-        "away": "pending_manual_input"
+        "away": "pending_manual_input",
+        "home_american": "+184",
+        "draw_american": "pending_manual_input",
+        "away_american": "+136",
+        "source": "FOX Sports",
+        "data_status": "partial_manual_researched_snapshot"
       },
+      "over_under": {
+        "line": 2.5,
+        "over_american": "-133",
+        "under_american": "+102",
+        "source": "FOX Sports",
+        "data_status": "manual_researched_snapshot"
+      },
+      "external_market_notes": [
+        "FOX market makes Norway competitive despite model leaning Morocco.",
+        "Sports Mole predicts 1-1.",
+        "TalkSport suggests draw/BTTS as possible betting angle.",
+        "SportyTrader gives Norway a slight edge in its external model."
+      ],
+      "key_players": {
+        "Morocco": [
+          "Bounou",
+          "Achraf Hakimi",
+          "Nayef Aguerd",
+          "Brahim Diaz",
+          "El Kaabi",
+          "Ounahi",
+          "Ezzalzouli"
+        ],
+        "Norway": [
+          "Erling Haaland",
+          "Alexander Sorloth",
+          "Martin Odegaard",
+          "Oscar Bobb",
+          "Sander Berge",
+          "Kristoffer Ajer",
+          "Antonio Nusa",
+          "Orjan Nyland"
+        ],
+        "data_status": "key_players_manual_research_context_not_confirmed_lineup"
+      },
+      "data_status": "manual_researched_public_snapshot",
       "probable_lineups": {
         "team_a_formation": "pending_manual_input",
         "team_b_formation": "pending_manual_input",
         "team_a_players": "pending_manual_input",
-        "team_b_players": "pending_manual_input"
+        "team_b_players": "pending_manual_input",
+        "team_a_players_text": "pending_manual_input",
+        "team_b_players_text": "pending_manual_input",
+        "data_status": "pending_manual_input"
       },
       "stats_snapshot": {
         "both_teams_to_score_percent": "pending_manual_input",
@@ -30,29 +86,102 @@
         "avg_goals_for_team_b": "pending_manual_input",
         "avg_goals_against_team_a": "pending_manual_input",
         "avg_goals_against_team_b": "pending_manual_input",
-        "h2h_notes": "pending_manual_input",
-        "trends": "pending_manual_input"
+        "h2h_notes": "Public previews mention previous known meeting at 1998 World Cup ended 2-2.",
+        "trends": [
+          "External sources frame the match as balanced.",
+          "Norway attack led by Haaland/Sorloth is highlighted in public previews."
+        ],
+        "data_status": "partial_manual_researched_snapshot"
       },
-      "data_status": "pending_manual_input"
+      "research_confidence": "medium",
+      "manual_research_impact": {
+        "risk_adjustment": "increase",
+        "confidence_adjustment": "decrease",
+        "model_warning": "Core pick Morocco 1-0 should be treated as fragile because external market/preview signals point to a more balanced match."
+      }
     },
     {
-      "source": "365Scores",
-      "source_status": "manual_snapshot",
-      "captured_at": "pending_manual_input",
-      "captured_by": "pending_manual_input",
+      "source": "365Scores; FotMob; Ticketmaster; FOX Sports; Wincomparator; Sports Mole; Reuters",
+      "source_status": "manual_researched_snapshot",
+      "captured_at": "2026-06-07",
+      "captured_by": "ChatGPT web research",
+      "sources_used": [
+        "365Scores: confirma Colombia vs Jordan, Friendly International, 23:00.",
+        "FotMob: confirma Colombia vs Jordan, Snapdragon Stadium, 2026-06-07, 23:00 UTC, Friendly.",
+        "Ticketmaster: confirma Snapdragon Stadium, San Diego, 4:00 PM.",
+        "FOX Sports: odds/mercado visible.",
+        "Wincomparator: probabilidades/cuotas externas.",
+        "Sports Mole: team news/rotacion Colombia.",
+        "Reuters: Jordan squad/Al-Tamari y preparacion Mundial."
+      ],
       "match": "Colombia vs Jordan",
       "team_a": "Colombia",
       "team_b": "Jordan",
+      "competition_type": "international_friendly",
+      "kickoff_time_utc": "2026-06-07 23:00 UTC",
+      "kickoff_time_local": "4:00 PM PT",
+      "venue": "Snapdragon Stadium, San Diego, CA",
+      "venue_status": "manual_researched_public_snapshot",
       "odds_1x2": {
         "home": "pending_manual_input",
         "draw": "pending_manual_input",
-        "away": "pending_manual_input"
+        "away": "pending_manual_input",
+        "home_american": "-526",
+        "draw_american": "pending_manual_input",
+        "away_american": "+1230",
+        "source": "FOX Sports",
+        "data_status": "partial_manual_researched_snapshot"
+      },
+      "odds_decimal_reference": {
+        "home": 1.21,
+        "draw": 8.1,
+        "away": 17,
+        "source": "Wincomparator",
+        "data_status": "manual_researched_external_reference"
+      },
+      "market_probabilities": {
+        "home_win_percent": 60.59,
+        "draw_percent": 13.98,
+        "away_win_percent": 25.44,
+        "source": "Wincomparator",
+        "data_status": "manual_researched_external_reference"
+      },
+      "over_under": {
+        "line": 3.5,
+        "over_american": "+130",
+        "under_american": "-170",
+        "source": "FOX Sports",
+        "data_status": "manual_researched_snapshot"
+      },
+      "team_context": {
+        "Colombia": "Sports Mole expects possible rotation and mentions David Ospina, Daniel Munoz, Yerry Mina, Jefferson Lerma, Jhon Arias, James Rodriguez and Luis Suarez as possible starters; Luis Diaz could rest.",
+        "Jordan": "Reuters reports Jordan squad led by Mousa Al-Tamari for its first World Cup appearance.",
+        "data_status": "manual_researched_public_news"
+      },
+      "key_players": {
+        "Colombia": [
+          "James Rodriguez",
+          "Luis Diaz",
+          "Luis Suarez",
+          "Jhon Arias",
+          "Yerry Mina",
+          "Jefferson Lerma",
+          "David Ospina",
+          "Daniel Munoz"
+        ],
+        "Jordan": [
+          "Mousa Al-Tamari"
+        ],
+        "data_status": "key_players_manual_research_context_not_confirmed_lineup"
       },
       "probable_lineups": {
         "team_a_formation": "pending_manual_input",
         "team_b_formation": "pending_manual_input",
-        "team_a_players": "pending_manual_input",
-        "team_b_players": "pending_manual_input"
+        "team_a_players": "Ospina, Munoz, Mina, Lerma, Arias, James Rodriguez and Luis Suarez mentioned as possible starters by Sports Mole; not confirmed lineup.",
+        "team_b_players": "Mousa Al-Tamari highlighted by Reuters as key player; full lineup pending.",
+        "team_a_players_text": "Ospina, Munoz, Mina, Lerma, Arias, James Rodriguez and Luis Suarez mentioned as possible starters by Sports Mole; not confirmed lineup.",
+        "team_b_players_text": "Mousa Al-Tamari highlighted by Reuters as key player; full lineup pending.",
+        "data_status": "possible_lineup_public_preview"
       },
       "stats_snapshot": {
         "both_teams_to_score_percent": "pending_manual_input",
@@ -62,9 +191,20 @@
         "avg_goals_against_team_a": "pending_manual_input",
         "avg_goals_against_team_b": "pending_manual_input",
         "h2h_notes": "pending_manual_input",
-        "trends": "pending_manual_input"
+        "trends": [
+          "External market strongly favors Colombia.",
+          "Friendly context suggests rotation risk.",
+          "Under 3.5 has market support via FOX line."
+        ],
+        "data_status": "partial_manual_researched_snapshot"
       },
-      "data_status": "pending_manual_input"
+      "research_confidence": "medium_high",
+      "manual_research_impact": {
+        "risk_adjustment": "moderate",
+        "confidence_adjustment": "slight_increase_for_colombia_win_but_rotation_warning",
+        "model_warning": "Core Colombia win pick is broadly aligned with market favoritism, but rotation and friendly context should prevent overconfidence."
+      },
+      "data_status": "manual_researched_public_snapshot"
     }
   ]
 }

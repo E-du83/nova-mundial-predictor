@@ -10,12 +10,19 @@ from friendly_context_engine import (
     adjusted_confidence,
     build_friendly_context,
     friendly_risk,
-    market_reading,
 )
 from manual_snapshot_engine import (
     find_manual_snapshot,
     load_manual_snapshots,
     summarize_manual_snapshot,
+)
+from research_intelligence_engine import (  # noqa: E402
+    build_research_intelligence,
+    format_research_lines,
+)
+from research_weighting_engine import (  # noqa: E402
+    build_research_weighting,
+    format_research_weighting_lines,
 )
 from simulation_config import resolve_simulation_mode
 
@@ -58,6 +65,13 @@ def excluded_matches(matches: list[dict], teams: dict) -> list[dict]:
 
 def _missing_team_response(match: dict, missing_teams: list[str], snapshot_summary: dict) -> dict:
     context = build_friendly_context(match)
+    research = build_research_intelligence(
+        snapshot={},
+        snapshot_summary=snapshot_summary,
+        base_confidence="pending_real_data",
+        base_risk="alto",
+    )
+    weighting = build_research_weighting(match["team_a"], match["team_b"])
     return {
         "match": match["match"],
         "match_type": context["match_type"],
@@ -68,15 +82,22 @@ def _missing_team_response(match: dict, missing_teams: list[str], snapshot_summa
         "reference_minute": "pending_real_data",
         "adjusted_confidence": "pending_real_data",
         "friendly_risk": "alto",
+        "research_adjusted_confidence": research["research_adjusted_confidence"],
+        "research_adjusted_risk": research["research_adjusted_risk"],
         "simulation_mode": "not_run",
         "simulations_used": 0,
         "odds_visible": snapshot_summary["odds_visible"],
+        "over_under_visible": snapshot_summary["over_under_visible"],
+        "market_probabilities_visible": snapshot_summary["market_probabilities_visible"],
         "lineups_visible": snapshot_summary["lineups_visible"],
         "stats_visible": snapshot_summary["stats_visible"],
-        "market_reading": market_reading(match["odds_1x2"]),
+        "market_reading": research["market_warning"],
+        "research": research,
+        "research_weighting": weighting,
+        "pick_change_status": "no_simulation_run_due_missing_baseline_team",
         "data_used": [
             "friendly_test_matches.json",
-            "365Scores screenshot/manual",
+            "manual_match_snapshots.json",
         ],
         "missing_data": [
             f"baseline team missing: {team}"
@@ -121,6 +142,20 @@ def _build_friendly_recommendation(
         simulation_mode=simulation_mode,
         seed=2026,
     )
+    base_confidence = adjusted_confidence(final_pick["confidence"])
+    base_risk = friendly_risk(final_pick["risk"])
+    research = build_research_intelligence(
+        snapshot=snapshot,
+        snapshot_summary=snapshot_summary,
+        base_confidence=base_confidence,
+        base_risk=base_risk,
+    )
+    weighting = build_research_weighting(
+        match["team_a"],
+        match["team_b"],
+        base_confidence=base_confidence,
+        base_risk=base_risk,
+    )
 
     return {
         "match": match["match"],
@@ -130,25 +165,33 @@ def _build_friendly_recommendation(
         "quinigol": final_pick["final_quinigol"],
         "quinigol_range": final_pick["quinigol_range"],
         "reference_minute": final_pick["reference_minute"],
-        "adjusted_confidence": adjusted_confidence(final_pick["confidence"]),
-        "friendly_risk": friendly_risk(final_pick["risk"]),
+        "adjusted_confidence": base_confidence,
+        "friendly_risk": base_risk,
+        "research_adjusted_confidence": research["research_adjusted_confidence"],
+        "research_adjusted_risk": research["research_adjusted_risk"],
         "simulation_mode": final_pick["simulation_mode"],
         "simulations_used": final_pick["simulations_used"],
         "odds_visible": snapshot_summary["odds_visible"],
+        "over_under_visible": snapshot_summary["over_under_visible"],
+        "market_probabilities_visible": snapshot_summary["market_probabilities_visible"],
         "lineups_visible": snapshot_summary["lineups_visible"],
         "stats_visible": snapshot_summary["stats_visible"],
-        "market_reading": market_reading(match["odds_1x2"]),
+        "market_reading": research["market_warning"],
+        "research": research,
+        "research_weighting": weighting,
+        "pick_change_status": (
+            "no cambio marcador recomendado; research/lineup/tactica solo ajustan confianza, riesgo y contexto"
+        ),
         "data_used": final_pick["data_used"] + [
             "friendly_test_matches.json",
+            "manual_match_snapshots.json",
+            "research_intelligence_engine",
             "friendly_context_engine",
         ],
         "missing_data": sorted(
             set(
                 final_pick["missing_data"]
                 + [
-                    "odds_1x2 manual snapshot",
-                    "kickoff_time_local verified",
-                    "friendly venue",
                     "lineups",
                     "injuries",
                 ]
@@ -177,15 +220,77 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         f"Simulaciones usadas: {recommendation['simulations_used']}",
         f"Confianza ajustada: {recommendation['adjusted_confidence']}",
         f"Riesgo amistoso: {recommendation['friendly_risk']}",
+        f"Confianza ajustada con investigacion: {recommendation.get('research_adjusted_confidence')}",
+        f"Riesgo ajustado con investigacion: {recommendation.get('research_adjusted_risk')}",
         f"Cuotas visibles si existen: {recommendation['odds_visible']}",
+        f"Over/Under visible: {recommendation['over_under_visible']}",
+        f"Probabilidades mercado si existen: {recommendation['market_probabilities_visible']}",
         f"Alineaciones/formaciones visibles: {recommendation['lineups_visible']}",
         f"Stats snapshot visibles: {recommendation['stats_visible']}",
         f"Lectura del mercado: {recommendation['market_reading']}",
+        f"Player rating impact: {recommendation['research_weighting']['player_rating_alignment']}",
+        (
+            "Ratings reales/replacement/criticos faltantes: "
+            f"{recommendation['research_weighting']['lineup_strength']['known_rating_count']}/"
+            f"{recommendation['research_weighting']['lineup_strength']['replacement_rating_count']}/"
+            f"{len(recommendation['research_weighting']['lineup_strength']['critical_missing_ratings'])}"
+        ),
+        (
+            "Rating coverage: "
+            f"{recommendation['research_weighting']['lineup_strength']['rating_coverage']}% total | "
+            f"{recommendation['research_weighting']['lineup_strength']['real_rating_coverage']}% real"
+        ),
+        (
+            "Source confidence weighted score: "
+            f"{recommendation['research_weighting']['lineup_strength']['source_confidence_weighted_score']}%"
+        ),
+        (
+            "Lineup strength: "
+            f"{recommendation['research_weighting']['lineup_strength']['team_a']['team']} "
+            f"GK {recommendation['research_weighting']['lineup_strength']['team_a']['goalkeeper_strength']} / "
+            f"DEF {recommendation['research_weighting']['lineup_strength']['team_a']['defense_strength']} / "
+            f"MID {recommendation['research_weighting']['lineup_strength']['team_a']['midfield_strength']} / "
+            f"ATT {recommendation['research_weighting']['lineup_strength']['team_a']['attack_strength']} | "
+            f"{recommendation['research_weighting']['lineup_strength']['team_b']['team']} "
+            f"GK {recommendation['research_weighting']['lineup_strength']['team_b']['goalkeeper_strength']} / "
+            f"DEF {recommendation['research_weighting']['lineup_strength']['team_b']['defense_strength']} / "
+            f"MID {recommendation['research_weighting']['lineup_strength']['team_b']['midfield_strength']} / "
+            f"ATT {recommendation['research_weighting']['lineup_strength']['team_b']['attack_strength']}"
+        ),
+        (
+            "Lineup strength status: "
+            f"{recommendation['research_weighting']['lineup_strength']['lineup_weighting_status']}"
+        ),
+        (
+            "Replacement ratings usados: "
+            + (
+                ", ".join(recommendation["research_weighting"]["lineup_strength"]["critical_missing_ratings"])
+                if recommendation["research_weighting"]["lineup_strength"]["critical_missing_ratings"]
+                else "none"
+            )
+        ),
+        f"Tactical weighting impact: {recommendation['research_weighting']['tactical_alignment']}",
+        (
+            "Research weighting impact: "
+            f"confidence {recommendation['research_weighting']['total_confidence_adjustment']} | "
+            f"risk {recommendation['research_weighting']['total_risk_adjustment']}"
+        ),
+        (
+            "Datos que cambiaron confianza/riesgo: "
+            f"mercado={recommendation['research_weighting']['market_alignment']}; "
+            f"ratings={recommendation['research_weighting']['player_rating_alignment']}; "
+            f"tactica={recommendation['research_weighting']['tactical_alignment']}"
+        ),
+        f"Market alignment: {recommendation['research_weighting']['market_alignment']}",
+        f"Model fragility: {recommendation['research_weighting']['model_fragility']}",
+        f"Cambio de pick: {recommendation['pick_change_status']}",
         f"Comparacion futura resultado real: {recommendation['future_real_result']}",
         "Datos usados: " + "; ".join(recommendation["data_used"]),
         "Datos faltantes: " + "; ".join(recommendation["missing_data"]),
         f"Nota: {recommendation['note']}",
     ]
+    lines.extend(format_research_lines(recommendation["research"]))
+    lines.extend(format_research_weighting_lines(recommendation["research_weighting"]))
     return "\n".join(lines)
 
 

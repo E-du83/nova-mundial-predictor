@@ -20,6 +20,8 @@ el impacto esperado.
 | Calidad de rivales | No | No integrada | Fuerza de rivales recientes | Evita sobrevalorar rachas faciles |
 | Formaciones | No | No integrada | Formacion probable/confirmada | Ajusta estilo y volumen ofensivo |
 | Alineaciones | No | No integrada | XI probable y XI confirmado | Alto impacto en goles y riesgo |
+| Ratings jugadores | Parcial | Seed local con ratings reales y `replacement_level_estimate` | Rating real verificado por jugador clave faltante | Activa fuerza por linea y ajustes xG/Quinigol |
+| Roles jugadores | Parcial | `player_ratings_seed.json` con roles manuales | Confirmacion de rol/posicion actual | Mejora lectura tactica y set pieces |
 | Lesiones | No | No integrada | Lesiones verificadas | Ajusta disponibilidad y riesgo |
 | Sanciones | No | No integrada | Suspendidos oficiales | Ajusta disponibilidad |
 | Estilo tactico | Parcial | `style_note` descriptivo baseline | Modelo tactico real por equipo | Mejora matchup de estilos |
@@ -44,7 +46,8 @@ el impacto esperado.
   rating NOVA, probabilidades Core, top scores y xG estimado por formula.
 - Baseline actual: suficiente para demos y recomendaciones iniciales.
 - Pendiente de API/dato real: calendario completo, sedes, clima historico,
-  lesiones, alineaciones, cuotas, xG real y tabla por jornada.
+  lesiones, alineaciones, ratings reales de jugadores, cuotas, xG real y tabla
+  por jornada.
 - Regla operativa: cuando un dato no existe, el motor debe marcarlo como
   `pending_real_data` o `pre_tournament_context`; no debe inventarlo.
 
@@ -68,6 +71,8 @@ el impacto esperado.
 | Lesiones amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Ajusta riesgo y disponibilidad |
 | Sede amistoso | Fuente oficial / manual verificada | Si, manual | pending_real_data | Necesaria para clima historico |
 | Snapshot manual 365Scores | Usuario copia datos visibles | Si, manual | manual_snapshot_required | Permite cuotas, lineups y stats sin scraping |
+| Ratings jugadores clave | Snapshot manual verificado/local | Si, manual | parcial | Rating real pesa mas; replacement estimate pesa menos |
+| Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
 | Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
@@ -87,3 +92,8 @@ el impacto esperado.
 - 365Scores se usara solo como snapshot manual verificado, no scraping
   automatico. Algunos datos visibles pueden venir de proveedores premium, asi
   que no se asume API gratis.
+- Los ratings de jugadores deben venir de una fuente local verificada o de
+  snapshot manual trazable. Si quedan como `replacement_level_estimate`, el
+  motor aplica peso conservador y mantiene advertencia de dato faltante.
+- El weighting de alineacion queda `incomplete` cuando faltan demasiados ratings
+  o no hay XI/formacion probable. En ese estado el pick del Core no cambia.

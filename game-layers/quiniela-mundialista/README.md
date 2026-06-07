@@ -15,6 +15,17 @@ El bloque **Real Data Activation + Manual Match Snapshot v1** agrega filtros
 para usar solo amistosos con ambos equipos en baseline mundialista, snapshots
 manuales de paginas como 365Scores, sedes semilla y modos de simulacion.
 
+El bloque **Research Snapshot v1** permite guardar investigacion publica manual
+para partidos amistosos, incluyendo fuentes usadas, cuotas americanas,
+referencias decimales, over/under, probabilidades externas y advertencias de
+mercado. Estos datos solo ajustan lectura de riesgo/confianza; no reemplazan el
+pick generado desde el Core.
+
+El bloque **Player Rating + Lineup Weighting v1** convierte jugadores y
+alineaciones en variables medibles. Si un jugador no tiene rating real en la
+base local, se marca como `missing_rating_required` y no recibe peso matematico
+fuerte.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -46,6 +57,9 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   partidos oficiales del Mundial.
 - Permite snapshots manuales de cuotas, alineaciones y stats sin scraping.
 - Expone modos de simulacion `quick`, `standard` y `final`.
+- Muestra research snapshots manuales como contexto de mercado y noticias.
+- Convierte jugadores clave, alineaciones, tactica y mercado en capas de
+  weighting auditables.
 
 ## Final Pick
 
@@ -103,6 +117,16 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   intensidad menor, pruebas tacticas y mayor riesgo de sorpresa.
 - `manual_snapshot_engine.py`: lee snapshots manuales tolerando datos
   incompletos.
+- `research_intelligence_engine.py`: convierte investigacion publica manual en
+  ajustes contextuales de riesgo/confianza sin sustituir el Core.
+- `player_rating_engine.py`: lee ratings seed, busca nombres flexibles, agrupa
+  por linea y reporta ratings faltantes.
+- `lineup_strength_engine.py`: detecta jugadores desde snapshots manuales y
+  calcula fuerza por linea solo con ratings numericos disponibles.
+- `tactical_weighting_engine.py`: transforma formaciones/roles en senales
+  tacticas; si falta formacion, queda en modo cualitativo.
+- `research_weighting_engine.py`: combina seis capas de informacion en ajustes,
+  alineacion con mercado, fragilidad y calidad de datos.
 - `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
   `final=1000000`.
 - `src/data_ingestion/free_sources_registry.py`: registro estructurado de
@@ -145,19 +169,80 @@ Para la prueba actual solo quedan activos:
 Se excluyen partidos donde no ambos equipos estan en baseline mundialista, o
 partidos ya jugados. Los excluidos se informan con razon en el demo.
 
-## Snapshots manuales 365Scores
+## Research Snapshot manual
 
 `manual_match_snapshots.json` permite cargar datos visibles copiados por el
 usuario:
 
 - cuotas 1X2;
+- odds americanas y referencias decimales;
+- lineas over/under;
+- probabilidades externas si existen;
+- fuentes usadas y notas de mercado;
+- impacto investigativo en riesgo/confianza;
 - formaciones y jugadores probables;
 - BTTS, over 2.5, promedios de goles, H2H y tendencias.
 
-No hay scraping automatico. 365Scores puede mostrar datos provenientes de
-proveedores premium, por eso no se asume que exista API gratis.
+No hay scraping automatico. Las fuentes externas pueden cambiar sus cuotas o
+lecturas, por eso cada snapshot debe conservar `captured_at`, `captured_by`,
+`source_status` y `data_status`.
 
 Si un dato no esta cargado, queda como `pending_manual_input`.
+
+Regla principal: ninguna prediccion externa sustituye el Core. Sports Mole,
+SportyTrader, FOX Sports, TalkSport, Reuters, FotMob, ESPN, Ticketmaster,
+365Scores o cualquier otra fuente solo agregan contexto manual investigado.
+
+## Player Rating + Lineup Weighting
+
+`player_ratings_seed.json` define jugadores clave por seleccion con:
+
+- nombre;
+- equipo;
+- posicion;
+- rol;
+- rating general;
+- atributos tecnicos/fisicos;
+- fuente;
+- escala `0-100`;
+- nivel de evidencia;
+- confianza de fuente;
+- notas.
+
+Si el rating real no esta en la base local, el valor queda como
+`replacement_level_estimate` y `source_confidence: low`. En ese caso la capa
+detecta al jugador y aplica un replacement conservador con peso reducido:
+
+- `official_public_rating`: confianza alta;
+- `manual_researched_rating`: confianza media;
+- `replacement_level_estimate`: confianza baja.
+
+Los ratings por si solos no reemplazan el Core. Solo ajustan de forma
+conservadora xG, Quinigol, confianza, riesgo y fragilidad.
+
+La secuencia obligatoria es:
+
+```txt
+dato -> variable -> peso -> ajuste -> impacto en prediccion
+```
+
+Cuando faltan datos, el impacto se informa como warning o ajuste cualitativo.
+No se ocultan ratings faltantes.
+
+## Seis capas de weighting
+
+`research_weighting_engine.py` combina:
+
+1. Fuerza real del Core.
+2. Contexto del partido.
+3. Informacion tactica.
+4. Contexto externo.
+5. Mercado.
+6. Senales avanzadas.
+
+La salida muestra `data_found`, `data_quality`, `evidence_level`,
+`impact_type`, `numeric_adjustment`, `qualitative_adjustment` y `explanation`
+por capa.
 
 ## Salida Final Pick
 
@@ -199,18 +284,26 @@ game-layers/quiniela-mundialista/
 |-- final_pick_engine.py
 |-- friendly_context_engine.py
 |-- manual_snapshot_engine.py
+|-- player_rating_engine.py
+|-- lineup_strength_engine.py
+|-- tactical_weighting_engine.py
+|-- research_intelligence_engine.py
+|-- research_weighting_engine.py
 |-- simulation_config.py
 |-- run_quiniela_demo.py
 |-- run_group_quiniela_demo.py
 |-- run_final_pick_demo.py
 |-- run_data_sources_demo.py
+|-- run_lineup_weighting_demo.py
 |-- run_friendly_test_demo.py
+|-- run_research_snapshot_demo.py
 |-- run_project_status_report.py
 `-- data/
     |-- fixtures_context.json
     |-- friendly_test_matches.json
     |-- free_data_sources.md
     |-- manual_match_snapshots.json
+    |-- player_ratings_seed.json
     |-- openfootball_snapshot_README.md
     |-- venue_climate_profiles.json
     |-- world_elo_snapshot_template.csv
@@ -224,6 +317,8 @@ Desde la raiz del repositorio:
 ```bash
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
+python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
+python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
 python -B game-layers/quiniela-mundialista/run_project_status_report.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py
