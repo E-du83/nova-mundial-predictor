@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 
@@ -188,17 +189,19 @@ def format_friendly_recommendation(recommendation: dict) -> str:
     return "\n".join(lines)
 
 
-def main() -> None:
+def run_friendly_test(mode: str = "quick") -> None:
     teams, _, _ = load_default_final_pick_inputs()
     matches = load_friendly_matches()
     snapshots_data = load_manual_snapshots(SNAPSHOTS_PATH)
-    simulation_mode, simulations = resolve_simulation_mode("quick")
+    simulation_mode, simulations = resolve_simulation_mode(mode)
     active = active_matches(matches, teams)
     excluded = excluded_matches(matches, teams)
 
     print("NOVA FRIENDLY TEST DEMO - DOMINGO")
     print("Esto es una prueba amistosa, no una prediccion oficial del Mundial.")
     print("Solo se simulan partidos activos con ambos equipos mundialistas en baseline.")
+    print(f"Modo de simulacion: {simulation_mode}")
+    print(f"Simulaciones usadas: {simulations}")
     print("")
 
     print("PARTIDOS ACTIVOS PARA PRUEBA")
@@ -224,6 +227,24 @@ def main() -> None:
         print("")
         print("-" * 72)
         print("")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Corre la prueba amistosa con modo de simulacion configurable."
+    )
+    parser.add_argument(
+        "--mode",
+        default="quick",
+        choices=["quick", "standard", "final"],
+        help="Modo de simulacion: quick=10000, standard=100000, final=1000000.",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    run_friendly_test(args.mode)
 
 
 if __name__ == "__main__":
