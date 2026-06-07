@@ -31,6 +31,11 @@ del pick, alerta de empate y revision contra resultado real. Los resultados
 reales se usan para evaluacion y aprendizaje manual, no para entrenamiento
 automatico.
 
+El bloque **Decision Weighting + Critical Alternative Layer v1** separa pick
+principal, alternativa critica y opcion tentadora. Tambien clasifica las senales
+por peso para decidir que sirve para quiniela y que sirve para apuesta
+prepartido.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -67,6 +72,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   weighting auditables.
 - Registra resultado real de amistosos y revisa acierto/error sin modificar el
   Core.
+- Distingue datos de peso alto, medio y bajo para evitar humo o notas
+  decorativas.
 
 ## Final Pick
 
@@ -130,8 +137,10 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   por linea y reporta ratings faltantes.
 - `lineup_strength_engine.py`: detecta jugadores desde snapshots manuales y
   calcula fuerza por linea solo con ratings numericos disponibles.
-- `tactical_weighting_engine.py`: transforma formaciones/roles en senales
-  tacticas; si falta formacion, queda en modo cualitativo.
+- `formation_tactical_engine.py`: convierte fuerza por linea, roles detectados
+  y formacion en `tactical_score` numerico conservador.
+- `tactical_weighting_engine.py`: expone senales tacticas compatibles con el
+  weighting y mantiene advertencias cuando la formacion esta pendiente.
 - `research_weighting_engine.py`: combina seis capas de informacion en ajustes,
   alineacion con mercado, fragilidad y calidad de datos.
 - `half_time_engine.py`: estima marcador al descanso y descanso/final desde
@@ -139,6 +148,10 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `pick_robustness_engine.py`: muestra top scores, estabilidad del pick y
   alerta de empate.
 - `result_review_engine.py`: compara prediccion vs resultado real registrado.
+- `decision_weighting_engine.py`: clasifica senales por peso alto, medio y bajo
+  y recomienda uso para quiniela o apuesta prepartido.
+- `critical_alternative_engine.py`: identifica pick principal, alternativa
+  critica y opcion tentadora.
 - `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
   `final=1000000`.
 - `src/data_ingestion/free_sources_registry.py`: registro estructurado de
@@ -256,6 +269,23 @@ La salida muestra `data_found`, `data_quality`, `evidence_level`,
 `impact_type`, `numeric_adjustment`, `qualitative_adjustment` y `explanation`
 por capa.
 
+## Decision Weighting
+
+- Pick principal: marcador recomendado para jugar.
+- Alternativa critica: marcador cercano que puede afectar la decision si el top
+  #1 y top #2 estan separados por menos de 1.5 puntos porcentuales.
+- Opcion tentadora: marcador de mayor recompensa/puntos potenciales, pero con
+  menor probabilidad o mayor riesgo.
+- Quiniela: usar el pick principal; considerar alternativa critica solo si hay
+  fragilidad alta.
+- Apuesta prepartido: usar mercados mas conservadores si el marcador exacto es
+  fragil; recalcular si cambian alineaciones o mercado.
+
+No todos los datos pesan igual. Ratings, xG, 1X2, top scores, mercado,
+alineaciones y contexto son peso alto. Tendencias claras, H2H, sede, viaje,
+rotacion y lesiones de impacto medio/alto/critico son peso medio. Predicciones
+editoriales y comentarios generales son peso bajo y no pueden cambiar el pick.
+
 ## Salida Final Pick
 
 Cada recomendacion final muestra:
@@ -298,18 +328,22 @@ game-layers/quiniela-mundialista/
 |-- manual_snapshot_engine.py
 |-- player_rating_engine.py
 |-- lineup_strength_engine.py
+|-- formation_tactical_engine.py
 |-- tactical_weighting_engine.py
 |-- research_intelligence_engine.py
 |-- research_weighting_engine.py
 |-- half_time_engine.py
 |-- pick_robustness_engine.py
 |-- result_review_engine.py
+|-- decision_weighting_engine.py
+|-- critical_alternative_engine.py
 |-- simulation_config.py
 |-- run_quiniela_demo.py
 |-- run_group_quiniela_demo.py
 |-- run_final_pick_demo.py
 |-- run_data_sources_demo.py
 |-- run_lineup_weighting_demo.py
+|-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
 |-- run_research_snapshot_demo.py
@@ -335,6 +369,7 @@ Desde la raiz del repositorio:
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
+python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py

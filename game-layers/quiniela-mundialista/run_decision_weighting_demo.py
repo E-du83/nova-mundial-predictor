@@ -1,34 +1,25 @@
 import argparse
 
-from half_time_engine import format_half_time_lines
-from pick_robustness_engine import format_robustness_lines
-from result_review_engine import format_result_review_lines
 from critical_alternative_engine import format_critical_alternative_lines
 from decision_weighting_engine import format_decision_weighting_lines
 from formation_tactical_engine import format_formation_tactical_lines
 from run_friendly_test_demo import build_friendly_recommendations
 
 
-def _print_match_intelligence(recommendation: dict) -> None:
+def _print_decision(recommendation: dict) -> None:
     print(f"Partido: {recommendation['match']}")
     print(f"Modo de simulacion: {recommendation['simulation_mode']}")
     print(f"Simulaciones usadas: {recommendation['simulations_used']}")
-    print(f"Prediccion actual: {recommendation['final_recommendation']}")
-    for line in format_critical_alternative_lines(recommendation["critical_alternatives"]):
-        print(line)
-    print(f"Marcador recomendado: {recommendation['recommended_score']}")
-    print(f"Quinigol recomendado: {recommendation['quinigol']}")
+    print(f"Quinigol: {recommendation['quinigol']}")
     print(f"Rango probable: {recommendation['quinigol_range']}")
     print(f"Minuto referencia: {recommendation['reference_minute']}")
-    print(f"Confianza ajustada: {recommendation['adjusted_confidence']}")
-    print(f"Riesgo amistoso: {recommendation['friendly_risk']}")
+    print(f"Confianza: {recommendation['adjusted_confidence']}")
+    print(f"Riesgo: {recommendation['friendly_risk']}")
+    print(f"Robustez: {recommendation['robustness']['pick_robustness']}")
+    print(f"Alerta de empate: {'si' if recommendation['robustness']['draw_warning'] else 'no'}")
     print("")
 
-    for line in format_half_time_lines(recommendation["half_time"]):
-        print(line)
-    print("")
-
-    for line in format_robustness_lines(recommendation["robustness"]):
+    for line in format_critical_alternative_lines(recommendation["critical_alternatives"]):
         print(line)
     print("")
 
@@ -39,29 +30,13 @@ def _print_match_intelligence(recommendation: dict) -> None:
     for line in format_decision_weighting_lines(recommendation["decision_weighting"]):
         print(line)
     print("")
-
-    print(f"Market alignment: {recommendation['research_weighting']['market_alignment']}")
-    print(f"Model fragility: {recommendation['research_weighting']['model_fragility']}")
-    print(
-        "Missing critical data: "
-        + (
-            "; ".join(recommendation["research_weighting"]["missing_critical_data"])
-            if recommendation["research_weighting"]["missing_critical_data"]
-            else "none"
-        )
-    )
-    print("")
-
-    for line in format_result_review_lines(recommendation["result_review"]):
-        print(line)
-    print("")
     print("-" * 72)
     print("")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Corre Match Intelligence Final Test v1 para amistosos activos."
+        description="Corre Decision Weighting + Critical Alternative Layer v1."
     )
     parser.add_argument(
         "--mode",
@@ -75,7 +50,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     recommendations, excluded, simulation_mode, simulations = build_friendly_recommendations(args.mode)
-    print("NOVA MATCH INTELLIGENCE FINAL TEST v1")
+
+    print("NOVA DECISION WEIGHTING + CRITICAL ALTERNATIVE v1")
     print(f"Modo de simulacion: {simulation_mode}")
     print(f"Simulaciones usadas: {simulations}")
     print("")
@@ -92,7 +68,7 @@ def main() -> None:
     print("")
 
     for recommendation in recommendations:
-        _print_match_intelligence(recommendation)
+        _print_decision(recommendation)
 
 
 if __name__ == "__main__":

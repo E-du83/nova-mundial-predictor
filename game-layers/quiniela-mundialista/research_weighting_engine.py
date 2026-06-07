@@ -14,6 +14,7 @@ from research_intelligence_engine import (
     build_research_intelligence,
 )
 from tactical_weighting_engine import build_tactical_weighting
+from formation_tactical_engine import format_formation_tactical_lines
 
 
 PENDING = "pending_manual_input"
@@ -62,6 +63,8 @@ def _model_fragility(lineup_strength: dict, tactical: dict, market_alignment: st
         if lineup_strength["lineup_weighting_status"] == "replacement_estimate":
             return "high_replacement_ratings_and_market_disagreement"
         return "high_market_disagreement"
+    if tactical.get("tactical_score", 0.0) <= -0.05:
+        return "medium_tactical_risk"
     if lineup_strength["lineup_weighting_status"] == "incomplete":
         return "high_missing_player_ratings"
     if lineup_strength["lineup_weighting_status"] == "replacement_estimate":
@@ -69,6 +72,17 @@ def _model_fragility(lineup_strength: dict, tactical: dict, market_alignment: st
     if tactical["adjustment_status"] == "qualitative_only":
         return "medium_tactical_data_incomplete"
     return "low"
+
+
+def _tactical_confidence_delta(tactical: dict) -> float:
+    tactical_score = tactical.get("tactical_score", 0.0)
+    if tactical_score >= 0.20:
+        return 1.5
+    if tactical_score >= 0.05:
+        return 0.75
+    if tactical_score <= -0.05:
+        return -1.0
+    return 0.0
 
 
 def _layer(
@@ -107,7 +121,7 @@ def build_research_weighting(
     tactical = build_tactical_weighting(team_a, team_b, snapshots_path, ratings_path)
 
     market_alignment = _market_alignment(snapshot, research)
-    tactical_alignment = tactical["adjustment_status"]
+    tactical_alignment = tactical["tactical_data_status"]
     player_rating_alignment = lineup_strength["lineup_weighting_status"]
     model_fragility = _model_fragility(lineup_strength, tactical, market_alignment)
 
@@ -120,7 +134,7 @@ def build_research_weighting(
         if isinstance(base_confidence, (int, float))
         else 0.0
     )
-    tactical_confidence_delta = 0.0 if tactical["adjustment_status"] == "qualitative_only" else 1.0
+    tactical_confidence_delta = _tactical_confidence_delta(tactical)
     total_confidence_adjustment = round(
         research_confidence_delta + lineup_confidence_delta + tactical_confidence_delta,
         2,
@@ -176,13 +190,13 @@ def build_research_weighting(
             "El partido amistoso eleva riesgo por rotacion e intensidad menor.",
         ),
         "tactical_information": _layer(
-            not tactical["formation_missing"],
-            0.0 if tactical["formation_missing"] else 100.0,
-            "formation_missing" if tactical["formation_missing"] else "formation_available",
-            tactical["adjustment_status"],
-            0.0 if tactical["adjustment_status"] == "qualitative_only" else tactical["tactical_attack_adjustment"],
-            tactical["explanation"],
-            "La tactica no aplica peso fuerte sin formaciones y ratings suficientes.",
+            tactical["lineup_strength_status"] in ("active", "replacement_estimate"),
+            lineup_strength["lineup_data_quality"],
+            tactical["tactical_data_status"],
+            "numeric_conservative",
+            tactical["tactical_score"],
+            tactical["score_impact"],
+            "La tactica calcula score numerico, pero no reemplaza top_scores, xG, 1X2 ni mercado.",
         ),
         "external_context": _layer(
             research["snapshot_investigative"] == "si",
@@ -261,6 +275,11 @@ def format_research_weighting_lines(weighting: dict) -> list[str]:
             f"Ratings reales/replacement: {weighting['real_rating_count']}/{weighting['replacement_rating_count']}",
             f"Lineup strength impact: {weighting['lineup_strength']['lineup_weighting_status']}",
             f"Tactical impact: {weighting['tactical_alignment']}",
+        ]
+    )
+    lines.extend(format_formation_tactical_lines(weighting["tactical_weighting"]))
+    lines.extend(
+        [
             f"Market alignment: {weighting['market_alignment']}",
             f"Model fragility: {weighting['model_fragility']}",
             f"Data quality score: {weighting['data_quality_score']}",

@@ -6,6 +6,14 @@ from final_pick_engine import (
     build_final_pick,
     load_default_final_pick_inputs,
 )
+from critical_alternative_engine import (  # noqa: E402
+    build_critical_alternatives,
+    format_critical_alternative_lines,
+)
+from decision_weighting_engine import (  # noqa: E402
+    build_decision_weighting,
+    format_decision_weighting_lines,
+)
 from friendly_context_engine import (
     adjusted_confidence,
     build_friendly_context,
@@ -191,7 +199,7 @@ def _build_friendly_recommendation(
         robustness=robustness,
     )
 
-    return {
+    recommendation = {
         "match": match["match"],
         "match_type": context["match_type"],
         "final_recommendation": final_pick["final_quiniela_recommendation"],
@@ -243,6 +251,10 @@ def _build_friendly_recommendation(
         "future_real_result": "pending_real_result",
         "raw_final_pick": final_pick,
     }
+    alternatives = build_critical_alternatives(recommendation)
+    recommendation["critical_alternatives"] = alternatives
+    recommendation["decision_weighting"] = build_decision_weighting(recommendation)
+    return recommendation
 
 
 def format_friendly_recommendation(recommendation: dict) -> str:
@@ -250,6 +262,23 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         f"Partido: {recommendation['match']}",
         f"Tipo de partido: {recommendation['match_type']}",
         f"Recomendacion final: {recommendation['final_recommendation']}",
+        f"Pick principal: {recommendation['critical_alternatives']['principal_pick']['score']}",
+        (
+            "Alternativa critica: "
+            + (
+                recommendation["critical_alternatives"]["critical_alternative"]["score"]
+                if recommendation["critical_alternatives"]["critical_alternative_active"]
+                else "none"
+            )
+        ),
+        (
+            "Opcion tentadora: "
+            + (
+                recommendation["critical_alternatives"]["tempting_option"]["score"]
+                if recommendation["critical_alternatives"]["tempting_option"]
+                else "none"
+            )
+        ),
         f"Marcador recomendado: {recommendation['recommended_score']}",
         f"Quinigol recomendado: {recommendation['quinigol']}",
         f"Rango probable: {recommendation['quinigol_range']}",
@@ -308,6 +337,17 @@ def format_friendly_recommendation(recommendation: dict) -> str:
             )
         ),
         f"Tactical weighting impact: {recommendation['research_weighting']['tactical_alignment']}",
+        f"Tactical score: {recommendation['research_weighting']['tactical_weighting']['tactical_score']}",
+        f"Line strength edge: {recommendation['research_weighting']['tactical_weighting']['line_strength_edge']}",
+        f"Formation matchup edge: {recommendation['research_weighting']['tactical_weighting']['formation_matchup_edge']}",
+        f"Midfield control: {recommendation['research_weighting']['tactical_weighting']['midfield_control_edge']}",
+        f"Wide attack: {recommendation['research_weighting']['tactical_weighting']['wide_attack_edge']}",
+        f"Transition risk: {recommendation['research_weighting']['tactical_weighting']['transition_risk_adjustment']}",
+        f"Defensive security: {recommendation['research_weighting']['tactical_weighting']['defensive_security_edge']}",
+        f"Impacto en marcador: {recommendation['research_weighting']['tactical_weighting']['score_impact']}",
+        f"Impacto en descanso/final: {recommendation['research_weighting']['tactical_weighting']['half_time_impact']}",
+        f"Impacto en Quinigol: {recommendation['research_weighting']['tactical_weighting']['quinigol_impact']}",
+        f"Estado de datos tacticos: {recommendation['research_weighting']['tactical_weighting']['tactical_data_status']}",
         (
             "Research weighting impact: "
             f"confidence {recommendation['research_weighting']['total_confidence_adjustment']} | "
@@ -328,6 +368,10 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         f"Motivo alerta empate: {recommendation['robustness']['draw_warning_reason']}",
         f"Resultado real registrado: {recommendation['result_review']['real_score']}",
         f"Revision resultado: {recommendation['result_review']['summary']}",
+        f"Por que este pick: {recommendation['critical_alternatives']['why_this_pick']}",
+        f"Por que no la opcion tentadora: {recommendation['critical_alternatives']['why_not_tempting']}",
+        f"Uso recomendado quiniela: {recommendation['decision_weighting']['recommended_use']['quiniela']}",
+        f"Uso recomendado apuesta prepartido: {recommendation['decision_weighting']['recommended_use']['apuesta_prepartido']}",
         f"Cambio de pick: {recommendation['pick_change_status']}",
         f"Comparacion futura resultado real: {recommendation['future_real_result']}",
         "Datos usados: " + "; ".join(recommendation["data_used"]),
@@ -339,6 +383,8 @@ def format_friendly_recommendation(recommendation: dict) -> str:
     lines.extend(format_half_time_lines(recommendation["half_time"]))
     lines.extend(format_robustness_lines(recommendation["robustness"]))
     lines.extend(format_result_review_lines(recommendation["result_review"]))
+    lines.extend(format_critical_alternative_lines(recommendation["critical_alternatives"]))
+    lines.extend(format_decision_weighting_lines(recommendation["decision_weighting"]))
     return "\n".join(lines)
 
 

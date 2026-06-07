@@ -6,6 +6,7 @@ from lineup_strength_engine import (
     build_match_lineup_strength,
 )
 from manual_snapshot_engine import find_manual_snapshot, load_manual_snapshots
+from formation_tactical_engine import build_formation_tactical_score
 
 
 PENDING = "pending_manual_input"
@@ -57,6 +58,7 @@ def build_tactical_weighting(
     snapshots_data = load_manual_snapshots(snapshots_path)
     snapshot = find_manual_snapshot(snapshots_data, team_a, team_b)
     lineup_strength = build_match_lineup_strength(team_a, team_b, snapshots_path, ratings_path)
+    formation_tactical = build_formation_tactical_score(team_a, team_b, snapshots_path, ratings_path)
     team_a_formation = _formation_for(snapshot, "team_a")
     team_b_formation = _formation_for(snapshot, "team_b")
     formation_missing = not (_has_formation(team_a_formation) and _has_formation(team_b_formation))
@@ -101,6 +103,7 @@ def build_tactical_weighting(
         "over_under_adjustment": over_under_adjustment,
         "risk_adjustment": risk_adjustment,
         "adjustment_status": adjustment_status,
+        **formation_tactical,
         "explanation": (
             "Formacion faltante o ratings insuficientes; se usan roles detectados como contexto."
             if adjustment_status == "qualitative_only"

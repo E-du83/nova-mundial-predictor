@@ -73,9 +73,13 @@ el impacto esperado.
 | Snapshot manual 365Scores | Usuario copia datos visibles | Si, manual | manual_snapshot_required | Permite cuotas, lineups y stats sin scraping |
 | Ratings jugadores clave | Snapshot manual verificado/local | Si, manual | parcial | Rating real pesa mas; replacement estimate pesa menos |
 | Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
+| Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Descanso/final | Derivado de Core + Quinigol | Si | parcial | Agrega lectura HT/FT sin nuevo motor Core |
 | Robustez pick | Derivado de top_scores Core | Si | disponible si hay top_scores | Detecta pick fragil y alerta de empate |
+| Alternativa critica | Derivado de top_scores Core | Si | disponible si hay top_scores | Advierte cuando el pick #2 esta muy cerca |
+| Opcion tentadora | Derivado de top_scores y reglas de puntos | Si | disponible si hay top_scores | Marca opcion de mas recompensa con mayor riesgo |
+| Lesiones de impacto | Fuente oficial / manual verificada | No | pending_real_data | Solo impactan si injury_impact es medium/high/critical |
 | Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
 | Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
 
@@ -101,3 +105,8 @@ el impacto esperado.
   o no hay XI/formacion probable. En ese estado el pick del Core no cambia.
 - `friendly_test_results.json` registra resultados reales solo para revision
   post-partido. No entrena ni recalibra automaticamente el Core.
+- Las senales de peso alto pueden ajustar pick, confianza o riesgo. Las de peso
+  medio ajustan confianza/riesgo o warnings. Las de peso bajo solo son nota y no
+  pueden cambiar el pick.
+- Lesiones solo pesan si tienen `injury_impact` igual a `medium`, `high` o
+  `critical`; lesiones sin impacto definido quedan como dato pendiente.
