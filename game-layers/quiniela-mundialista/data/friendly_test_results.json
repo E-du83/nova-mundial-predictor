@@ -33,13 +33,35 @@
       "match": "Colombia vs Jordan",
       "team_a": "Colombia",
       "team_b": "Jordan",
-      "real_score": "pending_real_result",
-      "real_result": "pending_real_result",
-      "goals": {},
-      "status": "pending",
-      "source_status": "pending_manual_input",
-      "captured_at": "pending_manual_input",
-      "learning_note": "pending_real_result"
+      "real_score": "2-0",
+      "real_result": "Colombia gana",
+      "halftime_score": "1-0",
+      "halftime_result": "Colombia gana",
+      "goals": {
+        "Colombia": [
+          {
+            "player": "Jhon Arias",
+            "minute": 41
+          },
+          {
+            "player": "Jhon Arias",
+            "minute": 55
+          }
+        ],
+        "Jordan": []
+      },
+      "red_cards": {
+        "Jordan": [
+          {
+            "player": "Amer Jamous",
+            "minute": "90+2"
+          }
+        ]
+      },
+      "status": "final",
+      "source_status": "user_verified_screenshot",
+      "captured_at": "2026-06-07",
+      "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia."
     }
   ]
 }
