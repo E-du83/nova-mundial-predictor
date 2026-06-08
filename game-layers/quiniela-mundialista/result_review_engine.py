@@ -65,6 +65,100 @@ def _prediction_result_key(predicted_result: str, team_a: str, team_b: str) -> s
     return "pending_prediction"
 
 
+def _minute_value(value) -> int | None:
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float):
+        return int(value)
+    if not isinstance(value, str):
+        return None
+    text = value.strip().replace("'", "")
+    if "+" in text:
+        base, added = text.split("+", maxsplit=1)
+        if base.strip().isdigit() and added.strip().isdigit():
+            return int(base.strip()) + int(added.strip())
+    digits = "".join(ch for ch in text if ch.isdigit())
+    return int(digits) if digits else None
+
+
+def _btts(score: str) -> bool:
+    goals_a, goals_b = parse_score(score)
+    return goals_a > 0 and goals_b > 0
+
+
+def _late_goals(real_result: dict) -> list[dict]:
+    goals = real_result.get("goals", {})
+    if not isinstance(goals, dict):
+        return []
+    late = []
+    for team, team_goals in goals.items():
+        if not isinstance(team_goals, list):
+            continue
+        for goal in team_goals:
+            minute = _minute_value(goal.get("minute"))
+            if minute is not None and minute > 75:
+                item = dict(goal)
+                item["team"] = team
+                item["normalized_minute"] = minute
+                late.append(item)
+    return late
+
+
+def _red_card_context(real_result: dict) -> dict:
+    red_cards = real_result.get("red_cards", {})
+    if not isinstance(red_cards, dict) or not red_cards:
+        return {
+            "has_red_card": False,
+            "cards": [],
+            "summary": "none",
+        }
+    cards = []
+    for team, team_cards in red_cards.items():
+        if not isinstance(team_cards, list):
+            continue
+        for card in team_cards:
+            item = dict(card)
+            item["team"] = team
+            item["normalized_minute"] = _minute_value(card.get("minute"))
+            cards.append(item)
+    summary = "; ".join(
+        f"{card['team']}: {card.get('player', 'unknown')} {card.get('minute', 'unknown')}"
+        for card in cards
+    )
+    return {
+        "has_red_card": bool(cards),
+        "cards": cards,
+        "summary": summary or "none",
+    }
+
+
+def _score_distance(score: str, real_score: str) -> int:
+    goals_a, goals_b = parse_score(score)
+    real_goals_a, real_goals_b = parse_score(real_score)
+    return abs(goals_a - real_goals_a) + abs(goals_b - real_goals_b)
+
+
+def _critical_alternative_relevance(recommendation: dict, real_score: str) -> dict:
+    alternatives = recommendation.get("critical_alternatives", {})
+    critical = alternatives.get("critical_alternative")
+    if not critical:
+        return {
+            "available": False,
+            "score": "none",
+            "exact_score_hit": False,
+            "reduced_error": False,
+        }
+    critical_score = critical.get("score")
+    predicted_score = recommendation["recommended_score"]
+    return {
+        "available": True,
+        "score": critical_score,
+        "exact_score_hit": critical_score == real_score,
+        "reduced_error": _score_distance(critical_score, real_score)
+        < _score_distance(predicted_score, real_score),
+    }
+
+
 def build_result_review(
     recommendation: dict,
     real_result: dict,
@@ -94,7 +188,28 @@ def build_result_review(
     goal_difference_error = abs(
         (predicted_goals_a - predicted_goals_b) - (real_goals_a - real_goals_b)
     )
+    total_goals_error = abs(
+        (predicted_goals_a + predicted_goals_b) - (real_goals_a + real_goals_b)
+    )
     exact_score_hit = predicted_score == real_score
+    result_hit = winner_hit
+    close_score_hit = _score_distance(predicted_score, real_score) <= 1
+    btts_predicted = _btts(predicted_score)
+    btts_real = _btts(real_score)
+    btts_miss = btts_predicted != btts_real
+    late_goals = _late_goals(real_result)
+    red_card_context = _red_card_context(real_result)
+    late_goal_impact = {
+        "has_late_goal": bool(late_goals),
+        "late_goals": late_goals,
+        "changed_exact_score": bool(late_goals and not exact_score_hit),
+        "summary": (
+            "Gol tardio impacto marcador exacto o BTTS."
+            if late_goals and not exact_score_hit
+            else "none"
+        ),
+    }
+    critical_relevance = _critical_alternative_relevance(recommendation, real_score)
     closed_match_detected = (
         recommendation.get("friendly_risk") in ("medio", "medio_alto", "alto")
         or (robustness or {}).get("pick_robustness") in ("cauteloso", "fragil")
@@ -109,6 +224,15 @@ def build_result_review(
     else:
         qualitative_error = "Resultado 1X2 incorrecto; revisar probabilidad de empate y gol rival."
 
+    structured_learning_note = {
+        "winner_direction": "hit" if winner_hit else "miss",
+        "exact_score": "hit" if exact_score_hit else "miss",
+        "btts": "hit" if not btts_miss else "miss",
+        "late_goal_impact": late_goal_impact["summary"],
+        "red_card_context": red_card_context["summary"],
+        "human_note": real_result.get("learning_note", PENDING),
+    }
+
     return {
         "status": real_result["status"],
         "review_available": True,
@@ -117,13 +241,24 @@ def build_result_review(
         "real_score": real_score,
         "real_result": real_result["real_result"],
         "winner_hit": winner_hit,
+        "result_hit": result_hit,
         "exact_score_hit": exact_score_hit,
+        "close_score_hit": close_score_hit,
         "draw_detected": draw_detected,
         "real_draw": real_draw,
         "goal_difference_error": goal_difference_error,
+        "total_goals_error": total_goals_error,
+        "btts_predicted": btts_predicted,
+        "btts_real": btts_real,
+        "btts_hit": not btts_miss,
+        "btts_miss": btts_miss,
+        "late_goal_impact": late_goal_impact,
+        "red_card_context": red_card_context,
+        "critical_alternative_relevance": critical_relevance,
         "closed_match_detected": closed_match_detected,
         "qualitative_error": qualitative_error,
         "learning_note": real_result.get("learning_note", PENDING),
+        "structured_learning_note": structured_learning_note,
         "goals": real_result.get("goals", {}),
         "summary": (
             f"Prediccion {recommendation['final_recommendation']} {predicted_score}; "
@@ -146,6 +281,15 @@ def format_result_review_lines(review: dict) -> list[str]:
                 f"Empate detectado por pick: {'si' if review['draw_detected'] else 'no'}",
                 f"Partido cerrado detectado: {'si' if review['closed_match_detected'] else 'no'}",
                 f"Error diferencia de goles: {review['goal_difference_error']}",
+                f"Error total de goles: {review['total_goals_error']}",
+                f"BTTS predicho/real: {'si' if review['btts_predicted'] else 'no'} / {'si' if review['btts_real'] else 'no'}",
+                f"BTTS miss: {'si' if review['btts_miss'] else 'no'}",
+                f"Impacto gol tardio: {review['late_goal_impact']['summary']}",
+                f"Contexto roja: {review['red_card_context']['summary']}",
+                (
+                    "Alternativa critica relevante: "
+                    f"{'si' if review['critical_alternative_relevance']['exact_score_hit'] or review['critical_alternative_relevance']['reduced_error'] else 'no'}"
+                ),
                 f"Lectura cualitativa error: {review['qualitative_error']}",
                 f"Learning note: {review['learning_note']}",
             ]

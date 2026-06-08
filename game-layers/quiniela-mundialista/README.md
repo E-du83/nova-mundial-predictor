@@ -42,6 +42,12 @@ kickoff con `kickoff_time_utc`. No usa APIs pagadas, no hace scraping y no
 inventa datos: si faltan cuotas, alineaciones, formaciones, ratings o resultado
 real, los deja como pendientes explicitos.
 
+El bloque **Friendly Results Calibration + Data Completion Foundation v1**
+cierra la prueba amistosa inicial con Morocco vs Norway, Colombia vs Jordan y
+Netherlands vs Uzbekistan. Guarda metricas, patrones y notas evaluativas para
+backtesting futuro. No entrena automaticamente, no toca el Core y no recalibra
+fuerte porque tres partidos son una muestra demasiado pequena.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -82,6 +88,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   decorativas.
 - Audita `research_refresh_required`, `recommended_action`, estado de alarma
   del partido y datos criticos faltantes antes de correr un pick final.
+- Genera reporte de calibracion amistosa con aciertos, errores, BTTS, Quinigol,
+  alternativas criticas y patrones de fragilidad sin cambiar picks.
 
 ## Final Pick
 
@@ -159,8 +167,16 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `half_time_engine.py`: estima marcador al descanso y descanso/final desde
   xG, marcador final recomendado y Quinigol.
 - `pick_robustness_engine.py`: muestra top scores, estabilidad del pick y
-  alerta de empate.
-- `result_review_engine.py`: compara prediccion vs resultado real registrado.
+  alerta de empate; tambien puede advertir riesgo de porteria a cero en
+  amistosos fragiles con datos criticos faltantes.
+- `result_review_engine.py`: compara prediccion vs resultado real registrado e
+  incluye BTTS, gol tardio, roja, alternativa critica y aprendizaje
+  estructurado.
+- `calibration_rules_engine.py`: detecta patrones evaluativos como empate
+  subestimado, gol tardio rival, desajuste de minuto Quinigol y fragilidad
+  validada.
+- `friendly_calibration_engine.py`: consolida resultados amistosos finalizados,
+  calcula metricas globales y guarda reportes JSON para backtesting.
 - `decision_weighting_engine.py`: clasifica senales por peso alto, medio y bajo
   y recomienda uso para quiniela o apuesta prepartido.
 - `critical_alternative_engine.py`: identifica pick principal, alternativa
@@ -303,6 +319,34 @@ Este historial no entrena el modelo automaticamente y no cambia picks. Sirve
 para backtesting, revision manual y calibracion futura. Las nuevas corridas se
 deduplican por firma y no sobrescriben predicciones previas sin dejar rastro.
 
+## Friendly Calibration v1
+
+`run_friendly_calibration_report.py` genera:
+
+- `data/friendly_calibration_report.json`
+- `data/calibration_notes.json`
+
+El reporte revisa solo amistosos finalizados y calcula acierto de ganador,
+marcador exacto, BTTS, error de diferencia de goles, error de goles totales,
+Quinigol por equipo, desviacion de minuto, descanso/final y relevancia de
+alternativa critica.
+
+Patrones detectados en la muestra inicial:
+
+- empate subestimado cuando un amistoso cerrado tenia alternativa critica de
+  empate;
+- gol tardio rival / BTTS subestimado cuando un favorito con pick a cero gana
+  por un gol y el rival anota despues del minuto 75;
+- minuto Quinigol demasiado temprano cuando el equipo fue correcto pero el
+  primer gol real salio del rango probable;
+- fragilidad validada cuando un pick fragil/cauteloso no acierta marcador
+  exacto.
+
+Estos patrones se guardan como evidencia auditable, no como entrenamiento
+automatico. La muestra de tres partidos no alcanza para recalibrar fuerte:
+sirve para crear warnings, preparar backtesting y definir que datos faltan
+antes de tocar pesos del modelo.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -371,6 +415,8 @@ game-layers/quiniela-mundialista/
 |-- half_time_engine.py
 |-- pick_robustness_engine.py
 |-- result_review_engine.py
+|-- calibration_rules_engine.py
+|-- friendly_calibration_engine.py
 |-- decision_weighting_engine.py
 |-- critical_alternative_engine.py
 |-- simulation_config.py
@@ -384,6 +430,7 @@ game-layers/quiniela-mundialista/
 |-- run_friendly_test_demo.py
 |-- run_research_snapshot_demo.py
 |-- run_research_refresh_demo.py
+|-- run_friendly_calibration_report.py
 |-- run_project_status_report.py
 `-- data/
     |-- fixtures_context.json
@@ -392,6 +439,8 @@ game-layers/quiniela-mundialista/
     |-- manual_match_snapshots.json
     |-- friendly_test_results.json
     |-- prediction_history.json
+    |-- friendly_calibration_report.json
+    |-- calibration_notes.json
     |-- player_ratings_seed.json
     |-- openfootball_snapshot_README.md
     |-- venue_climate_profiles.json
@@ -412,6 +461,7 @@ python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
 python -B game-layers/quiniela-mundialista/run_research_refresh_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
+python -B game-layers/quiniela-mundialista/run_friendly_calibration_report.py
 python -B game-layers/quiniela-mundialista/run_project_status_report.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py
 python -B game-layers/quiniela-mundialista/run_group_quiniela_demo.py

@@ -68,7 +68,17 @@
       ],
       "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Morocco vs Norway|reviewed|standard|100000|1-0|1-0|1-1"
+      "signature": "Morocco vs Norway|reviewed|standard|100000|1-0|1-0|1-1",
+      "pre_match_prediction": "Morocco gana",
+      "mode": "standard",
+      "simulations": 100000,
+      "review_status": "reviewed",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Colombia vs Jordan",
@@ -135,7 +145,17 @@
       ],
       "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Colombia vs Jordan|reviewed|standard|100000|1-0|1-0|2-0"
+      "signature": "Colombia vs Jordan|reviewed|standard|100000|1-0|1-0|2-0",
+      "pre_match_prediction": "Colombia gana",
+      "mode": "standard",
+      "simulations": 100000,
+      "review_status": "reviewed",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -199,7 +219,17 @@
       "goleadores_reales": [],
       "learning_note": "pending_real_result",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|standard|100000|2-0|2-0|pending_real_result"
+      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|standard|100000|2-0|2-0|pending_real_result",
+      "pre_match_prediction": "Netherlands gana",
+      "mode": "standard",
+      "simulations": 100000,
+      "review_status": "pre_match_prediction",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Morocco vs Norway",
@@ -266,7 +296,17 @@
       ],
       "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|1-1"
+      "signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|1-1",
+      "pre_match_prediction": "Morocco gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "reviewed",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Colombia vs Jordan",
@@ -333,7 +373,17 @@
       ],
       "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|2-0"
+      "signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|2-0",
+      "pre_match_prediction": "Colombia gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "reviewed",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -397,7 +447,17 @@
       "goleadores_reales": [],
       "learning_note": "pending_real_result",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|final|1000000|2-0|2-0|pending_real_result"
+      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|final|1000000|2-0|2-0|pending_real_result",
+      "pre_match_prediction": "Netherlands gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "pre_match_prediction",
+      "research_refresh_status": {
+        "required": "not_available",
+        "recommended_action": "not_available",
+        "missing_critical_fields": [],
+        "missing_optional_fields": []
+      }
     },
     {
       "match": "Morocco vs Norway",
@@ -488,7 +548,11 @@
       ],
       "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|final_pick_can_run|1-1"
+      "signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|final_pick_can_run|1-1",
+      "pre_match_prediction": "Morocco gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "reviewed"
     },
     {
       "match": "Colombia vs Jordan",
@@ -579,7 +643,11 @@
       ],
       "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-0"
+      "signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-0",
+      "pre_match_prediction": "Colombia gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "reviewed"
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -670,9 +738,110 @@
       "goleadores_reales": [],
       "learning_note": "pending_real_result",
       "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
-      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|final|1000000|2-0|2-0|final_pick_can_run_with_partial_snapshot_warning|pending_real_result"
+      "signature": "Netherlands vs Uzbekistan|pre_match_prediction|final|1000000|2-0|2-0|final_pick_can_run_with_partial_snapshot_warning|pending_real_result",
+      "pre_match_prediction": "Netherlands gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "pre_match_prediction"
+    },
+    {
+      "match": "Netherlands vs Uzbekistan",
+      "history_status": "reviewed",
+      "prediction_previous": "Netherlands gana",
+      "simulation_mode": "final",
+      "simulations_used": 1000000,
+      "pick_principal": "2-0",
+      "marcador_recomendado": "2-0",
+      "alternativa_critica": "1-0",
+      "opcion_tentadora": "none",
+      "quinigol": "Netherlands anota gol recomendado",
+      "minuto_referencia": "minuto 16",
+      "rango_probable": "8-24",
+      "descanso_final": "Netherlands/Netherlands",
+      "tactical_score": 0.0,
+      "confidence": 44.99,
+      "risk": "medio",
+      "data_quality_score": 16.67,
+      "research_refresh_status": {
+        "required": false,
+        "recommended_action": "final_pick_can_run",
+        "missing_critical_fields": [
+          "odds_1x2",
+          "over_under",
+          "probable_lineups",
+          "formations",
+          "player_ratings_key_players"
+        ],
+        "missing_optional_fields": [],
+        "partial_snapshot_ok_for_final_pick": true,
+        "match_alarm_status": "final",
+        "match_status": "final",
+        "minutes_to_kickoff": -244,
+        "final_refresh_due": false
+      },
+      "research_refresh_recommended_action": "final_pick_can_run",
+      "datos_usados": [
+        "Core simulate_match",
+        "expected_goals",
+        "probabilidades 1X2",
+        "top_scores",
+        "reglas de puntuacion quiniela",
+        "estrategias conservador/balanceado/agresivo",
+        "fixtures_context.json",
+        "venue_climate_profiles.json",
+        "friendly_test_matches.json",
+        "manual_match_snapshots.json",
+        "research_intelligence_engine",
+        "research_refresh_engine",
+        "match_alarm_engine",
+        "friendly_context_engine"
+      ],
+      "datos_faltantes": [
+        "FIFA schedule final",
+        "formations",
+        "injuries",
+        "lineups",
+        "necesidad real de puntos por equipo",
+        "odds_1x2",
+        "orden oficial del partido",
+        "over_under",
+        "perfil climatico historico real de la sede",
+        "player_ratings_key_players",
+        "probable_lineups",
+        "tabla de puntos real",
+        "venue_climate.adaptation_risk",
+        "venue_climate.altitude_m",
+        "venue_climate.avg_humidity",
+        "venue_climate.avg_temp_c",
+        "venue_climate.city",
+        "venue_climate.country",
+        "venue_climate.heat_risk",
+        "venue_climate.month"
+      ],
+      "real_score": "2-1",
+      "real_result": "Netherlands gana",
+      "real_status": "final",
+      "post_match_review": "Prediccion Netherlands gana 2-0; resultado real 2-1. Ganador correcto, marcador exacto incorrecto.",
+      "acierto_ganador": true,
+      "acierto_marcador_exacto": false,
+      "acierto_descanso_final": true,
+      "acierto_quinigol_equipo": true,
+      "error_minuto_quinigol": 16,
+      "quinigol_real_first_goal_minute": 32,
+      "goleadores_reales": [
+        "Netherlands: Cody Gakpo 32",
+        "Netherlands: Cody Gakpo 90+8",
+        "Uzbekistan: Igor Sergeev 90+2"
+      ],
+      "learning_note": "El modelo acerto ganador y lectura general de dominio de Netherlands, pero fallo el marcador exacto 2-0 porque subestimo BTTS/gol rival y el impacto del tramo final: roja al 87', gol de Uzbekistan al 90+2' y penal decisivo al 90+8'.",
+      "history_note": "Evidencia guardada para backtesting/calibracion futura; no se usa para entrenamiento automatico.",
+      "signature": "Netherlands vs Uzbekistan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-1",
+      "pre_match_prediction": "Netherlands gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "review_status": "reviewed"
     }
   ],
-  "entry_count": 9,
+  "entry_count": 10,
   "last_update_status": "added 0 entries"
 }

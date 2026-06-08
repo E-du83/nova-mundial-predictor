@@ -56,6 +56,7 @@ DATA_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_matches.js
 SNAPSHOTS_PATH = Path(__file__).resolve().parent / "data" / "manual_match_snapshots.json"
 RESULTS_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_results.json"
 HISTORY_PATH = Path(__file__).resolve().parent / "data" / "prediction_history.json"
+CALIBRATION_NOTES_PATH = Path(__file__).resolve().parent / "data" / "calibration_notes.json"
 
 
 def load_friendly_matches(path: Path = DATA_PATH) -> list[dict]:
@@ -197,18 +198,10 @@ def _build_friendly_recommendation(
         adjusted_confidence=base_confidence,
         friendly_risk=base_risk,
         match_type=context["match_type"],
+        missing_critical_fields=research_refresh["missing_critical_fields"],
+        calibration_notes_path=CALIBRATION_NOTES_PATH,
     )
     real_result = find_real_result(results_data, match["team_a"], match["team_b"])
-    result_review = build_result_review(
-        recommendation={
-            "raw_final_pick": final_pick,
-            "recommended_score": final_pick["final_score"],
-            "final_recommendation": final_pick["final_quiniela_recommendation"],
-            "friendly_risk": base_risk,
-        },
-        real_result=real_result,
-        robustness=robustness,
-    )
 
     recommendation = {
         "match": match["match"],
@@ -237,7 +230,7 @@ def _build_friendly_recommendation(
         "half_time": half_time,
         "robustness": robustness,
         "real_result": real_result,
-        "result_review": result_review,
+        "result_review": {},
         "pick_change_status": (
             "no cambio marcador recomendado; research/lineup/tactica solo ajustan confianza, riesgo y contexto"
         ),
@@ -270,6 +263,11 @@ def _build_friendly_recommendation(
     }
     alternatives = build_critical_alternatives(recommendation)
     recommendation["critical_alternatives"] = alternatives
+    recommendation["result_review"] = build_result_review(
+        recommendation=recommendation,
+        real_result=real_result,
+        robustness=robustness,
+    )
     recommendation["decision_weighting"] = build_decision_weighting(recommendation)
     return recommendation
 

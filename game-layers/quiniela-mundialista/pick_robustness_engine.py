@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 from scoring_rules import parse_score
 
 
@@ -37,6 +40,8 @@ def build_pick_robustness(
     adjusted_confidence: float | int | str,
     friendly_risk: str,
     match_type: str = "international_friendly",
+    missing_critical_fields: list[str] | None = None,
+    calibration_notes_path: str | Path | None = None,
 ) -> dict:
     core = _selected_core(final_pick)
     top_scores = core.get("top_scores", [])[:5]
@@ -94,6 +99,36 @@ def build_pick_robustness(
         warnings.append("Alerta de empate activada.")
     if one_zero_vs_one_one:
         warnings.append("1-0 y 1-1 aparecen como marcadores sensibles.")
+    missing_critical_fields = missing_critical_fields or []
+    clean_sheet_score = recommended_score in ("1-0", "2-0", "0-1", "0-2")
+    critical_missing_for_clean_sheet = any(
+        field in missing_critical_fields
+        for field in ("probable_lineups", "formations", "odds_1x2", "over_under", "lineups")
+    )
+    clean_sheet_risk_warning = bool(
+        friendly
+        and clean_sheet_score
+        and robustness in ("fragil", "cauteloso")
+        and critical_missing_for_clean_sheet
+    )
+    if clean_sheet_risk_warning:
+        warnings.append(
+            "clean_sheet_risk_warning: amistoso con pick de porteria a cero, robustez baja y datos criticos faltantes."
+        )
+
+    late_goal_history_warning = False
+    if calibration_notes_path:
+        notes_path = Path(calibration_notes_path)
+        if notes_path.exists():
+            try:
+                notes = json.loads(notes_path.read_text(encoding="utf-8"))
+                late_goal_history_warning = notes.get("late_opponent_goal_pattern", 0) > 0
+            except json.JSONDecodeError:
+                late_goal_history_warning = False
+    if late_goal_history_warning:
+        warnings.append(
+            "Cuidado: el sistema ha subestimado goles tardios del rival en amistosos."
+        )
 
     return {
         "top_scores": top_scores,
@@ -106,6 +141,8 @@ def build_pick_robustness(
         "draw_warning": draw_warning,
         "draw_warning_reason": draw_reason,
         "closest_draw_score": draw_score or "pending_real_data",
+        "clean_sheet_risk_warning": clean_sheet_risk_warning,
+        "late_goal_history_warning": late_goal_history_warning,
         "warnings": warnings,
     }
 

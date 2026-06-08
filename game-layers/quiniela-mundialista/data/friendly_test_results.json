@@ -67,15 +67,42 @@
       "match": "Netherlands vs Uzbekistan",
       "team_a": "Netherlands",
       "team_b": "Uzbekistan",
-      "real_score": "pending_real_result",
-      "real_result": "pending_real_result",
-      "halftime_score": "pending_real_result",
-      "halftime_result": "pending_real_result",
-      "goals": "pending_real_result",
-      "status": "pending",
-      "source_status": "pending_real_result",
-      "captured_at": "pending_real_result",
-      "learning_note": "pending_real_result"
+      "real_score": "2-1",
+      "real_result": "Netherlands gana",
+      "halftime_score": "1-0",
+      "halftime_result": "Netherlands gana",
+      "goals": {
+        "Netherlands": [
+          {
+            "player": "Cody Gakpo",
+            "minute": 32,
+            "detail": "P"
+          },
+          {
+            "player": "Cody Gakpo",
+            "minute": "90+8",
+            "detail": "P"
+          }
+        ],
+        "Uzbekistan": [
+          {
+            "player": "Igor Sergeev",
+            "minute": "90+2"
+          }
+        ]
+      },
+      "red_cards": {
+        "Netherlands": [
+          {
+            "player": "Guus Til",
+            "minute": 87
+          }
+        ]
+      },
+      "status": "final",
+      "source_status": "user_verified_screenshot",
+      "captured_at": "2026-06-08",
+      "learning_note": "El modelo acerto ganador y lectura general de dominio de Netherlands, pero fallo el marcador exacto 2-0 porque subestimo BTTS/gol rival y el impacto del tramo final: roja al 87', gol de Uzbekistan al 90+2' y penal decisivo al 90+8'."
     }
   ]
 }

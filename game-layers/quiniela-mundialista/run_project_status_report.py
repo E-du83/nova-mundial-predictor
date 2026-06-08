@@ -34,6 +34,12 @@ def _exists(path: Path) -> str:
     return "OK" if path.exists() else "PENDIENTE"
 
 
+def _load_json(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def main() -> None:
     teams, _, _ = load_default_final_pick_inputs()
     matches = _load_friendly_matches()
@@ -43,6 +49,8 @@ def main() -> None:
     results = load_friendly_results(LAYER_ROOT / "data" / "friendly_test_results.json")
     history = load_prediction_history(LAYER_ROOT / "data" / "prediction_history.json")
     history_summary = summarize_prediction_history(history)
+    calibration_report = _load_json(LAYER_ROOT / "data" / "friendly_calibration_report.json")
+    calibration_notes = _load_json(LAYER_ROOT / "data" / "calibration_notes.json")
     refresh_reports = [
         build_research_refresh(
             match["team_a"],
@@ -75,6 +83,8 @@ def main() -> None:
         "formation_tactical_engine.py",
         "tactical_weighting_engine.py",
         "prediction_history_engine.py",
+        "friendly_calibration_engine.py",
+        "calibration_rules_engine.py",
         "research_intelligence_engine.py",
         "research_weighting_engine.py",
         "research_refresh_engine.py",
@@ -97,6 +107,7 @@ def main() -> None:
         "run_research_refresh_demo.py",
         "run_friendly_test_demo.py",
         "run_project_status_report.py",
+        "run_friendly_calibration_report.py",
         "run_final_pick_demo.py",
         "run_quiniela_demo.py",
         "run_group_quiniela_demo.py",
@@ -122,16 +133,18 @@ def main() -> None:
     print("- player_ratings_seed.json: " + _exists(LAYER_ROOT / "data" / "player_ratings_seed.json"))
     print("- friendly_test_results.json: " + _exists(LAYER_ROOT / "data" / "friendly_test_results.json"))
     print("- prediction_history.json: " + _exists(LAYER_ROOT / "data" / "prediction_history.json"))
+    print("- friendly_calibration_report.json: " + _exists(LAYER_ROOT / "data" / "friendly_calibration_report.json"))
+    print("- calibration_notes.json: " + _exists(LAYER_ROOT / "data" / "calibration_notes.json"))
     print("")
 
     print("DATOS PENDIENTES")
     print("- cuotas manuales 365Scores: pending_manual_input")
     print("- alineaciones/formaciones: pending_manual_input")
     print("- ratings reales de jugadores: parcial; replacement_level_estimate donde falta dato")
-    print("- resultado real post-partido: pending_real_result")
+    print("- resultado real post-partido: finalizados para amistosos revisados")
     print("- Morocco vs Norway resultado real: registrado 1-1")
     print("- Colombia vs Jordan resultado real: registrado 2-0")
-    print("- Netherlands vs Uzbekistan resultado real: pending_real_result")
+    print("- Netherlands vs Uzbekistan resultado real: registrado 2-1")
     print("- sedes/coordenadas verificadas: pending_real_data")
     print("- World Elo CSV verificado: manual_snapshot_required")
     print("- openfootball JSON local: manual_snapshot_required")
@@ -141,7 +154,7 @@ def main() -> None:
     print("- completar horarios y sedes de amistosos")
     print("- copiar cuotas visibles si el usuario decide usarlas")
     print("- copiar alineaciones o formaciones verificadas")
-    print("- llenar resultado real despues del partido para comparar")
+    print("- mantener resultados reales trazables para comparar y backtesting")
     print("- verificar coordenadas si se activa clima historico")
     print("")
 
@@ -215,6 +228,31 @@ def main() -> None:
     print(f"- aprendizajes registrados: {history_summary['learning_count']}")
     print(f"- entradas historicas guardadas: {history_summary['history_entry_count']}")
     print("- uso: evidencia para backtesting/calibracion futura; no entrenamiento automatico")
+    print("")
+
+    print("CALIBRACION AMISTOSOS")
+    reviewed = calibration_report.get("matches_reviewed", [])
+    print(f"- amistosos finalizados revisados: {len(reviewed)}")
+    print(f"- prediction_history status: {history.get('last_update_status', 'not_available')}")
+    print(f"- calibration report status: {calibration_report.get('data_status', 'not_available')}")
+    patterns = calibration_report.get("patterns") or calibration_notes
+    pattern_items = [
+        "draw_underestimation_pattern",
+        "late_opponent_goal_pattern",
+        "quinigol_timing_miscalibration",
+        "clean_sheet_risk_warning",
+        "fragility_warning_validated",
+    ]
+    for item in pattern_items:
+        print(f"- {item}: {patterns.get(item, 'not_available')}")
+    print(
+        "- sample size warning: "
+        + calibration_notes.get(
+            "sample_size_warning",
+            "Sample size is very small. Do not recalibrate aggressively from only three friendlies.",
+        )
+    )
+    print("- proximo bloque recomendado: Data Completion + Backtesting Foundation v1")
 
 
 if __name__ == "__main__":

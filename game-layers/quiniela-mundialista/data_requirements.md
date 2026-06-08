@@ -76,6 +76,8 @@ el impacto esperado.
 | Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Historial predicciones | `prediction_history.json` | Si | evidencia local | Guarda prediccion, resultado, revision y aprendizaje para backtesting futuro |
+| Reporte calibracion amistosos | `friendly_calibration_report.json` | Si | evidencia local | Resume aciertos, errores, BTTS, Quinigol y patrones para backtesting futuro |
+| Notas calibracion | `calibration_notes.json` | Si | evidencia local | Guarda patrones acumulativos y advertencia de muestra pequena |
 | Research refresh | Auditoria local de snapshots manuales | Si | activo | Marca si faltan 3+ datos criticos y recomienda refresco antes del pick final |
 | Match alarm | `kickoff_time_utc` del snapshot manual | Si | activo si hay hora UTC | Detecta ventana de 60 minutos, near kickoff, live/final o kickoff pendiente |
 | Descanso/final | Derivado de Core + Quinigol | Si | parcial | Agrega lectura HT/FT sin nuevo motor Core |
@@ -111,6 +113,12 @@ el impacto esperado.
 - `prediction_history.json` registra ciclos completos de prediccion y revision.
   No entrena automaticamente ni corrige picks actuales; conserva evidencia para
   calibracion futura y backtesting manual.
+- `friendly_calibration_report.json` y `calibration_notes.json` guardan
+  aprendizaje evaluativo: empate subestimado, gol tardio rival/BTTS
+  subestimado, minuto Quinigol fuera de rango, fragilidad validada y validacion
+  de modo final vs standard. No entrenan automaticamente ni cambian picks.
+- Tres amistosos son una muestra muy pequena. Sirven para detectar warnings y
+  preparar backtesting, no para recalibrar agresivamente pesos del Core.
 - `research_refresh_engine.py` no busca datos por su cuenta. Solo audita el
   snapshot manual y marca `research_refresh_required`, faltantes criticos,
   faltantes opcionales y `recommended_action`.

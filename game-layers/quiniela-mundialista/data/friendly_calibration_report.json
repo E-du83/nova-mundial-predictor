@@ -1,0 +1,1009 @@
+{
+  "data_status": "friendly_results_calibration_v1",
+  "generated_at": "2026-06-08T23:12:10+00:00",
+  "matches_reviewed": [
+    {
+      "match": "Morocco vs Norway",
+      "team_a": "Morocco",
+      "team_b": "Norway",
+      "match_type": "international_friendly",
+      "pre_match_prediction": "Morocco gana",
+      "predicted_score": "1-0",
+      "real_score": "1-1",
+      "predicted_result": "Morocco gana",
+      "real_result": "draw",
+      "mode": "final",
+      "simulations": 1000000,
+      "pick_principal": "1-0",
+      "critical_alternative": "1-1",
+      "tempting_option": "2-0",
+      "quinigol": "Morocco anota gol recomendado",
+      "quinigol_range": "19-35",
+      "halftime_fulltime": "Empate/Morocco",
+      "tactical_score": 0.068,
+      "research_refresh_status": {
+        "required": false,
+        "recommended_action": "final_pick_can_run",
+        "missing_critical_fields": [
+          "probable_lineups",
+          "formations"
+        ],
+        "missing_optional_fields": [
+          "injuries_or_absences",
+          "complete_tactical_notes"
+        ],
+        "partial_snapshot_ok_for_final_pick": false,
+        "match_alarm_status": "final",
+        "match_status": "final",
+        "minutes_to_kickoff": -507,
+        "final_refresh_due": false
+      },
+      "model_fragility": "cauteloso",
+      "pick_robustness": "cauteloso",
+      "data_quality_score": 55.33,
+      "confidence": 39.81,
+      "risk": "medio",
+      "missing_critical_data": [
+        "probable_lineups",
+        "formations"
+      ],
+      "result_hit": false,
+      "exact_score_hit": false,
+      "goal_diff_error": 1,
+      "total_goals_error": 1,
+      "btts_predicted": false,
+      "btts_real": true,
+      "btts_hit": false,
+      "quinigol_team_hit": true,
+      "quinigol_minute_error": 19,
+      "quinigol_real_first_goal_minute": 8,
+      "halftime_fulltime_hit": "pending_real_result",
+      "critical_alternative_helped": true,
+      "critical_alternative_result": {
+        "available": true,
+        "score": "1-1",
+        "exact_score_hit": true,
+        "result_hit": true,
+        "reduced_error": true,
+        "goal_error": 0
+      },
+      "tempting_option_result": {
+        "available": true,
+        "score": "2-0",
+        "exact_score_hit": false,
+        "result_hit": false,
+        "reduced_error": false,
+        "goal_error": 2
+      },
+      "goals": {
+        "Morocco": [
+          {
+            "player": "Brahim Diaz",
+            "minute": 8
+          }
+        ],
+        "Norway": [
+          {
+            "player": "Martin Odegaard",
+            "minute": 75
+          }
+        ]
+      },
+      "red_cards": {},
+      "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
+      "review_status": "reviewed",
+      "history_signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|final_pick_can_run|1-1",
+      "patterns": {
+        "draw_underestimation_pattern": true,
+        "late_opponent_goal_pattern": false,
+        "quinigol_timing_miscalibration": true,
+        "fragility_warning_validated": true,
+        "clean_sheet_risk_warning": true,
+        "final_mode_validation": {
+          "available": true,
+          "standard_error": 2,
+          "final_error": 2,
+          "final_improved": false,
+          "winner": "tie"
+        }
+      }
+    },
+    {
+      "match": "Colombia vs Jordan",
+      "team_a": "Colombia",
+      "team_b": "Jordan",
+      "match_type": "international_friendly",
+      "pre_match_prediction": "Colombia gana",
+      "predicted_score": "2-0",
+      "real_score": "2-0",
+      "predicted_result": "Colombia gana",
+      "real_result": "Colombia gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "pick_principal": "2-0",
+      "critical_alternative": "1-0",
+      "tempting_option": "none",
+      "quinigol": "Colombia anota gol recomendado",
+      "quinigol_range": "8-24",
+      "halftime_fulltime": "Colombia/Colombia",
+      "tactical_score": 0.093,
+      "research_refresh_status": {
+        "required": false,
+        "recommended_action": "final_pick_can_run",
+        "missing_critical_fields": [
+          "formations"
+        ],
+        "missing_optional_fields": [
+          "injuries_or_absences",
+          "complete_tactical_notes",
+          "market_notes"
+        ],
+        "partial_snapshot_ok_for_final_pick": false,
+        "match_alarm_status": "final",
+        "match_status": "final",
+        "minutes_to_kickoff": -267,
+        "final_refresh_due": false
+      },
+      "model_fragility": "medio",
+      "pick_robustness": "medio",
+      "data_quality_score": 64.26,
+      "confidence": 45.14,
+      "risk": "medio",
+      "missing_critical_data": [
+        "formations"
+      ],
+      "result_hit": true,
+      "exact_score_hit": true,
+      "goal_diff_error": 0,
+      "total_goals_error": 0,
+      "btts_predicted": false,
+      "btts_real": false,
+      "btts_hit": true,
+      "quinigol_team_hit": true,
+      "quinigol_minute_error": 25,
+      "quinigol_real_first_goal_minute": 41,
+      "halftime_fulltime_hit": true,
+      "critical_alternative_helped": false,
+      "critical_alternative_result": {
+        "available": true,
+        "score": "1-0",
+        "exact_score_hit": false,
+        "result_hit": true,
+        "reduced_error": false,
+        "goal_error": 1
+      },
+      "tempting_option_result": {
+        "available": false,
+        "score": "none",
+        "exact_score_hit": false,
+        "reduced_error": false
+      },
+      "goals": {
+        "Colombia": [
+          {
+            "player": "Jhon Arias",
+            "minute": 41
+          },
+          {
+            "player": "Jhon Arias",
+            "minute": 55
+          }
+        ],
+        "Jordan": []
+      },
+      "red_cards": {
+        "Jordan": [
+          {
+            "player": "Amer Jamous",
+            "minute": "90+2"
+          }
+        ]
+      },
+      "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
+      "review_status": "reviewed",
+      "history_signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-0",
+      "patterns": {
+        "draw_underestimation_pattern": false,
+        "late_opponent_goal_pattern": false,
+        "quinigol_timing_miscalibration": true,
+        "fragility_warning_validated": false,
+        "clean_sheet_risk_warning": false,
+        "final_mode_validation": {
+          "available": true,
+          "standard_error": 2,
+          "final_error": 0,
+          "final_improved": true,
+          "winner": "final"
+        }
+      }
+    },
+    {
+      "match": "Netherlands vs Uzbekistan",
+      "team_a": "Netherlands",
+      "team_b": "Uzbekistan",
+      "match_type": "international_friendly",
+      "pre_match_prediction": "Netherlands gana",
+      "predicted_score": "2-0",
+      "real_score": "2-1",
+      "predicted_result": "Netherlands gana",
+      "real_result": "Netherlands gana",
+      "mode": "final",
+      "simulations": 1000000,
+      "pick_principal": "2-0",
+      "critical_alternative": "1-0",
+      "tempting_option": "none",
+      "quinigol": "Netherlands anota gol recomendado",
+      "quinigol_range": "8-24",
+      "halftime_fulltime": "Netherlands/Netherlands",
+      "tactical_score": 0.0,
+      "research_refresh_status": {
+        "required": false,
+        "recommended_action": "final_pick_can_run",
+        "missing_critical_fields": [
+          "odds_1x2",
+          "over_under",
+          "probable_lineups",
+          "formations",
+          "player_ratings_key_players"
+        ],
+        "missing_optional_fields": [],
+        "partial_snapshot_ok_for_final_pick": true,
+        "match_alarm_status": "final",
+        "match_status": "final",
+        "minutes_to_kickoff": -244,
+        "final_refresh_due": false
+      },
+      "model_fragility": "fragil",
+      "pick_robustness": "fragil",
+      "data_quality_score": 16.67,
+      "confidence": 44.99,
+      "risk": "medio",
+      "missing_critical_data": [
+        "odds_1x2",
+        "over_under",
+        "probable_lineups",
+        "formations",
+        "player_ratings_key_players"
+      ],
+      "result_hit": true,
+      "exact_score_hit": false,
+      "goal_diff_error": 1,
+      "total_goals_error": 1,
+      "btts_predicted": false,
+      "btts_real": true,
+      "btts_hit": false,
+      "quinigol_team_hit": true,
+      "quinigol_minute_error": 16,
+      "quinigol_real_first_goal_minute": 32,
+      "halftime_fulltime_hit": true,
+      "critical_alternative_helped": false,
+      "critical_alternative_result": {
+        "available": true,
+        "score": "1-0",
+        "exact_score_hit": false,
+        "result_hit": true,
+        "reduced_error": false,
+        "goal_error": 2
+      },
+      "tempting_option_result": {
+        "available": false,
+        "score": "none",
+        "exact_score_hit": false,
+        "reduced_error": false
+      },
+      "goals": {
+        "Netherlands": [
+          {
+            "player": "Cody Gakpo",
+            "minute": 32,
+            "detail": "P"
+          },
+          {
+            "player": "Cody Gakpo",
+            "minute": "90+8",
+            "detail": "P"
+          }
+        ],
+        "Uzbekistan": [
+          {
+            "player": "Igor Sergeev",
+            "minute": "90+2"
+          }
+        ]
+      },
+      "red_cards": {
+        "Netherlands": [
+          {
+            "player": "Guus Til",
+            "minute": 87
+          }
+        ]
+      },
+      "learning_note": "El modelo acerto ganador y lectura general de dominio de Netherlands, pero fallo el marcador exacto 2-0 porque subestimo BTTS/gol rival y el impacto del tramo final: roja al 87', gol de Uzbekistan al 90+2' y penal decisivo al 90+8'.",
+      "review_status": "reviewed",
+      "history_signature": "Netherlands vs Uzbekistan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-1",
+      "patterns": {
+        "draw_underestimation_pattern": false,
+        "late_opponent_goal_pattern": true,
+        "quinigol_timing_miscalibration": true,
+        "fragility_warning_validated": true,
+        "clean_sheet_risk_warning": true,
+        "final_mode_validation": {
+          "available": true,
+          "standard_error": 2,
+          "final_error": 2,
+          "final_improved": false,
+          "winner": "tie"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "total_matches_reviewed": 3,
+    "result_hit_rate": 0.6667,
+    "exact_score_hit_rate": 0.3333,
+    "btts_hit_rate": 0.3333,
+    "quinigol_team_hit_rate": 1.0,
+    "average_goal_diff_error": 0.6667,
+    "average_total_goals_error": 0.6667,
+    "fragile_pick_count": 2,
+    "critical_alternative_was_relevant_count": 1,
+    "late_goal_error_count": 1,
+    "draw_underestimation_count": 1
+  },
+  "patterns": {
+    "draw_underestimation_pattern": 1,
+    "late_opponent_goal_pattern": 1,
+    "quinigol_timing_miscalibration": 3,
+    "fragility_warning_validated": 2,
+    "clean_sheet_risk_warning": 2,
+    "sample_size_warning": "Sample size is very small. Do not recalibrate aggressively from only three friendlies."
+  },
+  "recommended_adjustments": [
+    "When a friendly has low/medium confidence and a near draw alternative, surface draw risk more clearly.",
+    "Add clean-sheet caution for fragile friendly favorites when missing lineups, formations or market data.",
+    "Track Quinigol timing separately; current team selection is stronger than minute precision."
+  ],
+  "do_not_change_yet": [
+    "No automatic training.",
+    "No aggressive recalibration from only three friendlies.",
+    "Do not mutate Core probabilities or baseline data from this sample.",
+    "Do not auto-change clean sheet picks; warnings only."
+  ],
+  "next_steps": [
+    "Data Completion + Backtesting Foundation v1",
+    "Collect more finalized matches before changing model weights.",
+    "Track late opponent goals, draw alternatives and Quinigol timing over a larger sample."
+  ],
+  "sample_size_warning": "Sample size is very small. Do not recalibrate aggressively from only three friendlies.",
+  "mode_review_groups": {
+    "Morocco vs Norway": [
+      {
+        "match": "Morocco vs Norway",
+        "team_a": "Morocco",
+        "team_b": "Norway",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Morocco gana",
+        "predicted_score": "1-0",
+        "real_score": "1-1",
+        "predicted_result": "Morocco gana",
+        "real_result": "draw",
+        "mode": "standard",
+        "simulations": 100000,
+        "pick_principal": "1-0",
+        "critical_alternative": "1-1",
+        "tempting_option": "2-0",
+        "quinigol": "Morocco anota gol recomendado",
+        "quinigol_range": "19-35",
+        "halftime_fulltime": "Empate/Morocco",
+        "tactical_score": 0.068,
+        "research_refresh_status": {
+          "required": "not_available",
+          "recommended_action": "not_available",
+          "missing_critical_fields": [],
+          "missing_optional_fields": []
+        },
+        "model_fragility": "cauteloso",
+        "pick_robustness": "cauteloso",
+        "data_quality_score": 55.33,
+        "confidence": 39.7,
+        "risk": "medio",
+        "missing_critical_data": [
+          "lineups"
+        ],
+        "result_hit": false,
+        "exact_score_hit": false,
+        "goal_diff_error": 1,
+        "total_goals_error": 1,
+        "btts_predicted": false,
+        "btts_real": true,
+        "btts_hit": false,
+        "quinigol_team_hit": true,
+        "quinigol_minute_error": 19,
+        "quinigol_real_first_goal_minute": 8,
+        "halftime_fulltime_hit": "pending_real_result",
+        "critical_alternative_helped": true,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "1-1",
+          "exact_score_hit": true,
+          "result_hit": true,
+          "reduced_error": true,
+          "goal_error": 0
+        },
+        "tempting_option_result": {
+          "available": true,
+          "score": "2-0",
+          "exact_score_hit": false,
+          "result_hit": false,
+          "reduced_error": false,
+          "goal_error": 2
+        },
+        "goals": {
+          "Morocco": [
+            {
+              "player": "Brahim Diaz",
+              "minute": 8
+            }
+          ],
+          "Norway": [
+            {
+              "player": "Martin Odegaard",
+              "minute": 75
+            }
+          ]
+        },
+        "red_cards": {},
+        "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
+        "review_status": "reviewed",
+        "history_signature": "Morocco vs Norway|reviewed|standard|100000|1-0|1-0|1-1",
+        "patterns": {
+          "draw_underestimation_pattern": true,
+          "late_opponent_goal_pattern": false,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": true,
+          "clean_sheet_risk_warning": true,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      },
+      {
+        "match": "Morocco vs Norway",
+        "team_a": "Morocco",
+        "team_b": "Norway",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Morocco gana",
+        "predicted_score": "1-0",
+        "real_score": "1-1",
+        "predicted_result": "Morocco gana",
+        "real_result": "draw",
+        "mode": "final",
+        "simulations": 1000000,
+        "pick_principal": "1-0",
+        "critical_alternative": "1-1",
+        "tempting_option": "2-0",
+        "quinigol": "Morocco anota gol recomendado",
+        "quinigol_range": "19-35",
+        "halftime_fulltime": "Empate/Morocco",
+        "tactical_score": 0.068,
+        "research_refresh_status": {
+          "required": false,
+          "recommended_action": "final_pick_can_run",
+          "missing_critical_fields": [
+            "probable_lineups",
+            "formations"
+          ],
+          "missing_optional_fields": [
+            "injuries_or_absences",
+            "complete_tactical_notes"
+          ],
+          "partial_snapshot_ok_for_final_pick": false,
+          "match_alarm_status": "final",
+          "match_status": "final",
+          "minutes_to_kickoff": -507,
+          "final_refresh_due": false
+        },
+        "model_fragility": "cauteloso",
+        "pick_robustness": "cauteloso",
+        "data_quality_score": 55.33,
+        "confidence": 39.81,
+        "risk": "medio",
+        "missing_critical_data": [
+          "probable_lineups",
+          "formations"
+        ],
+        "result_hit": false,
+        "exact_score_hit": false,
+        "goal_diff_error": 1,
+        "total_goals_error": 1,
+        "btts_predicted": false,
+        "btts_real": true,
+        "btts_hit": false,
+        "quinigol_team_hit": true,
+        "quinigol_minute_error": 19,
+        "quinigol_real_first_goal_minute": 8,
+        "halftime_fulltime_hit": "pending_real_result",
+        "critical_alternative_helped": true,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "1-1",
+          "exact_score_hit": true,
+          "result_hit": true,
+          "reduced_error": true,
+          "goal_error": 0
+        },
+        "tempting_option_result": {
+          "available": true,
+          "score": "2-0",
+          "exact_score_hit": false,
+          "result_hit": false,
+          "reduced_error": false,
+          "goal_error": 2
+        },
+        "goals": {
+          "Morocco": [
+            {
+              "player": "Brahim Diaz",
+              "minute": 8
+            }
+          ],
+          "Norway": [
+            {
+              "player": "Martin Odegaard",
+              "minute": 75
+            }
+          ]
+        },
+        "red_cards": {},
+        "learning_note": "El modelo detecto partido cerrado y riesgo medio, pero subestimo probabilidad de empate y gol de Norway.",
+        "review_status": "reviewed",
+        "history_signature": "Morocco vs Norway|reviewed|final|1000000|1-0|1-0|final_pick_can_run|1-1",
+        "patterns": {
+          "draw_underestimation_pattern": true,
+          "late_opponent_goal_pattern": false,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": true,
+          "clean_sheet_risk_warning": true,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      }
+    ],
+    "Colombia vs Jordan": [
+      {
+        "match": "Colombia vs Jordan",
+        "team_a": "Colombia",
+        "team_b": "Jordan",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Colombia gana",
+        "predicted_score": "1-0",
+        "real_score": "2-0",
+        "predicted_result": "Colombia gana",
+        "real_result": "Colombia gana",
+        "mode": "standard",
+        "simulations": 100000,
+        "pick_principal": "1-0",
+        "critical_alternative": "2-0",
+        "tempting_option": "2-0",
+        "quinigol": "Colombia anota gol recomendado",
+        "quinigol_range": "16-32",
+        "halftime_fulltime": "Colombia/Colombia",
+        "tactical_score": 0.093,
+        "research_refresh_status": {
+          "required": "not_available",
+          "recommended_action": "not_available",
+          "missing_critical_fields": [],
+          "missing_optional_fields": []
+        },
+        "model_fragility": "medio",
+        "pick_robustness": "medio",
+        "data_quality_score": 64.26,
+        "confidence": 45.27,
+        "risk": "medio",
+        "missing_critical_data": [
+          "lineups"
+        ],
+        "result_hit": true,
+        "exact_score_hit": false,
+        "goal_diff_error": 1,
+        "total_goals_error": 1,
+        "btts_predicted": false,
+        "btts_real": false,
+        "btts_hit": true,
+        "quinigol_team_hit": true,
+        "quinigol_minute_error": 17,
+        "quinigol_real_first_goal_minute": 41,
+        "halftime_fulltime_hit": true,
+        "critical_alternative_helped": true,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "2-0",
+          "exact_score_hit": true,
+          "result_hit": true,
+          "reduced_error": true,
+          "goal_error": 0
+        },
+        "tempting_option_result": {
+          "available": true,
+          "score": "2-0",
+          "exact_score_hit": true,
+          "result_hit": true,
+          "reduced_error": true,
+          "goal_error": 0
+        },
+        "goals": {
+          "Colombia": [
+            {
+              "player": "Jhon Arias",
+              "minute": 41
+            },
+            {
+              "player": "Jhon Arias",
+              "minute": 55
+            }
+          ],
+          "Jordan": []
+        },
+        "red_cards": {
+          "Jordan": [
+            {
+              "player": "Amer Jamous",
+              "minute": "90+2"
+            }
+          ]
+        },
+        "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
+        "review_status": "reviewed",
+        "history_signature": "Colombia vs Jordan|reviewed|standard|100000|1-0|1-0|2-0",
+        "patterns": {
+          "draw_underestimation_pattern": false,
+          "late_opponent_goal_pattern": false,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": false,
+          "clean_sheet_risk_warning": false,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      },
+      {
+        "match": "Colombia vs Jordan",
+        "team_a": "Colombia",
+        "team_b": "Jordan",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Colombia gana",
+        "predicted_score": "2-0",
+        "real_score": "2-0",
+        "predicted_result": "Colombia gana",
+        "real_result": "Colombia gana",
+        "mode": "final",
+        "simulations": 1000000,
+        "pick_principal": "2-0",
+        "critical_alternative": "1-0",
+        "tempting_option": "none",
+        "quinigol": "Colombia anota gol recomendado",
+        "quinigol_range": "8-24",
+        "halftime_fulltime": "Colombia/Colombia",
+        "tactical_score": 0.093,
+        "research_refresh_status": {
+          "required": false,
+          "recommended_action": "final_pick_can_run",
+          "missing_critical_fields": [
+            "formations"
+          ],
+          "missing_optional_fields": [
+            "injuries_or_absences",
+            "complete_tactical_notes",
+            "market_notes"
+          ],
+          "partial_snapshot_ok_for_final_pick": false,
+          "match_alarm_status": "final",
+          "match_status": "final",
+          "minutes_to_kickoff": -267,
+          "final_refresh_due": false
+        },
+        "model_fragility": "medio",
+        "pick_robustness": "medio",
+        "data_quality_score": 64.26,
+        "confidence": 45.14,
+        "risk": "medio",
+        "missing_critical_data": [
+          "formations"
+        ],
+        "result_hit": true,
+        "exact_score_hit": true,
+        "goal_diff_error": 0,
+        "total_goals_error": 0,
+        "btts_predicted": false,
+        "btts_real": false,
+        "btts_hit": true,
+        "quinigol_team_hit": true,
+        "quinigol_minute_error": 25,
+        "quinigol_real_first_goal_minute": 41,
+        "halftime_fulltime_hit": true,
+        "critical_alternative_helped": false,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "1-0",
+          "exact_score_hit": false,
+          "result_hit": true,
+          "reduced_error": false,
+          "goal_error": 1
+        },
+        "tempting_option_result": {
+          "available": false,
+          "score": "none",
+          "exact_score_hit": false,
+          "reduced_error": false
+        },
+        "goals": {
+          "Colombia": [
+            {
+              "player": "Jhon Arias",
+              "minute": 41
+            },
+            {
+              "player": "Jhon Arias",
+              "minute": 55
+            }
+          ],
+          "Jordan": []
+        },
+        "red_cards": {
+          "Jordan": [
+            {
+              "player": "Amer Jamous",
+              "minute": "90+2"
+            }
+          ]
+        },
+        "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia.",
+        "review_status": "reviewed",
+        "history_signature": "Colombia vs Jordan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-0",
+        "patterns": {
+          "draw_underestimation_pattern": false,
+          "late_opponent_goal_pattern": false,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": false,
+          "clean_sheet_risk_warning": false,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      }
+    ],
+    "Netherlands vs Uzbekistan": [
+      {
+        "match": "Netherlands vs Uzbekistan",
+        "team_a": "Netherlands",
+        "team_b": "Uzbekistan",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Netherlands gana",
+        "predicted_score": "2-0",
+        "real_score": "2-1",
+        "predicted_result": "Netherlands gana",
+        "real_result": "Netherlands gana",
+        "mode": "standard",
+        "simulations": 100000,
+        "pick_principal": "2-0",
+        "critical_alternative": "1-0",
+        "tempting_option": "none",
+        "quinigol": "Netherlands anota gol recomendado",
+        "quinigol_range": "8-24",
+        "halftime_fulltime": "Netherlands/Netherlands",
+        "tactical_score": 0.0,
+        "research_refresh_status": {
+          "required": "not_available",
+          "recommended_action": "not_available",
+          "missing_critical_fields": [],
+          "missing_optional_fields": []
+        },
+        "model_fragility": "fragil",
+        "pick_robustness": "fragil",
+        "data_quality_score": 0.0,
+        "confidence": 44.86,
+        "risk": "medio",
+        "missing_critical_data": [
+          "lineups"
+        ],
+        "result_hit": true,
+        "exact_score_hit": false,
+        "goal_diff_error": 1,
+        "total_goals_error": 1,
+        "btts_predicted": false,
+        "btts_real": true,
+        "btts_hit": false,
+        "quinigol_team_hit": "pending_real_result",
+        "quinigol_minute_error": 16,
+        "quinigol_real_first_goal_minute": 32,
+        "halftime_fulltime_hit": "pending_real_result",
+        "critical_alternative_helped": false,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "1-0",
+          "exact_score_hit": false,
+          "result_hit": true,
+          "reduced_error": false,
+          "goal_error": 2
+        },
+        "tempting_option_result": {
+          "available": false,
+          "score": "none",
+          "exact_score_hit": false,
+          "reduced_error": false
+        },
+        "goals": {
+          "Netherlands": [
+            {
+              "player": "Cody Gakpo",
+              "minute": 32,
+              "detail": "P"
+            },
+            {
+              "player": "Cody Gakpo",
+              "minute": "90+8",
+              "detail": "P"
+            }
+          ],
+          "Uzbekistan": [
+            {
+              "player": "Igor Sergeev",
+              "minute": "90+2"
+            }
+          ]
+        },
+        "red_cards": {
+          "Netherlands": [
+            {
+              "player": "Guus Til",
+              "minute": 87
+            }
+          ]
+        },
+        "learning_note": "El modelo acerto ganador y lectura general de dominio de Netherlands, pero fallo el marcador exacto 2-0 porque subestimo BTTS/gol rival y el impacto del tramo final: roja al 87', gol de Uzbekistan al 90+2' y penal decisivo al 90+8'.",
+        "review_status": "reviewed",
+        "history_signature": "Netherlands vs Uzbekistan|pre_match_prediction|standard|100000|2-0|2-0|pending_real_result",
+        "patterns": {
+          "draw_underestimation_pattern": false,
+          "late_opponent_goal_pattern": true,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": true,
+          "clean_sheet_risk_warning": true,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      },
+      {
+        "match": "Netherlands vs Uzbekistan",
+        "team_a": "Netherlands",
+        "team_b": "Uzbekistan",
+        "match_type": "international_friendly",
+        "pre_match_prediction": "Netherlands gana",
+        "predicted_score": "2-0",
+        "real_score": "2-1",
+        "predicted_result": "Netherlands gana",
+        "real_result": "Netherlands gana",
+        "mode": "final",
+        "simulations": 1000000,
+        "pick_principal": "2-0",
+        "critical_alternative": "1-0",
+        "tempting_option": "none",
+        "quinigol": "Netherlands anota gol recomendado",
+        "quinigol_range": "8-24",
+        "halftime_fulltime": "Netherlands/Netherlands",
+        "tactical_score": 0.0,
+        "research_refresh_status": {
+          "required": false,
+          "recommended_action": "final_pick_can_run",
+          "missing_critical_fields": [
+            "odds_1x2",
+            "over_under",
+            "probable_lineups",
+            "formations",
+            "player_ratings_key_players"
+          ],
+          "missing_optional_fields": [],
+          "partial_snapshot_ok_for_final_pick": true,
+          "match_alarm_status": "final",
+          "match_status": "final",
+          "minutes_to_kickoff": -244,
+          "final_refresh_due": false
+        },
+        "model_fragility": "fragil",
+        "pick_robustness": "fragil",
+        "data_quality_score": 16.67,
+        "confidence": 44.99,
+        "risk": "medio",
+        "missing_critical_data": [
+          "odds_1x2",
+          "over_under",
+          "probable_lineups",
+          "formations",
+          "player_ratings_key_players"
+        ],
+        "result_hit": true,
+        "exact_score_hit": false,
+        "goal_diff_error": 1,
+        "total_goals_error": 1,
+        "btts_predicted": false,
+        "btts_real": true,
+        "btts_hit": false,
+        "quinigol_team_hit": true,
+        "quinigol_minute_error": 16,
+        "quinigol_real_first_goal_minute": 32,
+        "halftime_fulltime_hit": true,
+        "critical_alternative_helped": false,
+        "critical_alternative_result": {
+          "available": true,
+          "score": "1-0",
+          "exact_score_hit": false,
+          "result_hit": true,
+          "reduced_error": false,
+          "goal_error": 2
+        },
+        "tempting_option_result": {
+          "available": false,
+          "score": "none",
+          "exact_score_hit": false,
+          "reduced_error": false
+        },
+        "goals": {
+          "Netherlands": [
+            {
+              "player": "Cody Gakpo",
+              "minute": 32,
+              "detail": "P"
+            },
+            {
+              "player": "Cody Gakpo",
+              "minute": "90+8",
+              "detail": "P"
+            }
+          ],
+          "Uzbekistan": [
+            {
+              "player": "Igor Sergeev",
+              "minute": "90+2"
+            }
+          ]
+        },
+        "red_cards": {
+          "Netherlands": [
+            {
+              "player": "Guus Til",
+              "minute": 87
+            }
+          ]
+        },
+        "learning_note": "El modelo acerto ganador y lectura general de dominio de Netherlands, pero fallo el marcador exacto 2-0 porque subestimo BTTS/gol rival y el impacto del tramo final: roja al 87', gol de Uzbekistan al 90+2' y penal decisivo al 90+8'.",
+        "review_status": "reviewed",
+        "history_signature": "Netherlands vs Uzbekistan|reviewed|final|1000000|2-0|2-0|final_pick_can_run|2-1",
+        "patterns": {
+          "draw_underestimation_pattern": false,
+          "late_opponent_goal_pattern": true,
+          "quinigol_timing_miscalibration": true,
+          "fragility_warning_validated": true,
+          "clean_sheet_risk_warning": true,
+          "final_mode_validation": {
+            "available": false,
+            "final_improved": "not_available",
+            "winner": "not_available"
+          }
+        }
+      }
+    ]
+  }
+}

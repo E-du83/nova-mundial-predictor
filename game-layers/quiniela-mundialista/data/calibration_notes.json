@@ -1,0 +1,34 @@
+{
+  "data_status": "friendly_calibration_notes_v1",
+  "notes": "Evaluative calibration notes only. No automatic training or pick mutation.",
+  "draw_underestimation_pattern": 1,
+  "late_opponent_goal_pattern": 1,
+  "quinigol_timing_miscalibration": 3,
+  "clean_sheet_risk_warning": 2,
+  "fragility_warning_validated": 2,
+  "final_mode_validation": [
+    {
+      "available": true,
+      "standard_error": 2,
+      "final_error": 2,
+      "final_improved": false,
+      "winner": "tie"
+    },
+    {
+      "available": true,
+      "standard_error": 2,
+      "final_error": 0,
+      "final_improved": true,
+      "winner": "final"
+    },
+    {
+      "available": true,
+      "standard_error": 2,
+      "final_error": 2,
+      "final_improved": false,
+      "winner": "tie"
+    }
+  ],
+  "sample_size_warning": "Sample size is very small. Do not recalibrate aggressively from only three friendlies.",
+  "recommended_use": "Use as audit evidence for future backtesting. Do not recalibrate aggressively from this sample."
+}
