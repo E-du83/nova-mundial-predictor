@@ -87,6 +87,10 @@ el impacto esperado.
 | Lesiones de impacto | Fuente oficial / manual verificada | No | pending_real_data | Solo impactan si injury_impact es medium/high/critical |
 | Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
 | Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
+| Group stage fixture context | `group_stage_fixture_context.json` | Si | manual_snapshot_required | Permite fase de grupos completa cuando exista fixture oficial local |
+| Backtesting manifest | `backtesting_manifest.json` | Si | foundation_ready | Lista datasets, leakage risk e integracion pendiente |
+| Report builder | `report_builder.py` | Si | foundation_ready | Genera reportes por partido sin modificar picks |
+| System self audit | `system_self_audit.py` | Si | foundation_ready | Evalua readiness, riesgos, sesgo y sobreajuste |
 
 ## Reglas de activacion real
 
@@ -119,6 +123,15 @@ el impacto esperado.
   de modo final vs standard. No entrenan automaticamente ni cambian picks.
 - Tres amistosos son una muestra muy pequena. Sirven para detectar warnings y
   preparar backtesting, no para recalibrar agresivamente pesos del Core.
+- `group_stage_fixture_context.json` no debe inventar cruces, sedes, fechas ni
+  horarios. Si no existe fixture oficial completo local, debe quedar como
+  `manual_snapshot_required`.
+- World Elo solo pesa fuerte si existe snapshot local con `team`, `elo`, `rank`,
+  `source`, `date_collected` y `notes`.
+- Open-Meteo solo construye consultas historicas gratis sin API key; si faltan
+  coordenadas o clima real, el dato queda pendiente.
+- El Mundial 2022 debe usarse solo con blind test separado y guardas de data
+  leakage. No mezclarlo con datos posteriores al partido.
 - `research_refresh_engine.py` no busca datos por su cuenta. Solo audita el
   snapshot manual y marca `research_refresh_required`, faltantes criticos,
   faltantes opcionales y `recommended_action`.

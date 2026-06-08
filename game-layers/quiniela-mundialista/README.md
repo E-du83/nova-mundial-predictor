@@ -48,6 +48,13 @@ Netherlands vs Uzbekistan. Guarda metricas, patrones y notas evaluativas para
 backtesting futuro. No entrena automaticamente, no toca el Core y no recalibra
 fuerte porque tres partidos son una muestra demasiado pequena.
 
+El bloque **Data Completion + Backtesting Foundation v1** prepara la entrada de
+datos reales para fase de grupos, reportes por partido y backtesting futuro.
+Los clientes de datos son offline-first: cargan snapshots locales o construyen
+URLs, pero no hacen scraping agresivo ni dependen de APIs pagadas. Si falta un
+dato, queda como `pending_real_data`, `manual_snapshot_required`,
+`pending_manual_input` o `not_available_free`.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -90,6 +97,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   del partido y datos criticos faltantes antes de correr un pick final.
 - Genera reporte de calibracion amistosa con aciertos, errores, BTTS, Quinigol,
   alternativas criticas y patrones de fragilidad sin cambiar picks.
+- Prepara fixtures de fase de grupos, reportes estructurados, manifiesto de
+  backtesting y auditoria critica del sistema sin inventar datos.
 
 ## Final Pick
 
@@ -183,6 +192,15 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   critica y opcion tentadora.
 - `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
   `final=1000000`.
+- `group_stage_runner.py`: recorre fixtures de fase de grupos, simula solo
+  partidos con equipos concretos y baseline suficiente, y marca pendientes si
+  faltan datos.
+- `report_builder.py`: construye reportes JSON por partido con pick, marcador,
+  Quinigol, HT/FT, robustez, tactical score, calidad de datos y faltantes.
+- `backtesting_engine.py`: prepara comparaciones prediccion vs resultado real
+  con campos listos para Brier/log-loss cuando existan probabilidades.
+- `system_self_audit.py`: audita fortalezas, debilidades, riesgos, leakage,
+  sobreajuste y readiness para quiniela completa o venta.
 - `src/data_ingestion/free_sources_registry.py`: registro estructurado de
   fuentes gratis u opcionales.
 - `src/data_ingestion/openfootball_client.py`: scaffold offline para snapshots
@@ -347,6 +365,27 @@ automatico. La muestra de tres partidos no alcanza para recalibrar fuerte:
 sirve para crear warnings, preparar backtesting y definir que datos faltan
 antes de tocar pesos del modelo.
 
+## Data Completion + Backtesting Foundation v1
+
+Este bloque agrega estructura para completar datos reales sin contaminar el
+Core:
+
+- World Elo entra desde `world_elo_snapshot_template.csv` o un CSV local
+  verificado con columnas `team, elo, rank, source, date_collected, notes`.
+- Open-Meteo entra como URL historica construida desde lat/lon y rango de
+  fechas. No requiere API key y no inventa clima.
+- openfootball/worldcup.json entra solo como snapshot JSON local validado. Si
+  no existe, el estado queda `manual_snapshot_required`.
+- `group_stage_fixture_context.json` conserva la estructura de fase de grupos,
+  pero no inventa cruces, sedes ni horarios.
+- `backtesting_manifest.json` lista datasets posibles, costo, API key,
+  estado, riesgo de leakage e integracion pendiente.
+
+El Mundial 2022 debe correrse como blind test separado con data leakage guard:
+cada prediccion historica debe usar solo datos disponibles antes del kickoff.
+Hasta que exista ese dataset limpio, el sistema solo prepara la base y ejecuta
+comparaciones demo con amistosos ya revisados.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -417,6 +456,10 @@ game-layers/quiniela-mundialista/
 |-- result_review_engine.py
 |-- calibration_rules_engine.py
 |-- friendly_calibration_engine.py
+|-- group_stage_runner.py
+|-- report_builder.py
+|-- backtesting_engine.py
+|-- system_self_audit.py
 |-- decision_weighting_engine.py
 |-- critical_alternative_engine.py
 |-- simulation_config.py
@@ -431,6 +474,9 @@ game-layers/quiniela-mundialista/
 |-- run_research_snapshot_demo.py
 |-- run_research_refresh_demo.py
 |-- run_friendly_calibration_report.py
+|-- run_group_stage_report_demo.py
+|-- run_backtesting_foundation_demo.py
+|-- run_system_self_audit.py
 |-- run_project_status_report.py
 `-- data/
     |-- fixtures_context.json
@@ -441,6 +487,9 @@ game-layers/quiniela-mundialista/
     |-- prediction_history.json
     |-- friendly_calibration_report.json
     |-- calibration_notes.json
+    |-- group_stage_fixture_context.json
+    |-- backtesting_manifest.json
+    |-- group_stage_prediction_report.json
     |-- player_ratings_seed.json
     |-- openfootball_snapshot_README.md
     |-- venue_climate_profiles.json
@@ -462,6 +511,9 @@ python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
 python -B game-layers/quiniela-mundialista/run_research_refresh_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_calibration_report.py
+python -B game-layers/quiniela-mundialista/run_group_stage_report_demo.py
+python -B game-layers/quiniela-mundialista/run_backtesting_foundation_demo.py
+python -B game-layers/quiniela-mundialista/run_system_self_audit.py
 python -B game-layers/quiniela-mundialista/run_project_status_report.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py
 python -B game-layers/quiniela-mundialista/run_group_quiniela_demo.py

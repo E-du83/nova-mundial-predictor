@@ -1,19 +1,20 @@
 {
   "data_status": "pending_real_data",
-  "source": "pending_real_data",
-  "notes": "Perfiles climaticos historicos pendientes. No usar clima del dia ni inventar temperatura o humedad.",
+  "source": "open_meteo_historical_weather_pending_coordinates",
+  "notes": "No climate values are invented. Fill coordinates and verified historical month windows before use.",
   "profiles": [
     {
-      "venue": "pending_real_venue",
+      "venue_name": "pending_real_venue",
       "city": "pending_real_data",
       "country": "pending_real_data",
+      "latitude": "pending_real_data",
+      "longitude": "pending_real_data",
       "month": "pending_real_data",
       "avg_temp_c": "pending_real_data",
       "avg_humidity": "pending_real_data",
       "altitude_m": "pending_real_data",
       "heat_risk": "pending_real_data",
-      "adaptation_risk": "pending_real_data",
-      "source": "pending_real_data",
+      "source": "open_meteo",
       "data_status": "pending_real_data"
     }
   ]

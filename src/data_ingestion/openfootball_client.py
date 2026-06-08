@@ -62,11 +62,14 @@ def load_openfootball_snapshot(path: str | Path) -> dict:
         "source_id": SOURCE_ID,
         "source_status": "local_snapshot_loaded",
         "status": "local_snapshot_loaded",
+        "data_status": "ready_snapshot",
         "usable": True,
         "path": str(snapshot_path),
         "data": data,
+        "match_count": len(data.get("matches", [])) if isinstance(data.get("matches"), list) else 0,
         "reference": OPENFOOTBALL_REFERENCE,
         "requires_api_key": False,
+        "cost": "free",
     }
 
 
@@ -77,9 +80,32 @@ def connection_notes() -> dict:
         "mode": "offline_first",
         "requires_api_key": False,
         "notes": [
+            "openfootball/worldcup.json is open data and does not require an API key.",
             "Prefer a manually verified local JSON snapshot.",
             "Do not scrape aggressively.",
             "Validate license and fields before using in recommendations.",
             "If no snapshot exists, return pending_manual_snapshot instead of failing.",
         ],
+    }
+
+
+def validate_worldcup_matches(data: dict) -> dict:
+    matches = data.get("matches")
+    if not isinstance(matches, list):
+        return {
+            "usable": False,
+            "status": "missing_matches_list",
+            "missing_fields": ["matches"],
+        }
+    required = {"team1", "team2"}
+    invalid_indexes = []
+    for index, match in enumerate(matches):
+        if not isinstance(match, dict) or not required.issubset(match):
+            invalid_indexes.append(index)
+    return {
+        "usable": not invalid_indexes,
+        "status": "valid_matches" if not invalid_indexes else "missing_match_fields",
+        "match_count": len(matches),
+        "invalid_indexes": invalid_indexes,
+        "required_match_fields": sorted(required),
     }

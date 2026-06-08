@@ -55,6 +55,41 @@ def validate_json_fields(path: str | Path, required_fields: list[str]) -> dict:
     }
 
 
+def validate_csv_fields(path: str | Path, required_fields: list[str]) -> dict:
+    file_path = Path(path)
+    existence = validate_file_exists(file_path)
+    if not existence["exists"]:
+        return {
+            **existence,
+            "usable": False,
+            "missing_fields": required_fields,
+        }
+    first_line = file_path.read_text(encoding="utf-8").splitlines()[0:1]
+    headers = [item.strip() for item in first_line[0].split(",")] if first_line else []
+    missing_fields = [field for field in required_fields if field not in headers]
+    return {
+        "path": str(file_path),
+        "exists": True,
+        "usable": not missing_fields,
+        "status": "available" if not missing_fields else "missing_required_fields",
+        "missing_fields": missing_fields,
+        "headers": headers,
+    }
+
+
+def validate_traceability(record: dict) -> dict:
+    required = ["source", "data_status"]
+    recommended = ["source_status", "date_collected", "reliability"]
+    missing_required = [field for field in required if field not in record]
+    missing_recommended = [field for field in recommended if field not in record]
+    return {
+        "usable": not missing_required,
+        "status": "traceable" if not missing_required else "missing_traceability",
+        "missing_required": missing_required,
+        "missing_recommended": missing_recommended,
+    }
+
+
 def validate_source_entry(source: dict) -> dict:
     required = [
         "source_id",

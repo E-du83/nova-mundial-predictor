@@ -1,5 +1,5 @@
 {
-  "data_status": "pending_real_data",
+  "data_status": "manual_seed_pending_verification",
   "source": "FIFA official venues, structure prepared for verified coordinates",
   "notes": "No climate values included. Latitude, longitude and altitude must be verified before Open-Meteo use.",
   "venues": [
@@ -10,7 +10,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -20,7 +20,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -30,7 +30,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -40,7 +40,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -50,7 +50,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -60,7 +60,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -70,7 +70,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -80,7 +80,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -90,7 +90,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -100,7 +100,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -110,7 +110,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -120,7 +120,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -130,7 +130,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -140,7 +140,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -150,7 +150,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     },
     {
@@ -160,7 +160,7 @@
       "latitude": "pending_real_data",
       "longitude": "pending_real_data",
       "altitude_m": "pending_real_data",
-      "data_status": "pending_real_data",
+      "data_status": "manual_seed_pending_verification",
       "source": "FIFA official venues"
     }
   ]

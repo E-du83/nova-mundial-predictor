@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 ARCHIVE_ENDPOINT = "https://archive-api.open-meteo.com/v1/archive"
 SOURCE_METADATA = {
     "source": "open_meteo",
+    "source_id": "open_meteo",
     "cost": "free",
     "requires_api_key": False,
 }
@@ -98,6 +99,7 @@ def build_historical_weather_request(
             timezone=timezone,
         ),
         "mode": "offline_url_builder",
+        "network_policy": "caller_may_fetch_later; this function does not require internet",
     }
 
 

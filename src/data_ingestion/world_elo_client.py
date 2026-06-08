@@ -10,7 +10,7 @@ from pathlib import Path
 
 SOURCE_ID = "world_football_elo"
 WORLD_ELO_REFERENCE = "https://www.eloratings.net/"
-MINIMUM_FIELDS = {"team", "elo"}
+MINIMUM_FIELDS = {"team", "elo", "rank", "source", "date_collected", "notes"}
 
 
 def load_world_elo_csv(path: str | Path) -> dict:
@@ -44,12 +44,14 @@ def load_world_elo_csv(path: str | Path) -> dict:
     return {
         "source_id": SOURCE_ID,
         "status": "local_snapshot_loaded",
+        "data_status": "ready_snapshot",
         "usable": True,
         "path": str(csv_path),
         "rows": rows,
         "row_count": len(rows),
         "source_status": "manual_snapshot_loaded",
         "freshness": "pending_freshness_verification",
+        "weighting_role": "high_weight_signal_when_date_and_source_are_verified",
         "reference": WORLD_ELO_REFERENCE,
     }
 
@@ -58,10 +60,41 @@ def manual_snapshot_requirements() -> dict:
     return {
         "source_id": SOURCE_ID,
         "required_fields": sorted(MINIMUM_FIELDS),
-        "optional_fields": ["rank", "date", "matches", "source_url"],
+        "optional_fields": ["matches", "source_url"],
         "notes": [
             "Use a manually verified CSV snapshot.",
             "Mark freshness before using it as final 2026 input.",
             "World Football Elo can change after each international match.",
+            "Do not invent Elo values; missing snapshots stay manual_snapshot_required.",
         ],
+    }
+
+
+def to_team_signal(snapshot: dict) -> dict:
+    if not snapshot.get("usable"):
+        return {
+            "source_id": SOURCE_ID,
+            "data_status": snapshot.get("status", "manual_snapshot_required"),
+            "signals": {},
+            "weighting_role": "not_active_until_verified_snapshot_exists",
+        }
+    signals = {}
+    for row in snapshot.get("rows", []):
+        team = row.get("team")
+        if not team:
+            continue
+        signals[team] = {
+            "elo": row.get("elo"),
+            "rank": row.get("rank"),
+            "source": row.get("source"),
+            "date_collected": row.get("date_collected"),
+            "notes": row.get("notes", ""),
+            "weight": "high_when_freshness_verified",
+        }
+    return {
+        "source_id": SOURCE_ID,
+        "data_status": "ready_snapshot",
+        "signals": signals,
+        "team_count": len(signals),
+        "weighting_role": "high_weight_signal_when_verified",
     }

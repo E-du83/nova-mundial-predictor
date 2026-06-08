@@ -51,6 +51,8 @@ def main() -> None:
     history_summary = summarize_prediction_history(history)
     calibration_report = _load_json(LAYER_ROOT / "data" / "friendly_calibration_report.json")
     calibration_notes = _load_json(LAYER_ROOT / "data" / "calibration_notes.json")
+    group_fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
+    backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     refresh_reports = [
         build_research_refresh(
             match["team_a"],
@@ -85,6 +87,10 @@ def main() -> None:
         "prediction_history_engine.py",
         "friendly_calibration_engine.py",
         "calibration_rules_engine.py",
+        "group_stage_runner.py",
+        "report_builder.py",
+        "backtesting_engine.py",
+        "system_self_audit.py",
         "research_intelligence_engine.py",
         "research_weighting_engine.py",
         "research_refresh_engine.py",
@@ -108,6 +114,9 @@ def main() -> None:
         "run_friendly_test_demo.py",
         "run_project_status_report.py",
         "run_friendly_calibration_report.py",
+        "run_group_stage_report_demo.py",
+        "run_backtesting_foundation_demo.py",
+        "run_system_self_audit.py",
         "run_final_pick_demo.py",
         "run_quiniela_demo.py",
         "run_group_quiniela_demo.py",
@@ -135,6 +144,11 @@ def main() -> None:
     print("- prediction_history.json: " + _exists(LAYER_ROOT / "data" / "prediction_history.json"))
     print("- friendly_calibration_report.json: " + _exists(LAYER_ROOT / "data" / "friendly_calibration_report.json"))
     print("- calibration_notes.json: " + _exists(LAYER_ROOT / "data" / "calibration_notes.json"))
+    print("- group_stage_fixture_context.json: " + _exists(LAYER_ROOT / "data" / "group_stage_fixture_context.json"))
+    print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
+    print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
+    print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
+    print("- venue_climate_profiles.json: " + _exists(LAYER_ROOT / "data" / "venue_climate_profiles.json"))
     print("")
 
     print("DATOS PENDIENTES")
@@ -253,6 +267,27 @@ def main() -> None:
         )
     )
     print("- proximo bloque recomendado: Data Completion + Backtesting Foundation v1")
+    print("")
+
+    print("DATA COMPLETION + BACKTESTING FOUNDATION v1")
+    print("- estado bloque: foundation_ready")
+    print("- estado Elo snapshot: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
+    print(
+        "- estado venues/climate: "
+        f"venues={_exists(LAYER_ROOT / 'data' / 'worldcup_venues_seed.json')} | "
+        f"climate={_exists(LAYER_ROOT / 'data' / 'venue_climate_profiles.json')}"
+    )
+    print(
+        "- estado group stage fixtures: "
+        + group_fixture_context.get("data_status", "manual_snapshot_required")
+    )
+    print("- estado report builder: " + _exists(LAYER_ROOT / "report_builder.py"))
+    print(
+        "- estado backtesting foundation: "
+        + backtesting_manifest.get("data_status", "manual_snapshot_required")
+    )
+    print("- estado self audit: " + _exists(LAYER_ROOT / "system_self_audit.py"))
+    print("- siguiente bloque recomendado: Historical Blind Backtesting v1 with leakage guard")
 
 
 if __name__ == "__main__":

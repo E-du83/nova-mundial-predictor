@@ -1,0 +1,83 @@
+{
+  "data_status": "backtesting_foundation_v1",
+  "notes": "Dataset registry only. No historical World Cup backtest is executed until a clean blind dataset exists.",
+  "datasets": [
+    {
+      "dataset": "openfootball historical World Cups",
+      "purpose": "Historical fixtures and results for World Cup backtesting",
+      "source_type": "open_data",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "manual_snapshot_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "medium",
+      "notes": "Validate schema, license and match dates before use."
+    },
+    {
+      "dataset": "international_results",
+      "purpose": "Broad national-team historical results",
+      "source_type": "open_source_dataset",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "manual_snapshot_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "medium",
+      "notes": "Needs cutoff-date filtering to prevent future leakage."
+    },
+    {
+      "dataset": "StatsBomb Open Data",
+      "purpose": "Event-level public football data when competition coverage exists",
+      "source_type": "open_data",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "coverage_verification_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "high",
+      "notes": "Use only if competition, match and license coverage are confirmed."
+    },
+    {
+      "dataset": "Football-Data.co.uk",
+      "purpose": "Market and result data for compatible football competitions",
+      "source_type": "open_web_data",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "coverage_verification_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "medium",
+      "notes": "Primarily club coverage; international usefulness must be verified."
+    },
+    {
+      "dataset": "JGravier/soccer-elo",
+      "purpose": "Historical Elo signal for pre-match strength snapshots",
+      "source_type": "open_source_repo",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "manual_snapshot_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "high",
+      "notes": "Must use Elo values available before each match date."
+    },
+    {
+      "dataset": "FIFA official archive",
+      "purpose": "Official fixtures, results and tournament metadata",
+      "source_type": "official",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "manual_snapshot_required",
+      "integration_status": "not_integrated",
+      "leakage_risk": "medium",
+      "notes": "Prefer manual verified snapshots; do not scrape aggressively."
+    },
+    {
+      "dataset": "manual historical snapshots",
+      "purpose": "User-verified historical odds, lineups, injuries and context",
+      "source_type": "manual_snapshot",
+      "cost": "free",
+      "requires_api_key": false,
+      "status": "template_ready",
+      "integration_status": "foundation_ready",
+      "leakage_risk": "low_if_cutoff_enforced",
+      "notes": "Use captured_at, source_status and cutoff_date on every snapshot."
+    }
+  ]
+}

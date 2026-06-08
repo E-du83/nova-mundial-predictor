@@ -93,5 +93,14 @@
       "final": 1000000
     },
     "rule": "Manual snapshots are allowed only as user-verified visible data. No scraping, no paid API dependency, no invented values."
+  },
+  "data_completion_backtesting_foundation_v1": {
+    "world_elo_client": "src/data_ingestion/world_elo_client.py",
+    "open_meteo_client": "src/data_ingestion/open_meteo_client.py",
+    "openfootball_client": "src/data_ingestion/openfootball_client.py",
+    "validator": "src/data_ingestion/data_source_validator.py",
+    "group_stage_fixture_context": "game-layers/quiniela-mundialista/data/group_stage_fixture_context.json",
+    "backtesting_manifest": "game-layers/quiniela-mundialista/data/backtesting_manifest.json",
+    "rule": "Offline-first data completion. Missing real data stays pending/manual_snapshot_required. No paid API dependency, no aggressive scraping, no automatic recalibration."
   }
 }

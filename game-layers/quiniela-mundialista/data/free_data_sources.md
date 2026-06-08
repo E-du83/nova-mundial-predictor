@@ -16,6 +16,7 @@ simple: si un dato no esta disponible gratis o no esta verificado, se marca como
 | The Odds API | cuotas si existe plan/API key | optional_limited_api | No es dependencia obligatoria; puede requerir pago |
 | GitHub football datasets | descubrimiento de datasets | reference_registry | Calidad y licencia variable |
 | 365Scores snapshot manual | cuotas visibles, alineaciones, stats si el usuario las copia | manual_snapshot | No scraping; algunos datos pueden venir de proveedores premium |
+| Backtesting open datasets | openfootball historico, international_results, StatsBomb Open Data, Football-Data.co.uk, soccer-elo | mixed_open_sources | Requieren validacion de licencia, cobertura y cutoff para evitar leakage |
 
 ## Lectura API key
 
@@ -42,6 +43,8 @@ simple: si un dato no esta disponible gratis o no esta verificado, se marca como
 - Coordenadas de sedes.
 - Clima historico normal por sede y mes.
 - Snapshots Elo completos y actualizados.
+- Fixture oficial completo de fase de grupos en snapshot local.
+- Dataset historico blind para Mundial 2022 con corte temporal por partido.
 - Cuotas 1X2 verificadas si el usuario decide aportarlas manualmente.
 - Alineaciones, lesiones, sanciones y contexto tactico real.
 - Resultado real de amistosos cuando se jueguen para comparar contra el pick.
