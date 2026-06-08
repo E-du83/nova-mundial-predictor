@@ -36,6 +36,12 @@ principal, alternativa critica y opcion tentadora. Tambien clasifica las senales
 por peso para decidir que sirve para quiniela y que sirve para apuesta
 prepartido.
 
+El bloque **Research Refresh + Match Alarm Layer v1** audita si un partido
+activo necesita refresco manual antes del pick final y calcula la ventana de
+kickoff con `kickoff_time_utc`. No usa APIs pagadas, no hace scraping y no
+inventa datos: si faltan cuotas, alineaciones, formaciones, ratings o resultado
+real, los deja como pendientes explicitos.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -74,6 +80,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   Core.
 - Distingue datos de peso alto, medio y bajo para evitar humo o notas
   decorativas.
+- Audita `research_refresh_required`, `recommended_action`, estado de alarma
+  del partido y datos criticos faltantes antes de correr un pick final.
 
 ## Final Pick
 
@@ -133,6 +141,11 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   incompletos.
 - `research_intelligence_engine.py`: convierte investigacion publica manual en
   ajustes contextuales de riesgo/confianza sin sustituir el Core.
+- `research_refresh_engine.py`: revisa venue, kickoff UTC, mercado,
+  alineaciones, formaciones, ratings, tactica y resultado real para decidir si
+  hace falta refresh manual.
+- `match_alarm_engine.py`: calcula estado `upcoming`, `near_kickoff`, `live`,
+  `final` o `unknown` desde `kickoff_time_utc` y marca `final_refresh_due`.
 - `player_rating_engine.py`: lee ratings seed, busca nombres flexibles, agrupa
   por linea y reporta ratings faltantes.
 - `lineup_strength_engine.py`: detecta jugadores desde snapshots manuales y
@@ -181,6 +194,7 @@ Partidos amistosos cargados para prueba:
 - Colombia vs Jordan.
 - Croatia vs Slovenia.
 - Ecuador vs Guatemala.
+- Netherlands vs Uzbekistan.
 
 Estos partidos tienen `competition_type: international_friendly`. El motor los
 trata como amistosos: baja la confianza, sube el riesgo por rotacion y pruebas
@@ -190,9 +204,16 @@ Para la prueba actual solo quedan activos:
 
 - Morocco vs Norway.
 - Colombia vs Jordan.
+- Netherlands vs Uzbekistan.
 
 Se excluyen partidos donde no ambos equipos estan en baseline mundialista, o
 partidos ya jugados. Los excluidos se informan con razon en el demo.
+
+Worldcup Friendly Test v2 mantiene alcance `worldcup_only`: no crea Open
+Friendly Lab, no agrega equipos fuera del baseline mundialista y no contamina
+`worldcup_2026_real_teams_baseline_v1.json`. France vs Northern Ireland y Peru
+vs Spain quedan fuera de esta capa; si aparecen en notas futuras deben marcarse
+como `excluded_for_worldcup_only_scope`.
 
 ## Research Snapshot manual
 
@@ -269,6 +290,19 @@ La salida muestra `data_found`, `data_quality`, `evidence_level`,
 `impact_type`, `numeric_adjustment`, `qualitative_adjustment` y `explanation`
 por capa.
 
+## Historial de predicciones
+
+`prediction_history.json` guarda evidencia auditable de cada corrida amistosa:
+prediccion previa, modo de simulacion, simulaciones usadas, pick, marcador,
+alternativa critica, opcion tentadora, Quinigol, descanso/final,
+`tactical_score`, confianza, riesgo, calidad de datos, estado de
+research-refresh/match-alarm, resultado real cuando existe y revision
+post-partido.
+
+Este historial no entrena el modelo automaticamente y no cambia picks. Sirve
+para backtesting, revision manual y calibracion futura. Las nuevas corridas se
+deduplican por firma y no sobrescriben predicciones previas sin dejar rastro.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -332,6 +366,8 @@ game-layers/quiniela-mundialista/
 |-- tactical_weighting_engine.py
 |-- research_intelligence_engine.py
 |-- research_weighting_engine.py
+|-- research_refresh_engine.py
+|-- match_alarm_engine.py
 |-- half_time_engine.py
 |-- pick_robustness_engine.py
 |-- result_review_engine.py
@@ -347,6 +383,7 @@ game-layers/quiniela-mundialista/
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
 |-- run_research_snapshot_demo.py
+|-- run_research_refresh_demo.py
 |-- run_project_status_report.py
 `-- data/
     |-- fixtures_context.json
@@ -354,6 +391,7 @@ game-layers/quiniela-mundialista/
     |-- free_data_sources.md
     |-- manual_match_snapshots.json
     |-- friendly_test_results.json
+    |-- prediction_history.json
     |-- player_ratings_seed.json
     |-- openfootball_snapshot_README.md
     |-- venue_climate_profiles.json
@@ -372,6 +410,7 @@ python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
+python -B game-layers/quiniela-mundialista/run_research_refresh_demo.py
 python -B game-layers/quiniela-mundialista/run_friendly_test_demo.py
 python -B game-layers/quiniela-mundialista/run_project_status_report.py
 python -B game-layers/quiniela-mundialista/run_quiniela_demo.py

@@ -62,6 +62,20 @@
       "source_status": "user_verified_screenshot",
       "captured_at": "2026-06-07",
       "learning_note": "El modelo final acerto ganador, marcador exacto, descanso/final y equipo Quinigol; el minuto Quinigol quedo temprano frente al primer gol real de Colombia."
+    },
+    {
+      "match": "Netherlands vs Uzbekistan",
+      "team_a": "Netherlands",
+      "team_b": "Uzbekistan",
+      "real_score": "pending_real_result",
+      "real_result": "pending_real_result",
+      "halftime_score": "pending_real_result",
+      "halftime_result": "pending_real_result",
+      "goals": "pending_real_result",
+      "status": "pending",
+      "source_status": "pending_real_result",
+      "captured_at": "pending_real_result",
+      "learning_note": "pending_real_result"
     }
   ]
 }

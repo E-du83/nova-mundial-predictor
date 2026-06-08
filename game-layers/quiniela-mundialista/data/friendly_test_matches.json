@@ -31,6 +31,22 @@
       "notes": "Prueba amistosa; confirmar horario, sede y cuotas antes de usar como snapshot real."
     },
     {
+      "match": "Netherlands vs Uzbekistan",
+      "team_a": "Netherlands",
+      "team_b": "Uzbekistan",
+      "competition_type": "international_friendly",
+      "test_scope": "worldcup_only",
+      "source_status": "user_screenshot_and_public_fixture",
+      "kickoff_time_local": "12:45",
+      "kickoff_time_utc": "2026-06-08T18:45:00Z",
+      "venue": "Icahn Stadium / New York",
+      "data_status": "active",
+      "research_refresh_required": true,
+      "excluded_from_current_test": false,
+      "reason": "active_worldcup_baseline_teams",
+      "notes": "Both teams are World Cup 2026 teams. Use same full pipeline as previous friendly tests. Partial researched snapshot loaded; odds, lineups, formations and result status still require manual refresh."
+    },
+    {
       "match": "Croatia vs Slovenia",
       "team_a": "Croatia",
       "team_b": "Slovenia",

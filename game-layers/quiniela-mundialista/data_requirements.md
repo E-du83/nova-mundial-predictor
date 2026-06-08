@@ -75,6 +75,9 @@ el impacto esperado.
 | Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
 | Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
+| Historial predicciones | `prediction_history.json` | Si | evidencia local | Guarda prediccion, resultado, revision y aprendizaje para backtesting futuro |
+| Research refresh | Auditoria local de snapshots manuales | Si | activo | Marca si faltan 3+ datos criticos y recomienda refresco antes del pick final |
+| Match alarm | `kickoff_time_utc` del snapshot manual | Si | activo si hay hora UTC | Detecta ventana de 60 minutos, near kickoff, live/final o kickoff pendiente |
 | Descanso/final | Derivado de Core + Quinigol | Si | parcial | Agrega lectura HT/FT sin nuevo motor Core |
 | Robustez pick | Derivado de top_scores Core | Si | disponible si hay top_scores | Detecta pick fragil y alerta de empate |
 | Alternativa critica | Derivado de top_scores Core | Si | disponible si hay top_scores | Advierte cuando el pick #2 esta muy cerca |
@@ -105,6 +108,14 @@ el impacto esperado.
   o no hay XI/formacion probable. En ese estado el pick del Core no cambia.
 - `friendly_test_results.json` registra resultados reales solo para revision
   post-partido. No entrena ni recalibra automaticamente el Core.
+- `prediction_history.json` registra ciclos completos de prediccion y revision.
+  No entrena automaticamente ni corrige picks actuales; conserva evidencia para
+  calibracion futura y backtesting manual.
+- `research_refresh_engine.py` no busca datos por su cuenta. Solo audita el
+  snapshot manual y marca `research_refresh_required`, faltantes criticos,
+  faltantes opcionales y `recommended_action`.
+- `match_alarm_engine.py` solo usa `kickoff_time_utc`; si falta ese dato,
+  devuelve `match_status: unknown` y `needs_kickoff_time`.
 - Las senales de peso alto pueden ajustar pick, confianza o riesgo. Las de peso
   medio ajustan confianza/riesgo o warnings. Las de peso bajo solo son nota y no
   pueden cambiar el pick.

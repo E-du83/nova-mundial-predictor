@@ -205,6 +205,137 @@
         "model_warning": "Core Colombia win pick is broadly aligned with market favoritism, but rotation and friendly context should prevent overconfidence."
       },
       "data_status": "manual_researched_public_snapshot"
+    },
+    {
+      "source": "Reuters; 365Scores; ESPN; Flashscore; SofaScore; FotMob; Sports Mole",
+      "source_status": "manual_researched_snapshot",
+      "captured_at": "2026-06-08",
+      "captured_by": "ChatGPT web research",
+      "primary_sources": [
+        "Reuters: Dutch plan dress rehearsal for starting line-up in Monday friendly.",
+        "365Scores: match page with lineups/H2H/stats/odds sections.",
+        "ESPN: live coverage.",
+        "Flashscore: fixture/time/FIFA rankings/neutral venue.",
+        "SofaScore: fixture/time.",
+        "FotMob: Icahn Stadium, 18:45 UTC, friendlies, match stats/lineups/player ratings.",
+        "Sports Mole: preview/prediction/team news."
+      ],
+      "cross_checked_with": [
+        "Reuters",
+        "365Scores",
+        "ESPN",
+        "Flashscore",
+        "SofaScore",
+        "FotMob",
+        "Sports Mole"
+      ],
+      "sources_used": [
+        "Reuters: Dutch plan dress rehearsal for starting line-up in Monday friendly.",
+        "365Scores: match page with lineups/H2H/stats/odds sections.",
+        "ESPN: live coverage.",
+        "Flashscore: fixture/time/FIFA rankings/neutral venue.",
+        "SofaScore: fixture/time.",
+        "FotMob: Icahn Stadium, 18:45 UTC, friendlies, match stats/lineups/player ratings.",
+        "Sports Mole: preview/prediction/team news."
+      ],
+      "match": "Netherlands vs Uzbekistan",
+      "team_a": "Netherlands",
+      "team_b": "Uzbekistan",
+      "competition_type": "international_friendly",
+      "test_scope": "worldcup_only",
+      "kickoff_time": "2026-06-08T18:45:00Z",
+      "kickoff_time_local": "12:45",
+      "kickoff_time_utc": "2026-06-08T18:45:00Z",
+      "venue": "Icahn Stadium / New York",
+      "venue_status": "manual_researched_snapshot",
+      "odds_1x2": {
+        "home": "pending_manual_input",
+        "draw": "pending_manual_input",
+        "away": "pending_manual_input",
+        "home_american": "pending_manual_input",
+        "draw_american": "pending_manual_input",
+        "away_american": "pending_manual_input",
+        "source": "pending_manual_input",
+        "data_status": "pending_manual_input"
+      },
+      "over_under": {
+        "line": "pending_manual_input",
+        "over_american": "pending_manual_input",
+        "under_american": "pending_manual_input",
+        "source": "pending_manual_input",
+        "data_status": "pending_manual_input"
+      },
+      "probable_lineups": {
+        "team_a_formation": "pending_manual_input",
+        "team_b_formation": "pending_manual_input",
+        "team_a_players": "pending_manual_input",
+        "team_b_players": "pending_manual_input",
+        "team_a_players_text": "pending_manual_input",
+        "team_b_players_text": "pending_manual_input",
+        "data_status": "pending_manual_input"
+      },
+      "formations": {
+        "Netherlands": "pending_manual_input",
+        "Uzbekistan": "pending_manual_input",
+        "data_status": "pending_manual_input"
+      },
+      "stats_snapshot": {
+        "both_teams_to_score_percent": "pending_manual_input",
+        "over_2_5_percent": "pending_manual_input",
+        "avg_goals_for_team_a": "pending_manual_input",
+        "avg_goals_for_team_b": "pending_manual_input",
+        "avg_goals_against_team_a": "pending_manual_input",
+        "avg_goals_against_team_b": "pending_manual_input",
+        "h2h_notes": "pending_manual_input",
+        "trends": [
+          "FIFA_rankings_visible: Netherlands FIFA #7, Uzbekistan FIFA #50 per Flashscore snapshot.",
+          "form_visible: Flashscore shows Netherlands ?DWWDW and Uzbekistan ?WWWDW; verify before numeric use.",
+          "external_prediction_note: Sports Mole says Netherlands 2-0 Uzbekistan; use as low-weight editorial note, not model truth."
+        ],
+        "FIFA_rankings_visible": "Netherlands FIFA #7, Uzbekistan FIFA #50 per Flashscore snapshot.",
+        "form_visible": "Flashscore shows Netherlands ?DWWDW and Uzbekistan ?WWWDW; verify before numeric use.",
+        "external_prediction_note": "Sports Mole says Netherlands 2-0 Uzbekistan; use as low-weight editorial note, not model truth.",
+        "data_status": "partial_researched_snapshot"
+      },
+      "injuries_or_absences": {
+        "Netherlands": "Jurrien Timber fitness/start decision pending if applicable; no numeric impact until confirmed.",
+        "Uzbekistan": "pending_manual_input",
+        "data_status": "partial_researched_snapshot"
+      },
+      "tactical_notes": {
+        "Netherlands": "Koeman plans to use largely first-choice lineup as dress rehearsal for World Cup opener; second unofficial 35+35 game for remaining squad.",
+        "Uzbekistan": "World Cup preparation friendly; detailed lineup pending.",
+        "data_status": "partial_researched_snapshot"
+      },
+      "tactical_data_status": "partial_researched_snapshot",
+      "market_notes": [
+        "Odds 1X2 and over/under still pending_manual_input.",
+        "Sports Mole 2-0 editorial prediction is low-weight context only."
+      ],
+      "external_market_notes": [
+        "Sports Mole says Netherlands 2-0 Uzbekistan; use as low-weight editorial note, not model truth."
+      ],
+      "key_players": {
+        "Netherlands": "pending_manual_input",
+        "Uzbekistan": "pending_manual_input",
+        "data_status": "pending_manual_input"
+      },
+      "research_confidence": "medium_partial",
+      "manual_research_impact": {
+        "risk_adjustment": "moderate_increase",
+        "confidence_adjustment": "slight_decrease_until_lineups_market_confirmed",
+        "model_warning": "Partial researched snapshot available; market, lineups and formations remain pending, so run final pick with warning."
+      },
+      "missing_data": [
+        "odds_1x2",
+        "over_under",
+        "probable_lineups",
+        "formations",
+        "confirmed_player_ratings",
+        "complete_tactical_notes",
+        "result_status"
+      ],
+      "data_status": "manual_researched_snapshot"
     }
   ]
 }

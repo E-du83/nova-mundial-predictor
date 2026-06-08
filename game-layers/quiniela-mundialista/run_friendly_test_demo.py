@@ -24,6 +24,7 @@ from manual_snapshot_engine import (
     load_manual_snapshots,
     summarize_manual_snapshot,
 )
+from match_alarm_engine import build_match_alarm
 from half_time_engine import (  # noqa: E402
     build_half_time_pick,
     format_half_time_lines,
@@ -46,12 +47,15 @@ from research_weighting_engine import (  # noqa: E402
     build_research_weighting,
     format_research_weighting_lines,
 )
+from research_refresh_engine import build_research_refresh
+from prediction_history_engine import record_prediction_history
 from simulation_config import resolve_simulation_mode
 
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_matches.json"
 SNAPSHOTS_PATH = Path(__file__).resolve().parent / "data" / "manual_match_snapshots.json"
 RESULTS_PATH = Path(__file__).resolve().parent / "data" / "friendly_test_results.json"
+HISTORY_PATH = Path(__file__).resolve().parent / "data" / "prediction_history.json"
 
 
 def load_friendly_matches(path: Path = DATA_PATH) -> list[dict]:
@@ -148,6 +152,13 @@ def _build_friendly_recommendation(
     context = build_friendly_context(match)
     snapshot = find_manual_snapshot(snapshots_data, match["team_a"], match["team_b"])
     snapshot_summary = summarize_manual_snapshot(snapshot)
+    research_refresh = build_research_refresh(
+        match["team_a"],
+        match["team_b"],
+        snapshots_data=snapshots_data,
+        results_data=results_data,
+    )
+    match_alarm = build_match_alarm(snapshot)
     missing_teams = [
         team
         for team in (match["team_a"], match["team_b"])
@@ -221,6 +232,8 @@ def _build_friendly_recommendation(
         "market_reading": research["market_warning"],
         "research": research,
         "research_weighting": weighting,
+        "research_refresh": research_refresh,
+        "match_alarm": match_alarm,
         "half_time": half_time,
         "robustness": robustness,
         "real_result": real_result,
@@ -232,6 +245,8 @@ def _build_friendly_recommendation(
             "friendly_test_matches.json",
             "manual_match_snapshots.json",
             "research_intelligence_engine",
+            "research_refresh_engine",
+            "match_alarm_engine",
             "friendly_context_engine",
         ],
         "missing_data": sorted(
@@ -241,6 +256,8 @@ def _build_friendly_recommendation(
                     "lineups",
                     "injuries",
                 ]
+                + research_refresh["missing_critical_fields"]
+                + research_refresh["missing_optional_fields"]
             )
         ),
         "note": (
@@ -285,6 +302,27 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         f"Minuto referencia: {recommendation['reference_minute']}",
         f"Modo de simulacion: {recommendation['simulation_mode']}",
         f"Simulaciones usadas: {recommendation['simulations_used']}",
+        (
+            "Research refresh required: "
+            f"{'si' if recommendation['research_refresh']['research_refresh_required'] else 'no'}"
+        ),
+        f"Research recommended action: {recommendation['research_refresh']['recommended_action']}",
+        f"Match alarm status: {recommendation['match_alarm']['alarm_status']}",
+        f"Match status: {recommendation['match_alarm']['match_status']}",
+        f"Minutes to kickoff: {recommendation['match_alarm']['minutes_to_kickoff']}",
+        (
+            "Final refresh due: "
+            f"{'si' if recommendation['match_alarm']['final_refresh_due'] else 'no'}"
+        ),
+        (
+            "Partial snapshot warning: "
+            + (
+                "final pick runs with partial researched snapshot; refresh market, lineups and formations if available"
+                if recommendation["research_refresh"]["partial_snapshot_ok_for_final_pick"]
+                and recommendation["research_refresh"]["research_refresh_required"]
+                else "none"
+            )
+        ),
         f"Confianza ajustada: {recommendation['adjusted_confidence']}",
         f"Riesgo amistoso: {recommendation['friendly_risk']}",
         f"Confianza ajustada con investigacion: {recommendation.get('research_adjusted_confidence')}",
@@ -412,12 +450,14 @@ def build_friendly_recommendations(mode: str = "quick") -> tuple[list[dict], lis
 
 def run_friendly_test(mode: str = "quick") -> None:
     recommendations, excluded, simulation_mode, simulations = build_friendly_recommendations(mode)
+    history = record_prediction_history(recommendations, HISTORY_PATH)
 
     print("NOVA FRIENDLY TEST DEMO - DOMINGO")
     print("Esto es una prueba amistosa, no una prediccion oficial del Mundial.")
     print("Solo se simulan partidos activos con ambos equipos mundialistas en baseline.")
     print(f"Modo de simulacion: {simulation_mode}")
     print(f"Simulaciones usadas: {simulations}")
+    print(f"Historial predicciones: {history.get('last_update_status')}")
     print("")
 
     print("PARTIDOS ACTIVOS PARA PRUEBA")
