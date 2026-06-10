@@ -41,12 +41,38 @@ CREATE TABLE IF NOT EXISTS recommendations (
     current_odds REAL,
     minimum_odds REAL,
     expected_value REAL,
+    probability_home REAL,
+    probability_draw REAL,
+    probability_away REAL,
+    quinigol_team TEXT,
+    quinigol_minute INTEGER,
+    quinigol_range TEXT,
+    phase TEXT,
+    simulation_mode TEXT,
+    simulations INTEGER,
+    context_flags TEXT,
+    data_quality_at_prediction REAL,
     notes TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_odds_match_market ON odds_snapshots(match_name, market);
 CREATE INDEX IF NOT EXISTS idx_recommendations_match ON recommendations(match_name);
 """
+
+
+OPTIONAL_RECOMMENDATION_COLUMNS = {
+    "probability_home": "REAL",
+    "probability_draw": "REAL",
+    "probability_away": "REAL",
+    "quinigol_team": "TEXT",
+    "quinigol_minute": "INTEGER",
+    "quinigol_range": "TEXT",
+    "phase": "TEXT",
+    "simulation_mode": "TEXT",
+    "simulations": "INTEGER",
+    "context_flags": "TEXT",
+    "data_quality_at_prediction": "REAL",
+}
 
 
 def connect(db_path: str | Path = "nova_mundial_predictor.sqlite3"):
@@ -58,10 +84,21 @@ def init_db(db_path: str | Path = "nova_mundial_predictor.sqlite3") -> str:
     conn = connect(db_path)
     try:
         conn.executescript(SCHEMA)
+        _ensure_recommendation_columns(conn)
         conn.commit()
     finally:
         conn.close()
     return str(db_path)
+
+
+def _ensure_recommendation_columns(conn) -> None:
+    existing = {
+        row[1]
+        for row in conn.execute("PRAGMA table_info(recommendations)").fetchall()
+    }
+    for column, definition in OPTIONAL_RECOMMENDATION_COLUMNS.items():
+        if column not in existing:
+            conn.execute(f"ALTER TABLE recommendations ADD COLUMN {column} {definition}")
 
 
 def insert_odds_snapshot(db_path, match_name, market, bookmaker, odds, source="manual", label=None):
@@ -82,13 +119,17 @@ def insert_odds_snapshot(db_path, match_name, market, bookmaker, odds, source="m
 def insert_recommendation(db_path, **kwargs):
     conn = connect(db_path)
     try:
+        _ensure_recommendation_columns(conn)
         conn.execute(
             """
             INSERT INTO recommendations (
                 match_name, market, decision, recommended_play, model_probability,
-                current_odds, minimum_odds, expected_value, notes
+                current_odds, minimum_odds, expected_value, probability_home,
+                probability_draw, probability_away, quinigol_team, quinigol_minute,
+                quinigol_range, phase, simulation_mode, simulations, context_flags,
+                data_quality_at_prediction, notes
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 kwargs.get("match_name"),
@@ -99,6 +140,17 @@ def insert_recommendation(db_path, **kwargs):
                 kwargs.get("current_odds"),
                 kwargs.get("minimum_odds"),
                 kwargs.get("expected_value"),
+                kwargs.get("probability_home"),
+                kwargs.get("probability_draw"),
+                kwargs.get("probability_away"),
+                kwargs.get("quinigol_team"),
+                kwargs.get("quinigol_minute"),
+                kwargs.get("quinigol_range"),
+                kwargs.get("phase"),
+                kwargs.get("simulation_mode"),
+                kwargs.get("simulations"),
+                kwargs.get("context_flags"),
+                kwargs.get("data_quality_at_prediction"),
                 kwargs.get("notes"),
             )
         )

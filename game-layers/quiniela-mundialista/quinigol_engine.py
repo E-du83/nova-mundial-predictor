@@ -1,5 +1,6 @@
 import math
 
+from quinigol_minute_policy import apply_quinigol_minute_policy
 from scoring_rules import parse_score
 from strategy_engine import normalize_strategy
 
@@ -218,7 +219,7 @@ def recommend_quinigol(match_result: dict, strategy: str = "balanceado") -> dict
 
     if selected["team"] == "No hay":
         risk = _risk_from_probability(selected["probability"])
-        return {
+        return apply_quinigol_minute_policy(match_result, {
             "recommended": "No hay gol en 90 minutos",
             "team": "No hay",
             "minute": None,
@@ -239,13 +240,13 @@ def recommend_quinigol(match_result: dict, strategy: str = "balanceado") -> dict
                 "La opcion 'No hay' aparece porque la probabilidad de gol es baja "
                 "para este perfil de partido."
             ),
-        }
+        }, recommended_score)
 
     minute = _estimate_goal_minute(selected, strategy, total_lambda, draw_probability)
     risk = _risk_from_probability(selected["probability"])
     minute_range = _minute_range(minute, risk, total_lambda)
 
-    return {
+    return apply_quinigol_minute_policy(match_result, {
         "recommended": f"{selected['team']} anota gol recomendado",
         "team": selected["team"],
         "minute": minute,
@@ -273,4 +274,4 @@ def recommend_quinigol(match_result: dict, strategy: str = "balanceado") -> dict
             "recommended_score": recommended_score,
             "strategy": strategy,
         },
-    }
+    }, recommended_score)

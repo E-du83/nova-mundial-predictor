@@ -24,6 +24,7 @@ def build_prediction_report(matches: list[dict], metadata: dict | None = None) -
                 "critical_alternative": _field(item, "alternativa_critica"),
                 "tempting_option": _field(item, "opcion_tentadora"),
                 "quinigol": _field(item, "quinigol"),
+                "quinigol_policy_applied": _field(item, "quinigol_policy_applied", "not_available"),
                 "quinigol_range": _field(item, "quinigol_range"),
                 "quinigol_minute_reference": _field(item, "reference_minute"),
                 "halftime_fulltime": _field(item, "halftime_fulltime"),
@@ -46,7 +47,17 @@ def build_prediction_report(matches: list[dict], metadata: dict | None = None) -
     }
 
 
+def _without_generated_at(report: dict) -> dict:
+    comparable = dict(report)
+    comparable.pop("generated_at", None)
+    return comparable
+
+
 def save_prediction_report(report: dict, output_path: str | Path) -> dict:
     path = Path(output_path)
+    if path.exists():
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        if _without_generated_at(existing) == _without_generated_at(report):
+            return existing
     path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return report

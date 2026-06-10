@@ -6,6 +6,42 @@ Este proyecto es un motor probabilístico para analizar el Mundial 2026 con simu
 
 > Nota: internamente se desarrolló por fases, pero esta es la primera versión limpia para subir a GitHub.
 
+## Hardening Foundation v1
+
+Este bloque fortalece el repositorio sin recalibrar el modelo, sin reemplazar
+el Core de `src/` y sin tocar `data/worldcup_2026_real_teams_baseline_v1.json`.
+
+Incluye:
+
+- `.gitignore` reforzado para excluir caches Python, bases SQLite locales,
+  logs, llaves, `.env` y respaldos temporales.
+- Tests minimos de scoring en `tests/test_scoring_rules.py`, ejecutables sin
+  pytest con:
+
+```bash
+python -B tests/test_scoring_rules.py
+```
+
+- Politica definitiva de Quinigol: `0-0` siempre queda como `No hay gol`;
+  cualquier marcador con goles debe tener equipo, minuto concreto, rango y
+  `policy_applied`.
+- `prediction_history.json` guarda, cuando existe, `probabilities_1x2`,
+  `top_scores`, `expected_goals`, modo, simulaciones, Quinigol policy, calidad
+  de datos, refresh status y tactical score.
+- Los reportes evitan reescribir JSON si el unico cambio relevante es
+  `generated_at`.
+
+SQLite local no debe versionarse. Si aparece trackeado, sacarlo del indice sin
+borrar la base local:
+
+```bash
+git rm --cached nova_mundial_predictor.sqlite3
+```
+
+Pendiente: persistencia SQLite completa para todas las predicciones historicas
+seguira siendo compatible y no destructiva. Este bloque no recalibra pesos ni
+cambia picks salvo correcciones de coherencia Quinigol.
+
 
 Esta versión consolida el proyecto como paquete maestro.
 

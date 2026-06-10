@@ -174,7 +174,8 @@ def _why_quinigol(recommendation: dict) -> str:
     return (
         f"{quinigol['recommended']} se mantiene como gol recomendado unico. "
         f"El minuto es una referencia probabilistica ({quinigol['minute_label']}) "
-        f"y el rango {quinigol['minute_range']} pesa mas que el minuto exacto."
+        f"y el rango {quinigol['minute_range']} pesa mas que el minuto exacto. "
+        f"Politica aplicada: {quinigol.get('policy_applied', 'normal')}."
     )
 
 
@@ -253,8 +254,12 @@ def build_final_pick(
         "final_quiniela_recommendation": quiniela["result"],
         "final_score": quiniela["recommended_score"],
         "final_quinigol": quinigol["recommended"],
+        "quinigol_team": quinigol.get("team"),
+        "quinigol_minute": quinigol.get("minute"),
         "quinigol_range": quinigol["minute_range"],
         "reference_minute": quinigol["minute_label"],
+        "quinigol_policy_applied": quinigol.get("policy_applied", "normal"),
+        "quinigol_policy_explanation": quinigol.get("policy_explanation", "normal"),
         "confidence": _confidence_from_evaluation(selected, recommendation),
         "risk": _overall_risk(recommendation, context, climate),
         "why_score": _why_score(selected, recommendation, context, climate),
@@ -301,8 +306,10 @@ def format_final_pick(final_pick: dict) -> str:
         f"Recomendacion final quiniela: {final_pick['final_quiniela_recommendation']}",
         f"Marcador final recomendado: {final_pick['final_score']}",
         f"Quinigol final recomendado: {final_pick['final_quinigol']}",
+        f"Equipo Quinigol: {final_pick.get('quinigol_team')}",
         f"Rango probable Quinigol: {final_pick['quinigol_range']}",
         f"Minuto referencia: {final_pick['reference_minute']}",
+        f"Politica Quinigol: {final_pick.get('quinigol_policy_applied', 'normal')}",
         f"Confianza: {final_pick['confidence']}%",
         f"Riesgo: {final_pick['risk']}",
         f"Por que este marcador: {final_pick['why_score']}",

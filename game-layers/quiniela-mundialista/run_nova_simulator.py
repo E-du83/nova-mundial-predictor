@@ -89,6 +89,8 @@ def _print_compact_recommendation(
     print(f"Quinigol: {recommendation['quinigol']}")
     print(f"Rango probable: {recommendation['quinigol_range']}")
     print(f"Minuto referencia: {recommendation['reference_minute']}")
+    print(f"Politica Quinigol: {recommendation.get('quinigol_policy_applied', 'normal')}")
+    print(f"Explicacion Quinigol policy: {recommendation.get('quinigol_policy_explanation', 'normal')}")
     print(f"Descanso/final: {recommendation['half_time']['half_time_full_time']}")
     print(f"Confianza: {recommendation['adjusted_confidence']}")
     print(f"Riesgo: {recommendation['friendly_risk']}")

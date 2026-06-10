@@ -26,6 +26,25 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _without_generated_at(data: dict) -> dict:
+    comparable = dict(data)
+    comparable.pop("generated_at", None)
+    return comparable
+
+
+def _write_json_if_relevant_changed(path: str | Path, data: dict) -> dict:
+    output_path = Path(path)
+    if output_path.exists():
+        existing = json.loads(output_path.read_text(encoding="utf-8"))
+        if _without_generated_at(existing) == _without_generated_at(data):
+            return existing
+    output_path.write_text(
+        json.dumps(data, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return data
+
+
 def _match_key(match: str) -> str:
     return str(match).strip().lower()
 
@@ -350,12 +369,6 @@ def build_and_save_calibration_outputs(
 ) -> tuple[dict, dict]:
     report = build_friendly_calibration(results_path, history_path)
     notes = build_calibration_notes(report["matches_reviewed"])
-    Path(report_path).write_text(
-        json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    Path(notes_path).write_text(
-        json.dumps(notes, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    return report, notes
+    saved_report = _write_json_if_relevant_changed(report_path, report)
+    saved_notes = _write_json_if_relevant_changed(notes_path, notes)
+    return saved_report, saved_notes

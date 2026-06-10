@@ -117,6 +117,11 @@ el impacto esperado.
 - `prediction_history.json` registra ciclos completos de prediccion y revision.
   No entrena automaticamente ni corrige picks actuales; conserva evidencia para
   calibracion futura y backtesting manual.
+- Desde Hardening Foundation v1, `prediction_history.json` debe guardar, cuando
+  este disponible, `probabilities_1x2`, `top_scores`, `expected_goals`,
+  `simulation_mode`, `simulations`, `quinigol_policy_applied`,
+  `quinigol_team`, `quinigol_minute`, `quinigol_range`, `data_quality_score`,
+  `research_refresh_status` y `tactical_score`.
 - `friendly_calibration_report.json` y `calibration_notes.json` guardan
   aprendizaje evaluativo: empate subestimado, gol tardio rival/BTTS
   subestimado, minuto Quinigol fuera de rango, fragilidad validada y validacion
@@ -142,3 +147,23 @@ el impacto esperado.
   pueden cambiar el pick.
 - Lesiones solo pesan si tienen `injury_impact` igual a `medium`, `high` o
   `critical`; lesiones sin impacto definido quedan como dato pendiente.
+
+## Hardening Foundation v1
+
+- SQLite local (`*.sqlite3`, `*.sqlite`, `*.db`) es artefacto runtime y no debe
+  versionarse. Si `nova_mundial_predictor.sqlite3` aparece trackeado, usar
+  `git rm --cached nova_mundial_predictor.sqlite3` para quitarlo del indice sin
+  borrar el archivo local.
+- Caches Python (`__pycache__/`, `*.pyc`, `*.pyo`), logs, `.env`, llaves y
+  respaldos temporales deben quedar fuera de Git.
+- Los tests minimos de scoring se ejecutan con
+  `python -B tests/test_scoring_rules.py`.
+- Quinigol tiene politica definitiva: `0-0` implica `No hay gol`; marcador con
+  goles implica equipo y minuto obligatorios; el rango es contexto y el minuto
+  es el pick registrado.
+- Los reportes JSON no deben reescribirse si solo cambia `generated_at`.
+- Persistencia SQLite completa queda pendiente para siguientes bloques, pero el
+  schema ya admite columnas opcionales compatibles para probabilidades 1X2,
+  Quinigol, fase, modo, simulaciones y calidad de datos.
+- Este bloque no recalibra pesos, no toca el baseline mundialista y no cambia
+  el Core predictivo salvo migracion compatible de almacenamiento.

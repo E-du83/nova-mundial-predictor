@@ -55,6 +55,11 @@ URLs, pero no hacen scraping agresivo ni dependen de APIs pagadas. Si falta un
 dato, queda como `pending_real_data`, `manual_snapshot_required`,
 `pending_manual_input` o `not_available_free`.
 
+El bloque **Hardening Foundation v1** agrega limpieza de Git, tests minimos,
+politica fuerte de Quinigol y trazabilidad basica para metricas futuras. No
+recalibra pesos, no reemplaza el Core y no cambia picks salvo correcciones de
+coherencia Quinigol.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -131,6 +136,54 @@ La salida puede recomendar:
 El minuto de referencia es una estimacion probabilistica. El rango probable es
 mas importante que el minuto exacto.
 
+Politica definitiva:
+
+- Si el marcador recomendado es `0-0`, Quinigol queda como `No hay gol`,
+  `minute=None`, `minute_label=No hay gol`, `minute_range=No aplica` y
+  `policy_applied=score_0_0_no_goal`.
+- Si el marcador recomendado tiene al menos un gol, el minuto es obligatorio y
+  nunca debe quedar en `None`.
+- Si ambos equipos tienen goles, el equipo Quinigol se elige por mayor xG/lambda;
+  si hay empate, se usa probabilidad de primer gol si existe, luego favorito
+  1X2 y finalmente `team_a`.
+- El rango probable es contexto; el minuto especifico es el pick registrado.
+- Si el engine proponia `No hay` pero el marcador tiene goles, la policy corrige
+  el pick y marca `policy_applied=minute_forced_by_predicted_goals`.
+- Si no hubo correccion, marca `policy_applied=normal`.
+
+## Tests
+
+Los tests minimos de scoring viven en:
+
+```txt
+tests/test_scoring_rules.py
+```
+
+Ejecucion directa sin pytest:
+
+```bash
+python -B tests/test_scoring_rules.py
+```
+
+Si pytest esta disponible, el mismo archivo tambien puede descubrirse como test.
+
+## Trazabilidad prediction_history
+
+`prediction_history.json` guarda evidencia para backtesting y metricas futuras.
+Cuando la recomendacion trae esos datos, se persisten:
+
+- `probabilities_1x2` con `home_win`, `draw`, `away_win`;
+- `top_scores`;
+- `expected_goals`;
+- `simulation_mode` y `simulations`;
+- `quinigol_policy_applied`, `quinigol_team`, `quinigol_minute`,
+  `quinigol_range`;
+- `data_quality_score`, `research_refresh_status` y `tactical_score`.
+
+El historial conserva dedupe por firma y no entrena automaticamente el modelo.
+SQLite local es runtime y no debe versionarse; la persistencia completa en tabla
+queda compatible mediante columnas opcionales no destructivas.
+
 ## Marcador recomendado vs Quinigol
 
 El marcador recomendado responde: "cual resultado exacto conviene jugar en la
@@ -148,6 +201,8 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 
 - `strategy_engine.py`: genera escenarios conservador, balanceado y agresivo.
 - `quinigol_engine.py`: recomienda Quinigol sin crear cronologia completa.
+- `quinigol_minute_policy.py`: fuerza coherencia entre marcador recomendado,
+  equipo Quinigol, minuto y rango registrado.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.

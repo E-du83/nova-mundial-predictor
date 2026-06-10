@@ -78,7 +78,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 27,
+      "quinigol_range": "19-35"
     },
     {
       "match": "Colombia vs Jordan",
@@ -155,7 +162,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 24,
+      "quinigol_range": "16-32"
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -229,7 +243,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     },
     {
       "match": "Morocco vs Norway",
@@ -306,7 +327,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 27,
+      "quinigol_range": "19-35"
     },
     {
       "match": "Colombia vs Jordan",
@@ -383,7 +411,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -457,7 +492,14 @@
         "recommended_action": "not_available",
         "missing_critical_fields": [],
         "missing_optional_fields": []
-      }
+      },
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     },
     {
       "match": "Morocco vs Norway",
@@ -552,7 +594,14 @@
       "pre_match_prediction": "Morocco gana",
       "mode": "final",
       "simulations": 1000000,
-      "review_status": "reviewed"
+      "review_status": "reviewed",
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 27,
+      "quinigol_range": "19-35"
     },
     {
       "match": "Colombia vs Jordan",
@@ -647,7 +696,14 @@
       "pre_match_prediction": "Colombia gana",
       "mode": "final",
       "simulations": 1000000,
-      "review_status": "reviewed"
+      "review_status": "reviewed",
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -742,7 +798,14 @@
       "pre_match_prediction": "Netherlands gana",
       "mode": "final",
       "simulations": 1000000,
-      "review_status": "pre_match_prediction"
+      "review_status": "pre_match_prediction",
+      "probabilities_1x2": {},
+      "top_scores": [],
+      "expected_goals": {},
+      "quinigol_policy_applied": "not_available",
+      "quinigol_team": "not_available",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -839,9 +902,56 @@
       "pre_match_prediction": "Netherlands gana",
       "mode": "final",
       "simulations": 1000000,
-      "review_status": "reviewed"
+      "review_status": "reviewed",
+      "probabilities_1x2": {
+        "home_win": 0.632036,
+        "draw": 0.218959,
+        "away_win": 0.149005
+      },
+      "top_scores": [
+        {
+          "score": "1-0",
+          "probability": 0.135456
+        },
+        {
+          "score": "2-0",
+          "probability": 0.124988
+        },
+        {
+          "score": "1-1",
+          "probability": 0.103087
+        },
+        {
+          "score": "2-1",
+          "probability": 0.09591
+        },
+        {
+          "score": "3-0",
+          "probability": 0.077053
+        },
+        {
+          "score": "0-0",
+          "probability": 0.072807
+        },
+        {
+          "score": "3-1",
+          "probability": 0.059073
+        },
+        {
+          "score": "0-1",
+          "probability": 0.055628
+        }
+      ],
+      "expected_goals": {
+        "Netherlands": 1.853,
+        "Uzbekistan": 0.768
+      },
+      "quinigol_policy_applied": "normal",
+      "quinigol_team": "Netherlands",
+      "quinigol_minute": 16,
+      "quinigol_range": "8-24"
     }
   ],
   "entry_count": 10,
-  "last_update_status": "added 0 entries"
+  "last_update_status": "added 0 entries; enriched 1 entries"
 }

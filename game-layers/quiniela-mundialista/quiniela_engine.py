@@ -118,6 +118,7 @@ def format_quiniela_recommendation(recommendation: dict) -> str:
         f"Simulaciones usadas: {core['simulations']}",
         f"Quinigol recomendado: {quinigol['recommended']}",
         f"Minuto probable: {quinigol['minute_label']}",
+        f"Politica Quinigol: {quinigol.get('policy_applied', 'normal')}",
         (
             "Alternativa segura: "
             f"{safe['result']} {safe['score']} ({safe['probability']}%)"
@@ -133,6 +134,7 @@ def format_quiniela_recommendation(recommendation: dict) -> str:
             f"opcion no hay {quinigol['no_goal_option']['probability']}%"
         ),
         f"Explicacion simple del minuto: {quinigol['minute_explanation']}",
+        f"Explicacion politica Quinigol: {quinigol.get('policy_explanation', 'normal')}",
         f"Riesgo simple: {quinigol['risk_explanation']}",
         f"Criterio estrategia: {quiniela['strategy_explanation']}",
         f"Justificacion breve: {justification}",

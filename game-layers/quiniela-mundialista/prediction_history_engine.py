@@ -3,6 +3,15 @@ from pathlib import Path
 
 
 PENDING = "pending_real_result"
+TRACE_FIELDS = (
+    "probabilities_1x2",
+    "top_scores",
+    "expected_goals",
+    "quinigol_policy_applied",
+    "quinigol_team",
+    "quinigol_minute",
+    "quinigol_range",
+)
 
 
 def load_prediction_history(path: str | Path) -> dict:
@@ -46,6 +55,8 @@ def _result_team_label(value: str, team_a: str, team_b: str) -> str:
 
 
 def _predicted_quinigol_team(recommendation: dict) -> str:
+    if recommendation.get("quinigol_team"):
+        return recommendation["quinigol_team"]
     text = str(recommendation.get("quinigol", ""))
     if "No hay" in text:
         return "No hay"
@@ -53,6 +64,37 @@ def _predicted_quinigol_team(recommendation: dict) -> str:
         if team in text:
             return team
     return PENDING
+
+
+def _selected_core_context(recommendation: dict) -> dict:
+    final_pick = recommendation.get("raw_final_pick", {})
+    scenarios = final_pick.get("scenario_evaluations", [])
+    selected_strategy = final_pick.get("selected_strategy")
+    selected = None
+    if selected_strategy:
+        selected = next(
+            (item for item in scenarios if item.get("strategy") == selected_strategy),
+            None,
+        )
+    if selected is None and scenarios:
+        selected = scenarios[0]
+    if not selected:
+        return {}
+    scenario_recommendation = selected.get("recommendation", {})
+    return scenario_recommendation.get("core", {})
+
+
+def _probabilities_1x2(recommendation: dict) -> dict:
+    core = _selected_core_context(recommendation)
+    probabilities = core.get("probabilities", {})
+    if not probabilities:
+        return {}
+    team_a, team_b = recommendation["match"].split(" vs ", 1)
+    return {
+        "home_win": probabilities.get(f"{team_a}_win"),
+        "draw": probabilities.get("draw"),
+        "away_win": probabilities.get(f"{team_b}_win"),
+    }
 
 
 def _goals_for_team(real_result: dict, team: str) -> list[dict]:
@@ -167,6 +209,10 @@ def build_prediction_history_entry(recommendation: dict) -> dict:
     tempting = alternatives["tempting_option"]
     refresh = recommendation.get("research_refresh", {})
     alarm = recommendation.get("match_alarm", {})
+    core_context = _selected_core_context(recommendation)
+    quinigol_minute = recommendation.get("quinigol_minute")
+    if quinigol_minute is None:
+        quinigol_minute = _digits(recommendation.get("reference_minute"))
     entry = {
         "match": recommendation["match"],
         "history_status": _history_status(recommendation),
@@ -177,11 +223,18 @@ def build_prediction_history_entry(recommendation: dict) -> dict:
         "mode": recommendation["simulation_mode"],
         "simulations_used": recommendation["simulations_used"],
         "simulations": recommendation["simulations_used"],
+        "probabilities_1x2": _probabilities_1x2(recommendation),
+        "top_scores": core_context.get("top_scores", []),
+        "expected_goals": core_context.get("expected_goals", {}),
         "pick_principal": alternatives["principal_pick"]["score"],
         "marcador_recomendado": recommendation["recommended_score"],
         "alternativa_critica": critical["score"] if critical else "none",
         "opcion_tentadora": tempting["score"] if tempting else "none",
         "quinigol": recommendation["quinigol"],
+        "quinigol_policy_applied": recommendation.get("quinigol_policy_applied", "not_available"),
+        "quinigol_team": _predicted_quinigol_team(recommendation),
+        "quinigol_minute": quinigol_minute,
+        "quinigol_range": recommendation["quinigol_range"],
         "minuto_referencia": recommendation["reference_minute"],
         "rango_probable": recommendation["quinigol_range"],
         "descanso_final": recommendation["half_time"]["half_time_full_time"],
@@ -233,17 +286,37 @@ def record_prediction_history(recommendations: list[dict], path: str | Path) -> 
     history_path = Path(path)
     history = load_prediction_history(history_path)
     entries = history.setdefault("entries", [])
-    existing = {entry.get("signature") for entry in entries}
+    existing = {entry.get("signature"): entry for entry in entries}
     added = 0
+    enriched = 0
     for recommendation in recommendations:
         entry = build_prediction_history_entry(recommendation)
-        if entry["signature"] in existing:
+        existing_entry = existing.get(entry["signature"])
+        if existing_entry:
+            changed = False
+            for field in TRACE_FIELDS:
+                current = existing_entry.get(field)
+                incoming = entry.get(field)
+                if current in (None, "", {}, [], "not_available", PENDING) and incoming not in (
+                    None,
+                    "",
+                    {},
+                    [],
+                    "not_available",
+                    PENDING,
+                ):
+                    existing_entry[field] = incoming
+                    changed = True
+            if changed:
+                enriched += 1
             continue
         entries.append(entry)
-        existing.add(entry["signature"])
+        existing[entry["signature"]] = entry
         added += 1
     history["entry_count"] = len(entries)
     history["last_update_status"] = f"added {added} entries"
+    if enriched:
+        history["last_update_status"] += f"; enriched {enriched} entries"
     normalize_prediction_history_data(history)
     history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return history
@@ -270,6 +343,20 @@ def normalize_prediction_history_data(history: dict) -> dict:
             }
         if "learning_note" not in entry:
             entry["learning_note"] = PENDING
+        if "probabilities_1x2" not in entry:
+            entry["probabilities_1x2"] = {}
+        if "top_scores" not in entry:
+            entry["top_scores"] = []
+        if "expected_goals" not in entry:
+            entry["expected_goals"] = {}
+        if "quinigol_policy_applied" not in entry:
+            entry["quinigol_policy_applied"] = "not_available"
+        if "quinigol_team" not in entry:
+            entry["quinigol_team"] = "not_available"
+        if "quinigol_minute" not in entry:
+            entry["quinigol_minute"] = _digits(entry.get("minuto_referencia"))
+        if "quinigol_range" not in entry:
+            entry["quinigol_range"] = entry.get("rango_probable", PENDING)
     history["entry_count"] = len(history.get("entries", []))
     return history
 

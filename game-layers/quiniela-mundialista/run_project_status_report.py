@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 
@@ -40,6 +41,44 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _git_tracked(path: Path) -> str:
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--error-unmatch", str(path)],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return "unknown_git_unavailable"
+    return "TRACKED" if result.returncode == 0 else "not_tracked"
+
+
+def _gitignore_has_hardening_rules() -> bool:
+    path = ROOT / ".gitignore"
+    if not path.exists():
+        return False
+    text = path.read_text(encoding="utf-8")
+    required = [
+        "__pycache__/",
+        "**/__pycache__/",
+        "*.pyc",
+        "*.sqlite3",
+        ".env",
+        "*.log",
+    ]
+    return all(item in text for item in required)
+
+
+def _history_has_probabilities(history: dict) -> bool:
+    for entry in history.get("entries", []):
+        probabilities = entry.get("probabilities_1x2")
+        if isinstance(probabilities, dict) and probabilities:
+            return True
+    return False
+
+
 def main() -> None:
     teams, _, _ = load_default_final_pick_inputs()
     matches = _load_friendly_matches()
@@ -70,6 +109,23 @@ def main() -> None:
     print("NOVA PROJECT STATUS REPORT - QUINIELA MUNDIALISTA")
     print("")
 
+    sqlite_status = _git_tracked(Path("nova_mundial_predictor.sqlite3"))
+    hardening_checks = {
+        ".gitignore actualizado": _gitignore_has_hardening_rules(),
+        "tests presentes": (ROOT / "tests" / "test_scoring_rules.py").exists(),
+        "Quinigol policy presente": (LAYER_ROOT / "quinigol_minute_policy.py").exists(),
+        "prediction_history probabilities_1x2": _history_has_probabilities(history),
+        "SQLite no trackeado": sqlite_status == "not_tracked",
+    }
+    hardening_status = "OK" if all(hardening_checks.values()) else "partial"
+    print("HARDENING FOUNDATION v1")
+    print(f"- estado bloque: {hardening_status}")
+    for label, ok in hardening_checks.items():
+        print(f"- {label}: {'OK' if ok else 'partial'}")
+    print(f"- SQLite tracking status: {sqlite_status}")
+    print("- siguiente bloque recomendado: Tactical Input Bridge v1")
+    print("")
+
     print("MODULOS FUNCIONAN / PRESENTES")
     modules = [
         "final_pick_engine.py",
@@ -98,6 +154,7 @@ def main() -> None:
         "tournament_context_engine.py",
         "venue_climate_engine.py",
         "simulation_config.py",
+        "quinigol_minute_policy.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -266,7 +323,7 @@ def main() -> None:
             "Sample size is very small. Do not recalibrate aggressively from only three friendlies.",
         )
     )
-    print("- proximo bloque recomendado: Data Completion + Backtesting Foundation v1")
+    print("- proximo bloque recomendado: Tactical Input Bridge v1")
     print("")
 
     print("DATA COMPLETION + BACKTESTING FOUNDATION v1")
@@ -287,7 +344,7 @@ def main() -> None:
         + backtesting_manifest.get("data_status", "manual_snapshot_required")
     )
     print("- estado self audit: " + _exists(LAYER_ROOT / "system_self_audit.py"))
-    print("- siguiente bloque recomendado: Historical Blind Backtesting v1 with leakage guard")
+    print("- siguiente bloque recomendado: Tactical Input Bridge v1")
 
 
 if __name__ == "__main__":
