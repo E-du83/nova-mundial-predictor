@@ -1,0 +1,439 @@
+{
+  "data_status": "partial_prematch_dataset",
+  "dataset_name": "worldcup_2022_prematch_dataset",
+  "tournament": "FIFA World Cup",
+  "year": 2022,
+  "source": "manual_historical_scaffold",
+  "source_status": "partial_fixture_pending_verification",
+  "notes": [
+    "Prematch-only dataset scaffold. It must not include result fields for the evaluated match.",
+    "Historical team strength profiles are pending verification, so the blind test engine must not use 2026 baseline data as substitute.",
+    "This file supports behavioral_backtest structure only until verified 2022 prematch profiles are loaded."
+  ],
+  "matches": [
+    {
+      "match_id": "wc2022-gA-md1-qatar-ecuador",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "group_stage",
+      "group": "A",
+      "matchday": 1,
+      "scheduled_date": "2022-11-20",
+      "cutoff_datetime": "2022-11-20T15:59:59Z",
+      "team_a": "Qatar",
+      "team_b": "Ecuador",
+      "venue": "Al Bayt Stadium",
+      "city": "Al Khor",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "group",
+        "matchday",
+        "venue",
+        "scheduled_date",
+        "pre_tournament_context_pending_verification"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "tournament_champion",
+        "finalists",
+        "post_match_narrative",
+        "final_group_positions",
+        "future_match_information"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_first_match",
+      "previous_matches_allowed": [],
+      "leakage_risk": "low",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-gC-md1-argentina-saudi-arabia",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "group_stage",
+      "group": "C",
+      "matchday": 1,
+      "scheduled_date": "2022-11-22",
+      "cutoff_datetime": "2022-11-22T09:59:59Z",
+      "team_a": "Argentina",
+      "team_b": "Saudi Arabia",
+      "venue": "Lusail Stadium",
+      "city": "Lusail",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "group",
+        "matchday",
+        "venue",
+        "scheduled_date",
+        "pre_tournament_context_pending_verification"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "surprise_label_based_on_known_outcome",
+        "tournament_champion",
+        "post_match_narrative",
+        "future_match_information"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_first_match",
+      "previous_matches_allowed": [],
+      "leakage_risk": "low",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-gC-md2-argentina-mexico",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "group_stage",
+      "group": "C",
+      "matchday": 2,
+      "scheduled_date": "2022-11-26",
+      "cutoff_datetime": "2022-11-26T18:59:59Z",
+      "team_a": "Argentina",
+      "team_b": "Mexico",
+      "venue": "Lusail Stadium",
+      "city": "Lusail",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "group",
+        "matchday",
+        "venue",
+        "scheduled_date",
+        "previous_matches_allowed_before_cutoff",
+        "group_table_before_match_pending_verification"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "final_group_positions",
+        "knockout_path",
+        "post_match_narrative",
+        "future_match_information"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "pending_verification",
+      "previous_matches_allowed": [
+        "Argentina vs Saudi Arabia from 2022-11-22 if independently verified before this match",
+        "Mexico vs Poland from 2022-11-22 if independently verified before this match"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-gC-md3-poland-argentina",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "group_stage",
+      "group": "C",
+      "matchday": 3,
+      "scheduled_date": "2022-11-30",
+      "cutoff_datetime": "2022-11-30T18:59:59Z",
+      "team_a": "Poland",
+      "team_b": "Argentina",
+      "venue": "Stadium 974",
+      "city": "Doha",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "group",
+        "matchday",
+        "venue",
+        "scheduled_date",
+        "previous_group_matches_before_cutoff",
+        "group_table_before_match_pending_verification"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "final_group_positions",
+        "knockout_path",
+        "post_match_narrative",
+        "future_match_information"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "pending_verification",
+      "previous_matches_allowed": [
+        "Only Group C matches completed before 2022-11-30T18:59:59Z after verification"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-r16-netherlands-usa",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "round_of_16",
+      "group": "not_applicable",
+      "matchday": "knockout",
+      "scheduled_date": "2022-12-03",
+      "cutoff_datetime": "2022-12-03T14:59:59Z",
+      "team_a": "Netherlands",
+      "team_b": "United States",
+      "venue": "Khalifa International Stadium",
+      "city": "Al Rayyan",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "phase",
+        "venue",
+        "scheduled_date",
+        "verified group-stage results before cutoff"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "future_knockout_path",
+        "quarter_final_opponent_if_not_known_before_cutoff",
+        "post_match_narrative"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_knockout",
+      "previous_matches_allowed": [
+        "Verified group-stage results only"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-qf-argentina-netherlands",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "quarter_final",
+      "group": "not_applicable",
+      "matchday": "knockout",
+      "scheduled_date": "2022-12-09",
+      "cutoff_datetime": "2022-12-09T18:59:59Z",
+      "team_a": "Argentina",
+      "team_b": "Netherlands",
+      "venue": "Lusail Stadium",
+      "city": "Lusail",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "phase",
+        "venue",
+        "scheduled_date",
+        "verified prior tournament matches before cutoff"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "semi_final_opponent_if_not_known_before_cutoff",
+        "post_match_narrative",
+        "tournament_winner"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_knockout",
+      "previous_matches_allowed": [
+        "Verified completed matches before 2022-12-09T18:59:59Z"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-sf-argentina-croatia",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "semi_final",
+      "group": "not_applicable",
+      "matchday": "knockout",
+      "scheduled_date": "2022-12-13",
+      "cutoff_datetime": "2022-12-13T18:59:59Z",
+      "team_a": "Argentina",
+      "team_b": "Croatia",
+      "venue": "Lusail Stadium",
+      "city": "Lusail",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "phase",
+        "venue",
+        "scheduled_date",
+        "verified prior tournament matches before cutoff"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "finalists_after_match",
+        "post_match_narrative",
+        "tournament_winner"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_knockout",
+      "previous_matches_allowed": [
+        "Verified completed matches before 2022-12-13T18:59:59Z"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    },
+    {
+      "match_id": "wc2022-final-argentina-france",
+      "tournament": "FIFA World Cup",
+      "year": 2022,
+      "phase": "final",
+      "group": "not_applicable",
+      "matchday": "knockout",
+      "scheduled_date": "2022-12-18",
+      "cutoff_datetime": "2022-12-18T14:59:59Z",
+      "team_a": "Argentina",
+      "team_b": "France",
+      "venue": "Lusail Stadium",
+      "city": "Lusail",
+      "source": "manual_fixture_scaffold",
+      "source_status": "pending_verification",
+      "allowed_context": [
+        "fixture",
+        "phase",
+        "venue",
+        "scheduled_date",
+        "verified prior tournament matches before cutoff"
+      ],
+      "unavailable_context": [
+        "result_of_evaluated_match",
+        "real_score",
+        "tournament_champion",
+        "post_match_narrative",
+        "final_outcome"
+      ],
+      "team_a_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "team_b_prematch_profile": {
+        "profile_status": "insufficient_historical_team_profile",
+        "elo_2022": "pending_verification",
+        "fifa_rank_pre_match": "pending_verification",
+        "attack": "pending_real_data",
+        "defense": "pending_real_data",
+        "form": "pending_real_data"
+      },
+      "group_table_before_match": "not_applicable_knockout",
+      "previous_matches_allowed": [
+        "Verified completed matches before 2022-12-18T14:59:59Z"
+      ],
+      "leakage_risk": "medium",
+      "data_status": "partial_prematch_fixture_only"
+    }
+  ]
+}

@@ -75,6 +75,9 @@ el impacto esperado.
 | Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
 | Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
 | Tactical Input Bridge v1 | Lineups, ratings reales, formaciones, forma y ausencias verificadas | Si | activo si hay datos confiables suficientes | Ajusta copias temporales del team dict antes de `simulate_match()` |
+| World Cup 2022 prematch dataset | Fixture/contexto historico antes del kickoff | Si | partial_prematch_dataset | Base para behavioral_backtest sin resultados mezclados |
+| World Cup 2022 results dataset | Resultados historicos separados | Si | partial_results_dataset | Solo evaluacion posterior, nunca input prematch |
+| Data leakage guard 2022 | Auditoria local del dataset prematch | Si | cleared si no hay leakage critico | Bloquea si aparecen resultados, futuro o baseline 2026 |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Historial predicciones | `prediction_history.json` | Si | evidencia local | Guarda prediccion, resultado, revision y aprendizaje para backtesting futuro |
 | Reporte calibracion amistosos | `friendly_calibration_report.json` | Si | evidencia local | Resume aciertos, errores, BTTS, Quinigol y patrones para backtesting futuro |
@@ -177,6 +180,43 @@ evitar distorsiones: lineup maximo `0.82` a `1.18`, tactica `0.94` a `1.06`, y
 ausencias relevantes se mantienen en impactos pequenos. Si faltan datos, el
 resultado debe quedar en `bridge_status=not_applied` o `partial` y el reporte
 debe explicar que no se aplico ajuste numerico.
+
+## World Cup 2022 Historical Blind Test v1
+
+El blind test 2022 usa archivos separados bajo
+`historical_blind_tests/worldcup_2022/`:
+
+- `worldcup_2022_prematch_dataset.json`: solo informacion permitida antes del
+  partido, con `cutoff_datetime`, `source_status`, `allowed_context` y
+  `unavailable_context`.
+- `worldcup_2022_results_dataset.json`: marcador real, ganador, BTTS, primer
+  gol y timeline, solo para evaluacion posterior.
+- `worldcup_2022_blind_test_config.json`: declara `mode=behavioral_backtest`,
+  `generated_after_event=true` y que no sirve para precision predictiva real.
+- `worldcup_2022_data_leakage_audit.json`: salida del guard.
+- `worldcup_2022_blind_test_report.json`: reporte de readiness y metricas.
+
+`generated_after_event=true` significa que las corridas actuales ocurren despues
+del Mundial 2022. Por eso cualquier metrica queda como behavioral/backtest de
+comportamiento, no como prediccion historica real previa.
+
+Data leakage incluye mezclar en prematch el resultado, marcador, campeon,
+finalistas, posiciones finales, narrativa posterior, camino real de
+eliminatorias o informacion de partidos futuros. Tambien incluye usar
+`data/worldcup_2026_real_teams_baseline_v1.json` como si representara perfiles
+2022. Ese baseline es de otro momento historico y contaminaria la evaluacion.
+
+Quinigol Timing Metrics debe calcularse solo cuando haya predicciones validas y
+datos de primer gol: acierto de equipo, error promedio/mediano de minuto, sesgo
+temprano o tardio y acierto de rango. No recalibra pesos automaticamente.
+
+Falta para un backtest fuerte:
+
+- verificar el fixture completo 2022 y todos los resultados;
+- cargar perfiles prematch 2022 reales con fuentes y cutoff;
+- tener predicciones o simulaciones generadas solo con esos perfiles;
+- mantener el leakage guard en `cleared`;
+- evaluar por fase antes de ampliar a otros torneos.
 
 ## Hardening Foundation v1
 

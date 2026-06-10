@@ -22,6 +22,7 @@ from research_refresh_engine import build_research_refresh  # noqa: E402
 from result_review_engine import find_real_result, load_friendly_results  # noqa: E402
 from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
+from worldcup_2022_dataset_loader import load_worldcup_2022_datasets  # noqa: E402
 
 
 LAYER_ROOT = Path(__file__).resolve().parent
@@ -40,6 +41,17 @@ def _load_json(path: Path) -> dict:
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _dataset_status(data: dict, missing_value: str = "missing") -> str:
+    status = data.get("data_status")
+    if not status:
+        return missing_value
+    if str(status).startswith("partial"):
+        return "partial"
+    if status in ("complete", "ready", "foundation_ready"):
+        return "OK"
+    return str(status)
 
 
 def _git_tracked(path: Path) -> str:
@@ -123,6 +135,13 @@ def main() -> None:
     calibration_notes = _load_json(LAYER_ROOT / "data" / "calibration_notes.json")
     group_fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
+    worldcup_2022 = load_worldcup_2022_datasets()
+    worldcup_2022_report = _load_json(
+        LAYER_ROOT
+        / "historical_blind_tests"
+        / "worldcup_2022"
+        / "worldcup_2022_blind_test_report.json"
+    )
     refresh_reports = [
         build_research_refresh(
             match["team_a"],
@@ -187,6 +206,9 @@ def main() -> None:
         "simulation_config.py",
         "quinigol_minute_policy.py",
         "tactical_input_bridge.py",
+        "data_leakage_guard.py",
+        "worldcup_2022_dataset_loader.py",
+        "worldcup_2022_blind_test_engine.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -210,6 +232,7 @@ def main() -> None:
         "run_final_pick_demo.py",
         "run_quiniela_demo.py",
         "run_group_quiniela_demo.py",
+        "run_worldcup_2022_blind_test.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -365,6 +388,33 @@ def main() -> None:
     print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
     print("")
 
+    print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")
+    print(f"- prematch dataset: {_dataset_status(worldcup_2022.get('prematch', {}))}")
+    print(f"- results dataset: {_dataset_status(worldcup_2022.get('results', {}))}")
+    audit_status = worldcup_2022.get("audit", {}).get("audit_status", "pending")
+    print(f"- data leakage guard: {audit_status}")
+    print(f"- blind test report: {worldcup_2022_report.get('engine_status', 'missing')}")
+    print(f"- generated_after_event: {str(worldcup_2022_report.get('generated_after_event', True)).lower()}")
+    print(
+        "- valid_for_behavioral_backtest: "
+        f"{str(worldcup_2022_report.get('valid_for_behavioral_backtest', True)).lower()}"
+    )
+    print(
+        "- valid_for_true_prediction_accuracy: "
+        f"{str(not worldcup_2022_report.get('not_valid_for_true_prediction_accuracy', True)).lower()}"
+    )
+    print(f"- matches evaluated: {worldcup_2022_report.get('matches_evaluated', 0)}")
+    print(f"- matches blocked by leakage: {worldcup_2022_report.get('matches_blocked_by_leakage', 0)}")
+    print(
+        "- historical profiles status: "
+        + worldcup_2022_report.get("structural_readiness_metrics", {}).get(
+            "historical_profiles_status",
+            "not_available",
+        )
+    )
+    print("- next block recommended: verified 2022 prematch profiles / Quinigol Timing Calibration")
+    print("")
+
     print("CALIBRACION AMISTOSOS")
     reviewed = calibration_report.get("matches_reviewed", [])
     print(f"- amistosos finalizados revisados: {len(reviewed)}")
@@ -408,7 +458,7 @@ def main() -> None:
         + backtesting_manifest.get("data_status", "manual_snapshot_required")
     )
     print("- estado self audit: " + _exists(LAYER_ROOT / "system_self_audit.py"))
-    print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
+    print("- siguiente bloque recomendado: verified 2022 prematch profiles / Quinigol Timing Calibration")
 
 
 if __name__ == "__main__":

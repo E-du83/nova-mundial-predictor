@@ -1,0 +1,12 @@
+{
+  "total_matches_checked": 8,
+  "leakage_warnings": [],
+  "critical_leakage_count": 0,
+  "medium_leakage_count": 0,
+  "low_leakage_count": 0,
+  "cleared_for_blind_test": true,
+  "blocked_matches": [],
+  "warnings_by_match": {},
+  "generated_at": "2026-06-10T18:50:14Z",
+  "audit_status": "cleared"
+}

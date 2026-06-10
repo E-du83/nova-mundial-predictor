@@ -1,0 +1,39 @@
+{
+  "test_name": "World Cup 2022 Historical Blind Test v1",
+  "tournament": "FIFA World Cup",
+  "year": 2022,
+  "mode": "behavioral_backtest",
+  "generated_after_event": true,
+  "not_valid_for_true_prediction_accuracy": true,
+  "valid_for_behavioral_backtest": true,
+  "leakage_guard_required": true,
+  "block_if_critical_leakage": true,
+  "allowed_phases": [
+    "group_stage",
+    "round_of_16",
+    "quarter_final",
+    "semi_final",
+    "third_place",
+    "final"
+  ],
+  "metrics_enabled": [
+    "result_hit",
+    "exact_score_hit",
+    "draw_hit",
+    "btts_hit",
+    "goal_diff_error",
+    "total_goals_error",
+    "clean_sheet_hit",
+    "favorite_fragility",
+    "upset_risk",
+    "quinigol_team_hit",
+    "quinigol_minute_error",
+    "halftime_fulltime_hit"
+  ],
+  "quinigol_timing_metrics_enabled": true,
+  "notes": [
+    "Predictions generated now do not count as true historical pre-match predictions.",
+    "This test studies system behavior and data readiness only until verified 2022 prematch team profiles are loaded.",
+    "Do not use data/worldcup_2026_real_teams_baseline_v1.json for 2022 simulations."
+  ]
+}

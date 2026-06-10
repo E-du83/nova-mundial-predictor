@@ -68,6 +68,12 @@ mundialista no se modifica y el Core no se recalibra. Si faltan datos confiables
 el bridge no fuerza ningun ajuste numerico y solo reporta el motivo en
 `adjustment_report`.
 
+El bloque **World Cup 2022 Historical Blind Test v1** crea una base historica
+auditable para probar comportamiento del sistema con Mundial 2022 sin mezclar
+datos futuros. El modo inicial es `behavioral_backtest`: como se genera despues
+del torneo, no mide precision predictiva real previa. Separa dataset prematch,
+dataset de resultados, configuracion, reporte y auditoria de data leakage.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -111,6 +117,9 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
 - Conecta datos tacticos confiables con la simulacion mediante
   `tactical_input_bridge.py`, siempre sobre copias temporales y con caps de
   seguridad.
+- Agrega blind test historico 2022 con `data_leakage_guard.py`, datasets
+  prematch/resultados separados y reporte behavioral, sin usar baseline 2026
+  como proxy 2022.
 - Genera reporte de calibracion amistosa con aciertos, errores, BTTS, Quinigol,
   alternativas criticas y patrones de fragilidad sin cambiar picks.
 - Prepara fixtures de fase de grupos, reportes estructurados, manifiesto de
@@ -218,6 +227,12 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   cuando existen lineups, ratings, formaciones, forma o ausencias confiables.
   Distingue contexto explicativo de ajuste real de simulacion y registra
   `adjustment_report`.
+- `data_leakage_guard.py`: revisa datasets prematch historicos y bloquea si
+  detecta resultados, narrativa posterior, caminos futuros o baseline 2026.
+- `worldcup_2022_dataset_loader.py`: carga y valida prematch, resultados,
+  config y auditoria del blind test 2022.
+- `worldcup_2022_blind_test_engine.py`: construye el reporte behavioral 2022,
+  separa readiness estructural, leakage y metricas Quinigol Timing.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -398,6 +413,45 @@ El bridge no usa scraping, no usa APIs pagadas, no inventa datos, no cambia
 Si faltan datos, devuelve `bridge_status=not_applied` y las probabilidades se
 mantienen equivalentes al flujo anterior.
 
+## World Cup 2022 Historical Blind Test
+
+`historical_blind_tests/worldcup_2022/` contiene la base del blind test historico
+del Mundial 2022:
+
+- `worldcup_2022_prematch_dataset.json`: fixtures y contexto permitido antes del
+  partido, con `cutoff_datetime`, `source_status` y datos faltantes explicitos.
+- `worldcup_2022_results_dataset.json`: resultados reales separados, solo para
+  evaluacion posterior.
+- `worldcup_2022_blind_test_config.json`: modo `behavioral_backtest`,
+  `generated_after_event=true` y guardas contra leakage.
+- `worldcup_2022_data_leakage_audit.json`: salida del guard.
+- `worldcup_2022_blind_test_report.json`: reporte auditable.
+
+`true prediction` significa una prediccion creada antes del partido, con timestamp
+y datos disponibles antes del cutoff. Este bloque todavia no tiene eso.
+`behavioral_backtest` significa estudiar como se comportaria el sistema con una
+estructura historica, sabiendo que la ejecucion se genera despues del evento.
+
+Data leakage es cualquier filtracion de informacion futura en el input: marcador
+real, campeon, finalistas, posiciones finales, narrativa posterior, camino de
+eliminatorias o datos actuales usados como si fueran prepartido. Por eso el
+baseline 2026 no puede usarse para simular 2022: sus ratings reflejan otro
+momento historico y contaminarian la evaluacion.
+
+Quinigol Timing Metrics mide, cuando existan predicciones historicas validas:
+acierto del equipo del primer gol, error del minuto, sesgo temprano/tardio y
+acierto de rango. No recalibra automaticamente; solo detecta patrones como:
+`Quinigol team selection may be stronger than minute precision.`
+
+Falta para convertirlo en backtest fuerte:
+
+- verificar todos los fixtures/resultados 2022 contra fuente oficial;
+- crear perfiles prematch 2022 con Elo/FIFA/rendimiento previos y cutoff;
+- guardar predicciones historicas auditables o generar simulaciones solo con
+  perfiles 2022 validados;
+- mantener resultados fuera del dataset prematch;
+- ampliar cobertura a todos los partidos de 2022 antes de mirar 2018/2014.
+
 La secuencia obligatoria es:
 
 ```txt
@@ -537,6 +591,9 @@ game-layers/quiniela-mundialista/
 |-- quinigol_engine.py
 |-- strategy_engine.py
 |-- tactical_input_bridge.py
+|-- data_leakage_guard.py
+|-- worldcup_2022_dataset_loader.py
+|-- worldcup_2022_blind_test_engine.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -568,6 +625,7 @@ game-layers/quiniela-mundialista/
 |-- run_data_sources_demo.py
 |-- run_lineup_weighting_demo.py
 |-- run_tactical_input_bridge_demo.py
+|-- run_worldcup_2022_blind_test.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -606,6 +664,7 @@ python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_tactical_input_bridge_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2022_blind_test.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
