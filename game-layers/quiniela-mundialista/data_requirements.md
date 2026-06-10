@@ -95,6 +95,10 @@ el impacto esperado.
 | Coordenadas sedes | FIFA/venue official/manual verificado | Si | pending_real_data | Activa Open-Meteo historico |
 | Modo simulacion final | Configuracion local | Si | disponible | Permite quick, standard o final 1M |
 | Group stage fixture context | `group_stage_fixture_context.json` | Si | manual_snapshot_required | Permite fase de grupos completa cuando exista fixture oficial local |
+| World Cup 2026 group structure | `worldcup_2026_group_structure.json` | Si | pending_group_draw | Define 48 equipos, 12 grupos, 72 partidos de grupos y 104 totales sin inventar sorteo |
+| World Cup 2026 match slots | `worldcup_2026_match_slots.json` | Si | structural_placeholder | Crea 72 slots estables `WG-A-01` a `WG-L-06` |
+| World Cup 2026 group fixture | `worldcup_2026_group_stage_fixture.json` | Si | pending_official_fixture | Guarda fixture placeholder/parcial/confirmado separado de resultados |
+| World Cup 2026 fixture validation | `worldcup_2026_fixture_validation_report.json` | Si | cleared_placeholder | Valida conteos, grupos A-L, IDs, UTC/sedes pendientes y no cruces ficticios oficiales |
 | Backtesting manifest | `backtesting_manifest.json` | Si | foundation_ready | Lista datasets, leakage risk e integracion pendiente |
 | Report builder | `report_builder.py` | Si | foundation_ready | Genera reportes por partido sin modificar picks |
 | System self audit | `system_self_audit.py` | Si | foundation_ready | Evalua readiness, riesgos, sesgo y sobreajuste |
@@ -142,6 +146,17 @@ el impacto esperado.
 - `group_stage_fixture_context.json` no debe inventar cruces, sedes, fechas ni
   horarios. Si no existe fixture oficial completo local, debe quedar como
   `manual_snapshot_required`.
+- `worldcup_2026_match_slots.json` debe mantener exactamente 72 slots de fase
+  de grupos. Mientras no exista fixture oficial local, los equipos quedan como
+  `pending_group_draw`, y `kickoff_utc` / `venue` quedan como
+  `pending_official_fixture`.
+- El fixture 2026 puede estar en tres estados: `structural_placeholder`,
+  `partial_fixture` o `confirmed_fixture`. Solo los partidos con
+  `status=confirmed_fixture`, equipos concretos, UTC valido y sede verificada
+  pueden simularse como partidos reales.
+- El loader 2026 debe separar `fixture_structure`, `confirmed_fixture` y
+  `generated_placeholder_fixture`. Los resultados futuros nunca deben mezclarse
+  dentro del fixture prematch.
 - World Elo solo pesa fuerte si existe snapshot local con `team`, `elo`, `rank`,
   `source`, `date_collected` y `notes`.
 - Open-Meteo solo construye consultas historicas gratis sin API key; si faltan

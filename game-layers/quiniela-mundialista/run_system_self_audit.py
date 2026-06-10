@@ -20,6 +20,22 @@ def main() -> None:
     print(f"Siguiente bloque recomendado: {audit['siguiente_bloque_recomendado']}")
     print(f"Listo para quiniela completa: {'si' if audit['readiness']['ready_for_full_quiniela'] else 'no'}")
     print(f"Listo para venta: {'si' if audit['readiness']['ready_for_sale'] else 'no'}")
+    print("World Cup 2026 Fixture")
+    print(f"- fixture type: {audit['readiness']['worldcup_2026_fixture_type']}")
+    print(f"- validation: {audit['readiness']['worldcup_2026_fixture_validation']}")
+    print(f"- estructura lista: {'si' if audit['readiness']['worldcup_2026_structure_ready'] else 'no'}")
+    print(f"- placeholder fixture: {'si' if audit['readiness']['worldcup_2026_fixture_is_placeholder'] else 'no'}")
+    print(f"- faltan grupos reales: {'si' if audit['readiness']['worldcup_2026_missing_real_groups'] else 'no'}")
+    print(f"- faltan horarios UTC reales: {'si' if audit['readiness']['worldcup_2026_missing_kickoff_utc'] else 'no'}")
+    print(f"- faltan sedes reales: {'si' if audit['readiness']['worldcup_2026_missing_real_venues'] else 'no'}")
+    print(f"- groups loaded: {audit['readiness']['worldcup_2026_groups_loaded']}")
+    print(f"- slots loaded: {audit['readiness']['worldcup_2026_slots_loaded']}")
+    print(f"- confirmed matches: {audit['readiness']['worldcup_2026_confirmed_matches']}")
+    print(f"- pending matches: {audit['readiness']['worldcup_2026_pending_matches']}")
+    print(
+        "- puede correr simulacion completa: "
+        f"{'si' if audit['readiness']['worldcup_2026_ready_for_full_group_simulation'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

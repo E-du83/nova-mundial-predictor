@@ -81,6 +81,13 @@ declarados y auditados para que los 8 partidos existentes sean evaluables como
 backtest de comportamiento. Esto no convierte el resultado en precision
 predictiva real, no recalibra pesos y no usa el baseline 2026 como proxy 2022.
 
+El bloque **Fixture Real 2026 + Group Stage Loader v1** prepara la estructura
+oficial del Mundial 2026: 48 selecciones, 12 grupos, 72 partidos de fase de
+grupos y 104 partidos totales. Mientras no exista sorteo/fixture oficial local
+verificado, genera solo slots estructurales `WG-A-01` a `WG-L-06` con
+`pending_group_draw` y `pending_official_fixture`. No inventa cruces, horarios
+ni sedes.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -136,6 +143,9 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   alternativas criticas y patrones de fragilidad sin cambiar picks.
 - Prepara fixtures de fase de grupos, reportes estructurados, manifiesto de
   backtesting y auditoria critica del sistema sin inventar datos.
+- Crea 72 slots estructurales para fase de grupos 2026 y permite reemplazar la
+  asignacion cuando exista fixture oficial, manteniendo separados
+  `slot_structure`, `fixture_assignment` y `match_result`.
 
 ## Final Pick
 
@@ -253,6 +263,12 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `quinigol_timing_calibration_engine.py`: resume metricas de Quinigol Timing
   sobre evaluaciones historicas y recomienda no recalibrar si la muestra es
   insuficiente.
+- `worldcup_2026_match_slot_engine.py`: genera estructura A-L y 72 slots
+  estables sin cruces ficticios.
+- `worldcup_2026_fixture_validator.py`: valida grupos, slots, IDs, UTC,
+  sedes, duplicados, estado pendiente/confirmado y separacion group stage.
+- `worldcup_2026_fixture_loader.py`: carga estructura, fixture, slots y reporte
+  de validacion; expone si el fixture es placeholder, parcial o confirmado.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -298,8 +314,8 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `simulation_config.py`: define modos `quick=10000`, `standard=100000` y
   `final=1000000`.
 - `group_stage_runner.py`: recorre fixtures de fase de grupos, simula solo
-  partidos con equipos concretos y baseline suficiente, y marca pendientes si
-  faltan datos.
+  partidos confirmados con equipos concretos y baseline suficiente, y marca
+  pendientes si el fixture sigue como placeholder/parcial.
 - `report_builder.py`: construye reportes JSON por partido con pick, marcador,
   Quinigol, HT/FT, robustez, tactical score, calidad de datos y faltantes.
 - `backtesting_engine.py`: prepara comparaciones prediccion vs resultado real
@@ -575,6 +591,43 @@ cada prediccion historica debe usar solo datos disponibles antes del kickoff.
 Hasta que exista ese dataset limpio, el sistema solo prepara la base y ejecuta
 comparaciones demo con amistosos ya revisados.
 
+## World Cup 2026 Fixture Structure v1
+
+La estructura 2026 se separa en cuatro capas:
+
+- `fixture_structure`: formato oficial esperado del torneo, 12 grupos y 72
+  partidos de fase de grupos.
+- `generated_placeholder_fixture`: slots estables cuando aun no hay sorteo ni
+  fixture oficial cargado.
+- `confirmed_fixture`: partidos reales cargados desde snapshot oficial
+  verificado.
+- `match_result`: resultado futuro del partido, separado del fixture prematch.
+
+Estados permitidos:
+
+- `structural_placeholder`: existen slots, pero no hay cruces oficiales.
+- `partial_fixture`: hay algunos partidos confirmados y otros pendientes.
+- `confirmed_fixture`: fixture completo verificado con equipos, UTC y sedes.
+- `pending_official_fixture`: falta dato oficial.
+- `pending_group_draw`: falta sorteo o asignacion de selecciones al grupo.
+
+Archivos del bloque:
+
+- `data/worldcup_2026_group_structure.json`
+- `data/worldcup_2026_fixture_status.json`
+- `data/worldcup_2026_group_stage_fixture.json`
+- `data/worldcup_2026_match_slots.json`
+- `data/worldcup_2026_fixture_validation_report.json`
+
+El `group_stage_runner.py` usa el loader 2026. Si el fixture es placeholder,
+devuelve 72 slots pendientes y no intenta simulacion real. Si luego existe
+fixture parcial, corre solo partidos confirmados. Si el fixture completo queda
+validado, habilita la simulacion completa de fase de grupos.
+
+No se deben inventar ejemplos como partidos reales. Para reemplazar un slot,
+mantener el `match_id` estable y actualizar solo `fixture_assignment`, equipos,
+`kickoff_utc`, sede y estado con fuente oficial verificada.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -634,6 +687,9 @@ game-layers/quiniela-mundialista/
 |-- worldcup_2022_profile_builder.py
 |-- worldcup_2022_profile_validator.py
 |-- quinigol_timing_calibration_engine.py
+|-- worldcup_2026_match_slot_engine.py
+|-- worldcup_2026_fixture_loader.py
+|-- worldcup_2026_fixture_validator.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -668,6 +724,7 @@ game-layers/quiniela-mundialista/
 |-- run_worldcup_2022_blind_test.py
 |-- run_worldcup_2022_profile_validation.py
 |-- run_quinigol_timing_calibration.py
+|-- run_worldcup_2026_fixture_status.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -688,6 +745,11 @@ game-layers/quiniela-mundialista/
     |-- friendly_calibration_report.json
     |-- calibration_notes.json
     |-- group_stage_fixture_context.json
+    |-- worldcup_2026_group_structure.json
+    |-- worldcup_2026_fixture_status.json
+    |-- worldcup_2026_group_stage_fixture.json
+    |-- worldcup_2026_match_slots.json
+    |-- worldcup_2026_fixture_validation_report.json
     |-- backtesting_manifest.json
     |-- group_stage_prediction_report.json
     |-- player_ratings_seed.json
@@ -709,6 +771,7 @@ python -B game-layers/quiniela-mundialista/run_tactical_input_bridge_demo.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2022_profile_validation.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2022_blind_test.py
 python -B game-layers/quiniela-mundialista/run_quinigol_timing_calibration.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py

@@ -1,0 +1,90 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "pending_group_draw",
+  "source_status": "manual_snapshot_required",
+  "fixture_structure": "official_tournament_structure",
+  "teams_total": 48,
+  "groups_total": 12,
+  "teams_per_group": 4,
+  "group_stage_matches_per_group": 6,
+  "total_group_stage_matches": 72,
+  "total_tournament_matches": 104,
+  "groups": [
+    {
+      "group_name": "A",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "B",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "C",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "D",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "E",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "F",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "G",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "H",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "I",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "J",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "K",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    },
+    {
+      "group_name": "L",
+      "teams": "pending_group_draw",
+      "match_slots": 6,
+      "status": "pending_group_draw"
+    }
+  ],
+  "warnings": [
+    "Group draw is not loaded in this local snapshot.",
+    "Do not infer teams or matchups from placeholders."
+  ]
+}

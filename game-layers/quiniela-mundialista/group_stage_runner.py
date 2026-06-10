@@ -12,6 +12,7 @@ from pick_robustness_engine import build_pick_robustness
 from research_refresh_engine import build_research_refresh
 from research_weighting_engine import build_research_weighting
 from simulation_config import resolve_simulation_mode
+from worldcup_2026_fixture_loader import load_worldcup_2026_fixture
 
 
 PENDING_VALUES = {
@@ -21,6 +22,9 @@ PENDING_VALUES = {
     "manual_snapshot_required",
     "pending_manual_input",
     "not_available_free",
+    "pending_official_fixture",
+    "pending_group_draw",
+    "pending_verification",
 }
 
 LAYER_ROOT = Path(__file__).resolve().parent
@@ -47,13 +51,18 @@ def _is_pending(value) -> bool:
     return value in PENDING_VALUES or str(value).startswith("pending_")
 
 
-def _pending_match(match: dict, reason: str, missing_data: list[str]) -> dict:
+def _fixture_kickoff(match: dict):
+    return match.get("kickoff_time_utc", match.get("kickoff_utc", "pending_official_fixture"))
+
+
+def _pending_match(match: dict, reason: str, missing_data: list[str], fixture_status: str = "pending") -> dict:
     return {
         "match_id": match.get("match_id", "manual_snapshot_required"),
         "group": match.get("group", "pending_real_data"),
         "match": f"{match.get('team_a', 'pending_real_data')} vs {match.get('team_b', 'pending_real_data')}",
         "data_status": "pending",
         "simulation_status": "not_run",
+        "fixture_status": fixture_status,
         "pending_reason": reason,
         "pick_principal": "pending_real_data",
         "marcador": "pending_real_data",
@@ -74,9 +83,11 @@ def _pending_match(match: dict, reason: str, missing_data: list[str]) -> dict:
 
 def _match_missing_data(match: dict, teams: dict) -> list[str]:
     missing = []
-    for field in ("team_a", "team_b", "venue", "date", "kickoff_time_utc"):
+    for field in ("team_a", "team_b", "venue"):
         if _is_pending(match.get(field)):
             missing.append(field)
+    if _is_pending(_fixture_kickoff(match)):
+        missing.append("kickoff_utc")
     for field in ("team_a", "team_b"):
         team = match.get(field)
         if not _is_pending(team) and team not in teams:
@@ -90,7 +101,7 @@ def _snapshot_for_fixture(match: dict) -> dict:
         "team_a": match["team_a"],
         "team_b": match["team_b"],
         "venue": match.get("venue", "pending_real_data"),
-        "kickoff_time_utc": match.get("kickoff_time_utc", "pending_real_data"),
+        "kickoff_time_utc": _fixture_kickoff(match),
         "source_status": match.get("source_status", "manual_snapshot_required"),
         "data_status": match.get("data_status", "manual_snapshot_required"),
     }
@@ -177,28 +188,80 @@ def _simulate_match(match: dict, teams: dict, mode: str, simulations: int) -> di
 
 
 def run_group_stage(mode: str = "quick", fixture_path: str | Path = FIXTURE_PATH) -> dict:
-    teams, _, _ = load_default_final_pick_inputs()
-    fixture_data = load_group_stage_fixtures(fixture_path)
+    fixture_bundle = load_worldcup_2026_fixture()
+    fixture_data = fixture_bundle["fixture"]
     simulation_mode, simulations = resolve_simulation_mode(mode)
     results = []
+
+    if fixture_bundle["structural_placeholder"]:
+        for match in fixture_data.get("matches", []):
+            results.append(
+                _pending_match(
+                    match,
+                    "pending_group_draw",
+                    ["team_a", "team_b", "kickoff_utc", "venue"],
+                    fixture_status="structural_placeholder",
+                )
+            )
+        return {
+            "data_status": fixture_data.get("official_status", "pending_official_fixture"),
+            "simulation_mode": simulation_mode,
+            "simulations": simulations,
+            "total_slots": fixture_bundle["slots_loaded"],
+            "total_matches": len(results),
+            "confirmed_matches": fixture_bundle["confirmed_matches"],
+            "pending_matches": fixture_bundle["pending_matches"],
+            "simulable_matches": 0,
+            "fixture_type": fixture_bundle["fixture_type"],
+            "fixture_status": fixture_bundle["official_status"],
+            "ready_for_full_group_simulation": False,
+            "fixture_warning": "placeholder fixture; waiting for official group draw and FIFA fixture snapshot",
+            "warnings": fixture_bundle["warnings"],
+            "matches": results,
+        }
+
+    teams, _, _ = load_default_final_pick_inputs()
     for match in fixture_data.get("matches", []):
+        if match.get("status") != "confirmed_fixture":
+            results.append(
+                _pending_match(
+                    match,
+                    "pending_official_fixture",
+                    ["fixture_assignment"],
+                    fixture_status=match.get("status", "pending_official_fixture"),
+                )
+            )
+            continue
         missing = _match_missing_data(match, teams)
         if missing:
-            results.append(_pending_match(match, "insufficient_fixture_or_baseline_data", missing))
+            results.append(
+                _pending_match(
+                    match,
+                    "insufficient_fixture_or_baseline_data",
+                    missing,
+                    fixture_status=match.get("status", "confirmed_fixture"),
+                )
+            )
             continue
         results.append(_simulate_match(match, teams, simulation_mode, simulations))
 
     return {
-        "data_status": fixture_data.get("data_status", "manual_snapshot_required"),
+        "data_status": fixture_data.get("official_status", "manual_snapshot_required"),
         "simulation_mode": simulation_mode,
         "simulations": simulations,
+        "total_slots": fixture_bundle["slots_loaded"],
         "total_matches": len(results),
+        "confirmed_matches": fixture_bundle["confirmed_matches"],
         "simulable_matches": sum(1 for item in results if item["simulation_status"] == "simulated"),
         "pending_matches": sum(1 for item in results if item["simulation_status"] != "simulated"),
+        "fixture_type": fixture_bundle["fixture_type"],
+        "fixture_status": fixture_bundle["official_status"],
+        "ready_for_full_group_simulation": fixture_bundle["ready_for_full_group_simulation"],
         "fixture_warning": (
-            "fixture incomplete; official group-stage matchups are not loaded"
-            if fixture_data.get("data_status") != "ready_snapshot"
+            "fixture incomplete; only confirmed official matches can be simulated"
+            if not fixture_bundle["ready_for_full_group_simulation"]
             else "none"
         ),
+        "warnings": fixture_bundle["warnings"],
         "matches": results,
     }

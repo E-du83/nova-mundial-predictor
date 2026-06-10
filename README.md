@@ -1,5 +1,21 @@
 # NOVA Mundial Predictor
 
+## World Cup 2026 fixture structure
+
+La capa `game-layers/quiniela-mundialista/` prepara el Mundial 2026 con 48
+selecciones, 12 grupos, 72 partidos de fase de grupos y 104 partidos totales.
+Mientras no exista fixture oficial local verificado, usa slots estructurales
+placeholder y mantiene los cruces, horarios UTC y sedes como pendientes.
+
+Ejecutar estado:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
+```
+
+Este bloque no inventa cruces oficiales y no toca el Core ni el baseline
+mundialista.
+
 Versión actual: **v1.5.0**
 
 Este proyecto es un motor probabilístico para analizar el Mundial 2026 con simulación de partidos, grupos, mejores terceros, cuotas, comparación entre casas, movimiento de cuotas y CLV.

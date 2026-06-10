@@ -1,0 +1,1738 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "structural_placeholder",
+  "source_status": "manual_snapshot_required",
+  "fixture_structure": "group_stage_slots",
+  "total_slots": 72,
+  "expected_slots": 72,
+  "matches": [
+    {
+      "match_id": "WG-A-01",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-01",
+        "group": "A",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-A-02",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-02",
+        "group": "A",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-A-03",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-03",
+        "group": "A",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-A-04",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-04",
+        "group": "A",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-A-05",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-05",
+        "group": "A",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-A-06",
+      "phase": "group_stage",
+      "group": "A",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-A-06",
+        "group": "A",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-01",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-01",
+        "group": "B",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-02",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-02",
+        "group": "B",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-03",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-03",
+        "group": "B",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-04",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-04",
+        "group": "B",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-05",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-05",
+        "group": "B",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-B-06",
+      "phase": "group_stage",
+      "group": "B",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-B-06",
+        "group": "B",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-01",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-01",
+        "group": "C",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-02",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-02",
+        "group": "C",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-03",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-03",
+        "group": "C",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-04",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-04",
+        "group": "C",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-05",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-05",
+        "group": "C",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-C-06",
+      "phase": "group_stage",
+      "group": "C",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-C-06",
+        "group": "C",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-01",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-01",
+        "group": "D",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-02",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-02",
+        "group": "D",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-03",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-03",
+        "group": "D",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-04",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-04",
+        "group": "D",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-05",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-05",
+        "group": "D",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-D-06",
+      "phase": "group_stage",
+      "group": "D",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-D-06",
+        "group": "D",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-01",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-01",
+        "group": "E",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-02",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-02",
+        "group": "E",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-03",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-03",
+        "group": "E",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-04",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-04",
+        "group": "E",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-05",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-05",
+        "group": "E",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-E-06",
+      "phase": "group_stage",
+      "group": "E",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-E-06",
+        "group": "E",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-01",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-01",
+        "group": "F",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-02",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-02",
+        "group": "F",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-03",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-03",
+        "group": "F",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-04",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-04",
+        "group": "F",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-05",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-05",
+        "group": "F",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-F-06",
+      "phase": "group_stage",
+      "group": "F",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-F-06",
+        "group": "F",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-01",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-01",
+        "group": "G",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-02",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-02",
+        "group": "G",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-03",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-03",
+        "group": "G",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-04",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-04",
+        "group": "G",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-05",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-05",
+        "group": "G",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-G-06",
+      "phase": "group_stage",
+      "group": "G",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-G-06",
+        "group": "G",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-01",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-01",
+        "group": "H",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-02",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-02",
+        "group": "H",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-03",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-03",
+        "group": "H",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-04",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-04",
+        "group": "H",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-05",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-05",
+        "group": "H",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-H-06",
+      "phase": "group_stage",
+      "group": "H",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-H-06",
+        "group": "H",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-01",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-01",
+        "group": "I",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-02",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-02",
+        "group": "I",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-03",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-03",
+        "group": "I",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-04",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-04",
+        "group": "I",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-05",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-05",
+        "group": "I",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-I-06",
+      "phase": "group_stage",
+      "group": "I",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-I-06",
+        "group": "I",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-01",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-01",
+        "group": "J",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-02",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-02",
+        "group": "J",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-03",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-03",
+        "group": "J",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-04",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-04",
+        "group": "J",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-05",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-05",
+        "group": "J",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-J-06",
+      "phase": "group_stage",
+      "group": "J",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-J-06",
+        "group": "J",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-01",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-01",
+        "group": "K",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-02",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-02",
+        "group": "K",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-03",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-03",
+        "group": "K",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-04",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-04",
+        "group": "K",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-05",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-05",
+        "group": "K",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-K-06",
+      "phase": "group_stage",
+      "group": "K",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-K-06",
+        "group": "K",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-01",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 1,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-01",
+        "group": "L",
+        "slot_number": 1
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-02",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 2,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-02",
+        "group": "L",
+        "slot_number": 2
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-03",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 3,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-03",
+        "group": "L",
+        "slot_number": 3
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-04",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 4,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-04",
+        "group": "L",
+        "slot_number": 4
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-05",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 5,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-05",
+        "group": "L",
+        "slot_number": 5
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    },
+    {
+      "match_id": "WG-L-06",
+      "phase": "group_stage",
+      "group": "L",
+      "slot_number": 6,
+      "team_a": "pending_group_draw",
+      "team_b": "pending_group_draw",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "status": "pending_group_draw",
+      "slot_structure": {
+        "stable_slot_id": "WG-L-06",
+        "group": "L",
+        "slot_number": 6
+      },
+      "fixture_assignment": {
+        "assignment_status": "pending_official_fixture",
+        "source_status": "manual_snapshot_required"
+      },
+      "match_result": {
+        "result_status": "not_played",
+        "score": "pending_match_result"
+      }
+    }
+  ]
+}

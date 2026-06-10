@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from worldcup_2026_fixture_loader import load_worldcup_2026_fixture
+
 
 LAYER_ROOT = Path(__file__).resolve().parent
 ROOT = LAYER_ROOT.parents[1]
@@ -21,6 +23,7 @@ def _load_json(path: Path) -> dict:
 def build_system_self_audit() -> dict:
     calibration = _load_json(LAYER_ROOT / "data" / "friendly_calibration_report.json")
     fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
+    worldcup_2026_fixture = load_worldcup_2026_fixture()
     manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022_report = _load_json(
         LAYER_ROOT
@@ -46,6 +49,10 @@ def build_system_self_audit() -> dict:
         "worldcup_2022_dataset_loader.py",
         "worldcup_2022_blind_test_engine.py",
         "run_worldcup_2022_blind_test.py",
+        "worldcup_2026_match_slot_engine.py",
+        "worldcup_2026_fixture_loader.py",
+        "worldcup_2026_fixture_validator.py",
+        "run_worldcup_2026_fixture_status.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -64,9 +71,12 @@ def build_system_self_audit() -> dict:
             "Simulation modes are explicit and heavy final runs are opt-in.",
             "Data source clients are offline-first and avoid paid API dependencies.",
             "World Cup 2022 blind-test scaffolding separates prematch inputs, results and leakage audit.",
+            "World Cup 2026 now has structural group-stage slots for 12 groups and 72 group matches.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
+            "World Cup 2026 fixture is structural placeholder, not confirmed matchups.",
+            "World Cup 2026 group draw, kickoff UTC and venues are still pending verification.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
@@ -80,9 +90,11 @@ def build_system_self_audit() -> dict:
             "Decorative variables can accumulate if a field has no measurable downstream impact.",
             "Using 2026 baseline data for 2022 would create invalid historical evaluation.",
             "Quinigol timing sample is only 8 matches, so calibration would overfit.",
+            "If placeholder fixture slots are treated as official matches, group simulation would be misleading.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
+            "Replace structural placeholder assignments with verified FIFA group draw and fixture data.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
             "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
@@ -101,8 +113,9 @@ def build_system_self_audit() -> dict:
             "Do not auto-change Core weights from calibration_notes.json.",
             "Do not recalibrate from World Cup 2022 behavioral_backtest until profiles and leakage audit are strong.",
             "Do not recalibrate Quinigol timing from neutral-default backtest or an 8-match sample.",
+            "Do not simulate full World Cup 2026 group stage while fixture_type is structural_placeholder.",
         ],
-        "siguiente_bloque_recomendado": "verified 2022 prematch profiles / Quinigol Timing Calibration",
+        "siguiente_bloque_recomendado": "official FIFA fixture snapshot loader / verified group draw import",
         "readiness": {
             "missing_modules": missing_modules,
             "real_data_available": {
@@ -110,8 +123,28 @@ def build_system_self_audit() -> dict:
                 "group_fixture_ready": group_fixture_ready,
                 "foundation_ready_datasets": datasets_ready,
             },
-            "ready_for_full_quiniela": bool(group_fixture_ready and not missing_modules),
+            "ready_for_full_quiniela": bool(
+                worldcup_2026_fixture["ready_for_full_group_simulation"] and not missing_modules
+            ),
             "ready_for_sale": False,
+            "worldcup_2026_fixture_type": worldcup_2026_fixture["fixture_type"],
+            "worldcup_2026_fixture_validation": worldcup_2026_fixture["validation_status"],
+            "worldcup_2026_structure_ready": bool(
+                worldcup_2026_fixture["groups_loaded"] == 12
+                and worldcup_2026_fixture["slots_loaded"] == 72
+                and worldcup_2026_fixture["validation_status"] == "cleared_placeholder"
+            ),
+            "worldcup_2026_fixture_is_placeholder": worldcup_2026_fixture["structural_placeholder"],
+            "worldcup_2026_missing_real_groups": worldcup_2026_fixture["structural_placeholder"],
+            "worldcup_2026_missing_kickoff_utc": worldcup_2026_fixture["pending_matches"] > 0,
+            "worldcup_2026_missing_real_venues": worldcup_2026_fixture["pending_matches"] > 0,
+            "worldcup_2026_groups_loaded": worldcup_2026_fixture["groups_loaded"],
+            "worldcup_2026_slots_loaded": worldcup_2026_fixture["slots_loaded"],
+            "worldcup_2026_confirmed_matches": worldcup_2026_fixture["confirmed_matches"],
+            "worldcup_2026_pending_matches": worldcup_2026_fixture["pending_matches"],
+            "worldcup_2026_ready_for_full_group_simulation": worldcup_2026_fixture[
+                "ready_for_full_group_simulation"
+            ],
             "worldcup_2022_blind_test_exists": bool(worldcup_2022_report),
             "worldcup_2022_leakage_guard_exists": bool(worldcup_2022_audit),
             "worldcup_2022_leakage_guard_status": worldcup_2022_audit.get("audit_status", "missing"),

@@ -1,0 +1,23 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "fixture_structure_ready_pending_official_fixture",
+  "fixture_type": "structural_placeholder",
+  "official_status": "pending_official_fixture",
+  "groups_configured": 12,
+  "teams_total": 48,
+  "total_group_stage_matches": 72,
+  "total_tournament_matches": 104,
+  "fixture_slots_loaded": 72,
+  "confirmed_fixture_matches": 0,
+  "pending_fixture_matches": 72,
+  "ready_for_full_group_simulation": false,
+  "replacement_contract": {
+    "slot_structure": "stable",
+    "fixture_assignment": "replace only with verified official fixture snapshot",
+    "match_result": "kept separate from prematch fixture data"
+  },
+  "warnings": [
+    "Fixture is a structural placeholder until official group draw and match schedule are loaded.",
+    "Do not mark placeholder matchups as confirmed."
+  ]
+}

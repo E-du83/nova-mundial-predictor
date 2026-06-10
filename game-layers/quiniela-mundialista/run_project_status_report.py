@@ -22,6 +22,7 @@ from research_refresh_engine import build_research_refresh  # noqa: E402
 from result_review_engine import find_real_result, load_friendly_results  # noqa: E402
 from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
+from worldcup_2026_fixture_loader import load_worldcup_2026_fixture  # noqa: E402
 from worldcup_2022_dataset_loader import load_worldcup_2022_datasets  # noqa: E402
 
 
@@ -140,6 +141,7 @@ def main() -> None:
     calibration_report = _load_json(LAYER_ROOT / "data" / "friendly_calibration_report.json")
     calibration_notes = _load_json(LAYER_ROOT / "data" / "calibration_notes.json")
     group_fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
+    worldcup_2026_fixture = load_worldcup_2026_fixture()
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022 = load_worldcup_2022_datasets()
     worldcup_2022_report = _load_json(
@@ -218,6 +220,9 @@ def main() -> None:
         "worldcup_2022_profile_builder.py",
         "worldcup_2022_profile_validator.py",
         "quinigol_timing_calibration_engine.py",
+        "worldcup_2026_match_slot_engine.py",
+        "worldcup_2026_fixture_loader.py",
+        "worldcup_2026_fixture_validator.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -244,6 +249,7 @@ def main() -> None:
         "run_worldcup_2022_blind_test.py",
         "run_worldcup_2022_profile_validation.py",
         "run_quinigol_timing_calibration.py",
+        "run_worldcup_2026_fixture_status.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -269,6 +275,10 @@ def main() -> None:
     print("- friendly_calibration_report.json: " + _exists(LAYER_ROOT / "data" / "friendly_calibration_report.json"))
     print("- calibration_notes.json: " + _exists(LAYER_ROOT / "data" / "calibration_notes.json"))
     print("- group_stage_fixture_context.json: " + _exists(LAYER_ROOT / "data" / "group_stage_fixture_context.json"))
+    print("- worldcup_2026_group_structure.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_structure.json"))
+    print("- worldcup_2026_match_slots.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_match_slots.json"))
+    print("- worldcup_2026_group_stage_fixture.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_fixture.json"))
+    print("- worldcup_2026_fixture_validation_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_fixture_validation_report.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -397,6 +407,27 @@ def main() -> None:
     )
     print(f"- synthetic bridge validation: {'OK' if _synthetic_bridge_validation(teams) else 'pendiente'}")
     print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
+    print("")
+
+    print("WORLD CUP 2026 GROUP STAGE STRUCTURE")
+    print(f"- groups configured: {worldcup_2026_fixture['groups_loaded']}")
+    print("- total group stage matches: 72")
+    print(f"- fixture slots loaded: {worldcup_2026_fixture['slots_loaded']}")
+    print(f"- confirmed fixture matches: {worldcup_2026_fixture['confirmed_matches']}")
+    print(f"- pending fixture matches: {worldcup_2026_fixture['pending_matches']}")
+    print(f"- fixture type: {worldcup_2026_fixture['fixture_type']}")
+    print(f"- fixture validation: {worldcup_2026_fixture['validation_status']}")
+    runner_status = "placeholder_waiting_official_fixture"
+    if worldcup_2026_fixture["fixture_ready"]:
+        runner_status = "ready_for_full_group_simulation"
+    elif worldcup_2026_fixture["fixture_partial"]:
+        runner_status = "partial_fixture_only_confirmed_matches"
+    print(f"- group stage runner status: {runner_status}")
+    print(
+        "- ready_for_full_group_simulation: "
+        f"{str(worldcup_2026_fixture['ready_for_full_group_simulation']).lower()}"
+    )
+    print("- next block recommended: official FIFA fixture snapshot loader / verified group draw import")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")
