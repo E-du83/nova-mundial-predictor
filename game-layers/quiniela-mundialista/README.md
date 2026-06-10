@@ -60,6 +60,14 @@ politica fuerte de Quinigol y trazabilidad basica para metricas futuras. No
 recalibra pesos, no reemplaza el Core y no cambia picks salvo correcciones de
 coherencia Quinigol.
 
+El bloque **Tactical Input Bridge v1** conecta datos confiables de lineup,
+ratings, formacion tactica, forma y ausencias con el calculo real de simulacion.
+Antes de llamar a `simulate_match()`, crea copias temporales de los dos equipos,
+aplica ajustes pequenos y auditables, y pasa esas copias al Core. El baseline
+mundialista no se modifica y el Core no se recalibra. Si faltan datos confiables,
+el bridge no fuerza ningun ajuste numerico y solo reporta el motivo en
+`adjustment_report`.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -100,6 +108,9 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   decorativas.
 - Audita `research_refresh_required`, `recommended_action`, estado de alarma
   del partido y datos criticos faltantes antes de correr un pick final.
+- Conecta datos tacticos confiables con la simulacion mediante
+  `tactical_input_bridge.py`, siempre sobre copias temporales y con caps de
+  seguridad.
 - Genera reporte de calibracion amistosa con aciertos, errores, BTTS, Quinigol,
   alternativas criticas y patrones de fragilidad sin cambiar picks.
 - Prepara fixtures de fase de grupos, reportes estructurados, manifiesto de
@@ -203,6 +214,10 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `quinigol_engine.py`: recomienda Quinigol sin crear cronologia completa.
 - `quinigol_minute_policy.py`: fuerza coherencia entre marcador recomendado,
   equipo Quinigol, minuto y rango registrado.
+- `tactical_input_bridge.py`: construye inputs ajustados para `simulate_match()`
+  cuando existen lineups, ratings, formaciones, forma o ausencias confiables.
+  Distingue contexto explicativo de ajuste real de simulacion y registra
+  `adjustment_report`.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -355,6 +370,34 @@ detecta al jugador y aplica un replacement conservador con peso reducido:
 Los ratings por si solos no reemplazan el Core. Solo ajustan de forma
 conservadora xG, Quinigol, confianza, riesgo y fragilidad.
 
+## Tactical Input Bridge v1
+
+`tactical_input_bridge.py` existe para evitar que las capas de lineup, tactica y
+research queden solo como explicacion decorativa. Cuando hay datos suficientes,
+el bridge traduce esa informacion a multiplicadores pequenos sobre `attack`,
+`defense`, `form`, `tactical_attack_adjustment` y
+`tactical_defense_adjustment` de copias temporales del dict de equipos.
+
+Datos que pueden activar el bridge:
+
+- lineups probables con al menos 7 jugadores con rating real por equipo;
+- ratings reales verificados, no `replacement_level_estimate`;
+- formaciones probables de ambos equipos;
+- `form_score` confiable entre `0.80` y `1.20`;
+- lesiones o ausencias de jugadores clave con rol e impacto claro.
+
+Diferencia clave:
+
+- contexto explicativo: notas, warnings, fragilidad, confianza y riesgo;
+- ajuste real de simulacion: cambios capeados en copias temporales antes de
+  `simulate_match()`.
+
+El bridge no usa scraping, no usa APIs pagadas, no inventa datos, no cambia
+`src/match_simulator.py`, no modifica
+`data/worldcup_2026_real_teams_baseline_v1.json` y no recalibra pesos globales.
+Si faltan datos, devuelve `bridge_status=not_applied` y las probabilidades se
+mantienen equivalentes al flujo anterior.
+
 La secuencia obligatoria es:
 
 ```txt
@@ -493,6 +536,7 @@ game-layers/quiniela-mundialista/
 |-- quiniela_engine.py
 |-- quinigol_engine.py
 |-- strategy_engine.py
+|-- tactical_input_bridge.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -523,6 +567,7 @@ game-layers/quiniela-mundialista/
 |-- run_final_pick_demo.py
 |-- run_data_sources_demo.py
 |-- run_lineup_weighting_demo.py
+|-- run_tactical_input_bridge_demo.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -560,6 +605,7 @@ Desde la raiz del repositorio:
 python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
+python -B game-layers/quiniela-mundialista/run_tactical_input_bridge_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py

@@ -74,6 +74,7 @@ el impacto esperado.
 | Ratings jugadores clave | Snapshot manual verificado/local | Si, manual | parcial | Rating real pesa mas; replacement estimate pesa menos |
 | Formaciones amistoso | Fuente oficial / manual verificada | Si, manual | pending_manual_input | Permite tactical weighting numerico |
 | Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
+| Tactical Input Bridge v1 | Lineups, ratings reales, formaciones, forma y ausencias verificadas | Si | activo si hay datos confiables suficientes | Ajusta copias temporales del team dict antes de `simulate_match()` |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Historial predicciones | `prediction_history.json` | Si | evidencia local | Guarda prediccion, resultado, revision y aprendizaje para backtesting futuro |
 | Reporte calibracion amistosos | `friendly_calibration_report.json` | Si | evidencia local | Resume aciertos, errores, BTTS, Quinigol y patrones para backtesting futuro |
@@ -122,6 +123,10 @@ el impacto esperado.
   `simulation_mode`, `simulations`, `quinigol_policy_applied`,
   `quinigol_team`, `quinigol_minute`, `quinigol_range`, `data_quality_score`,
   `research_refresh_status` y `tactical_score`.
+- Desde Tactical Input Bridge v1, `prediction_history.json` tambien puede
+  guardar `tactical_input_bridge_status`, flags de ajustes aplicados,
+  `adjustment_report_summary`, `adjusted_expected_goals` y
+  `baseline_mutated=false`.
 - `friendly_calibration_report.json` y `calibration_notes.json` guardan
   aprendizaje evaluativo: empate subestimado, gol tardio rival/BTTS
   subestimado, minuto Quinigol fuera de rango, fragilidad validada y validacion
@@ -147,6 +152,31 @@ el impacto esperado.
   pueden cambiar el pick.
 - Lesiones solo pesan si tienen `injury_impact` igual a `medium`, `high` o
   `critical`; lesiones sin impacto definido quedan como dato pendiente.
+
+## Tactical Input Bridge v1
+
+El bridge separa dos usos de datos:
+
+- contexto explicativo: notas de research, riesgo, confianza, fragilidad y
+  advertencias;
+- ajuste real de simulacion: modificadores pequenos aplicados a copias
+  temporales del team dict antes de llamar al Core.
+
+Para activar ajustes numericos se necesita evidencia confiable:
+
+- lineups probables para ambos equipos;
+- al menos 7 jugadores con ratings reales por equipo;
+- formaciones probables de ambos equipos;
+- forma confiable entre `0.80` y `1.20`;
+- ausencias relevantes con jugador clave, impacto y rol claros.
+
+El bridge no modifica `src/match_simulator.py`, no toca
+`data/worldcup_2026_real_teams_baseline_v1.json`, no usa APIs pagadas, no hace
+scraping y no inventa datos faltantes. Los multiplicadores estan capeados para
+evitar distorsiones: lineup maximo `0.82` a `1.18`, tactica `0.94` a `1.06`, y
+ausencias relevantes se mantienen en impactos pequenos. Si faltan datos, el
+resultado debe quedar en `bridge_status=not_applied` o `partial` y el reporte
+debe explicar que no se aplico ajuste numerico.
 
 ## Hardening Foundation v1
 

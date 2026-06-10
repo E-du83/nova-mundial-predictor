@@ -21,6 +21,7 @@ from prediction_history_engine import load_prediction_history, summarize_predict
 from research_refresh_engine import build_research_refresh  # noqa: E402
 from result_review_engine import find_real_result, load_friendly_results  # noqa: E402
 from simulation_config import SIMULATION_MODES  # noqa: E402
+from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 
 
 LAYER_ROOT = Path(__file__).resolve().parent
@@ -79,6 +80,36 @@ def _history_has_probabilities(history: dict) -> bool:
     return False
 
 
+def _file_contains(path: Path, text: str) -> bool:
+    return path.exists() and text in path.read_text(encoding="utf-8")
+
+
+def _synthetic_bridge_validation(teams: dict) -> bool:
+    if "Netherlands" not in teams or "Uzbekistan" not in teams:
+        return False
+    test_teams = {
+        "Bridge A": dict(teams["Netherlands"]),
+        "Bridge B": dict(teams["Uzbekistan"]),
+    }
+    original = json.dumps(test_teams, sort_keys=True)
+    players = [
+        {"player_name": f"P{index}", "position": "attack", "overall_rating": 84, "rating_type": "real"}
+        for index in range(7)
+    ]
+    snapshot = {
+        "team_a": "Bridge A",
+        "team_b": "Bridge B",
+        "formations": {"Bridge A": "4-3-3", "Bridge B": "5-4-1"},
+        "player_ratings": {"Bridge A": players, "Bridge B": players},
+        "form": {"Bridge A": 1.03, "Bridge B": 0.97},
+        "research_confidence": "high",
+    }
+    result = build_adjusted_match_inputs("Bridge A", "Bridge B", test_teams, snapshot)
+    changed = result["team_a_adjusted"]["attack"] != test_teams["Bridge A"]["attack"]
+    not_mutated = json.dumps(test_teams, sort_keys=True) == original
+    return changed and not_mutated and not result["adjustment_report"]["baseline_mutated"]
+
+
 def main() -> None:
     teams, _, _ = load_default_final_pick_inputs()
     matches = _load_friendly_matches()
@@ -123,7 +154,7 @@ def main() -> None:
     for label, ok in hardening_checks.items():
         print(f"- {label}: {'OK' if ok else 'partial'}")
     print(f"- SQLite tracking status: {sqlite_status}")
-    print("- siguiente bloque recomendado: Tactical Input Bridge v1")
+    print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
     print("")
 
     print("MODULOS FUNCIONAN / PRESENTES")
@@ -155,6 +186,7 @@ def main() -> None:
         "venue_climate_engine.py",
         "simulation_config.py",
         "quinigol_minute_policy.py",
+        "tactical_input_bridge.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -171,6 +203,7 @@ def main() -> None:
         "run_friendly_test_demo.py",
         "run_project_status_report.py",
         "run_friendly_calibration_report.py",
+        "run_tactical_input_bridge_demo.py",
         "run_group_stage_report_demo.py",
         "run_backtesting_foundation_demo.py",
         "run_system_self_audit.py",
@@ -301,6 +334,37 @@ def main() -> None:
     print("- uso: evidencia para backtesting/calibracion futura; no entrenamiento automatico")
     print("")
 
+    print("TACTICAL INPUT BRIDGE v1")
+    print(f"- archivo presente: {_exists(LAYER_ROOT / 'tactical_input_bridge.py')}")
+    print(
+        "- integrado en quiniela_engine: "
+        + (
+            "OK"
+            if _file_contains(LAYER_ROOT / "quiniela_engine.py", "build_adjusted_match_inputs")
+            else "PENDIENTE"
+        )
+    )
+    print(
+        "- integrado en run_nova_simulator: "
+        + (
+            "OK"
+            if _file_contains(LAYER_ROOT / "run_nova_simulator.py", "Tactical/Input Bridge")
+            else "PENDIENTE"
+        )
+    )
+    print(f"- demo presente: {_exists(LAYER_ROOT / 'run_tactical_input_bridge_demo.py')}")
+    print(
+        "- baseline mutation protection: "
+        + (
+            "OK"
+            if _file_contains(LAYER_ROOT / "tactical_input_bridge.py", "copy.deepcopy")
+            else "PENDIENTE"
+        )
+    )
+    print(f"- synthetic bridge validation: {'OK' if _synthetic_bridge_validation(teams) else 'pendiente'}")
+    print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
+    print("")
+
     print("CALIBRACION AMISTOSOS")
     reviewed = calibration_report.get("matches_reviewed", [])
     print(f"- amistosos finalizados revisados: {len(reviewed)}")
@@ -323,7 +387,7 @@ def main() -> None:
             "Sample size is very small. Do not recalibrate aggressively from only three friendlies.",
         )
     )
-    print("- proximo bloque recomendado: Tactical Input Bridge v1")
+    print("- proximo bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
     print("")
 
     print("DATA COMPLETION + BACKTESTING FOUNDATION v1")
@@ -344,7 +408,7 @@ def main() -> None:
         + backtesting_manifest.get("data_status", "manual_snapshot_required")
     )
     print("- estado self audit: " + _exists(LAYER_ROOT / "system_self_audit.py"))
-    print("- siguiente bloque recomendado: Tactical Input Bridge v1")
+    print("- siguiente bloque recomendado: Quinigol Timing Calibration / World Cup 2022 Blind Test")
 
 
 if __name__ == "__main__":

@@ -196,6 +196,8 @@ def build_final_pick(
     simulations: int = 50_000,
     seed: int = 2026,
     simulation_mode: str | None = None,
+    match_snapshot: dict | None = None,
+    use_tactical_bridge: bool = True,
 ) -> dict:
     if simulation_mode is not None:
         simulation_mode, simulations = resolve_simulation_mode(simulation_mode)
@@ -214,6 +216,8 @@ def build_final_pick(
             simulations=simulations,
             seed=seed,
             simulation_mode=simulation_mode,
+            match_snapshot=match_snapshot,
+            use_tactical_bridge=use_tactical_bridge,
         )
         for strategy in STRATEGIES
     ]
@@ -230,6 +234,7 @@ def build_final_pick(
         ),
     )
     recommendation = selected["recommendation"]
+    adjustment_report = recommendation.get("adjustment_report", {})
     quiniela = recommendation["quiniela"]
     quinigol = recommendation["quinigol"]
 
@@ -291,6 +296,7 @@ def build_final_pick(
         "scenario_evaluations": evaluations,
         "tournament_context": context,
         "venue_climate": climate,
+        "adjustment_report": adjustment_report,
     }
 
 

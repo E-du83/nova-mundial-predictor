@@ -11,6 +11,7 @@ from match_simulator import load_teams, simulate_match  # noqa: E402
 from quinigol_engine import recommend_quinigol  # noqa: E402
 from simulation_config import infer_simulation_mode  # noqa: E402
 from strategy_engine import choose_quiniela_strategy, normalize_strategy  # noqa: E402
+from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 
 
 def _team_strength(team_data: dict) -> float | None:
@@ -53,6 +54,8 @@ def recommend_match(
     simulations: int = 50_000,
     seed: int = 2026,
     simulation_mode: str | None = None,
+    match_snapshot: dict | None = None,
+    use_tactical_bridge: bool = True,
 ) -> dict:
     """
     Build a Quiniela Mundialista recommendation from the Core match simulator.
@@ -61,16 +64,44 @@ def recommend_match(
     layer only translates those outputs into game picks and risk language.
     """
     strategy = normalize_strategy(strategy)
+    bridge_result = None
+    simulation_teams = teams
+    if use_tactical_bridge:
+        bridge_result = build_adjusted_match_inputs(
+            team_a,
+            team_b,
+            teams,
+            match_snapshot=match_snapshot,
+        )
+        simulation_teams = bridge_result["adjusted_teams"]
+
     core_result = simulate_match(
         team_a,
         team_b,
-        teams,
+        simulation_teams,
         simulations=simulations,
         seed=seed,
     )
     quiniela = choose_quiniela_strategy(core_result, strategy=strategy)
-    _attach_layer_context(core_result, quiniela, teams)
+    _attach_layer_context(core_result, quiniela, simulation_teams)
     quinigol = recommend_quinigol(core_result, strategy=strategy)
+    adjustment_report = (
+        bridge_result["adjustment_report"]
+        if bridge_result
+        else {
+            "bridge_status": "disabled",
+            "baseline_mutated": False,
+            "lineup_applied": False,
+            "tactical_applied": False,
+            "form_applied": False,
+            "player_ratings_applied": False,
+            "data_quality": "not_available",
+            "adjustments": {},
+            "missing_data": [],
+            "warnings": [],
+            "safety_caps_applied": [],
+        }
+    )
 
     return {
         "match": f"{team_a} vs {team_b}",
@@ -86,6 +117,7 @@ def recommend_match(
             "probabilities": core_result["probabilities"],
             "top_scores": core_result["top_scores"],
         },
+        "adjustment_report": adjustment_report,
         "game_definition": "90 minutos, incluye dos tiempos regulares.",
     }
 

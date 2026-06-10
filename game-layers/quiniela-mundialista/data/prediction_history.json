@@ -85,7 +85,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 27,
-      "quinigol_range": "19-35"
+      "quinigol_range": "19-35",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Colombia vs Jordan",
@@ -169,7 +177,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 24,
-      "quinigol_range": "16-32"
+      "quinigol_range": "16-32",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -250,7 +266,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Morocco vs Norway",
@@ -334,7 +358,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 27,
-      "quinigol_range": "19-35"
+      "quinigol_range": "19-35",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Colombia vs Jordan",
@@ -418,7 +450,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -499,7 +539,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Morocco vs Norway",
@@ -601,7 +649,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 27,
-      "quinigol_range": "19-35"
+      "quinigol_range": "19-35",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Colombia vs Jordan",
@@ -703,7 +759,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -805,7 +869,15 @@
       "quinigol_policy_applied": "not_available",
       "quinigol_team": "not_available",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "adjusted_expected_goals": {},
+      "tactical_input_bridge_status": "not_available",
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "adjustment_report_summary": {},
+      "baseline_mutated": false
     },
     {
       "match": "Netherlands vs Uzbekistan",
@@ -949,9 +1021,28 @@
       "quinigol_policy_applied": "normal",
       "quinigol_team": "Netherlands",
       "quinigol_minute": 16,
-      "quinigol_range": "8-24"
+      "quinigol_range": "8-24",
+      "tactical_input_bridge_status": "not_applied",
+      "adjustment_report_summary": {
+        "bridge_status": "not_applied",
+        "data_quality": "insufficient",
+        "xg_delta_expected_direction": "neutral",
+        "missing_data": [
+          "lineup/player_ratings: se requieren al menos 7 jugadores con ratings reales por equipo",
+          "formations: se requiere formacion probable de ambos equipos",
+          "form: no hay form_score confiable distinto de 1.0"
+        ],
+        "warnings": [],
+        "safety_caps_applied": []
+      },
+      "adjusted_expected_goals": {},
+      "lineup_adjustment_applied": false,
+      "tactical_adjustment_applied": false,
+      "form_adjustment_applied": false,
+      "player_ratings_adjustment_applied": false,
+      "baseline_mutated": false
     }
   ],
   "entry_count": 10,
-  "last_update_status": "added 0 entries; enriched 1 entries"
+  "last_update_status": "added 0 entries"
 }

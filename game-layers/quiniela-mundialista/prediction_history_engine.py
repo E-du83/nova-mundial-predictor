@@ -7,6 +7,8 @@ TRACE_FIELDS = (
     "probabilities_1x2",
     "top_scores",
     "expected_goals",
+    "tactical_input_bridge_status",
+    "adjustment_report_summary",
     "quinigol_policy_applied",
     "quinigol_team",
     "quinigol_minute",
@@ -94,6 +96,19 @@ def _probabilities_1x2(recommendation: dict) -> dict:
         "home_win": probabilities.get(f"{team_a}_win"),
         "draw": probabilities.get("draw"),
         "away_win": probabilities.get(f"{team_b}_win"),
+    }
+
+
+def _adjustment_report_summary(report: dict) -> dict:
+    if not report:
+        return {}
+    return {
+        "bridge_status": report.get("bridge_status", "not_available"),
+        "data_quality": report.get("data_quality", "not_available"),
+        "xg_delta_expected_direction": report.get("xg_delta_expected_direction", "unknown"),
+        "missing_data": report.get("missing_data", []),
+        "warnings": report.get("warnings", []),
+        "safety_caps_applied": report.get("safety_caps_applied", []),
     }
 
 
@@ -210,6 +225,7 @@ def build_prediction_history_entry(recommendation: dict) -> dict:
     refresh = recommendation.get("research_refresh", {})
     alarm = recommendation.get("match_alarm", {})
     core_context = _selected_core_context(recommendation)
+    adjustment_report = recommendation.get("adjustment_report", {})
     quinigol_minute = recommendation.get("quinigol_minute")
     if quinigol_minute is None:
         quinigol_minute = _digits(recommendation.get("reference_minute"))
@@ -226,6 +242,18 @@ def build_prediction_history_entry(recommendation: dict) -> dict:
         "probabilities_1x2": _probabilities_1x2(recommendation),
         "top_scores": core_context.get("top_scores", []),
         "expected_goals": core_context.get("expected_goals", {}),
+        "adjusted_expected_goals": (
+            core_context.get("expected_goals", {})
+            if adjustment_report.get("bridge_status") in ("applied", "partial")
+            else {}
+        ),
+        "tactical_input_bridge_status": adjustment_report.get("bridge_status", "not_available"),
+        "lineup_adjustment_applied": adjustment_report.get("lineup_applied", False),
+        "tactical_adjustment_applied": adjustment_report.get("tactical_applied", False),
+        "form_adjustment_applied": adjustment_report.get("form_applied", False),
+        "player_ratings_adjustment_applied": adjustment_report.get("player_ratings_applied", False),
+        "adjustment_report_summary": _adjustment_report_summary(adjustment_report),
+        "baseline_mutated": adjustment_report.get("baseline_mutated", False),
         "pick_principal": alternatives["principal_pick"]["score"],
         "marcador_recomendado": recommendation["recommended_score"],
         "alternativa_critica": critical["score"] if critical else "none",
@@ -349,6 +377,22 @@ def normalize_prediction_history_data(history: dict) -> dict:
             entry["top_scores"] = []
         if "expected_goals" not in entry:
             entry["expected_goals"] = {}
+        if "adjusted_expected_goals" not in entry:
+            entry["adjusted_expected_goals"] = {}
+        if "tactical_input_bridge_status" not in entry:
+            entry["tactical_input_bridge_status"] = "not_available"
+        if "lineup_adjustment_applied" not in entry:
+            entry["lineup_adjustment_applied"] = False
+        if "tactical_adjustment_applied" not in entry:
+            entry["tactical_adjustment_applied"] = False
+        if "form_adjustment_applied" not in entry:
+            entry["form_adjustment_applied"] = False
+        if "player_ratings_adjustment_applied" not in entry:
+            entry["player_ratings_adjustment_applied"] = False
+        if "adjustment_report_summary" not in entry:
+            entry["adjustment_report_summary"] = {}
+        if "baseline_mutated" not in entry:
+            entry["baseline_mutated"] = False
         if "quinigol_policy_applied" not in entry:
             entry["quinigol_policy_applied"] = "not_available"
         if "quinigol_team" not in entry:

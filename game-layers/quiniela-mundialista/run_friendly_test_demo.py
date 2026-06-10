@@ -177,6 +177,7 @@ def _build_friendly_recommendation(
         simulations=simulations,
         simulation_mode=simulation_mode,
         seed=2026,
+        match_snapshot=snapshot,
     )
     base_confidence = adjusted_confidence(final_pick["confidence"])
     base_risk = friendly_risk(final_pick["risk"])
@@ -229,6 +230,7 @@ def _build_friendly_recommendation(
         "market_reading": research["market_warning"],
         "research": research,
         "research_weighting": weighting,
+        "adjustment_report": final_pick.get("adjustment_report", {}),
         "research_refresh": research_refresh,
         "match_alarm": match_alarm,
         "half_time": half_time,
@@ -236,7 +238,7 @@ def _build_friendly_recommendation(
         "real_result": real_result,
         "result_review": {},
         "pick_change_status": (
-            "no cambio marcador recomendado; research/lineup/tactica solo ajustan confianza, riesgo y contexto"
+            "bridge puede ajustar copias temporales antes del Core si hay datos suficientes"
         ),
         "data_used": final_pick["data_used"] + [
             "friendly_test_matches.json",
@@ -245,6 +247,7 @@ def _build_friendly_recommendation(
             "research_refresh_engine",
             "match_alarm_engine",
             "friendly_context_engine",
+            "tactical_input_bridge",
         ],
         "missing_data": sorted(
             set(
@@ -277,6 +280,7 @@ def _build_friendly_recommendation(
 
 
 def format_friendly_recommendation(recommendation: dict) -> str:
+    adjustment_report = recommendation.get("adjustment_report", {})
     lines = [
         f"Partido: {recommendation['match']}",
         f"Tipo de partido: {recommendation['match_type']}",
@@ -336,6 +340,11 @@ def format_friendly_recommendation(recommendation: dict) -> str:
         f"Probabilidades mercado si existen: {recommendation['market_probabilities_visible']}",
         f"Alineaciones/formaciones visibles: {recommendation['lineups_visible']}",
         f"Stats snapshot visibles: {recommendation['stats_visible']}",
+        f"Tactical/Input Bridge status: {adjustment_report.get('bridge_status', 'not_available')}",
+        f"Bridge lineup aplicado: {adjustment_report.get('lineup_applied', False)}",
+        f"Bridge tactico aplicado: {adjustment_report.get('tactical_applied', False)}",
+        f"Bridge form aplicado: {adjustment_report.get('form_applied', False)}",
+        f"Bridge data quality: {adjustment_report.get('data_quality', 'not_available')}",
         f"Lectura del mercado: {recommendation['market_reading']}",
         f"Player rating impact: {recommendation['research_weighting']['player_rating_alignment']}",
         (

@@ -70,6 +70,7 @@ def _print_compact_recommendation(
     alarm = recommendation["match_alarm"]
     decision = recommendation["decision_weighting"]
     tactical = recommendation["research_weighting"]["tactical_weighting"]
+    bridge = recommendation.get("adjustment_report", {})
     missing_critical = decision["missing_critical_data"] or refresh["missing_critical_fields"]
 
     print("NOVA SIMULATOR")
@@ -97,6 +98,20 @@ def _print_compact_recommendation(
     print(f"Robustez: {recommendation['robustness']['pick_robustness']}")
     print(f"Alerta de empate: {_yes_no(recommendation['robustness']['draw_warning'])}")
     print(f"Tactical score: {tactical['tactical_score']}")
+    print("Tactical/Input Bridge:")
+    print(f"Bridge status: {bridge.get('bridge_status', 'not_available')}")
+    print(f"Lineup applied: {_yes_no(bool(bridge.get('lineup_applied', False)))}")
+    print(f"Tactical applied: {_yes_no(bool(bridge.get('tactical_applied', False)))}")
+    print(f"Form applied: {_yes_no(bool(bridge.get('form_applied', False)))}")
+    print(f"Player ratings applied: {_yes_no(bool(bridge.get('player_ratings_applied', False)))}")
+    print(f"Data quality: {bridge.get('data_quality', 'not_available')}")
+    print(f"Adjustment summary: {bridge.get('xg_delta_expected_direction', 'unknown')}")
+    warnings = bridge.get("warnings", [])
+    print("Warnings: " + ("; ".join(warnings) if warnings else "none"))
+    if bridge.get("bridge_status") in ("applied", "partial"):
+        print("Bridge aplicado: lineup/tactica modificaron copias temporales del equipo antes de simulate_match.")
+    else:
+        print("Bridge no aplicado: datos insuficientes; la tactica sigue como contexto/alerta.")
     print(
         "Datos faltantes criticos: "
         + ("; ".join(missing_critical) if missing_critical else "none")
