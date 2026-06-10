@@ -1,0 +1,30 @@
+{
+  "total_matches": 8,
+  "matches_with_first_goal_data": 8,
+  "no_goal_policy_cases": 0,
+  "no_goal_policy_hit": 0,
+  "quinigol_team_hit": 3,
+  "quinigol_team_miss": 5,
+  "quinigol_team_hit_rate": 0.375,
+  "minute_errors": [
+    13,
+    19,
+    30,
+    12,
+    24,
+    6,
+    0,
+    11
+  ],
+  "average_minute_error": 14.38,
+  "median_minute_error": 12.5,
+  "early_bias_count": 3,
+  "late_bias_count": 4,
+  "within_range_count": 2,
+  "range_hit_rate": 0.25,
+  "too_early_average": 16.0,
+  "too_late_average": 16.75,
+  "recommendation": "needs_more_sample",
+  "warning": "Sample size too small; do not recalibrate.",
+  "no_automatic_recalibration": true
+}

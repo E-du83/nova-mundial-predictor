@@ -1,0 +1,27 @@
+{
+  "teams_checked": 10,
+  "profiles_verified": 0,
+  "profiles_pending_verification": 10,
+  "profiles_using_neutral_defaults": 10,
+  "profiles_blocked": 0,
+  "source_warnings": [],
+  "cutoff_warnings": [],
+  "leakage_warnings": [],
+  "generated_after_event_warning": "Profiles generated after event are valid for behavioral flow only, not true prediction accuracy.",
+  "neutral_defaults_warning": "Neutral defaults are allowed only for structural behavioral testing, not for predictive accuracy claims.",
+  "blocked_profiles": [],
+  "neutral_default_teams": [
+    "Argentina",
+    "Croatia",
+    "Ecuador",
+    "France",
+    "Mexico",
+    "Netherlands",
+    "Poland",
+    "Qatar",
+    "Saudi Arabia",
+    "United States"
+  ],
+  "generated_at": "2026-06-10T20:12:00Z",
+  "audit_status": "warning"
+}

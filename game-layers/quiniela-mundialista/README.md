@@ -74,6 +74,13 @@ datos futuros. El modo inicial es `behavioral_backtest`: como se genera despues
 del torneo, no mide precision predictiva real previa. Separa dataset prematch,
 dataset de resultados, configuracion, reporte y auditoria de data leakage.
 
+El bloque **Verified 2022 Prematch Profiles + Quinigol Timing Calibration v1**
+agrega perfiles prematch 2022 minimos para los equipos de la muestra historica.
+Cuando no hay fuentes verificadas suficientes, usa defaults neutrales
+declarados y auditados para que los 8 partidos existentes sean evaluables como
+backtest de comportamiento. Esto no convierte el resultado en precision
+predictiva real, no recalibra pesos y no usa el baseline 2026 como proxy 2022.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -120,6 +127,11 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
 - Agrega blind test historico 2022 con `data_leakage_guard.py`, datasets
   prematch/resultados separados y reporte behavioral, sin usar baseline 2026
   como proxy 2022.
+- Agrega perfiles prematch 2022 auditados con defaults neutrales para pruebas
+  de comportamiento cuando faltan datos historicos verificables.
+- Calcula Quinigol Timing para el backtest 2022: equipo del primer gol, error
+  de minuto, sesgo temprano/tardio y acierto de rango, sin recalibracion
+  automatica.
 - Genera reporte de calibracion amistosa con aciertos, errores, BTTS, Quinigol,
   alternativas criticas y patrones de fragilidad sin cambiar picks.
 - Prepara fixtures de fase de grupos, reportes estructurados, manifiesto de
@@ -233,6 +245,14 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   config y auditoria del blind test 2022.
 - `worldcup_2022_blind_test_engine.py`: construye el reporte behavioral 2022,
   separa readiness estructural, leakage y metricas Quinigol Timing.
+- `worldcup_2022_profile_builder.py`: construye perfiles prematch 2022
+  conservadores para la muestra historica; si falta dato verificado, usa
+  defaults neutrales marcados explicitamente.
+- `worldcup_2022_profile_validator.py`: valida que los perfiles 2022 no
+  contengan resultados, narrativa posterior ni proxies del baseline 2026.
+- `quinigol_timing_calibration_engine.py`: resume metricas de Quinigol Timing
+  sobre evaluaciones historicas y recomienda no recalibrar si la muestra es
+  insuficiente.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -426,6 +446,13 @@ del Mundial 2022:
   `generated_after_event=true` y guardas contra leakage.
 - `worldcup_2022_data_leakage_audit.json`: salida del guard.
 - `worldcup_2022_blind_test_report.json`: reporte auditable.
+- `worldcup_2022_team_profiles_prematch.json`: perfiles prematch 2022 para los
+  equipos incluidos en la muestra. Los perfiles actuales usan defaults
+  neutrales cuando no hay fuentes historicas verificadas.
+- `worldcup_2022_profile_sources_audit.json`: auditoria de fuentes, defaults
+  neutrales y bloqueos de perfiles.
+- `worldcup_2022_quinigol_timing_report.json`: resumen de equipo/minuto/rango
+  de primer gol para Quinigol Timing.
 
 `true prediction` significa una prediccion creada antes del partido, con timestamp
 y datos disponibles antes del cutoff. Este bloque todavia no tiene eso.
@@ -442,6 +469,16 @@ Quinigol Timing Metrics mide, cuando existan predicciones historicas validas:
 acierto del equipo del primer gol, error del minuto, sesgo temprano/tardio y
 acierto de rango. No recalibra automaticamente; solo detecta patrones como:
 `Quinigol team selection may be stronger than minute precision.`
+
+Estado actual del bloque D:
+
+- perfiles creados para los 10 equipos presentes en los 8 partidos de muestra;
+- perfiles verificados con fuente fuerte: 0;
+- perfiles con defaults neutrales auditados: 10;
+- partidos evaluables como behavioral backtest: 8;
+- partidos evaluados con defaults neutrales: 8;
+- precision predictiva real: no valida;
+- reclamos de accuracy del modelo: no permitidos.
 
 Falta para convertirlo en backtest fuerte:
 
@@ -594,6 +631,9 @@ game-layers/quiniela-mundialista/
 |-- data_leakage_guard.py
 |-- worldcup_2022_dataset_loader.py
 |-- worldcup_2022_blind_test_engine.py
+|-- worldcup_2022_profile_builder.py
+|-- worldcup_2022_profile_validator.py
+|-- quinigol_timing_calibration_engine.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -626,6 +666,8 @@ game-layers/quiniela-mundialista/
 |-- run_lineup_weighting_demo.py
 |-- run_tactical_input_bridge_demo.py
 |-- run_worldcup_2022_blind_test.py
+|-- run_worldcup_2022_profile_validation.py
+|-- run_quinigol_timing_calibration.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -664,7 +706,9 @@ python -B game-layers/quiniela-mundialista/run_final_pick_demo.py
 python -B game-layers/quiniela-mundialista/run_data_sources_demo.py
 python -B game-layers/quiniela-mundialista/run_lineup_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_tactical_input_bridge_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2022_profile_validation.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2022_blind_test.py
+python -B game-layers/quiniela-mundialista/run_quinigol_timing_calibration.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py

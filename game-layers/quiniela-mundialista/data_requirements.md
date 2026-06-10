@@ -76,8 +76,11 @@ el impacto esperado.
 | Tactical score | Derivado local de formacion, roles y fuerza por linea | Si | activo con advertencia si falta formacion | Ajusta confianza/riesgo y sirve como desempate conservador |
 | Tactical Input Bridge v1 | Lineups, ratings reales, formaciones, forma y ausencias verificadas | Si | activo si hay datos confiables suficientes | Ajusta copias temporales del team dict antes de `simulate_match()` |
 | World Cup 2022 prematch dataset | Fixture/contexto historico antes del kickoff | Si | partial_prematch_dataset | Base para behavioral_backtest sin resultados mezclados |
+| World Cup 2022 prematch profiles | Perfil historico por equipo antes del kickoff | Si | neutral_defaults_behavioral_only | Permite evaluar comportamiento de la muestra sin usar baseline 2026 |
+| World Cup 2022 profile audit | Auditoria de fuentes, defaults y bloqueos | Si | warning_neutral_defaults | Evita ocultar perfiles no verificados y separa behavioral de accuracy real |
 | World Cup 2022 results dataset | Resultados historicos separados | Si | partial_results_dataset | Solo evaluacion posterior, nunca input prematch |
 | Data leakage guard 2022 | Auditoria local del dataset prematch | Si | cleared si no hay leakage critico | Bloquea si aparecen resultados, futuro o baseline 2026 |
+| Quinigol timing report 2022 | Equipo/minuto/rango del primer gol | Si | small_sample_behavioral_only | Detecta sesgo temprano/tardio sin recalibrar automaticamente |
 | Resultado real amistoso | Fuente oficial post-partido | Si | pending_real_result | Permite comparar pick vs resultado |
 | Historial predicciones | `prediction_history.json` | Si | evidencia local | Guarda prediccion, resultado, revision y aprendizaje para backtesting futuro |
 | Reporte calibracion amistosos | `friendly_calibration_report.json` | Si | evidencia local | Resume aciertos, errores, BTTS, Quinigol y patrones para backtesting futuro |
@@ -145,6 +148,15 @@ el impacto esperado.
   coordenadas o clima real, el dato queda pendiente.
 - El Mundial 2022 debe usarse solo con blind test separado y guardas de data
   leakage. No mezclarlo con datos posteriores al partido.
+- Los perfiles prematch 2022 solo pueden usar datos disponibles antes del
+  kickoff. Si no hay fuente historica verificable, deben quedar como
+  `uses_neutral_defaults=true` y `valid_for_true_prediction_accuracy=false`.
+- Los perfiles 2022 con defaults neutrales pueden habilitar un
+  `behavioral_backtest`, pero no claims de precision del modelo ni
+  recalibracion automatica.
+- Quinigol Timing 2022 debe reportar muestra, equipo del primer gol, error de
+  minuto, sesgo temprano/tardio y acierto de rango. Con 8 partidos debe quedar
+  como muestra insuficiente para recalibrar.
 - `research_refresh_engine.py` no busca datos por su cuenta. Solo audita el
   snapshot manual y marca `research_refresh_required`, faltantes criticos,
   faltantes opcionales y `recommended_action`.
@@ -194,7 +206,14 @@ El blind test 2022 usa archivos separados bajo
 - `worldcup_2022_blind_test_config.json`: declara `mode=behavioral_backtest`,
   `generated_after_event=true` y que no sirve para precision predictiva real.
 - `worldcup_2022_data_leakage_audit.json`: salida del guard.
+- `worldcup_2022_team_profiles_prematch.json`: perfiles 2022 para los equipos
+  de la muestra. Los perfiles actuales son minimos y usan defaults neutrales
+  auditados cuando falta dato historico verificable.
+- `worldcup_2022_profile_sources_audit.json`: resume perfiles creados,
+  verificados, pendientes de verificacion, defaults neutrales y bloqueos.
 - `worldcup_2022_blind_test_report.json`: reporte de readiness y metricas.
+- `worldcup_2022_quinigol_timing_report.json`: metricas de equipo/minuto/rango
+  para primer gol en modo behavioral.
 
 `generated_after_event=true` significa que las corridas actuales ocurren despues
 del Mundial 2022. Por eso cualquier metrica queda como behavioral/backtest de
@@ -209,6 +228,16 @@ eliminatorias o informacion de partidos futuros. Tambien incluye usar
 Quinigol Timing Metrics debe calcularse solo cuando haya predicciones validas y
 datos de primer gol: acierto de equipo, error promedio/mediano de minuto, sesgo
 temprano o tardio y acierto de rango. No recalibra pesos automaticamente.
+
+Estado actual del bloque D:
+
+- equipos perfilados en la muestra 2022: 10;
+- perfiles con fuente fuerte verificada: 0;
+- perfiles con defaults neutrales auditados: 10;
+- partidos evaluables como behavioral backtest: 8;
+- partidos evaluados con defaults neutrales: 8;
+- estado de precision predictiva real: no valido;
+- recomendacion Quinigol Timing: muestra insuficiente, no recalibrar.
 
 Falta para un backtest fuerte:
 

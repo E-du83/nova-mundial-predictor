@@ -25,6 +25,16 @@ def main() -> None:
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")
     print(f"- usa baseline 2026: {'si' if audit['readiness']['worldcup_2022_uses_2026_baseline'] else 'no'}")
     print(f"- perfiles historicos faltantes: {audit['readiness']['worldcup_2022_missing_historical_profiles']}")
+    print(f"- perfiles con defaults neutrales: {audit['readiness']['worldcup_2022_neutral_defaults_only']}")
+    print(f"- partidos evaluados: {audit['readiness']['worldcup_2022_matches_evaluated']}")
+    print(
+        "- partidos evaluados con defaults neutrales: "
+        f"{audit['readiness']['worldcup_2022_matches_evaluable_with_neutral_defaults']}"
+    )
+    print(
+        "- muestra Quinigol insuficiente: "
+        f"{'si' if audit['readiness']['quinigol_timing_sample_insufficient'] else 'no'}"
+    )
     print(f"- puede recalibrar: {'si' if audit['readiness']['worldcup_2022_can_recalibrate'] else 'no'}")
 
 

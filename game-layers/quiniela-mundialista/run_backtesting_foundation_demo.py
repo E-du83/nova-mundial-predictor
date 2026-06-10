@@ -3,6 +3,8 @@ from pathlib import Path
 from backtesting_engine import build_friendly_backtest_demo, load_backtesting_manifest
 from worldcup_2022_dataset_loader import (
     PREMATCH_PATH as WC2022_PREMATCH_PATH,
+    PROFILES_PATH as WC2022_PROFILES_PATH,
+    QUINIGOL_TIMING_REPORT_PATH as WC2022_QUINIGOL_TIMING_REPORT_PATH,
     REPORT_PATH as WC2022_REPORT_PATH,
     RESULTS_PATH as WC2022_RESULTS_PATH,
     load_worldcup_2022_datasets,
@@ -23,6 +25,11 @@ def main() -> None:
     report = {}
     if WC2022_REPORT_PATH.exists():
         report = __import__("json").loads(WC2022_REPORT_PATH.read_text(encoding="utf-8"))
+    quinigol_timing_report = {}
+    if WC2022_QUINIGOL_TIMING_REPORT_PATH.exists():
+        quinigol_timing_report = __import__("json").loads(
+            WC2022_QUINIGOL_TIMING_REPORT_PATH.read_text(encoding="utf-8")
+        )
     datasets = manifest.get("datasets", [])
     ready = [item for item in datasets if item.get("integration_status") == "foundation_ready"]
     pending = [item for item in datasets if item.get("integration_status") != "foundation_ready"]
@@ -44,14 +51,32 @@ def main() -> None:
     print("World Cup 2022 Blind Test status")
     print(f"- prematch dataset: {'OK' if WC2022_PREMATCH_PATH.exists() else 'missing'}")
     print(f"- results dataset: {'OK' if WC2022_RESULTS_PATH.exists() else 'missing'}")
+    print(f"- prematch profiles: {'OK' if WC2022_PROFILES_PATH.exists() else 'missing'}")
     print(f"- leakage guard status: {audit.get('audit_status', 'pending')}")
     print(f"- prematch dataset count: {worldcup_2022['prematch_count']}")
     print(f"- results dataset count: {worldcup_2022['results_count']}")
+    print(f"- profiles count: {worldcup_2022.get('profiles_count', 0)}")
+    print(f"- profiles using neutral defaults: {worldcup_2022.get('profiles_using_neutral_defaults', 0)}")
     print(f"- report status: {report.get('engine_status', 'missing')}")
     print(f"- matches evaluated: {report.get('matches_evaluated', 0)}")
-    print(f"- missing historical profiles: {report.get('matches_missing_historical_profiles', 'not_available')}")
-    print("- next action: verify 2022 prematch profiles before simulation; do not use 2026 baseline")
-    print("- siguiente paso recomendado: Quinigol Timing Calibration / verified 2022 prematch profiles")
+    print(
+        "- matches evaluated with neutral defaults: "
+        f"{report.get('matches_evaluable_with_neutral_defaults', 0)}"
+    )
+    print(
+        "- not valid for model accuracy claims: "
+        f"{str(report.get('not_valid_for_model_accuracy_claims', True)).lower()}"
+    )
+    print(
+        "- Quinigol timing sample: "
+        f"{quinigol_timing_report.get('matches_with_first_goal_data', 0)}"
+    )
+    print(
+        "- Quinigol timing recommendation: "
+        f"{quinigol_timing_report.get('recommendation', 'needs_more_sample')}"
+    )
+    print("- next action: verify real 2022 prematch profiles before any recalibration")
+    print("- siguiente paso recomendado: ampliar fuentes 2022 verificadas; no usar baseline 2026")
 
 
 if __name__ == "__main__":

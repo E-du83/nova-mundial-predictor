@@ -70,7 +70,8 @@ def build_system_self_audit() -> dict:
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
-            "World Cup 2022 historical team profiles are still insufficient for Core simulation.",
+            "World Cup 2022 historical team profiles are neutral defaults, so they are insufficient for accuracy claims.",
+            "World Cup 2022 profiles currently use neutral defaults, so they validate flow only.",
         ],
         "riesgos": [
             "Small sample overfitting from only three friendlies.",
@@ -78,11 +79,13 @@ def build_system_self_audit() -> dict:
             "Core dominance can hide weak external-data layers if missing data is not surfaced.",
             "Decorative variables can accumulate if a field has no measurable downstream impact.",
             "Using 2026 baseline data for 2022 would create invalid historical evaluation.",
+            "Quinigol timing sample is only 8 matches, so calibration would overfit.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
+            "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
             "Persist probability vectors for Brier/log-loss evaluation.",
             "Complete manual snapshots for odds, lineups and formations before final picks.",
         ],
@@ -97,6 +100,7 @@ def build_system_self_audit() -> dict:
             "Do not sell or present this as production betting software.",
             "Do not auto-change Core weights from calibration_notes.json.",
             "Do not recalibrate from World Cup 2022 behavioral_backtest until profiles and leakage audit are strong.",
+            "Do not recalibrate Quinigol timing from neutral-default backtest or an 8-match sample.",
         ],
         "siguiente_bloque_recomendado": "verified 2022 prematch profiles / Quinigol Timing Calibration",
         "readiness": {
@@ -116,6 +120,16 @@ def build_system_self_audit() -> dict:
                 "matches_missing_historical_profiles",
                 "not_available",
             ),
+            "worldcup_2022_neutral_defaults_only": worldcup_2022_report.get(
+                "profiles_using_neutral_defaults",
+                "not_available",
+            ),
+            "worldcup_2022_matches_evaluated": worldcup_2022_report.get("matches_evaluated", 0),
+            "worldcup_2022_matches_evaluable_with_neutral_defaults": worldcup_2022_report.get(
+                "matches_evaluable_with_neutral_defaults",
+                0,
+            ),
+            "quinigol_timing_sample_insufficient": True,
             "worldcup_2022_can_recalibrate": False,
             "worldcup_2022_requires_blind_test": False,
         },

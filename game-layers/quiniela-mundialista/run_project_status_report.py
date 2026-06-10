@@ -54,6 +54,12 @@ def _dataset_status(data: dict, missing_value: str = "missing") -> str:
     return str(status)
 
 
+def _profile_dataset_status(worldcup_2022: dict) -> str:
+    if worldcup_2022.get("profiles_count", 0) > 0:
+        return "OK"
+    return _dataset_status(worldcup_2022.get("profiles", {}))
+
+
 def _git_tracked(path: Path) -> str:
     try:
         result = subprocess.run(
@@ -209,6 +215,9 @@ def main() -> None:
         "data_leakage_guard.py",
         "worldcup_2022_dataset_loader.py",
         "worldcup_2022_blind_test_engine.py",
+        "worldcup_2022_profile_builder.py",
+        "worldcup_2022_profile_validator.py",
+        "quinigol_timing_calibration_engine.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -233,6 +242,8 @@ def main() -> None:
         "run_quiniela_demo.py",
         "run_group_quiniela_demo.py",
         "run_worldcup_2022_blind_test.py",
+        "run_worldcup_2022_profile_validation.py",
+        "run_quinigol_timing_calibration.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -391,9 +402,22 @@ def main() -> None:
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")
     print(f"- prematch dataset: {_dataset_status(worldcup_2022.get('prematch', {}))}")
     print(f"- results dataset: {_dataset_status(worldcup_2022.get('results', {}))}")
+    print(f"- profile dataset: {_profile_dataset_status(worldcup_2022)}")
+    print(f"- profile audit: {worldcup_2022.get('profile_audit', {}).get('audit_status', 'pending')}")
+    print(f"- profiles using neutral defaults: {worldcup_2022.get('profiles_using_neutral_defaults', 0)}")
     audit_status = worldcup_2022.get("audit", {}).get("audit_status", "pending")
     print(f"- data leakage guard: {audit_status}")
     print(f"- blind test report: {worldcup_2022_report.get('engine_status', 'missing')}")
+    quinigol_timing_report = _load_json(
+        LAYER_ROOT
+        / "historical_blind_tests"
+        / "worldcup_2022"
+        / "worldcup_2022_quinigol_timing_report.json"
+    )
+    print(
+        "- Quinigol timing report: "
+        + ("OK" if quinigol_timing_report.get("total_matches") else "partial")
+    )
     print(f"- generated_after_event: {str(worldcup_2022_report.get('generated_after_event', True)).lower()}")
     print(
         "- valid_for_behavioral_backtest: "
@@ -404,10 +428,18 @@ def main() -> None:
         f"{str(not worldcup_2022_report.get('not_valid_for_true_prediction_accuracy', True)).lower()}"
     )
     print(f"- matches evaluated: {worldcup_2022_report.get('matches_evaluated', 0)}")
+    print(
+        "- matches evaluable with neutral defaults: "
+        f"{worldcup_2022_report.get('matches_evaluable_with_neutral_defaults', 0)}"
+    )
     print(f"- matches blocked by leakage: {worldcup_2022_report.get('matches_blocked_by_leakage', 0)}")
     print(
+        "- not valid for model accuracy claims: "
+        f"{str(worldcup_2022_report.get('not_valid_for_model_accuracy_claims', True)).lower()}"
+    )
+    print(
         "- historical profiles status: "
-        + worldcup_2022_report.get("structural_readiness_metrics", {}).get(
+        + worldcup_2022_report.get("structural_flow_metrics", worldcup_2022_report.get("structural_readiness_metrics", {})).get(
             "historical_profiles_status",
             "not_available",
         )
