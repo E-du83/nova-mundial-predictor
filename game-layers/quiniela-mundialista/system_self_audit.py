@@ -5,6 +5,8 @@ from pathlib import Path
 
 from full_group_stage_picks_runner import run_full_group_stage_picks
 from group_context_engine import build_group_context
+from worldcup_2026_bracket_guard import evaluate_bracket_readiness
+from worldcup_2026_bracket_structure import write_default_bracket_files
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture
 
 
@@ -34,6 +36,8 @@ def build_system_self_audit() -> dict:
         fixtures=worldcup_2026_fixture["fixture"].get("matches", []),
         mode="pre_tournament",
     )
+    write_default_bracket_files()
+    bracket_guard = evaluate_bracket_readiness()
     manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022_report = _load_json(
         LAYER_ROOT
@@ -71,6 +75,12 @@ def build_system_self_audit() -> dict:
         "run_full_group_stage_picks.py",
         "group_context_engine.py",
         "run_group_context_demo.py",
+        "worldcup_2026_bracket_structure.py",
+        "worldcup_2026_third_place_selector.py",
+        "worldcup_2026_bracket_guard.py",
+        "worldcup_2026_bracket_builder.py",
+        "run_worldcup_2026_bracket_status.py",
+        "run_worldcup_2026_third_place_demo.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -94,6 +104,7 @@ def build_system_self_audit() -> dict:
             "Fixture importer defaults to dry_run and validates manual snapshots before updating active fixture.",
             "Full Group Stage Picks Runner exists but remains blocked by Fixture Guard until official fixture is ready.",
             "Group Context Engine exists and remains blocked while the 2026 fixture is placeholder.",
+            "Official Bracket 2026 scaffold exists but remains blocked until final group standings exist.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
@@ -102,6 +113,7 @@ def build_system_self_audit() -> dict:
             "World Cup 2026 fixture is structural placeholder, not confirmed matchups.",
             "World Cup 2026 group draw, kickoff UTC and venues are still pending verification.",
             "Group context cannot activate for real groups until official groups and fixtures are loaded.",
+            "Knockout bracket cannot be built until group standings and third-place rules are verified.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
@@ -119,6 +131,7 @@ def build_system_self_audit() -> dict:
             "A future picks runner must not bypass the fixture guard.",
             "Running --force on full picks must not bypass Fixture Guard.",
             "Jornada 3 trap analysis would leak future information if standings_before_match is not supplied.",
+            "A third-place selector can create a false bracket if it resolves tied candidates without official criteria.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
@@ -126,6 +139,7 @@ def build_system_self_audit() -> dict:
             "Keep Full Group Stage Picks Runner blocked until guard_status=ready.",
             "Replace structural placeholder assignments with verified FIFA group draw and fixture data.",
             "Activate Group Context Engine only after fixture guard is ready or partial_ready with verified teams.",
+            "Load verified group standings and official third-place combination matrix before bracket build.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
             "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
@@ -148,8 +162,9 @@ def build_system_self_audit() -> dict:
             "Do not bypass Fixture Guard from future Full Group Stage Picks Runner.",
             "Do not write prediction_history entries from placeholder group-stage slots.",
             "Do not use final group tables or future results for Group Context Engine.",
+            "Do not invent knockout qualifiers, best third-placed teams or third-place slot mappings.",
         ],
-        "siguiente_bloque_recomendado": "Official Bracket 2026 / Research Automation",
+        "siguiente_bloque_recomendado": "Research Automation / verified group standings import",
         "readiness": {
             "missing_modules": missing_modules,
             "real_data_available": {
@@ -215,6 +230,20 @@ def build_system_self_audit() -> dict:
             ],
             "group_context_needs_official_fixture": group_context_real["context_status"]
             == "placeholder_blocked",
+            "bracket_scaffold_exists": _exists(LAYER_ROOT / "worldcup_2026_bracket_structure.py")
+            and _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_slots.json"),
+            "bracket_guard_exists": _exists(LAYER_ROOT / "worldcup_2026_bracket_guard.py"),
+            "third_place_selector_exists": _exists(LAYER_ROOT / "worldcup_2026_third_place_selector.py"),
+            "third_place_rules_exists": _exists(
+                LAYER_ROOT / "data" / "worldcup_2026_third_place_rules.json"
+            ),
+            "bracket_guard_status": bracket_guard["bracket_guard_status"],
+            "bracket_builds_real_without_group_results": bracket_guard["ready_for_knockout_projection"],
+            "bracket_invents_best_thirds": bracket_guard["third_place_status"] == "ready"
+            and bracket_guard["qualified_teams_count"] > 0,
+            "third_place_matrix_pending": bracket_guard["third_place_matrix_status"]
+            == "manual_snapshot_required",
+            "knockout_picks_blocked": bracket_guard["ready_for_knockout_picks"] is False,
             "worldcup_2022_blind_test_exists": bool(worldcup_2022_report),
             "worldcup_2022_leakage_guard_exists": bool(worldcup_2022_audit),
             "worldcup_2022_leakage_guard_status": worldcup_2022_audit.get("audit_status", "missing"),

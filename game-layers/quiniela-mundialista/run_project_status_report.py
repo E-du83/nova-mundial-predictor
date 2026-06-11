@@ -24,6 +24,8 @@ from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 from full_group_stage_picks_runner import run_full_group_stage_picks  # noqa: E402
 from group_context_engine import build_group_context  # noqa: E402
+from worldcup_2026_bracket_guard import evaluate_bracket_readiness  # noqa: E402
+from worldcup_2026_bracket_structure import write_default_bracket_files  # noqa: E402
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture  # noqa: E402
 from worldcup_2022_dataset_loader import load_worldcup_2022_datasets  # noqa: E402
 
@@ -156,6 +158,8 @@ def main() -> None:
     group_context_guard_report = _load_json(
         LAYER_ROOT / "data" / "worldcup_2026_group_context_guard_report.json"
     )
+    write_default_bracket_files()
+    bracket_guard = evaluate_bracket_readiness()
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022 = load_worldcup_2022_datasets()
     worldcup_2022_report = _load_json(
@@ -241,6 +245,10 @@ def main() -> None:
         "worldcup_2026_fixture_guard.py",
         "full_group_stage_picks_runner.py",
         "group_context_engine.py",
+        "worldcup_2026_bracket_structure.py",
+        "worldcup_2026_third_place_selector.py",
+        "worldcup_2026_bracket_guard.py",
+        "worldcup_2026_bracket_builder.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -272,6 +280,8 @@ def main() -> None:
         "run_worldcup_2026_fixture_guard.py",
         "run_full_group_stage_picks.py",
         "run_group_context_demo.py",
+        "run_worldcup_2026_bracket_status.py",
+        "run_worldcup_2026_third_place_demo.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -310,6 +320,11 @@ def main() -> None:
     print("- worldcup_2026_group_context_rules.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_rules.json"))
     print("- worldcup_2026_group_context_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_report.json"))
     print("- worldcup_2026_group_context_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_guard_report.json"))
+    print("- worldcup_2026_knockout_structure.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_knockout_structure.json"))
+    print("- worldcup_2026_bracket_slots.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_slots.json"))
+    print("- worldcup_2026_third_place_rules.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_third_place_rules.json"))
+    print("- worldcup_2026_bracket_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_guard_report.json"))
+    print("- worldcup_2026_bracket_projection_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_projection_report.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -516,6 +531,34 @@ def main() -> None:
     )
     print(f"- prediction impact enabled: {prediction_impact}")
     print("- next block recommended: Official Bracket 2026 / Research Automation")
+    print("")
+
+    print("WORLD CUP 2026 OFFICIAL BRACKET v1")
+    print(
+        "- knockout structure: "
+        + _exists(LAYER_ROOT / "data" / "worldcup_2026_knockout_structure.json")
+    )
+    print(
+        "- bracket slots: "
+        + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_slots.json")
+    )
+    print(
+        "- third-place rules: "
+        + _exists(LAYER_ROOT / "data" / "worldcup_2026_third_place_rules.json")
+    )
+    print(f"- third-place selector: {_exists(LAYER_ROOT / 'worldcup_2026_third_place_selector.py')}")
+    print(f"- bracket guard: {_exists(LAYER_ROOT / 'worldcup_2026_bracket_guard.py')}")
+    print(f"- bracket guard status: {bracket_guard['bracket_guard_status']}")
+    print(
+        "- ready for knockout projection: "
+        f"{str(bracket_guard['ready_for_knockout_projection']).lower()}"
+    )
+    print(
+        "- ready for knockout picks: "
+        f"{str(bracket_guard['ready_for_knockout_picks']).lower()}"
+    )
+    print(f"- third-place matrix status: {bracket_guard['third_place_matrix_status']}")
+    print("- next block recommended: Research Automation / verified group standings import")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

@@ -883,6 +883,8 @@ python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_import_demo
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_guard.py
 python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode standard
 python -B game-layers/quiniela-mundialista/run_group_context_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_bracket_status.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_third_place_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
@@ -982,3 +984,31 @@ Datos prohibidos para este modulo:
 `points_pressure_context` cuando Fixture Guard este en `ready` o
 `partial_ready`. Si el contexto tiene datos insuficientes, no debe cambiar el
 pick.
+
+## Official Bracket 2026 v1
+
+`worldcup_2026_bracket_structure.py` crea la estructura scaffold de
+eliminatorias del Mundial 2026:
+
+- Round of 32: 16 partidos.
+- Round of 16: 8 partidos.
+- Cuartos: 4 partidos.
+- Semifinales: 2 partidos.
+- Tercer lugar: 1 partido.
+- Final: 1 partido.
+
+El formato esperado clasifica a los dos primeros de cada uno de los 12 grupos
+(24 equipos) y a 8 mejores terceros. La seleccion de terceros queda separada en
+`worldcup_2026_third_place_selector.py`, con reglas pendientes de verificacion
+oficial en `worldcup_2026_third_place_rules.json`.
+
+El bracket queda bloqueado porque todavia faltan:
+
+- standings finales/proyectados de grupos con posiciones 1-4;
+- matriz oficial de combinaciones de terceros, si aplica;
+- fixture knockout oficial/verificado;
+- sedes y horarios knockout verificados.
+
+No se inventan clasificados, mejores terceros ni cruces. Los slots de
+`worldcup_2026_bracket_slots.json` quedan con `team_a` y `team_b` en
+`pending_group_results`. Este bloque no genera picks de eliminatorias.

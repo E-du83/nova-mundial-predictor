@@ -339,3 +339,41 @@ El demo sintetico de `run_group_context_demo.py` solo valida reglas internas:
 grupo fuerte/equilibrado, candidato sorpresa, jornada 3 trap y presion de
 puntos. Esa data sintetica no debe persistirse en datasets reales ni modificar
 `data/worldcup_2026_real_teams_baseline_v1.json`.
+
+## Official Bracket 2026 v1
+
+La estructura de eliminatorias se prepara como scaffold y debe permanecer
+bloqueada hasta tener datos de grupo validos.
+
+Formato esperado:
+
+- 12 grupos de 4 equipos.
+- Clasifican posiciones 1 y 2 de cada grupo: 24 equipos.
+- Clasifican 8 mejores terceros: 8 equipos.
+- Round of 32 con 32 equipos.
+- Rondas posteriores: R16, cuartos, semifinales, tercer lugar y final.
+
+Datos necesarios:
+
+- standings finales/proyectados de grupo con 12 grupos;
+- 4 equipos por grupo;
+- posiciones 1, 2, 3 y 4 por grupo;
+- puntos, diferencia de gol y goles a favor para terceros;
+- criterios oficiales completos para desempates;
+- matriz oficial de combinaciones de terceros si se requiere;
+- fixture knockout oficial con sedes y kickoff UTC verificados.
+
+Datos prohibidos:
+
+- clasificados inventados;
+- mejores terceros inventados;
+- matriz de terceros construida sin fuente oficial;
+- resultados futuros o tabla final usada antes de tiempo;
+- picks de eliminatorias antes de bracket confirmado.
+
+Estados esperados:
+
+- `blocked_pending_group_results` sin standings finales de grupo;
+- `blocked_third_place_rules` si faltan reglas/matriz oficial de terceros;
+- `ready_for_bracket_build` solo cuando standings y reglas esten verificados;
+- `ready_for_knockout_picks=false` hasta tener bracket real confirmado.

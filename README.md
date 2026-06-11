@@ -426,3 +426,25 @@ python -B game-layers/quiniela-mundialista/run_group_context_demo.py
 El demo usa un escenario sintetico controlado solo para probar reglas. No guarda
 equipos sinteticos en datasets reales, no toca el baseline mundialista y no usa
 resultados futuros ni tabla final.
+
+## Quiniela Mundialista: Official Bracket 2026 v1
+
+La capa `game-layers/quiniela-mundialista/worldcup_2026_bracket_structure.py`
+prepara la estructura oficial general de eliminatorias 2026:
+
+- 48 equipos, 12 grupos.
+- Clasifican los dos primeros de cada grupo: 24 equipos.
+- Clasifican 8 mejores terceros: 32 equipos a Round of 32.
+- Eliminatorias: R32, R16, cuartos, semifinales, tercer lugar y final.
+- Total torneo: 104 partidos.
+
+Estado actual: scaffold bloqueado. No hay standings finales de grupos, no hay
+mejores terceros reales y la matriz oficial de combinaciones de terceros queda
+como `manual_snapshot_required`. Este bloque no genera picks de eliminatorias.
+
+Validacion:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_bracket_status.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_third_place_demo.py
+```

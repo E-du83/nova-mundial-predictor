@@ -1,0 +1,18 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "worldcup_2026_third_place_rules_v1",
+  "total_groups": 12,
+  "third_place_candidates": 12,
+  "best_third_place_qualifiers": 8,
+  "ranking_criteria_order": [
+    "points",
+    "goal_difference",
+    "goals_for",
+    "fair_play_points / disciplinary record",
+    "fifa_ranking_or_lot_drawing depending official rule availability"
+  ],
+  "source_status": "pending_official_rules_verification",
+  "implementation_status": "scaffold",
+  "third_place_combination_matrix_status": "manual_snapshot_required",
+  "warning": "Exact official tie-break implementation must be verified against FIFA competition regulations before operational use."
+}

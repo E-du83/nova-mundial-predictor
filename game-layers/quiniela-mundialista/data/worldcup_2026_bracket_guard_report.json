@@ -1,0 +1,20 @@
+{
+  "bracket_guard_status": "blocked_pending_group_results",
+  "ready_for_knockout_projection": false,
+  "ready_for_knockout_picks": false,
+  "blocked_reasons": [
+    "final group standings missing",
+    "third-place rows missing"
+  ],
+  "warnings": [
+    "Third-place combination matrix is pending official manual snapshot."
+  ],
+  "qualified_teams_count": 0,
+  "third_place_status": "blocked",
+  "third_place_matrix_status": "manual_snapshot_required",
+  "bracket_slots_status": "OK",
+  "selector_summary": {
+    "qualified_third_placed_count": 0,
+    "unresolved_tiebreaks": []
+  }
+}

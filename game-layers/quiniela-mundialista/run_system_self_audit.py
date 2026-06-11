@@ -89,6 +89,25 @@ def main() -> None:
         "- falta fixture oficial para contexto real: "
         f"{'si' if audit['readiness']['group_context_needs_official_fixture'] else 'no'}"
     )
+    print("World Cup 2026 Official Bracket")
+    print(f"- bracket scaffold existe: {'si' if audit['readiness']['bracket_scaffold_exists'] else 'no'}")
+    print(f"- bracket guard existe: {'si' if audit['readiness']['bracket_guard_exists'] else 'no'}")
+    print(f"- third-place selector existe: {'si' if audit['readiness']['third_place_selector_exists'] else 'no'}")
+    print(f"- third-place rules existen: {'si' if audit['readiness']['third_place_rules_exists'] else 'no'}")
+    print(f"- bracket guard status: {audit['readiness']['bracket_guard_status']}")
+    print(
+        "- construye bracket real sin grupos cerrados: "
+        f"{'si' if audit['readiness']['bracket_builds_real_without_group_results'] else 'no'}"
+    )
+    print(
+        "- inventa mejores terceros: "
+        f"{'si' if audit['readiness']['bracket_invents_best_thirds'] else 'no'}"
+    )
+    print(
+        "- matriz terceros pendiente snapshot oficial: "
+        f"{'si' if audit['readiness']['third_place_matrix_pending'] else 'no'}"
+    )
+    print(f"- knockout picks bloqueados: {'si' if audit['readiness']['knockout_picks_blocked'] else 'no'}")
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

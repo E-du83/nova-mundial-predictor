@@ -1,0 +1,533 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "worldcup_2026_bracket_slots_v1",
+  "source_status": "manual_snapshot_required",
+  "status": "scaffold_pending_group_results",
+  "total_slots": 32,
+  "round_counts": {
+    "round_of_32": 16,
+    "round_of_16": 8,
+    "quarter_finals": 4,
+    "semi_finals": 2,
+    "third_place": 1,
+    "final": 1
+  },
+  "slots": [
+    {
+      "match_id": "R32-01",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-02",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-03",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-04",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-05",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-06",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-07",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-08",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-09",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-10",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-11",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-12",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-13",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-14",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-15",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R32-16",
+      "round": "round_of_32",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "final_group_standings",
+        "official_bracket_mapping"
+      ]
+    },
+    {
+      "match_id": "R16-01",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-01",
+        "winner:R32-02"
+      ]
+    },
+    {
+      "match_id": "R16-02",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-03",
+        "winner:R32-04"
+      ]
+    },
+    {
+      "match_id": "R16-03",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-05",
+        "winner:R32-06"
+      ]
+    },
+    {
+      "match_id": "R16-04",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-07",
+        "winner:R32-08"
+      ]
+    },
+    {
+      "match_id": "R16-05",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-09",
+        "winner:R32-10"
+      ]
+    },
+    {
+      "match_id": "R16-06",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-11",
+        "winner:R32-12"
+      ]
+    },
+    {
+      "match_id": "R16-07",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-13",
+        "winner:R32-14"
+      ]
+    },
+    {
+      "match_id": "R16-08",
+      "round": "round_of_16",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R32-15",
+        "winner:R32-16"
+      ]
+    },
+    {
+      "match_id": "QF-01",
+      "round": "quarter_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R16-01",
+        "winner:R16-02"
+      ]
+    },
+    {
+      "match_id": "QF-02",
+      "round": "quarter_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R16-03",
+        "winner:R16-04"
+      ]
+    },
+    {
+      "match_id": "QF-03",
+      "round": "quarter_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R16-05",
+        "winner:R16-06"
+      ]
+    },
+    {
+      "match_id": "QF-04",
+      "round": "quarter_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:R16-07",
+        "winner:R16-08"
+      ]
+    },
+    {
+      "match_id": "SF-01",
+      "round": "semi_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:QF-01",
+        "winner:QF-02"
+      ]
+    },
+    {
+      "match_id": "SF-02",
+      "round": "semi_finals",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:QF-03",
+        "winner:QF-04"
+      ]
+    },
+    {
+      "match_id": "TP-01",
+      "round": "third_place",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "loser:SF-01",
+        "loser:SF-02"
+      ]
+    },
+    {
+      "match_id": "F-01",
+      "round": "final",
+      "team_a_source": "pending_group_results",
+      "team_b_source": "pending_group_results",
+      "team_a": "pending_group_results",
+      "team_b": "pending_group_results",
+      "status": "pending_group_results",
+      "source_status": "manual_snapshot_required",
+      "kickoff_utc": "pending_official_fixture",
+      "venue": "pending_official_fixture",
+      "depends_on": [
+        "winner:SF-01",
+        "winner:SF-02"
+      ]
+    }
+  ],
+  "warnings": [
+    "Bracket slots are structural only.",
+    "No qualified teams, best third-placed teams, venues or kickoff times are asserted."
+  ]
+}

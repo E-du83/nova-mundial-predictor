@@ -1,0 +1,27 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "data_status": "worldcup_2026_knockout_structure_v1",
+  "total_teams": 48,
+  "groups": 12,
+  "group_stage_qualifiers": {
+    "top_two_each_group": 24,
+    "best_third_placed": 8,
+    "total_round_of_32_teams": 32
+  },
+  "knockout_rounds": {
+    "round_of_32": 16,
+    "round_of_16": 8,
+    "quarter_finals": 4,
+    "semi_finals": 2,
+    "third_place": 1,
+    "final": 1
+  },
+  "total_knockout_matches": 32,
+  "total_tournament_matches": 104,
+  "source_policy": "official_structure_required",
+  "status": "scaffold_pending_group_results",
+  "warnings": [
+    "This is a knockout scaffold only.",
+    "No real qualified teams or third-place combinations are asserted."
+  ]
+}
