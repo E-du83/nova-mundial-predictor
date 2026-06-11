@@ -1097,3 +1097,60 @@ Congelar una fase significa guardar evidencia de que los picks previos quedan
 cerrados antes de adjuntar resultados reales. No significa recalibrar el modelo
 ni alterar predicciones historicas. La transicion a eliminatorias solo puede
 prepararse cuando existan resultados finales verificados y standings calculados.
+
+## ChatGPT Research Intake + Emergency Quiniela Fill v1
+
+Este bloque convierte un paquete local generado por ChatGPT en datos operativos
+para la quiniela de fase de grupos:
+
+```text
+ChatGPT research package -> intake -> fixture import -> guard -> quiniela fill
+```
+
+Archivos principales:
+
+- `data/chatgpt_research_intake_package.json`: entrada que debe llenar ChatGPT.
+- `chatgpt_research_intake_engine.py`: valida fixture, grupos y research.
+- `data/worldcup_2026_official_fixture_snapshot_manual.json`: snapshot
+  compatible con el importer.
+- `data/worldcup_2026_research_snapshots_batch.json`: research contextual
+  separado del baseline.
+- `emergency_quiniela_fill_engine.py`: genera JSON, CSV y Markdown imprimible
+  solo si Fixture Guard esta en `ready`.
+
+Reglas de seguridad:
+
+- no reemplaza Core;
+- no modifica `src/match_simulator.py`;
+- no modifica `data/worldcup_2026_real_teams_baseline_v1.json`;
+- no hace scraping ni llamadas externas;
+- no recalibra pesos;
+- no escribe `prediction_history.json`;
+- no modifica `manual_match_snapshots.json`;
+- no genera picks si el fixture oficial no esta listo.
+
+Uso:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --dry-run
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --apply-fixture-import
+python -B game-layers/quiniela-mundialista/run_emergency_quiniela_fill.py --mode final --write
+```
+
+Para que `fixture_ready=true`, el paquete debe tener
+`fixture.source_status="official_verified"` y 72 partidos con `group`,
+`matchday`, `team_a` y `team_b`. La investigacion puede ser parcial: si faltan
+alineaciones confirmadas, cuotas, clima o lesiones de ultimo minuto, se permite
+`pending_verification` o `not_available`. Esos faltantes no bloquean una
+quiniela pre-torneo si el fixture oficial y los equipos estan correctos.
+
+Salidas:
+
+- `data/chatgpt_research_intake_validation_report.json`
+- `data/worldcup_2026_quiniela_fill_report.json`
+- `data/worldcup_2026_quiniela_fill_summary.csv`
+- `data/worldcup_2026_quiniela_fill_printable.md`
+
+`ready_for_user_quiniela=true` exige `guard_status=ready` y 72 picks generados.
+Con el paquete de plantilla actual, el estado correcto es bloqueado y
+`picks_generated=0`.

@@ -1,0 +1,20 @@
+{
+  "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+  "tournament": "FIFA World Cup 2026",
+  "snapshot_type": "chatgpt_research_intake_fixture_snapshot",
+  "source_status": "pending_manual_input",
+  "source": "FIFA official schedule",
+  "source_url": "pending_manual_input",
+  "captured_at": "pending_manual_input",
+  "captured_by": "ChatGPT",
+  "timezone_policy": "kickoff_utc_required_when_available",
+  "total_group_stage_matches_expected": 72,
+  "groups_expected": 12,
+  "teams_per_group_expected": 4,
+  "matches": [],
+  "warnings": [
+    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks.",
+    "fixture.source_url is pending; keep source name explicit until URL is supplied",
+    "research is empty or partial; this does not block fixture import"
+  ]
+}

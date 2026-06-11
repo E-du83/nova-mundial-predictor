@@ -496,3 +496,41 @@ python -B game-layers/quiniela-mundialista/run_phase_freeze_demo.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_standings_demo.py
 python -B game-layers/quiniela-mundialista/run_inter_phase_update_demo.py
 ```
+
+## Quiniela Mundialista: ChatGPT Research Intake + Emergency Fill v1
+
+El flujo operativo para cargar fixture oficial e investigacion estructurada es:
+
+```text
+ChatGPT research package -> intake -> fixture import -> guard -> quiniela fill
+```
+
+Codex no scrapea, no llama APIs externas y no inventa datos. ChatGPT debe
+entregar un paquete JSON local en:
+
+```text
+game-layers/quiniela-mundialista/data/chatgpt_research_intake_package.json
+```
+
+El paquete debe incluir `fixture.source_status="official_verified"` y
+`fixture.matches` con 72 partidos de fase de grupos. Cada partido necesita al
+menos `group`, `matchday`, `team_a` y `team_b`. Si faltan sede, hora UTC,
+alineaciones, lesiones de ultimo minuto, cuotas o clima, se pueden dejar como
+`pending_verification` o `not_available` sin bloquear la quiniela pre-torneo.
+
+Validacion y carga:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --dry-run
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --apply-fixture-import
+```
+
+La importacion real solo debe aplicarse despues de revisar el dry-run. Luego:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_emergency_quiniela_fill.py --mode final --write
+```
+
+`ready_for_user_quiniela=true` significa que Fixture Guard quedo en `ready` y
+se generaron 72 picks. Si el paquete sigue como plantilla o el fixture no esta
+validado, el reporte queda bloqueado con `picks_generated=0`.

@@ -3,14 +3,13 @@
   "ready_for_partial_simulation": false,
   "block_reason": [
     "confirmed_matches 0 < 72",
-    "fixture still has missing or pending kickoff UTC",
-    "fixture still has missing or pending venues",
     "fixture still has pending teams",
     "fixture_type is structural_placeholder"
   ],
   "warnings": [
-    "Full Group Stage Picks Runner must remain blocked until official fixture import succeeds.",
-    "Partial simulation can only be considered manually when confirmed teams exist."
+    "Fixture has missing or pending kickoff UTC; allowed for pre-tournament quiniela, not for kickoff alarms.",
+    "Fixture has missing or pending venues; allowed for pre-tournament quiniela, not for venue/climate context.",
+    "Full Group Stage Picks Runner must remain blocked until official fixture import succeeds."
   ],
   "confirmed_matches": 0,
   "pending_matches": 72,

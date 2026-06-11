@@ -264,6 +264,8 @@ def main() -> None:
         "worldcup_2026_standings_engine.py",
         "worldcup_2026_phase_transition_guard.py",
         "inter_phase_update_engine.py",
+        "chatgpt_research_intake_engine.py",
+        "emergency_quiniela_fill_engine.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -303,6 +305,8 @@ def main() -> None:
         "run_phase_freeze_demo.py",
         "run_worldcup_2026_standings_demo.py",
         "run_inter_phase_update_demo.py",
+        "run_chatgpt_research_intake.py",
+        "run_emergency_quiniela_fill.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -355,6 +359,13 @@ def main() -> None:
     print("- worldcup_2026_standings_snapshot.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_standings_snapshot.json"))
     print("- worldcup_2026_inter_phase_update_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_inter_phase_update_report.json"))
     print("- worldcup_2026_phase_transition_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_phase_transition_guard_report.json"))
+    print("- chatgpt_research_intake_package.json: " + _exists(LAYER_ROOT / "data" / "chatgpt_research_intake_package.json"))
+    print("- chatgpt_research_intake_validation_report.json: " + _exists(LAYER_ROOT / "data" / "chatgpt_research_intake_validation_report.json"))
+    print("- worldcup_2026_official_fixture_snapshot_manual.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_official_fixture_snapshot_manual.json"))
+    print("- worldcup_2026_research_snapshots_batch.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_research_snapshots_batch.json"))
+    print("- worldcup_2026_quiniela_fill_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_report.json"))
+    print("- worldcup_2026_quiniela_fill_summary.csv: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_summary.csv"))
+    print("- worldcup_2026_quiniela_fill_printable.md: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_printable.md"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -632,6 +643,30 @@ def main() -> None:
         f"{str(inter_phase_update['transition_guard']['transition_status'] == 'ready').lower()}"
     )
     print("- next block recommended: Verified results import / phase review workflow")
+    print("")
+
+    intake_validation = _load_json(LAYER_ROOT / "data" / "chatgpt_research_intake_validation_report.json")
+    fill_report = _load_json(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_report.json")
+    intake_status = intake_validation.get("validation_status", "missing")
+    package_status = "missing"
+    if (LAYER_ROOT / "data" / "chatgpt_research_intake_package.json").exists():
+        package_status = "template" if intake_status == "missing_or_template" else "OK"
+    printable_status = _exists(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_printable.md")
+    next_action = "fill chatgpt_research_intake_package.json with 72 verified fixture matches"
+    if intake_validation.get("fixture_ready"):
+        next_action = "run chatgpt intake dry-run, review importer, then apply fixture import"
+    if fill_report.get("ready_for_user_quiniela"):
+        next_action = "review printable quiniela before user submission"
+    print("CHATGPT RESEARCH INTAKE + EMERGENCY QUINIELA FILL")
+    print(f"- intake package: {package_status}")
+    print(f"- fixture package status: {intake_status}")
+    print(f"- research package status: {fill_report.get('research_package_status', intake_status)}")
+    print(f"- fixture ready: {str(intake_validation.get('fixture_ready', False)).lower()}")
+    print(f"- guard status: {worldcup_2026_fixture['fixture_guard_status']}")
+    print(f"- picks generated: {fill_report.get('picks_generated', 0)}")
+    print(f"- printable report: {printable_status}")
+    print(f"- ready for user quiniela: {str(fill_report.get('ready_for_user_quiniela', False)).lower()}")
+    print(f"- next action: {next_action}")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

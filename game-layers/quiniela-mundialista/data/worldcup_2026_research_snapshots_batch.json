@@ -1,0 +1,23 @@
+{
+  "data_status": "chatgpt_research_snapshots_batch_v1",
+  "generated_at": "2026-06-11T02:03:11Z",
+  "source": "chatgpt_curated_public_sources",
+  "captured_at": "pending_manual_input",
+  "captured_by": "ChatGPT",
+  "confidence": "partial",
+  "fixture_validation_status": "missing_or_template",
+  "valid_for_prediction_context": false,
+  "valid_for_tactical_bridge": false,
+  "valid_for_market_weighting": false,
+  "team_research": {},
+  "match_research": {},
+  "market_research": {},
+  "missing_data": [
+    "falta llenar fixture.matches con 72 partidos"
+  ],
+  "warnings": [
+    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks.",
+    "fixture.source_url is pending; keep source name explicit until URL is supplied",
+    "research is empty or partial; this does not block fixture import"
+  ]
+}

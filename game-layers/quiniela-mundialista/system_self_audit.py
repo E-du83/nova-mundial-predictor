@@ -46,6 +46,8 @@ def build_system_self_audit() -> dict:
     bracket_guard = evaluate_bracket_readiness()
     research_status = _load_json(LAYER_ROOT / "data" / "research_automation_status.json")
     inter_phase_update = run_inter_phase_update(dry_run=True, write_report=False)
+    chatgpt_intake_validation = _load_json(LAYER_ROOT / "data" / "chatgpt_research_intake_validation_report.json")
+    quiniela_fill_report = _load_json(LAYER_ROOT / "data" / "worldcup_2026_quiniela_fill_report.json")
     manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022_report = _load_json(
         LAYER_ROOT
@@ -106,6 +108,10 @@ def build_system_self_audit() -> dict:
         "run_phase_freeze_demo.py",
         "run_worldcup_2026_standings_demo.py",
         "run_inter_phase_update_demo.py",
+        "chatgpt_research_intake_engine.py",
+        "emergency_quiniela_fill_engine.py",
+        "run_chatgpt_research_intake.py",
+        "run_emergency_quiniela_fill.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -132,6 +138,8 @@ def build_system_self_audit() -> dict:
             "Official Bracket 2026 scaffold exists but remains blocked until final group standings exist.",
             "Research Automation scaffold exists in safe mode and prepares snapshots without mutating baseline.",
             "Inter Phase Updater scaffold exists and blocks transitions until picks, results and standings are ready.",
+            "ChatGPT Research Intake accepts a local validated package without scraping or API keys.",
+            "Emergency Quiniela Fill can export JSON, CSV and printable Markdown after Fixture Guard is ready.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
@@ -143,6 +151,8 @@ def build_system_self_audit() -> dict:
             "Knockout bracket cannot be built until group standings and third-place rules are verified.",
             "Research Automation still requires manual review before any snapshot should influence picks.",
             "Inter-phase update cannot run operationally until real 2026 results are loaded.",
+            "ChatGPT research package is still a template until fixture.matches contains 72 verified matches.",
+            "Emergency Quiniela Fill remains blocked while Fixture Guard is not ready.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
@@ -163,6 +173,8 @@ def build_system_self_audit() -> dict:
             "A third-place selector can create a false bracket if it resolves tied candidates without official criteria.",
             "Bad research can poison snapshots if validation and source review are skipped.",
             "Phase transitions can corrupt auditability if prior picks are not frozen before attaching results.",
+            "Unverified ChatGPT claims can enter the package if source review is skipped.",
+            "Picks must not be generated from a template fixture package.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
@@ -173,6 +185,9 @@ def build_system_self_audit() -> dict:
             "Load verified group standings and official third-place combination matrix before bracket build.",
             "Review any AI-assisted research manually before saving it as a trusted snapshot.",
             "Use Inter Phase Updater only after verified results and frozen phase predictions exist.",
+            "Fill chatgpt_research_intake_package.json with 72 official group-stage matches.",
+            "Run ChatGPT intake dry-run before applying fixture import.",
+            "Generate emergency quiniela fill only after guard_status=ready.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
             "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
@@ -198,6 +213,9 @@ def build_system_self_audit() -> dict:
             "Do not invent knockout qualifiers, best third-placed teams or third-place slot mappings.",
             "Do not auto-merge research snapshots into manual_match_snapshots.json or baseline data.",
             "Do not advance phase, construct bracket or recalibrate from pending results.",
+            "Do not scrape or call external APIs from Codex for the ChatGPT research intake.",
+            "Do not modify baseline or manual_match_snapshots.json from the research batch.",
+            "Do not generate user quiniela picks without a valid official fixture.",
         ],
         "siguiente_bloque_recomendado": "Research Automation / verified group standings import",
         "readiness": {
@@ -308,6 +326,19 @@ def build_system_self_audit() -> dict:
                 "bracket_ready"
             ],
             "inter_phase_missing_fixture_or_results": inter_phase_update["update_status"] == "blocked",
+            "chatgpt_research_intake_exists": _exists(LAYER_ROOT / "chatgpt_research_intake_engine.py"),
+            "chatgpt_research_no_scraping": True,
+            "chatgpt_research_no_api_keys": True,
+            "chatgpt_research_no_baseline_mutation": True,
+            "chatgpt_fixture_must_be_verified": True,
+            "chatgpt_partial_research_does_not_block_fixture": True,
+            "chatgpt_picks_without_valid_fixture": False,
+            "chatgpt_intake_status": chatgpt_intake_validation.get("validation_status", "missing"),
+            "chatgpt_fixture_ready": chatgpt_intake_validation.get("fixture_ready", False),
+            "chatgpt_research_ready": chatgpt_intake_validation.get("research_ready", False),
+            "emergency_quiniela_fill_exists": _exists(LAYER_ROOT / "emergency_quiniela_fill_engine.py"),
+            "emergency_quiniela_picks_generated": quiniela_fill_report.get("picks_generated", 0),
+            "emergency_quiniela_ready_for_user": quiniela_fill_report.get("ready_for_user_quiniela", False),
             "worldcup_2022_blind_test_exists": bool(worldcup_2022_report),
             "worldcup_2022_leakage_guard_exists": bool(worldcup_2022_audit),
             "worldcup_2022_leakage_guard_status": worldcup_2022_audit.get("audit_status", "missing"),

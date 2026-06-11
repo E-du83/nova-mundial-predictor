@@ -1,0 +1,17 @@
+{
+  "validation_status": "missing_or_template",
+  "fixture_ready": false,
+  "research_ready": false,
+  "matches_detected": 0,
+  "groups_detected": 0,
+  "teams_detected": 0,
+  "errors": [],
+  "warnings": [
+    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks.",
+    "fixture.source_url is pending; keep source name explicit until URL is supplied",
+    "research is empty or partial; this does not block fixture import"
+  ],
+  "missing_data": [
+    "falta llenar fixture.matches con 72 partidos"
+  ]
+}

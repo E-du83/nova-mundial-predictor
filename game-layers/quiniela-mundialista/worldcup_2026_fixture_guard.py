@@ -92,10 +92,6 @@ def evaluate_group_stage_simulation_readiness(
         block_reason.append(f"confirmed_matches {confirmed_matches} < 72")
     if pending_team_slots:
         block_reason.append("fixture still has pending teams")
-    if missing_kickoff:
-        block_reason.append("fixture still has missing or pending kickoff UTC")
-    if missing_venue:
-        block_reason.append("fixture still has missing or pending venues")
     if baseline_missing:
         block_reason.append("fixture includes teams missing from baseline")
     if duplicate_slot_ids:
@@ -107,8 +103,10 @@ def evaluate_group_stage_simulation_readiness(
 
     if fixture_type == "structural_placeholder":
         warnings.append("Full Group Stage Picks Runner must remain blocked until official fixture import succeeds.")
-    if missing_kickoff or missing_venue:
-        warnings.append("Partial simulation can only be considered manually when confirmed teams exist.")
+    if missing_kickoff:
+        warnings.append("Fixture has missing or pending kickoff UTC; allowed for pre-tournament quiniela, not for kickoff alarms.")
+    if missing_venue:
+        warnings.append("Fixture has missing or pending venues; allowed for pre-tournament quiniela, not for venue/climate context.")
 
     ready_for_partial = bool(
         confirmed_matches > 0

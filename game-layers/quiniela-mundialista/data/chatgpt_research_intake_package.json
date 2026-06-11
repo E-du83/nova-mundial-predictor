@@ -1,0 +1,31 @@
+{
+  "package_name": "chatgpt_worldcup_2026_research_intake",
+  "created_by": "ChatGPT",
+  "source_mode": "chatgpt_curated_public_sources",
+  "captured_at": "pending_manual_input",
+  "source_policy": {
+    "official_fixture_source_required": true,
+    "public_sources_only": true,
+    "no_scraping_by_codex": true,
+    "no_unverified_claims": true
+  },
+  "fixture": {
+    "source": "FIFA official schedule",
+    "source_url": "pending_manual_input",
+    "source_status": "pending_manual_input",
+    "matches": []
+  },
+  "groups": {},
+  "team_research": {},
+  "match_research": {},
+  "market_research": {},
+  "missing_data_policy": {
+    "confirmed_lineups": "pending_verification_allowed",
+    "last_minute_injuries": "pending_verification_allowed",
+    "odds": "optional_if_not_available",
+    "weather": "optional_if_not_available"
+  },
+  "warnings": [
+    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "data_status": "worldcup_2026_quiniela_fill_v1",
+  "generated_at": "2026-06-11T02:03:12Z",
+  "mode": "final",
+  "fixture_status": "structural_placeholder",
+  "guard_status": "blocked_placeholder",
+  "research_package_status": "missing_or_template",
+  "matches_detected": 72,
+  "picks_generated": 0,
+  "blocked_matches": 72,
+  "ready_for_user_quiniela": false,
+  "block_reasons": [
+    "confirmed_matches 0 < 72",
+    "fixture still has pending teams",
+    "fixture_type is structural_placeholder"
+  ],
+  "warnings": [
+    "Fixture has missing or pending kickoff UTC; allowed for pre-tournament quiniela, not for kickoff alarms.",
+    "Fixture has missing or pending venues; allowed for pre-tournament quiniela, not for venue/climate context.",
+    "Full Group Stage Picks Runner must remain blocked until official fixture import succeeds.",
+    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks.",
+    "fixture.source_url is pending; keep source name explicit until URL is supplied",
+    "research is empty or partial; this does not block fixture import"
+  ],
+  "picks": [],
+  "report_paths": {
+    "json": "C:\\Users\\Admin\\OneDrive\\Documentos\\GitHub\\nova-mundial-predictor\\game-layers\\quiniela-mundialista\\data\\worldcup_2026_quiniela_fill_report.json",
+    "csv": "C:\\Users\\Admin\\OneDrive\\Documentos\\GitHub\\nova-mundial-predictor\\game-layers\\quiniela-mundialista\\data\\worldcup_2026_quiniela_fill_summary.csv",
+    "printable_md": "C:\\Users\\Admin\\OneDrive\\Documentos\\GitHub\\nova-mundial-predictor\\game-layers\\quiniela-mundialista\\data\\worldcup_2026_quiniela_fill_printable.md"
+  },
+  "next_steps": [
+    "Load and validate ChatGPT research intake with 72 official fixture matches.",
+    "Run fixture import dry-run, then apply only after review.",
+    "Re-run emergency quiniela fill after Fixture Guard returns ready."
+  ]
+}

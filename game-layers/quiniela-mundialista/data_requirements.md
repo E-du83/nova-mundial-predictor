@@ -464,3 +464,70 @@ Estado actual esperado:
 - `blocked_placeholder_fixture` para standings;
 - `transition_status=blocked`;
 - `prediction_history_modified=false` en dry-run.
+
+## ChatGPT Research Intake + Emergency Quiniela Fill v1
+
+El flujo real de operacion es:
+
+```text
+ChatGPT research package -> intake -> fixture import -> guard -> quiniela fill
+```
+
+Paquete de entrada:
+
+- archivo: `data/chatgpt_research_intake_package.json`;
+- `package_name`: `chatgpt_worldcup_2026_research_intake`;
+- `source_mode`: `chatgpt_curated_public_sources`;
+- `fixture.source_status`: `official_verified` para importar;
+- `fixture.matches`: exactamente 72 partidos;
+- cada partido: `group`, `matchday`, `team_a`, `team_b`;
+- recomendado si existe: `match_id` o `slot_id`, `kickoff_utc`, `venue`,
+  `city`, `country`, `source`;
+- si la hora viene local y no UTC: usar `kickoff_utc=pending_verification`;
+- si falta sede: usar `venue=pending_verification`.
+
+Research permitido:
+
+- `team_research`;
+- `match_research`;
+- `market_research`;
+- notas de forma, tactica, jugadores, incertidumbre y fuentes.
+
+Faltantes que no bloquean quiniela pre-torneo:
+
+- alineaciones confirmadas;
+- lesiones de ultimo minuto;
+- cuotas completas;
+- clima;
+- sede u hora UTC, si ya hay equipos reales y fixture oficial suficiente.
+
+Faltantes que si bloquean:
+
+- menos de 72 partidos;
+- `fixture.source_status` distinto de `official_verified`;
+- `team_a` o `team_b` en placeholder;
+- grupo invalido;
+- equipo que no existe en el baseline 2026;
+- snapshot con claims sin fuente revisable.
+
+Comandos:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --dry-run
+python -B game-layers/quiniela-mundialista/run_chatgpt_research_intake.py --apply-fixture-import
+python -B game-layers/quiniela-mundialista/run_emergency_quiniela_fill.py --mode final --write
+```
+
+Salidas esperadas:
+
+- `data/chatgpt_research_intake_validation_report.json`;
+- `data/worldcup_2026_official_fixture_snapshot_manual.json`;
+- `data/worldcup_2026_research_snapshots_batch.json`;
+- `data/worldcup_2026_quiniela_fill_report.json`;
+- `data/worldcup_2026_quiniela_fill_summary.csv`;
+- `data/worldcup_2026_quiniela_fill_printable.md`.
+
+`ready_for_user_quiniela=true` solo es valido si Fixture Guard devuelve
+`guard_status=ready` y `picks_generated=72`. Si el paquete esta vacio o en modo
+template, el resultado correcto es `missing_or_template`, `fixture_ready=false`
+y `picks_generated=0`.

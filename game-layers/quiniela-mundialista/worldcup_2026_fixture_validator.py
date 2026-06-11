@@ -133,10 +133,14 @@ def validate_fixture_snapshot(
         if match_confirmed:
             if team_a in PENDING_VALUES or team_b in PENDING_VALUES:
                 match_errors.append("confirmed snapshot cannot use pending teams")
-            if not _valid_utc_or_pending(kickoff) or kickoff in PENDING_VALUES:
-                match_errors.append("confirmed snapshot requires valid kickoff UTC")
-            if not _valid_venue_or_pending(venue) or venue in PENDING_VALUES:
-                match_errors.append("confirmed snapshot requires verified venue")
+            if not _valid_utc_or_pending(kickoff):
+                match_errors.append("confirmed snapshot has invalid kickoff UTC")
+            elif kickoff in PENDING_VALUES:
+                warnings.append(f"{slot_id}: kickoff_utc pending_verification; allowed for pre-tournament quiniela")
+            if not _valid_venue_or_pending(venue):
+                match_errors.append("confirmed snapshot has invalid venue")
+            elif venue in PENDING_VALUES:
+                warnings.append(f"{slot_id}: venue pending_verification; allowed for pre-tournament quiniela")
             for team in (team_a, team_b):
                 if team not in PENDING_VALUES and team not in baseline:
                     match_errors.append(f"team not found in baseline: {team}")

@@ -147,6 +147,29 @@ def main() -> None:
         "- falta fixture oficial/resultados: "
         f"{'si' if audit['readiness']['inter_phase_missing_fixture_or_results'] else 'no'}"
     )
+    print("ChatGPT Research Intake + Emergency Quiniela Fill")
+    print(f"- intake existe: {'si' if audit['readiness']['chatgpt_research_intake_exists'] else 'no'}")
+    print(f"- no hace scraping: {'si' if audit['readiness']['chatgpt_research_no_scraping'] else 'no'}")
+    print(f"- no usa API keys: {'si' if audit['readiness']['chatgpt_research_no_api_keys'] else 'no'}")
+    print(f"- no muta baseline: {'si' if audit['readiness']['chatgpt_research_no_baseline_mutation'] else 'no'}")
+    print(f"- fixture debe venir verificado: {'si' if audit['readiness']['chatgpt_fixture_must_be_verified'] else 'no'}")
+    print(
+        "- research parcial no bloquea quiniela si fixture esta correcto: "
+        f"{'si' if audit['readiness']['chatgpt_partial_research_does_not_block_fixture'] else 'no'}"
+    )
+    print(
+        "- genera picks sin fixture valido: "
+        f"{'si' if audit['readiness']['chatgpt_picks_without_valid_fixture'] else 'no'}"
+    )
+    print(f"- intake status: {audit['readiness']['chatgpt_intake_status']}")
+    print(f"- fixture ready: {'si' if audit['readiness']['chatgpt_fixture_ready'] else 'no'}")
+    print(f"- research ready: {'si' if audit['readiness']['chatgpt_research_ready'] else 'no'}")
+    print(f"- fill existe: {'si' if audit['readiness']['emergency_quiniela_fill_exists'] else 'no'}")
+    print(f"- picks generated: {audit['readiness']['emergency_quiniela_picks_generated']}")
+    print(
+        "- ready for user quiniela: "
+        f"{'si' if audit['readiness']['emergency_quiniela_ready_for_user'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

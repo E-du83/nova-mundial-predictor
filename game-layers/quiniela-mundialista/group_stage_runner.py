@@ -83,11 +83,9 @@ def _pending_match(match: dict, reason: str, missing_data: list[str], fixture_st
 
 def _match_missing_data(match: dict, teams: dict) -> list[str]:
     missing = []
-    for field in ("team_a", "team_b", "venue"):
+    for field in ("team_a", "team_b"):
         if _is_pending(match.get(field)):
             missing.append(field)
-    if _is_pending(_fixture_kickoff(match)):
-        missing.append("kickoff_utc")
     for field in ("team_a", "team_b"):
         team = match.get(field)
         if not _is_pending(team) and team not in teams:
