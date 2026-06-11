@@ -96,6 +96,13 @@ verificacion. La guardia bloquea picks completos mientras el fixture siga como
 placeholder o no verificado. El Full Group Stage Picks Runner queda para el
 siguiente bloque.
 
+El bloque **Full Group Stage Picks Runner v1** crea el runner oficial para los
+72 picks de fase de grupos, pero respeta obligatoriamente
+`worldcup_2026_fixture_guard.py`. Con el fixture actual queda bloqueado:
+`guard_status=blocked_placeholder`, `simulated_matches=0` y `picks=[]`. No
+genera predicciones reales hasta que el fixture oficial verificado este cargado
+y la guardia devuelva `ready`.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -156,6 +163,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
   `slot_structure`, `fixture_assignment` y `match_result`.
 - Agrega template de snapshot oficial, importador en `dry_run` y guardia para
   impedir simulaciones completas con fixture placeholder/no verificado.
+- Agrega runner de picks completos de fase de grupos, actualmente bloqueado por
+  Fixture Guard hasta que exista fixture oficial confirmado.
 
 ## Final Pick
 
@@ -285,6 +294,8 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
 - `worldcup_2026_fixture_guard.py`: decide si puede haber simulacion parcial o
   completa; bloquea el Full Group Stage Picks Runner futuro si el fixture no
   esta confirmado.
+- `full_group_stage_picks_runner.py`: runner oficial de picks de fase de grupos;
+  no genera picks si la guardia no esta `ready`.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -681,6 +692,36 @@ Este bloque no genera picks, no simula los 72 partidos y no inventa fixture. El
 siguiente bloque recomendado es **Full Group Stage Picks Runner v1**, solo
 despues de importar un snapshot oficial y pasar la guardia.
 
+## Full Group Stage Picks Runner v1
+
+`run_full_group_stage_picks.py` prepara la ejecucion de los 72 picks de fase de
+grupos. El flujo correcto para desbloquearlo es:
+
+1. cargar `worldcup_2026_official_fixture_snapshot_template.json` con fixture
+   oficial verificado;
+2. correr importacion en `dry_run`;
+3. aplicar import real solo si la validacion pasa;
+4. confirmar `guard_status=ready`;
+5. ejecutar el runner de picks.
+
+Comando de estado:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode standard
+```
+
+Comando para escribir reportes cuando corresponda:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode final --write
+```
+
+`--force` no salta la guardia. Solo puede permitir reescritura de reportes; no
+autoriza picks con fixture invalido o placeholder.
+
+Mientras el fixture siga bloqueado, el runner devuelve `runner_status=blocked`,
+`simulated_matches=0`, `picks=[]` y no escribe `prediction_history`.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -745,6 +786,7 @@ game-layers/quiniela-mundialista/
 |-- worldcup_2026_fixture_validator.py
 |-- worldcup_2026_fixture_snapshot_importer.py
 |-- worldcup_2026_fixture_guard.py
+|-- full_group_stage_picks_runner.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -782,6 +824,7 @@ game-layers/quiniela-mundialista/
 |-- run_worldcup_2026_fixture_status.py
 |-- run_worldcup_2026_fixture_import_demo.py
 |-- run_worldcup_2026_fixture_guard.py
+|-- run_full_group_stage_picks.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -810,6 +853,9 @@ game-layers/quiniela-mundialista/
     |-- worldcup_2026_official_fixture_snapshot_template.json
     |-- worldcup_2026_fixture_import_report.json
     |-- worldcup_2026_fixture_guard_report.json
+    |-- worldcup_2026_group_stage_picks_report.json
+    |-- worldcup_2026_group_stage_picks_summary.csv
+    |-- worldcup_2026_group_stage_picks_guard_report.json
     |-- backtesting_manifest.json
     |-- group_stage_prediction_report.json
     |-- player_ratings_seed.json
@@ -834,6 +880,7 @@ python -B game-layers/quiniela-mundialista/run_quinigol_timing_calibration.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_import_demo.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_guard.py
+python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode standard
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py

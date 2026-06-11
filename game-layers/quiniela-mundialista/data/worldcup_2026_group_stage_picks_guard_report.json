@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-06-11T00:20:09Z",
+  "guard_status": "blocked_placeholder",
+  "block_reasons": [
+    "confirmed_matches 0 < 72",
+    "fixture still has missing or pending kickoff UTC",
+    "fixture still has missing or pending venues",
+    "fixture still has pending teams",
+    "fixture_type is structural_placeholder"
+  ],
+  "warnings": [
+    "Full Group Stage Picks Runner must remain blocked until official fixture import succeeds.",
+    "Partial simulation can only be considered manually when confirmed teams exist."
+  ],
+  "ready_for_full_group_simulation": false,
+  "ready_for_partial_simulation": false,
+  "confirmed_matches": 0,
+  "pending_matches": 72
+}

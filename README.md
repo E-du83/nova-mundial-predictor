@@ -27,6 +27,27 @@ Este bloque no genera picks completos. El runner real de picks de fase de
 grupos queda para el siguiente bloque, despues de que la guardia del fixture
 marque `ready`.
 
+## Full group-stage picks runner
+
+La capa `game-layers/quiniela-mundialista/` incluye el runner oficial para los
+72 picks de fase de grupos, pero actualmente queda bloqueado porque el fixture
+2026 sigue como `structural_placeholder`.
+
+Ejecutar estado bloqueado:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode standard
+```
+
+Escribir reporte de estado:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode final --write
+```
+
+`--force` no permite saltarse la guardia del fixture; solo sirve para
+reescritura de reportes cuando corresponda.
+
 Versión actual: **v1.5.0**
 
 Este proyecto es un motor probabilístico para analizar el Mundial 2026 con simulación de partidos, grupos, mejores terceros, cuotas, comparación entre casas, movimiento de cuotas y CLV.

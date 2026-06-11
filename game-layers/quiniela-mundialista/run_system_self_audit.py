@@ -51,6 +51,23 @@ def main() -> None:
         "- puede correr simulacion completa: "
         f"{'si' if audit['readiness']['worldcup_2026_ready_for_full_group_simulation'] else 'no'}"
     )
+    print("Full Group Stage Picks Runner")
+    print(f"- runner existe: {'si' if audit['readiness']['full_group_stage_runner_exists'] else 'no'}")
+    print(f"- CLI existe: {'si' if audit['readiness']['full_group_stage_cli_exists'] else 'no'}")
+    print(f"- runner status: {audit['readiness']['full_group_stage_runner_status']}")
+    print(f"- respeta fixture guard: {'si' if audit['readiness']['full_group_stage_runner_respects_guard'] else 'no'}")
+    print(
+        "- genera picks con placeholder: "
+        f"{'si' if audit['readiness']['full_group_stage_runner_generates_placeholder_picks'] else 'no'}"
+    )
+    print(
+        "- actualiza prediction_history con placeholder: "
+        f"{'si' if audit['readiness']['full_group_stage_prediction_history_updated'] else 'no'}"
+    )
+    print(
+        "- operativamente bloqueado: "
+        f"{'si' if audit['readiness']['full_group_stage_operationally_blocked'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

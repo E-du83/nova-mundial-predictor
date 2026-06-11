@@ -102,6 +102,9 @@ el impacto esperado.
 | World Cup 2026 official fixture snapshot template | `worldcup_2026_official_fixture_snapshot_template.json` | Si | template_pending_manual_input | Plantilla manual para cargar fixture oficial verificado sin scraping |
 | World Cup 2026 fixture import report | `worldcup_2026_fixture_import_report.json` | Si | dry_run/blocking report | Audita si un snapshot se puede importar sin modificar fixture activo en dry_run |
 | World Cup 2026 fixture guard report | `worldcup_2026_fixture_guard_report.json` | Si | blocked_placeholder | Bloquea picks completos hasta tener fixture oficial verificado |
+| World Cup 2026 group-stage picks report | `worldcup_2026_group_stage_picks_report.json` | Solo con `--write` | blocked hasta fixture oficial | Reporte JSON del Full Group Stage Picks Runner |
+| World Cup 2026 group-stage picks CSV | `worldcup_2026_group_stage_picks_summary.csv` | Solo con `--write` | encabezados sin picks si bloqueado | Resumen exportable de picks cuando existan partidos reales |
+| World Cup 2026 group-stage picks guard report | `worldcup_2026_group_stage_picks_guard_report.json` | Solo con `--write` | blocked_placeholder | Evidencia de la guardia usada por el runner de picks |
 | Backtesting manifest | `backtesting_manifest.json` | Si | foundation_ready | Lista datasets, leakage risk e integracion pendiente |
 | Report builder | `report_builder.py` | Si | foundation_ready | Genera reportes por partido sin modificar picks |
 | System self audit | `system_self_audit.py` | Si | foundation_ready | Evalua readiness, riesgos, sesgo y sobreajuste |
@@ -170,6 +173,14 @@ el impacto esperado.
   `partial_ready`.
 - El Bloque F no genera picks completos, no simula grupos completos y no inventa
   fixture. El siguiente bloque es `Full Group Stage Picks Runner v1`.
+- El Full Group Stage Picks Runner debe consultar siempre
+  `worldcup_2026_fixture_guard.py`. Si `guard_status` no es `ready`, debe
+  devolver `runner_status=blocked` o exigir `allow_partial=True` para un caso
+  parcial confirmado.
+- `--force` no puede saltarse la guardia del fixture. Solo puede permitir
+  reescritura de reportes.
+- `prediction_history.json` no debe guardar placeholders ni slots pendientes.
+  Solo se puede actualizar cuando existan partidos reales confirmados.
 - World Elo solo pesa fuerte si existe snapshot local con `team`, `elo`, `rank`,
   `source`, `date_collected` y `notes`.
 - Open-Meteo solo construye consultas historicas gratis sin API key; si faltan

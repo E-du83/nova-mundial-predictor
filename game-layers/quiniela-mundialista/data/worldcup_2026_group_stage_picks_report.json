@@ -1,0 +1,81 @@
+{
+  "data_status": "worldcup_2026_group_stage_picks_v1",
+  "runner_status": "blocked",
+  "generated_at": "2026-06-11T00:20:09Z",
+  "mode": "final",
+  "guard_status": "blocked_placeholder",
+  "total_slots": 72,
+  "confirmed_matches": 0,
+  "pending_matches": 72,
+  "simulated_matches": 0,
+  "blocked_matches": 72,
+  "ready_for_full_group_simulation": false,
+  "ready_for_partial_simulation": false,
+  "picks": [],
+  "groups": {
+    "A": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "B": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "C": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "D": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "E": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "F": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "G": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "H": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "I": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "J": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "K": {
+      "picks_generated": 0,
+      "matches": []
+    },
+    "L": {
+      "picks_generated": 0,
+      "matches": []
+    }
+  },
+  "warnings": [
+    "Full Group Stage Picks Runner must remain blocked until official fixture import succeeds.",
+    "Partial simulation can only be considered manually when confirmed teams exist."
+  ],
+  "block_reasons": [
+    "confirmed_matches 0 < 72",
+    "fixture still has missing or pending kickoff UTC",
+    "fixture still has missing or pending venues",
+    "fixture still has pending teams",
+    "fixture_type is structural_placeholder"
+  ],
+  "next_steps": [
+    "Load verified official World Cup 2026 group-stage fixture snapshot.",
+    "Run fixture importer in dry_run, then import real fixture only after validation passes.",
+    "Run this full picks runner only after fixture guard returns ready."
+  ]
+}
