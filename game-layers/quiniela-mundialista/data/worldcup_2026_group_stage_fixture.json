@@ -1,35 +1,46 @@
 {
   "tournament": "FIFA World Cup 2026",
-  "fixture_type": "structural_placeholder",
-  "official_status": "pending_official_fixture",
+  "fixture_type": "confirmed_fixture",
+  "official_status": "official_confirmed",
   "generated_at": "2026-06-10T00:00:00Z",
-  "source_status": "manual_snapshot_required",
+  "source_status": "official_confirmed",
   "total_matches": 72,
-  "matches_confirmed": 0,
-  "matches_pending": 72,
+  "matches_confirmed": 72,
+  "matches_pending": 0,
   "matches": [
     {
       "match_id": "WG-A-01",
       "phase": "group_stage",
       "group": "A",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Mexico",
+      "team_b": "South Africa",
+      "kickoff_utc": "2026-06-11T19:00:00Z",
+      "venue": "Estadio Azteca",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-01",
         "group": "A",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -37,23 +48,34 @@
       "phase": "group_stage",
       "group": "A",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "South Korea",
+      "team_b": "Czechia",
+      "kickoff_utc": "2026-06-12T02:00:00Z",
+      "venue": "Estadio Akron",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-02",
         "group": "A",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Zapopan",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -61,23 +83,34 @@
       "phase": "group_stage",
       "group": "A",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Czechia",
+      "team_b": "South Africa",
+      "kickoff_utc": "2026-06-18T16:00:00Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-03",
         "group": "A",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Atlanta",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -85,23 +118,34 @@
       "phase": "group_stage",
       "group": "A",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Mexico",
+      "team_b": "South Korea",
+      "kickoff_utc": "2026-06-19T01:00:00Z",
+      "venue": "Estadio Akron",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-04",
         "group": "A",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Zapopan",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -109,23 +153,34 @@
       "phase": "group_stage",
       "group": "A",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Czechia",
+      "team_b": "Mexico",
+      "kickoff_utc": "2026-06-25T01:00:00Z",
+      "venue": "Estadio Azteca",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-05",
         "group": "A",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -133,23 +188,34 @@
       "phase": "group_stage",
       "group": "A",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "South Africa",
+      "team_b": "South Korea",
+      "kickoff_utc": "2026-06-25T01:00:00Z",
+      "venue": "Estadio BBVA",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-A-06",
         "group": "A",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Guadalupe",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -157,23 +223,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Canada",
+      "team_b": "Bosnia and Herzegovina",
+      "kickoff_utc": "2026-06-12T19:00:00Z",
+      "venue": "BMO Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-01",
         "group": "B",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Toronto",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -181,23 +258,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Qatar",
+      "team_b": "Switzerland",
+      "kickoff_utc": "2026-06-13T19:00:00Z",
+      "venue": "Levi's Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-02",
         "group": "B",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Santa Clara",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -205,23 +293,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Switzerland",
+      "team_b": "Bosnia and Herzegovina",
+      "kickoff_utc": "2026-06-18T19:00:00Z",
+      "venue": "SoFi Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-03",
         "group": "B",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Inglewood",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -229,23 +328,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Canada",
+      "team_b": "Qatar",
+      "kickoff_utc": "2026-06-18T22:00:00Z",
+      "venue": "BC Place",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-04",
         "group": "B",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Vancouver",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -253,23 +363,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Switzerland",
+      "team_b": "Canada",
+      "kickoff_utc": "2026-06-24T19:00:00Z",
+      "venue": "BC Place",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-05",
         "group": "B",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Vancouver",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -277,23 +398,34 @@
       "phase": "group_stage",
       "group": "B",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Bosnia and Herzegovina",
+      "team_b": "Qatar",
+      "kickoff_utc": "2026-06-24T19:00:00Z",
+      "venue": "Lumen Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-B-06",
         "group": "B",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Seattle",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -301,23 +433,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Brazil",
+      "team_b": "Morocco",
+      "kickoff_utc": "2026-06-13T22:00:00Z",
+      "venue": "Gillette Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-01",
         "group": "C",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Foxborough",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -325,23 +468,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Haiti",
+      "team_b": "Scotland",
+      "kickoff_utc": "2026-06-14T01:00:00Z",
+      "venue": "MetLife Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-02",
         "group": "C",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "East Rutherford",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -349,23 +503,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Scotland",
+      "team_b": "Morocco",
+      "kickoff_utc": "2026-06-19T22:00:00Z",
+      "venue": "Lincoln Financial Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-03",
         "group": "C",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Philadelphia",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -373,23 +538,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Brazil",
+      "team_b": "Haiti",
+      "kickoff_utc": "2026-06-20T01:00:00Z",
+      "venue": "Gillette Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-04",
         "group": "C",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Foxborough",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -397,23 +573,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Scotland",
+      "team_b": "Brazil",
+      "kickoff_utc": "2026-06-24T22:00:00Z",
+      "venue": "Hard Rock Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-05",
         "group": "C",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Miami Gardens",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -421,23 +608,34 @@
       "phase": "group_stage",
       "group": "C",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Morocco",
+      "team_b": "Haiti",
+      "kickoff_utc": "2026-06-24T22:00:00Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-C-06",
         "group": "C",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Atlanta",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -445,23 +643,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "USA",
+      "team_b": "Paraguay",
+      "kickoff_utc": "2026-06-13T01:00:00Z",
+      "venue": "SoFi Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-01",
         "group": "D",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Inglewood",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -469,23 +678,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Australia",
+      "team_b": "Türkiye",
+      "kickoff_utc": "2026-06-14T04:00:00Z",
+      "venue": "BC Place",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-02",
         "group": "D",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Vancouver",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -493,23 +713,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Türkiye",
+      "team_b": "Paraguay",
+      "kickoff_utc": "2026-06-20T04:00:00Z",
+      "venue": "Levi's Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-03",
         "group": "D",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Santa Clara",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -517,23 +748,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "USA",
+      "team_b": "Australia",
+      "kickoff_utc": "2026-06-19T19:00:00Z",
+      "venue": "Lumen Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-04",
         "group": "D",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Seattle",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -541,23 +783,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Türkiye",
+      "team_b": "USA",
+      "kickoff_utc": "2026-06-26T02:00:00Z",
+      "venue": "SoFi Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-05",
         "group": "D",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Inglewood",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -565,23 +818,34 @@
       "phase": "group_stage",
       "group": "D",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Paraguay",
+      "team_b": "Australia",
+      "kickoff_utc": "2026-06-26T02:00:00Z",
+      "venue": "Levi's Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-D-06",
         "group": "D",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Santa Clara",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -589,23 +853,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Cote d'Ivoire",
+      "team_b": "Ecuador",
+      "kickoff_utc": "2026-06-14T23:00:00Z",
+      "venue": "Lincoln Financial Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-01",
         "group": "E",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Philadelphia",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -613,23 +888,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Germany",
+      "team_b": "Curacao",
+      "kickoff_utc": "2026-06-14T17:00:00Z",
+      "venue": "NRG Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-02",
         "group": "E",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Houston",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -637,23 +923,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Germany",
+      "team_b": "Cote d'Ivoire",
+      "kickoff_utc": "2026-06-20T20:00:00Z",
+      "venue": "BMO Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-03",
         "group": "E",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Toronto",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -661,23 +958,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Ecuador",
+      "team_b": "Curacao",
+      "kickoff_utc": "2026-06-21T00:00:00Z",
+      "venue": "Arrowhead Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-04",
         "group": "E",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Kansas City",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -685,23 +993,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Curacao",
+      "team_b": "Cote d'Ivoire",
+      "kickoff_utc": "2026-06-25T20:00:00Z",
+      "venue": "Lincoln Financial Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-05",
         "group": "E",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Philadelphia",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -709,23 +1028,34 @@
       "phase": "group_stage",
       "group": "E",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Ecuador",
+      "team_b": "Germany",
+      "kickoff_utc": "2026-06-25T20:00:00Z",
+      "venue": "MetLife Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-E-06",
         "group": "E",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "East Rutherford",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -733,23 +1063,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Netherlands",
+      "team_b": "Japan",
+      "kickoff_utc": "2026-06-14T20:00:00Z",
+      "venue": "AT&T Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-01",
         "group": "F",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Arlington",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -757,23 +1098,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Sweden",
+      "team_b": "Tunisia",
+      "kickoff_utc": "2026-06-15T02:00:00Z",
+      "venue": "Estadio BBVA",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-02",
         "group": "F",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Guadalupe",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -781,23 +1133,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Netherlands",
+      "team_b": "Sweden",
+      "kickoff_utc": "2026-06-20T17:00:00Z",
+      "venue": "NRG Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-03",
         "group": "F",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Houston",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -805,23 +1168,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Tunisia",
+      "team_b": "Japan",
+      "kickoff_utc": "2026-06-21T04:00:00Z",
+      "venue": "Estadio BBVA",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-04",
         "group": "F",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Guadalupe",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -829,23 +1203,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Japan",
+      "team_b": "Sweden",
+      "kickoff_utc": "2026-06-25T23:00:00Z",
+      "venue": "AT&T Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-05",
         "group": "F",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Arlington",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -853,23 +1238,34 @@
       "phase": "group_stage",
       "group": "F",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Tunisia",
+      "team_b": "Netherlands",
+      "kickoff_utc": "2026-06-25T23:00:00Z",
+      "venue": "Arrowhead Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-F-06",
         "group": "F",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Kansas City",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -877,23 +1273,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Iran",
+      "team_b": "New Zealand",
+      "kickoff_utc": "2026-06-16T01:00:00Z",
+      "venue": "SoFi Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-01",
         "group": "G",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Inglewood",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -901,23 +1308,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Belgium",
+      "team_b": "Egypt",
+      "kickoff_utc": "2026-06-15T19:00:00Z",
+      "venue": "Lumen Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-02",
         "group": "G",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Seattle",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -925,23 +1343,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Belgium",
+      "team_b": "Iran",
+      "kickoff_utc": "2026-06-21T19:00:00Z",
+      "venue": "SoFi Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-03",
         "group": "G",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Inglewood",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -949,23 +1378,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "New Zealand",
+      "team_b": "Egypt",
+      "kickoff_utc": "2026-06-22T01:00:00Z",
+      "venue": "BC Place",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-04",
         "group": "G",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Vancouver",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -973,23 +1413,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Egypt",
+      "team_b": "Iran",
+      "kickoff_utc": "2026-06-27T03:00:00Z",
+      "venue": "Lumen Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-05",
         "group": "G",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Seattle",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -997,23 +1448,34 @@
       "phase": "group_stage",
       "group": "G",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "New Zealand",
+      "team_b": "Belgium",
+      "kickoff_utc": "2026-06-27T03:00:00Z",
+      "venue": "BC Place",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-G-06",
         "group": "G",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Vancouver",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1021,23 +1483,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Saudi Arabia",
+      "team_b": "Uruguay",
+      "kickoff_utc": "2026-06-15T22:00:00Z",
+      "venue": "Hard Rock Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-01",
         "group": "H",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Miami Gardens",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1045,23 +1518,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Spain",
+      "team_b": "Cape Verde",
+      "kickoff_utc": "2026-06-15T16:00:00Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-02",
         "group": "H",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Atlanta",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1069,23 +1553,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Uruguay",
+      "team_b": "Cape Verde",
+      "kickoff_utc": "2026-06-21T22:00:00Z",
+      "venue": "Hard Rock Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-03",
         "group": "H",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Miami Gardens",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1093,23 +1588,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Spain",
+      "team_b": "Saudi Arabia",
+      "kickoff_utc": "2026-06-21T16:00:00Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-04",
         "group": "H",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Atlanta",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1117,23 +1623,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Cape Verde",
+      "team_b": "Saudi Arabia",
+      "kickoff_utc": "2026-06-27T00:00:00Z",
+      "venue": "NRG Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-05",
         "group": "H",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Houston",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1141,23 +1658,34 @@
       "phase": "group_stage",
       "group": "H",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Uruguay",
+      "team_b": "Spain",
+      "kickoff_utc": "2026-06-27T00:00:00Z",
+      "venue": "Estadio Akron",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-H-06",
         "group": "H",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Zapopan",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1165,23 +1693,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "France",
+      "team_b": "Senegal",
+      "kickoff_utc": "2026-06-16T19:00:00Z",
+      "venue": "MetLife Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-01",
         "group": "I",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "East Rutherford",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1189,23 +1728,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Iraq",
+      "team_b": "Norway",
+      "kickoff_utc": "2026-06-16T22:00:00Z",
+      "venue": "Gillette Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-02",
         "group": "I",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Foxborough",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1213,23 +1763,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Norway",
+      "team_b": "Senegal",
+      "kickoff_utc": "2026-06-23T00:00:00Z",
+      "venue": "MetLife Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-03",
         "group": "I",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "East Rutherford",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1237,23 +1798,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "France",
+      "team_b": "Iraq",
+      "kickoff_utc": "2026-06-22T21:00:00Z",
+      "venue": "Lincoln Financial Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-04",
         "group": "I",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Philadelphia",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1261,23 +1833,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Norway",
+      "team_b": "France",
+      "kickoff_utc": "2026-06-26T19:00:00Z",
+      "venue": "Gillette Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-05",
         "group": "I",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Foxborough",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1285,23 +1868,34 @@
       "phase": "group_stage",
       "group": "I",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Senegal",
+      "team_b": "Iraq",
+      "kickoff_utc": "2026-06-26T19:00:00Z",
+      "venue": "BMO Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-I-06",
         "group": "I",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Toronto",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1309,23 +1903,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Argentina",
+      "team_b": "Algeria",
+      "kickoff_utc": "2026-06-17T01:00:00Z",
+      "venue": "Arrowhead Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-01",
         "group": "J",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Kansas City",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1333,23 +1938,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Austria",
+      "team_b": "Jordan",
+      "kickoff_utc": "2026-06-17T04:00:00Z",
+      "venue": "Levi's Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-02",
         "group": "J",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Santa Clara",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1357,23 +1973,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Argentina",
+      "team_b": "Austria",
+      "kickoff_utc": "2026-06-22T17:00:00Z",
+      "venue": "AT&T Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-03",
         "group": "J",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Arlington",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1381,23 +2008,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Jordan",
+      "team_b": "Algeria",
+      "kickoff_utc": "2026-06-23T03:00:00Z",
+      "venue": "Levi's Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-04",
         "group": "J",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Santa Clara",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1405,23 +2043,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Algeria",
+      "team_b": "Austria",
+      "kickoff_utc": "2026-06-28T02:00:00Z",
+      "venue": "Arrowhead Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-05",
         "group": "J",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Kansas City",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1429,23 +2078,34 @@
       "phase": "group_stage",
       "group": "J",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Jordan",
+      "team_b": "Argentina",
+      "kickoff_utc": "2026-06-28T02:00:00Z",
+      "venue": "AT&T Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-J-06",
         "group": "J",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Arlington",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1453,23 +2113,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Portugal",
+      "team_b": "DR Congo",
+      "kickoff_utc": "2026-06-17T17:00:00Z",
+      "venue": "NRG Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-01",
         "group": "K",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Houston",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1477,23 +2148,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Uzbekistan",
+      "team_b": "Colombia",
+      "kickoff_utc": "2026-06-18T02:00:00Z",
+      "venue": "Estadio Azteca",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-02",
         "group": "K",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Mexico City",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1501,23 +2183,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Portugal",
+      "team_b": "Uzbekistan",
+      "kickoff_utc": "2026-06-23T17:00:00Z",
+      "venue": "NRG Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-03",
         "group": "K",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Houston",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1525,23 +2218,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Colombia",
+      "team_b": "DR Congo",
+      "kickoff_utc": "2026-06-24T02:00:00Z",
+      "venue": "Estadio Akron",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-04",
         "group": "K",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Zapopan",
+        "country": "Mexico",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1549,23 +2253,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Colombia",
+      "team_b": "Portugal",
+      "kickoff_utc": "2026-06-27T23:30:00Z",
+      "venue": "Hard Rock Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-05",
         "group": "K",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Miami Gardens",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1573,23 +2288,34 @@
       "phase": "group_stage",
       "group": "K",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "DR Congo",
+      "team_b": "Uzbekistan",
+      "kickoff_utc": "2026-06-27T23:30:00Z",
+      "venue": "Mercedes-Benz Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-K-06",
         "group": "K",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Atlanta",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1597,23 +2323,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 1,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Ghana",
+      "team_b": "Panama",
+      "kickoff_utc": "2026-06-17T23:00:00Z",
+      "venue": "BMO Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-01",
         "group": "L",
         "slot_number": 1
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Toronto",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1621,23 +2358,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 2,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "England",
+      "team_b": "Croatia",
+      "kickoff_utc": "2026-06-17T20:00:00Z",
+      "venue": "AT&T Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-02",
         "group": "L",
         "slot_number": 2
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Arlington",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1645,23 +2393,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 3,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "England",
+      "team_b": "Ghana",
+      "kickoff_utc": "2026-06-23T20:00:00Z",
+      "venue": "Gillette Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-03",
         "group": "L",
         "slot_number": 3
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Foxborough",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1669,23 +2428,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 4,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Panama",
+      "team_b": "Croatia",
+      "kickoff_utc": "2026-06-23T23:00:00Z",
+      "venue": "BMO Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-04",
         "group": "L",
         "slot_number": 4
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Toronto",
+        "country": "Canada",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1693,23 +2463,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 5,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Panama",
+      "team_b": "England",
+      "kickoff_utc": "2026-06-27T21:00:00Z",
+      "venue": "MetLife Stadium",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-05",
         "group": "L",
         "slot_number": 5
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "East Rutherford",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     },
     {
@@ -1717,23 +2498,34 @@
       "phase": "group_stage",
       "group": "L",
       "slot_number": 6,
-      "team_a": "pending_group_draw",
-      "team_b": "pending_group_draw",
-      "kickoff_utc": "pending_official_fixture",
-      "venue": "pending_official_fixture",
-      "status": "pending_group_draw",
+      "team_a": "Croatia",
+      "team_b": "Ghana",
+      "kickoff_utc": "2026-06-27T21:00:00Z",
+      "venue": "Lincoln Financial Field",
+      "status": "confirmed_fixture",
       "slot_structure": {
         "stable_slot_id": "WG-L-06",
         "group": "L",
         "slot_number": 6
       },
       "fixture_assignment": {
-        "assignment_status": "pending_official_fixture",
-        "source_status": "manual_snapshot_required"
+        "assignment_status": "confirmed_fixture",
+        "source_status": "official_confirmed",
+        "source": "FIFA official schedule primary; FourFourTwo complete schedule cross-check",
+        "verification_status": "official_confirmed",
+        "city": "Philadelphia",
+        "country": "USA",
+        "captured_at": "2026-06-10T23:59:00Z",
+        "captured_by": "ChatGPT"
       },
       "match_result": {
         "result_status": "not_played",
         "score": "pending_match_result"
+      },
+      "fixture_source": {
+        "snapshot_name": "worldcup_2026_official_fixture_snapshot_manual",
+        "source": "FIFA official schedule",
+        "source_status": "official_confirmed"
       }
     }
   ],

@@ -116,7 +116,7 @@ def build_decision_weighting(recommendation: dict) -> dict:
         ),
         _signal(
             "lesiones de impacto medio/alto/critico",
-            recommendation["research"].get("injuries_visible", PENDING),
+            recommendation.get("research", {}).get("injuries_visible", PENDING),
             "solo ajusta confianza/riesgo si injury_impact es medium, high o critical",
             "manual_match_snapshots.json",
             False,
@@ -126,7 +126,7 @@ def build_decision_weighting(recommendation: dict) -> dict:
     low = [
         _signal(
             "predicciones editoriales / notas externas",
-            "; ".join(recommendation["research"].get("external_market_notes", [])) or PENDING,
+            "; ".join(recommendation.get("research", {}).get("external_market_notes", [])) or PENDING,
             "solo nota; no cambia pick",
             "manual research snapshot",
             False,

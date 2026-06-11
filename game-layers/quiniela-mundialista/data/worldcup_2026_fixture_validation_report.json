@@ -1,7 +1,7 @@
 {
   "tournament": "FIFA World Cup 2026",
-  "fixture_type": "structural_placeholder",
-  "official_status": "pending_official_fixture",
+  "fixture_type": "confirmed_fixture",
+  "official_status": "official_confirmed",
   "groups_detected": 12,
   "slots_detected": 72,
   "valid_group_structure": true,
@@ -18,7 +18,6 @@
   "ready_for_full_group_simulation": false,
   "fixture_status": "fixture_structure_ready_pending_official_fixture",
   "warnings": [
-    "Fixture is structural placeholder; full group simulation must remain disabled.",
     "Official group draw, kickoff UTC and venues are pending."
   ],
   "audit_status": "cleared_placeholder"

@@ -1,17 +1,16 @@
 {
-  "validation_status": "missing_or_template",
-  "fixture_ready": false,
-  "research_ready": false,
-  "matches_detected": 0,
-  "groups_detected": 0,
-  "teams_detected": 0,
+  "validation_status": "valid",
+  "fixture_ready": true,
+  "research_ready": true,
+  "matches_detected": 72,
+  "groups_detected": 12,
+  "teams_detected": 48,
   "errors": [],
   "warnings": [
-    "Template only. Fill fixture.matches with 72 official group-stage matches before running picks.",
-    "fixture.source_url is pending; keep source name explicit until URL is supplied",
-    "research is empty or partial; this does not block fixture import"
+    "Confirmed lineups/formations are unavailable for most future group-stage matches and must not block pre-tournament quiniela generation.",
+    "Market data is partial; use visible odds as confidence/risk contrast only, not replacement for Core.",
+    "Names may require baseline alias mapping for South Korea/Korea Republic, Czechia/Czech Republic, Bosnia and Herzegovina/Bosnia-Herzegovina, Turkiye/Türkiye/Turkey, Curacao/Curaçao, Ivory Coast/Côte d’Ivoire, and DR Congo/Congo DR.",
+    "Research is pre-tournament; refresh tomorrow morning before final submission if time allows."
   ],
-  "missing_data": [
-    "falta llenar fixture.matches con 72 partidos"
-  ]
+  "missing_data": []
 }

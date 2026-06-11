@@ -351,3 +351,48 @@ def write_intake_artifacts(package: dict, validation: dict, split: dict) -> dict
         "fixture_snapshot": str(MANUAL_FIXTURE_SNAPSHOT_PATH),
         "research_batch": str(RESEARCH_BATCH_PATH),
     }
+
+# --- emergency safe nested pending override ---
+# This override is intentionally placed at the end of the module so all existing
+# functions use this safer global implementation at runtime.
+def _is_pending(value):
+    """Safe pending detector for nested research intake values."""
+    if value is None:
+        return True
+
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        pending_values = {str(item).strip().lower() for item in PENDING_VALUES}
+        return normalized == "" or normalized in pending_values
+
+    if isinstance(value, bool):
+        return False
+
+    if isinstance(value, (int, float)):
+        return False
+
+    if isinstance(value, dict):
+        if not value:
+            return True
+        return all(_is_pending(item) for item in value.values())
+
+    if isinstance(value, (list, tuple, set)):
+        if not value:
+            return True
+        return all(_is_pending(item) for item in value)
+
+    return False
+
+
+def _contains_pending(value):
+    """Return True if any nested value is pending/missing."""
+    if _is_pending(value):
+        return True
+
+    if isinstance(value, dict):
+        return any(_contains_pending(item) for item in value.values())
+
+    if isinstance(value, (list, tuple, set)):
+        return any(_contains_pending(item) for item in value)
+
+    return False
