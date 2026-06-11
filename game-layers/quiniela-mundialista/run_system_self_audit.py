@@ -68,6 +68,27 @@ def main() -> None:
         "- operativamente bloqueado: "
         f"{'si' if audit['readiness']['full_group_stage_operationally_blocked'] else 'no'}"
     )
+    print("Group Context Engine")
+    print(f"- engine existe: {'si' if audit['readiness']['group_context_engine_exists'] else 'no'}")
+    print(f"- demo existe: {'si' if audit['readiness']['group_context_demo_exists'] else 'no'}")
+    print(f"- rules existen: {'si' if audit['readiness']['group_context_rules_exists'] else 'no'}")
+    print(f"- estado real: {audit['readiness']['group_context_real_status']}")
+    print(
+        "- se activa con placeholder: "
+        f"{'si' if audit['readiness']['group_context_activates_with_placeholder'] else 'no'}"
+    )
+    print(
+        "- no usa resultados futuros: "
+        f"{'si' if audit['readiness']['group_context_no_future_results'] else 'no'}"
+    )
+    print(
+        "- jornada 3 requiere tabla previa: "
+        f"{'si' if audit['readiness']['group_context_jornada3_requires_standings'] else 'no'}"
+    )
+    print(
+        "- falta fixture oficial para contexto real: "
+        f"{'si' if audit['readiness']['group_context_needs_official_fixture'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

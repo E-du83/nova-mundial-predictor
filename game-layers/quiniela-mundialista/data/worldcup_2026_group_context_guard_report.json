@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-06-11T00:39:27Z",
+  "real_fixture_context_status": "placeholder_blocked",
+  "real_allowed_for_prediction": false,
+  "placeholder_guard_ok": true,
+  "synthetic_validation_ok": true,
+  "synthetic_baseline_mutated": false,
+  "prediction_impact_enabled": false
+}

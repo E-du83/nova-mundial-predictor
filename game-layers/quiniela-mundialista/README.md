@@ -825,6 +825,7 @@ game-layers/quiniela-mundialista/
 |-- run_worldcup_2026_fixture_import_demo.py
 |-- run_worldcup_2026_fixture_guard.py
 |-- run_full_group_stage_picks.py
+|-- run_group_context_demo.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -881,6 +882,7 @@ python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_import_demo.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_guard.py
 python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode standard
+python -B game-layers/quiniela-mundialista/run_group_context_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
@@ -938,3 +940,45 @@ Cuando un dato no esta disponible, la capa lo marca como `pending_real_data` o
 `pending_manual_snapshot`, `manual_snapshot_required`, `pending_manual_input` o
 `not_available_free`. Las recomendaciones son una capa de juego basada en el
 modelo disponible, no una garantia de resultado.
+
+## Group Context Engine v1
+
+`group_context_engine.py` agrega contexto de grupo para picks futuros del
+Mundial 2026. La capa puede marcar:
+
+- `death_group`
+- `balanced_group`
+- `clear_favorite_group`
+- `surprise_candidate_in_group`
+- `surprise_candidate_in_match`
+- `jornada3_trap_pending`
+- `jornada3_trap_confirmed`
+- `mutual_draw_incentive`
+- `must_win_pressure`
+- `underdog_upset_spot`
+- `insufficient_group_data`
+
+Mientras el fixture oficial no exista, el engine queda bloqueado por
+`worldcup_2026_fixture_guard.py`. Con el placeholder actual devuelve
+`context_status=placeholder_blocked`, `allowed_for_prediction=false` y no
+inventa flags reales.
+
+Datos necesarios para activar contexto real:
+
+- grupos oficiales;
+- fixture oficial con equipos reales;
+- ratings/rankings previos verificables;
+- `standings_before_match` para analizar jornada 3.
+
+Datos prohibidos para este modulo:
+
+- resultados futuros;
+- tabla final del grupo antes de un partido;
+- narrativa posterior, campeon o finalistas.
+
+`full_group_stage_picks_runner.py` queda preparado para incluir
+`group_context`, `group_context_flags`, `group_strength_bucket`,
+`surprise_candidate_context`, `jornada3_trap_context` y
+`points_pressure_context` cuando Fixture Guard este en `ready` o
+`partial_ready`. Si el contexto tiene datos insuficientes, no debe cambiar el
+pick.

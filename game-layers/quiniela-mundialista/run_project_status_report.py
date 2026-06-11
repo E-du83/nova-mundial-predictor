@@ -23,6 +23,7 @@ from result_review_engine import find_real_result, load_friendly_results  # noqa
 from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 from full_group_stage_picks_runner import run_full_group_stage_picks  # noqa: E402
+from group_context_engine import build_group_context  # noqa: E402
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture  # noqa: E402
 from worldcup_2022_dataset_loader import load_worldcup_2022_datasets  # noqa: E402
 
@@ -144,6 +145,17 @@ def main() -> None:
     group_fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
     worldcup_2026_fixture = load_worldcup_2026_fixture()
     full_group_stage_runner = run_full_group_stage_picks(mode="standard", write_report=False)
+    group_context_real = build_group_context(
+        "A",
+        ["pending_group_draw", "pending_group_draw", "pending_group_draw", "pending_group_draw"],
+        {},
+        fixtures=worldcup_2026_fixture["fixture"].get("matches", []),
+        mode="pre_tournament",
+    )
+    group_context_report = _load_json(LAYER_ROOT / "data" / "worldcup_2026_group_context_report.json")
+    group_context_guard_report = _load_json(
+        LAYER_ROOT / "data" / "worldcup_2026_group_context_guard_report.json"
+    )
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022 = load_worldcup_2022_datasets()
     worldcup_2022_report = _load_json(
@@ -228,6 +240,7 @@ def main() -> None:
         "worldcup_2026_fixture_snapshot_importer.py",
         "worldcup_2026_fixture_guard.py",
         "full_group_stage_picks_runner.py",
+        "group_context_engine.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -258,6 +271,7 @@ def main() -> None:
         "run_worldcup_2026_fixture_import_demo.py",
         "run_worldcup_2026_fixture_guard.py",
         "run_full_group_stage_picks.py",
+        "run_group_context_demo.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -293,6 +307,9 @@ def main() -> None:
     print("- worldcup_2026_group_stage_picks_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_picks_report.json"))
     print("- worldcup_2026_group_stage_picks_summary.csv: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_picks_summary.csv"))
     print("- worldcup_2026_group_stage_picks_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_picks_guard_report.json"))
+    print("- worldcup_2026_group_context_rules.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_rules.json"))
+    print("- worldcup_2026_group_context_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_report.json"))
+    print("- worldcup_2026_group_context_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_guard_report.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -474,6 +491,31 @@ def main() -> None:
     print("- report JSON status: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_picks_report.json"))
     print("- report CSV status: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_picks_summary.csv"))
     print("- next block recommended: Group Context Engine v1 / official fixture import required")
+    print("")
+
+    print("GROUP CONTEXT ENGINE v1")
+    print(f"- engine file: {_exists(LAYER_ROOT / 'group_context_engine.py')}")
+    print(
+        "- rules file: "
+        + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_context_rules.json")
+    )
+    print(f"- demo file: {_exists(LAYER_ROOT / 'run_group_context_demo.py')}")
+    print(f"- real fixture context status: {group_context_real['context_status']}")
+    print(
+        "- placeholder guard: "
+        + ("OK" if group_context_real["context_status"] == "placeholder_blocked" else "partial")
+    )
+    synthetic_validation = group_context_guard_report.get("synthetic_validation_ok")
+    if synthetic_validation is None:
+        synthetic_validation = group_context_report.get("validation", {}).get("synthetic_jornada3_trap_confirmed")
+    print("- synthetic validation: " + ("OK" if synthetic_validation else "pending"))
+    prediction_impact = (
+        "conditional"
+        if group_context_real.get("allowed_for_prediction")
+        else "false"
+    )
+    print(f"- prediction impact enabled: {prediction_impact}")
+    print("- next block recommended: Official Bracket 2026 / Research Automation")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

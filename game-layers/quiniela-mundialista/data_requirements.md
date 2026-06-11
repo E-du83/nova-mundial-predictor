@@ -305,3 +305,37 @@ Falta para un backtest fuerte:
   Quinigol, fase, modo, simulaciones y calidad de datos.
 - Este bloque no recalibra pesos, no toca el baseline mundialista y no cambia
   el Core predictivo salvo migracion compatible de almacenamiento.
+
+## Group Context Engine v1
+
+El contexto de grupos queda disponible como capa preparada, pero no se activa
+para prediccion real mientras el fixture 2026 sea `structural_placeholder`.
+
+Datos necesarios:
+
+- grupos oficiales del Mundial 2026;
+- fixture oficial verificado;
+- equipos reales en cada grupo;
+- ratings/rankings previos verificables (`nova_strength_rating_v1`, Elo,
+  ranking FIFA, ataque, defensa o forma previa);
+- `standings_before_match` para jornada 3.
+
+Datos que no puede usar:
+
+- resultados futuros;
+- tabla final de grupo antes del partido analizado;
+- campeon, finalistas o narrativa posterior;
+- grupos o partidos inventados;
+- scraping automatico o APIs pagadas.
+
+Estados esperados con datos incompletos:
+
+- `placeholder_blocked` si Fixture Guard esta en `blocked_placeholder`;
+- `insufficient_data` si faltan ratings reales;
+- `partial` si hay ratings parciales pero no calidad suficiente;
+- `allowed_for_prediction=false` hasta que Fixture Guard permita datos reales.
+
+El demo sintetico de `run_group_context_demo.py` solo valida reglas internas:
+grupo fuerte/equilibrado, candidato sorpresa, jornada 3 trap y presion de
+puntos. Esa data sintetica no debe persistirse en datasets reales ni modificar
+`data/worldcup_2026_real_teams_baseline_v1.json`.

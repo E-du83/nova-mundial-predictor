@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from full_group_stage_picks_runner import run_full_group_stage_picks
+from group_context_engine import build_group_context
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture
 
 
@@ -26,6 +27,13 @@ def build_system_self_audit() -> dict:
     fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
     worldcup_2026_fixture = load_worldcup_2026_fixture()
     full_group_runner = run_full_group_stage_picks(mode="standard", write_report=False)
+    group_context_real = build_group_context(
+        "A",
+        ["pending_group_draw", "pending_group_draw", "pending_group_draw", "pending_group_draw"],
+        {},
+        fixtures=worldcup_2026_fixture["fixture"].get("matches", []),
+        mode="pre_tournament",
+    )
     manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022_report = _load_json(
         LAYER_ROOT
@@ -61,6 +69,8 @@ def build_system_self_audit() -> dict:
         "run_worldcup_2026_fixture_guard.py",
         "full_group_stage_picks_runner.py",
         "run_full_group_stage_picks.py",
+        "group_context_engine.py",
+        "run_group_context_demo.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -83,6 +93,7 @@ def build_system_self_audit() -> dict:
             "World Cup 2026 fixture guard blocks full picks while the fixture is placeholder.",
             "Fixture importer defaults to dry_run and validates manual snapshots before updating active fixture.",
             "Full Group Stage Picks Runner exists but remains blocked by Fixture Guard until official fixture is ready.",
+            "Group Context Engine exists and remains blocked while the 2026 fixture is placeholder.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
@@ -90,6 +101,7 @@ def build_system_self_audit() -> dict:
             "Full Group Stage Picks Runner is structurally ready but operationally blocked.",
             "World Cup 2026 fixture is structural placeholder, not confirmed matchups.",
             "World Cup 2026 group draw, kickoff UTC and venues are still pending verification.",
+            "Group context cannot activate for real groups until official groups and fixtures are loaded.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
@@ -106,12 +118,14 @@ def build_system_self_audit() -> dict:
             "If placeholder fixture slots are treated as official matches, group simulation would be misleading.",
             "A future picks runner must not bypass the fixture guard.",
             "Running --force on full picks must not bypass Fixture Guard.",
+            "Jornada 3 trap analysis would leak future information if standings_before_match is not supplied.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
             "Run fixture import demo in dry_run before applying any official snapshot.",
             "Keep Full Group Stage Picks Runner blocked until guard_status=ready.",
             "Replace structural placeholder assignments with verified FIFA group draw and fixture data.",
+            "Activate Group Context Engine only after fixture guard is ready or partial_ready with verified teams.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
             "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
@@ -133,8 +147,9 @@ def build_system_self_audit() -> dict:
             "Do not simulate full World Cup 2026 group stage while fixture_type is structural_placeholder.",
             "Do not bypass Fixture Guard from future Full Group Stage Picks Runner.",
             "Do not write prediction_history entries from placeholder group-stage slots.",
+            "Do not use final group tables or future results for Group Context Engine.",
         ],
-        "siguiente_bloque_recomendado": "Full Group Stage Picks Runner v1 after verified fixture import",
+        "siguiente_bloque_recomendado": "Official Bracket 2026 / Research Automation",
         "readiness": {
             "missing_modules": missing_modules,
             "real_data_available": {
@@ -187,6 +202,19 @@ def build_system_self_audit() -> dict:
                 "prediction_history_updated"
             ],
             "full_group_stage_operationally_blocked": full_group_runner["runner_status"] == "blocked",
+            "group_context_engine_exists": _exists(LAYER_ROOT / "group_context_engine.py"),
+            "group_context_demo_exists": _exists(LAYER_ROOT / "run_group_context_demo.py"),
+            "group_context_rules_exists": _exists(
+                LAYER_ROOT / "data" / "worldcup_2026_group_context_rules.json"
+            ),
+            "group_context_real_status": group_context_real["context_status"],
+            "group_context_activates_with_placeholder": group_context_real["allowed_for_prediction"],
+            "group_context_no_future_results": group_context_real["leakage_guard"]["no_future_results"],
+            "group_context_jornada3_requires_standings": group_context_real["leakage_guard"][
+                "standings_required_for_jornada3_trap"
+            ],
+            "group_context_needs_official_fixture": group_context_real["context_status"]
+            == "placeholder_blocked",
             "worldcup_2022_blind_test_exists": bool(worldcup_2022_report),
             "worldcup_2022_leakage_guard_exists": bool(worldcup_2022_audit),
             "worldcup_2022_leakage_guard_status": worldcup_2022_audit.get("audit_status", "missing"),

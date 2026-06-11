@@ -5,6 +5,8 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from final_pick_engine import load_default_final_pick_inputs
+from group_context_engine import build_group_context
 from group_stage_runner import run_group_stage
 from simulation_config import resolve_simulation_mode
 from worldcup_2026_fixture_guard import evaluate_group_stage_simulation_readiness
@@ -34,6 +36,11 @@ CSV_COLUMNS = [
     "risk",
     "robustness",
     "data_quality_score",
+    "group_context_flags",
+    "group_strength_bucket",
+    "surprise_candidate_context",
+    "jornada3_trap_context",
+    "points_pressure_context",
     "notes",
 ]
 
@@ -76,10 +83,30 @@ def _split_match_label(label: str) -> tuple[str, str]:
     return left, right
 
 
-def _pick_from_group_result(item: dict) -> dict:
+def _group_context_summary(context: dict | None) -> dict:
+    if not context:
+        return {
+            "context_status": "not_evaluated",
+            "allowed_for_prediction": False,
+            "data_quality": "insufficient",
+        }
+    return {
+        "context_status": context.get("context_status", "insufficient_data"),
+        "allowed_for_prediction": context.get("allowed_for_prediction", False),
+        "data_quality": context.get("data_quality", "insufficient"),
+        "warnings": context.get("warnings", []),
+    }
+
+
+def _pick_from_group_result(item: dict, group_contexts: dict | None = None) -> dict:
     team_a, team_b = _split_match_label(item.get("match", "pending_group_draw vs pending_group_draw"))
     decision = item.get("decision_weighting", {})
     recommended_use = decision.get("recommended_use", {}) if isinstance(decision, dict) else {}
+    context = (group_contexts or {}).get(item.get("group"))
+    group_strength = context.get("group_strength", {}) if context else {}
+    surprise = context.get("surprise_candidate_analysis", {}) if context else {}
+    jornada3 = context.get("jornada3_trap_analysis", {}) if context else {}
+    points_pressure = context.get("points_pressure", {}) if context else {}
     return {
         "match_id": item.get("match_id", "pending_verification"),
         "group": item.get("group", "pending_verification"),
@@ -108,6 +135,13 @@ def _pick_from_group_result(item: dict) -> dict:
         "missing_critical_data": item.get("datos_faltantes", []),
         "quiniela_recommendation": recommended_use.get("quiniela", "pending_real_data"),
         "betting_note": recommended_use.get("apuesta_prepartido", "pending_real_data"),
+        "group_context": _group_context_summary(context),
+        "group_context_flags": context.get("flags", []) if context else [],
+        "group_strength_bucket": group_strength.get("group_strength_bucket", "unknown"),
+        "surprise_candidate_context": surprise,
+        "jornada3_trap_context": jornada3,
+        "points_pressure_context": points_pressure,
+        "context_summary": _group_context_summary(context),
         "notes": item.get("pending_reason", "none"),
     }
 
@@ -136,6 +170,7 @@ def _blocked_result(mode: str, guard: dict, warnings: list[str], report_paths: d
         "pending_matches": pending,
         "simulated_matches": 0,
         "blocked_matches": confirmed + pending,
+        "group_context_status": "placeholder_blocked" if guard.get("guard_status") == "blocked_placeholder" else "not_evaluated",
         "block_reasons": guard.get("block_reason", []),
         "warnings": warnings,
         "picks": [],
@@ -144,6 +179,9 @@ def _blocked_result(mode: str, guard: dict, warnings: list[str], report_paths: d
             "picks_generated": 0,
             "prediction_history_updated": False,
             "prediction_history_status": "not_updated_runner_blocked",
+            "group_context_status": "placeholder_blocked"
+            if guard.get("guard_status") == "blocked_placeholder"
+            else "not_evaluated",
         },
         "report_paths": report_paths,
     }
@@ -161,6 +199,7 @@ def _report_payload(result: dict) -> dict:
         "pending_matches": result["pending_matches"],
         "simulated_matches": result["simulated_matches"],
         "blocked_matches": result["blocked_matches"],
+        "group_context_status": result.get("group_context_status", "not_evaluated"),
         "ready_for_full_group_simulation": result["ready_for_full_group_simulation"],
         "ready_for_partial_simulation": result["ready_for_partial_simulation"],
         "picks": result["picks"],
@@ -173,6 +212,34 @@ def _report_payload(result: dict) -> dict:
             "Run this full picks runner only after fixture guard returns ready.",
         ],
     }
+
+
+def _build_group_contexts(stage_result: dict, guard_status: str) -> dict:
+    if guard_status not in ("ready", "partial_ready"):
+        return {}
+    teams, _, _ = load_default_final_pick_inputs()
+    by_group: dict[str, set[str]] = {}
+    fixtures_by_group: dict[str, list[dict]] = {}
+    for item in stage_result.get("matches", []):
+        if item.get("simulation_status") != "simulated":
+            continue
+        group = item.get("group")
+        if not group:
+            continue
+        team_a, team_b = _split_match_label(item.get("match", ""))
+        by_group.setdefault(group, set()).update([team_a, team_b])
+        fixtures_by_group.setdefault(group, []).append(item)
+    contexts = {}
+    for group, group_teams in by_group.items():
+        context = build_group_context(
+            group,
+            sorted(group_teams),
+            teams,
+            fixtures=fixtures_by_group.get(group, []),
+            mode="fixture_ready",
+        )
+        contexts[group] = context
+    return contexts
 
 
 def _write_outputs(result: dict, guard: dict) -> None:
@@ -226,7 +293,8 @@ def run_full_group_stage_picks(
 
     stage_result = run_group_stage(mode=simulation_mode)
     simulated = [item for item in stage_result.get("matches", []) if item.get("simulation_status") == "simulated"]
-    picks = [_pick_from_group_result(item) for item in simulated]
+    group_contexts = _build_group_contexts(stage_result, guard_status)
+    picks = [_pick_from_group_result(item, group_contexts) for item in simulated]
     groups = _group_summary(picks)
     result = {
         "runner_status": runner_status,
@@ -239,6 +307,7 @@ def run_full_group_stage_picks(
         "pending_matches": guard.get("pending_matches", 0),
         "simulated_matches": len(picks),
         "blocked_matches": max(0, guard.get("confirmed_matches", 0) + guard.get("pending_matches", 0) - len(picks)),
+        "group_context_status": "ready" if group_contexts else "not_evaluated",
         "block_reasons": [],
         "warnings": warnings + stage_result.get("warnings", []),
         "picks": picks,

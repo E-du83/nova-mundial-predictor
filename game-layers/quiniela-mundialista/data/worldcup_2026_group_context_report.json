@@ -1,0 +1,242 @@
+{
+  "data_status": "worldcup_2026_group_context_demo_v1",
+  "generated_at": "2026-06-11T00:40:49Z",
+  "real_context": {
+    "group": "A",
+    "context_status": "placeholder_blocked",
+    "group_strength": {
+      "average_rating": null,
+      "strongest_team": null,
+      "weakest_team": null,
+      "rating_spread": null,
+      "top_3_spread": null,
+      "group_strength_bucket": "unknown",
+      "ratings_used": []
+    },
+    "competitive_balance": {
+      "favorite_gap": null,
+      "second_to_fourth_gap": null,
+      "balance_bucket": "insufficient_data"
+    },
+    "death_group_analysis": {
+      "is_death_group": false,
+      "confidence": "low",
+      "reason": "insufficient_data",
+      "teams_considered": [],
+      "thresholds_used": {
+        "top3_spread": 150,
+        "average_rating": 1760,
+        "contender_rating": 1740
+      }
+    },
+    "surprise_candidate_analysis": {
+      "has_surprise_candidate": false,
+      "surprise_team": null,
+      "reason": "insufficient_data",
+      "confidence": "low",
+      "caution": "No future results or post-tournament narrative are used."
+    },
+    "match_context": {},
+    "jornada3_trap_analysis": {},
+    "points_pressure": {},
+    "draw_incentive": {},
+    "flags": [],
+    "warnings": [
+      "Group context blocked because official group draw/fixture is not loaded."
+    ],
+    "data_quality": "insufficient",
+    "allowed_for_prediction": false,
+    "leakage_guard": {
+      "no_future_results": true,
+      "no_final_table_before_match": true,
+      "standings_required_for_jornada3_trap": true,
+      "fixture_guard_status": "blocked_placeholder",
+      "mode": "pre_tournament"
+    }
+  },
+  "synthetic_context": {
+    "group": "Synthetic H",
+    "context_status": "ready",
+    "group_strength": {
+      "average_rating": 1808.75,
+      "strongest_team": "Synthetic Alpha",
+      "weakest_team": "Synthetic Delta",
+      "rating_spread": 200.0,
+      "top_3_spread": 115.0,
+      "group_strength_bucket": "strong",
+      "ratings_used": [
+        {
+          "team": "Synthetic Alpha",
+          "rating": 1900.0,
+          "source": "nova_strength_rating_v1",
+          "fifa_rank": 5,
+          "attack": 88,
+          "defense": 86,
+          "form": 1.03
+        },
+        {
+          "team": "Synthetic Beta",
+          "rating": 1850.0,
+          "source": "nova_strength_rating_v1",
+          "fifa_rank": 11,
+          "attack": 85,
+          "defense": 84,
+          "form": 1.01
+        },
+        {
+          "team": "Synthetic Gamma",
+          "rating": 1785.0,
+          "source": "nova_strength_rating_v1",
+          "fifa_rank": 22,
+          "attack": 82,
+          "defense": 81,
+          "form": 0.99
+        },
+        {
+          "team": "Synthetic Delta",
+          "rating": 1700.0,
+          "source": "nova_strength_rating_v1",
+          "fifa_rank": 38,
+          "attack": 78,
+          "defense": 77,
+          "form": 1.08
+        }
+      ]
+    },
+    "competitive_balance": {
+      "favorite_gap": 50.0,
+      "second_to_fourth_gap": 150.0,
+      "balance_bucket": "balanced_group"
+    },
+    "death_group_analysis": {
+      "is_death_group": true,
+      "confidence": "medium",
+      "reason": "top three teams are close and group average is high",
+      "teams_considered": [
+        "Synthetic Alpha",
+        "Synthetic Beta",
+        "Synthetic Gamma",
+        "Synthetic Delta"
+      ],
+      "thresholds_used": {
+        "top3_spread": 150,
+        "average_rating": 1760,
+        "contender_rating": 1740
+      }
+    },
+    "surprise_candidate_analysis": {
+      "has_surprise_candidate": true,
+      "surprise_team": "Synthetic Gamma",
+      "reason": "lower-seed rating remains near group average with positive prematch form or ranking",
+      "confidence": "medium",
+      "caution": "Candidate flag is contextual only and must not override insufficient fixture data."
+    },
+    "match_context": {
+      "matchday": 3,
+      "favorite_pressure": "high",
+      "underdog_upset_potential": "contextual",
+      "draw_risk_context": "low",
+      "qualification_pressure": {
+        "status": "ready",
+        "must_win_team_a": false,
+        "must_win_team_b": true,
+        "draw_enough_team_a": false,
+        "draw_enough_team_b": false,
+        "already_qualified": [],
+        "likely_eliminated": [],
+        "pressure_bucket": "high",
+        "points_team_a": 3,
+        "points_team_b": 1
+      },
+      "elimination_pressure": {
+        "likely_eliminated": []
+      },
+      "jornada3_trap_analysis": {
+        "trap_status": "not_confirmed",
+        "trap_confirmed": false,
+        "draw_incentive": "low",
+        "points_team_a": 3,
+        "points_team_b": 1,
+        "explanation": "At least one team likely needs a win from the prior table."
+      },
+      "flags": [
+        "must_win_pressure",
+        "surprise_candidate_in_match",
+        "underdog_upset_spot"
+      ],
+      "warnings": []
+    },
+    "jornada3_trap_analysis": {
+      "trap_status": "not_confirmed",
+      "trap_confirmed": false,
+      "draw_incentive": "low",
+      "points_team_a": 3,
+      "points_team_b": 1,
+      "explanation": "At least one team likely needs a win from the prior table."
+    },
+    "points_pressure": {
+      "status": "ready",
+      "must_win_team_a": false,
+      "must_win_team_b": true,
+      "draw_enough_team_a": false,
+      "draw_enough_team_b": false,
+      "already_qualified": [],
+      "likely_eliminated": [],
+      "pressure_bucket": "high",
+      "points_team_a": 3,
+      "points_team_b": 1
+    },
+    "draw_incentive": {
+      "draw_incentive": "low"
+    },
+    "flags": [
+      "balanced_group",
+      "death_group",
+      "must_win_pressure",
+      "surprise_candidate_in_group",
+      "surprise_candidate_in_match",
+      "underdog_upset_spot"
+    ],
+    "warnings": [],
+    "data_quality": "high",
+    "allowed_for_prediction": true,
+    "leakage_guard": {
+      "no_future_results": true,
+      "no_final_table_before_match": true,
+      "standings_required_for_jornada3_trap": true,
+      "fixture_guard_status": "synthetic_controlled",
+      "mode": "synthetic_controlled"
+    }
+  },
+  "synthetic_jornada3_trap": {
+    "trap_status": "confirmed",
+    "trap_confirmed": true,
+    "draw_incentive": "high",
+    "points_team_a": 4,
+    "points_team_b": 4,
+    "explanation": "Both teams can reasonably protect qualification with a draw from the prior table."
+  },
+  "synthetic_points_pressure": {
+    "status": "ready",
+    "must_win_team_a": false,
+    "must_win_team_b": true,
+    "draw_enough_team_a": false,
+    "draw_enough_team_b": false,
+    "already_qualified": [],
+    "likely_eliminated": [],
+    "pressure_bucket": "high",
+    "points_team_a": 3,
+    "points_team_b": 1
+  },
+  "validation": {
+    "real_context_placeholder_blocked": true,
+    "real_context_allowed_for_prediction": false,
+    "real_context_has_no_flags": true,
+    "synthetic_death_or_strong_group": true,
+    "synthetic_surprise_candidate": true,
+    "synthetic_jornada3_trap_confirmed": true,
+    "synthetic_must_win_pressure": true,
+    "synthetic_baseline_mutated": false,
+    "leakage_guard_ok": true
+  }
+}

@@ -400,3 +400,29 @@ Ejecutar resumen del core:
 ```bash
 python src/pipelines/run_core_summary.py
 ```
+
+## Quiniela Mundialista: Group Context Engine v1
+
+La capa `game-layers/quiniela-mundialista/group_context_engine.py` prepara
+contexto de grupos para Mundial 2026 sin reemplazar el Core. Detecta, cuando
+haya datos oficiales suficientes:
+
+- grupo fuerte o grupo de muerte;
+- grupo equilibrado o con favorito claro;
+- candidato sorpresa pre-torneo;
+- partido trampa de jornada 3;
+- presion de puntos y posible incentivo al empate.
+
+Estado actual: el fixture 2026 sigue como `structural_placeholder`, con
+`guard_status=blocked_placeholder`. Por eso el contexto real queda en
+`placeholder_blocked`, `allowed_for_prediction=false` y no genera flags reales.
+
+Validacion:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_group_context_demo.py
+```
+
+El demo usa un escenario sintetico controlado solo para probar reglas. No guarda
+equipos sinteticos en datasets reales, no toca el baseline mundialista y no usa
+resultados futuros ni tabla final.

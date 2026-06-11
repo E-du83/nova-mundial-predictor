@@ -1,0 +1,38 @@
+{
+  "version": "group_context_rules_v1",
+  "thresholds": {
+    "elite_average_rating": 1880,
+    "strong_average_rating": 1760,
+    "weak_average_rating": 1520,
+    "death_group_top3_spread": 150,
+    "death_group_average_rating": 1760,
+    "death_group_contender_rating": 1740,
+    "balanced_group_spread": 220,
+    "clear_favorite_gap": 180,
+    "two_favorites_second_to_fourth_gap": 190,
+    "unpredictable_group_spread": 120,
+    "surprise_candidate_rating_ratio": 0.85,
+    "good_form_threshold": 1.04,
+    "good_rank_threshold": 45
+  },
+  "minimum_data_quality_for_prediction_impact": "medium",
+  "descriptions": {
+    "death_group": "Requires a high group average, a tight top three, and at least three contender-rated teams.",
+    "balanced_group": "Flags groups without a large favorite gap or with a compressed rating spread.",
+    "surprise_candidate": "Uses only prematch rating, ranking, and form fields available before the match.",
+    "jornada3_trap": "Requires standings_before_match and only applies to matchday 3.",
+    "points_pressure": "Uses only the prior table passed into the engine."
+  },
+  "data_policy": {
+    "official_groups_required_for_real_context": true,
+    "official_fixture_required_for_prediction_impact": true,
+    "ratings_must_come_from_baseline_or_verified_prematch_snapshot": true,
+    "synthetic_data_allowed_only_in_demo_report": true
+  },
+  "leakage_policy": {
+    "no_future_results": true,
+    "no_final_table_before_match": true,
+    "standings_required_for_jornada3_trap": true,
+    "no_champion_or_finalist_narrative": true
+  }
+}
