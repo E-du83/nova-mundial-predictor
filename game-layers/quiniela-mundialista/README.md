@@ -888,6 +888,9 @@ python -B game-layers/quiniela-mundialista/run_worldcup_2026_third_place_demo.py
 python -B game-layers/quiniela-mundialista/run_research_prompt_builder_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_validation_demo.py
 python -B game-layers/quiniela-mundialista/run_research_automation_demo.py
+python -B game-layers/quiniela-mundialista/run_phase_freeze_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_standings_demo.py
+python -B game-layers/quiniela-mundialista/run_inter_phase_update_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
@@ -1055,3 +1058,42 @@ El flujo no modifica `manual_match_snapshots.json`, no toca
 automaticamente. Si en el futuro se conecta a OpenAI o Anthropic, las claves
 deben vivir fuera del repo como variables de entorno (`OPENAI_API_KEY` o
 `ANTHROPIC_API_KEY`) y la llamada real debe implementarse de forma explicita.
+
+## Inter Phase Updater v1
+
+`inter_phase_update_engine.py` prepara el paso ordenado entre fases del Mundial
+2026. No genera picks nuevos, no toca picks congelados, no modifica Core y no
+recalibra pesos automaticamente.
+
+Componentes:
+
+- `phase_freeze_engine.py`: identifica predicciones de una fase y prepara el
+  freeze auditado. En `dry_run=True` no modifica `prediction_history.json`.
+- `worldcup_2026_results_loader.py`: crea/carga
+  `worldcup_2026_results_template.json` con 72 slots de fase de grupos y valida
+  resultados reales.
+- `worldcup_2026_standings_engine.py`: calcula standings solo con resultados
+  finales y equipos reales.
+- `worldcup_2026_phase_transition_guard.py`: bloquea avances si faltan picks
+  congelados, resultados completos, standings o bracket.
+- `inter_phase_update_engine.py`: orquesta freeze, results, standings y guard.
+
+Estados actuales esperados:
+
+- `freeze_status=blocked_no_predictions`;
+- `results_status=pending_results`;
+- `standings_status=blocked_placeholder_fixture`;
+- `transition_status=blocked`.
+
+Uso:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_phase_freeze_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_standings_demo.py
+python -B game-layers/quiniela-mundialista/run_inter_phase_update_demo.py
+```
+
+Congelar una fase significa guardar evidencia de que los picks previos quedan
+cerrados antes de adjuntar resultados reales. No significa recalibrar el modelo
+ni alterar predicciones historicas. La transicion a eliminatorias solo puede
+prepararse cuando existan resultados finales verificados y standings calculados.

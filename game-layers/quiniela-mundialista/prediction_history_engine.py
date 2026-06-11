@@ -401,6 +401,18 @@ def normalize_prediction_history_data(history: dict) -> dict:
             entry["quinigol_minute"] = _digits(entry.get("minuto_referencia"))
         if "quinigol_range" not in entry:
             entry["quinigol_range"] = entry.get("rango_probable", PENDING)
+        if "phase" not in entry:
+            entry["phase"] = entry.get("competition_phase", "not_available")
+        if "freeze_status" not in entry:
+            entry["freeze_status"] = "not_frozen"
+        if "frozen_at" not in entry:
+            entry["frozen_at"] = "not_available"
+        if "reviewed_after_result" not in entry:
+            entry["reviewed_after_result"] = entry.get("history_status") == "reviewed"
+        if "result_attached" not in entry:
+            entry["result_attached"] = entry.get("real_status") == "final"
+        if "phase_transition_update_id" not in entry:
+            entry["phase_transition_update_id"] = "not_available"
     history["entry_count"] = len(history.get("entries", []))
     return history
 

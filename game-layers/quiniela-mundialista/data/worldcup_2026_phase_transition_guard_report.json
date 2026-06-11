@@ -1,0 +1,22 @@
+{
+  "transition_status": "blocked",
+  "from_phase": "group_stage",
+  "to_phase": "round_of_32",
+  "predictions_frozen": false,
+  "results_complete": false,
+  "standings_ready": false,
+  "bracket_ready": false,
+  "blocked_reasons": [
+    "previous phase predictions are not frozen",
+    "real results are not complete",
+    "standings not ready: blocked_placeholder_fixture",
+    "bracket not ready: blocked_pending_group_results"
+  ],
+  "warnings": [],
+  "next_steps": [
+    "Freeze previous phase predictions after real picks exist.",
+    "Load verified real results with source_status, captured_at and review_status.",
+    "Build standings only from final results.",
+    "Re-run bracket guard before preparing the next phase."
+  ]
+}

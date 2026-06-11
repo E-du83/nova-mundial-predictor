@@ -471,3 +471,28 @@ python -B game-layers/quiniela-mundialista/run_research_prompt_builder_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_validation_demo.py
 python -B game-layers/quiniela-mundialista/run_research_automation_demo.py
 ```
+
+## Quiniela Mundialista: Inter Phase Updater v1
+
+La capa de Inter Phase Updater prepara transiciones entre fases del Mundial
+2026 sin generar picks nuevos ni modificar predicciones historicas.
+
+Funciones principales:
+
+- congelar picks de una fase cuando existan picks reales;
+- cargar resultados reales auditables desde plantilla;
+- validar `source_status`, `captured_at` y `review_status`;
+- calcular standings solo con resultados finales;
+- evaluar si se puede pasar de fase de grupos a Round of 32;
+- mantener `recalibration_applied=false` por defecto.
+
+Estado actual: bloqueado. El fixture 2026 sigue como placeholder, no hay picks
+reales 2026, no hay resultados finales ni standings.
+
+Validacion:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_phase_freeze_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_standings_demo.py
+python -B game-layers/quiniela-mundialista/run_inter_phase_update_demo.py
+```

@@ -417,3 +417,50 @@ Validez por uso:
 
 Los snapshots AI-assisted deben revisarse manualmente antes de guardarse o
 usarse como input operativo.
+
+## Inter Phase Updater v1
+
+El updater entre fases prepara el cierre de una fase y la siguiente fase sin
+crear picks nuevos ni recalibrar.
+
+Datos necesarios para congelar una fase:
+
+- predicciones reales de la fase en `prediction_history.json`;
+- fase identificable (`phase` o `match_id` compatible);
+- picks que no sean placeholders;
+- ejecucion explicita fuera de dry-run para registrar el freeze.
+
+Datos necesarios para resultados:
+
+- `match_id`;
+- `phase`;
+- grupo si aplica;
+- equipos reales;
+- `goals_a_90` y `goals_b_90` numericos si el partido es final;
+- `winner_90`, `btts`, primer gol si existe;
+- `source`, `source_status`, `captured_at`, `review_status`.
+
+Reglas de standings:
+
+- calcular solo con resultados finales;
+- no usar placeholders;
+- no inventar standings;
+- no aplicar desempates completos no verificados;
+- no usar resultados futuros.
+
+Reglas de transicion:
+
+- no avanzar sin picks congelados;
+- no avanzar sin resultados completos;
+- no preparar eliminatorias sin standings;
+- no construir bracket sin que `worldcup_2026_bracket_guard.py` este listo;
+- `recalibration_applied` debe permanecer en `false` salvo solicitud futura
+  explicita.
+
+Estado actual esperado:
+
+- `blocked_no_predictions` o equivalente en freeze;
+- `pending_results` para resultados;
+- `blocked_placeholder_fixture` para standings;
+- `transition_status=blocked`;
+- `prediction_history_modified=false` en dry-run.

@@ -120,6 +120,33 @@ def main() -> None:
         "- snapshots directory existe: "
         f"{'si' if audit['readiness']['research_snapshots_directory_exists'] else 'no'}"
     )
+    print("Inter Phase Updater")
+    print(f"- updater existe: {'si' if audit['readiness']['inter_phase_updater_exists'] else 'no'}")
+    print(f"- freeze engine existe: {'si' if audit['readiness']['phase_freeze_engine_exists'] else 'no'}")
+    print(f"- results loader existe: {'si' if audit['readiness']['results_loader_exists'] else 'no'}")
+    print(f"- standings engine existe: {'si' if audit['readiness']['standings_engine_exists'] else 'no'}")
+    print(f"- transition guard existe: {'si' if audit['readiness']['phase_transition_guard_exists'] else 'no'}")
+    print(f"- update status: {audit['readiness']['inter_phase_update_status']}")
+    print(
+        "- dry-run no modifica historial: "
+        f"{'si' if audit['readiness']['inter_phase_dry_run_no_history_mutation'] else 'no'}"
+    )
+    print(
+        "- recalibracion aplicada: "
+        f"{'si' if audit['readiness']['inter_phase_recalibration_applied'] else 'no'}"
+    )
+    print(
+        "- avanza sin resultados: "
+        f"{'si' if audit['readiness']['inter_phase_advances_without_results'] else 'no'}"
+    )
+    print(
+        "- construye bracket sin standings: "
+        f"{'si' if audit['readiness']['inter_phase_builds_bracket_without_standings'] else 'no'}"
+    )
+    print(
+        "- falta fixture oficial/resultados: "
+        f"{'si' if audit['readiness']['inter_phase_missing_fixture_or_results'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")

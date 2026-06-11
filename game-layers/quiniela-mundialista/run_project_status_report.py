@@ -24,6 +24,7 @@ from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 from full_group_stage_picks_runner import run_full_group_stage_picks  # noqa: E402
 from group_context_engine import build_group_context  # noqa: E402
+from inter_phase_update_engine import run_inter_phase_update  # noqa: E402
 from research_snapshot_store import SNAPSHOT_DIR  # noqa: E402
 from worldcup_2026_bracket_guard import evaluate_bracket_readiness  # noqa: E402
 from worldcup_2026_bracket_structure import write_default_bracket_files  # noqa: E402
@@ -162,6 +163,7 @@ def main() -> None:
     write_default_bracket_files()
     bracket_guard = evaluate_bracket_readiness()
     research_automation_status = _load_json(LAYER_ROOT / "data" / "research_automation_status.json")
+    inter_phase_update = run_inter_phase_update(dry_run=True, write_report=False)
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022 = load_worldcup_2022_datasets()
     worldcup_2022_report = _load_json(
@@ -257,6 +259,11 @@ def main() -> None:
         "research_snapshot_normalizer.py",
         "research_snapshot_store.py",
         "ai_research_client.py",
+        "phase_freeze_engine.py",
+        "worldcup_2026_results_loader.py",
+        "worldcup_2026_standings_engine.py",
+        "worldcup_2026_phase_transition_guard.py",
+        "inter_phase_update_engine.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -293,6 +300,9 @@ def main() -> None:
         "run_research_prompt_builder_demo.py",
         "run_research_snapshot_validation_demo.py",
         "run_research_automation_demo.py",
+        "run_phase_freeze_demo.py",
+        "run_worldcup_2026_standings_demo.py",
+        "run_inter_phase_update_demo.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -340,6 +350,11 @@ def main() -> None:
     print("- research_snapshot_validation_report.json: " + _exists(LAYER_ROOT / "data" / "research_snapshot_validation_report.json"))
     print("- research_prompt_template.md: " + _exists(LAYER_ROOT / "data" / "research_prompt_template.md"))
     print("- research_automation_status.json: " + _exists(LAYER_ROOT / "data" / "research_automation_status.json"))
+    print("- worldcup_2026_results_template.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_results_template.json"))
+    print("- worldcup_2026_phase_freeze_log.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_phase_freeze_log.json"))
+    print("- worldcup_2026_standings_snapshot.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_standings_snapshot.json"))
+    print("- worldcup_2026_inter_phase_update_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_inter_phase_update_report.json"))
+    print("- worldcup_2026_phase_transition_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_phase_transition_guard_report.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -587,6 +602,36 @@ def main() -> None:
     print(f"- dry run default: {str(research_automation_status.get('dry_run_default', True)).lower()}")
     print("- snapshots directory: " + ("OK" if SNAPSHOT_DIR.exists() else "missing"))
     print("- next block recommended: Manual research snapshot review / optional API connector")
+    print("")
+
+    print("INTER PHASE UPDATER v1")
+    print(f"- phase freeze engine: {_exists(LAYER_ROOT / 'phase_freeze_engine.py')}")
+    print(f"- results loader: {_exists(LAYER_ROOT / 'worldcup_2026_results_loader.py')}")
+    print(f"- standings engine: {_exists(LAYER_ROOT / 'worldcup_2026_standings_engine.py')}")
+    print(f"- transition guard: {_exists(LAYER_ROOT / 'worldcup_2026_phase_transition_guard.py')}")
+    print(f"- inter phase updater: {_exists(LAYER_ROOT / 'inter_phase_update_engine.py')}")
+    print(f"- current update status: {inter_phase_update['update_status']}")
+    print(
+        "- predictions frozen: "
+        f"{str(inter_phase_update['transition_guard']['predictions_frozen']).lower()}"
+    )
+    print(
+        "- results complete: "
+        f"{str(inter_phase_update['transition_guard']['results_complete']).lower()}"
+    )
+    print(
+        "- standings ready: "
+        f"{str(inter_phase_update['transition_guard']['standings_ready']).lower()}"
+    )
+    print(
+        "- bracket ready: "
+        f"{str(inter_phase_update['transition_guard']['bracket_ready']).lower()}"
+    )
+    print(
+        "- ready for next phase: "
+        f"{str(inter_phase_update['transition_guard']['transition_status'] == 'ready').lower()}"
+    )
+    print("- next block recommended: Verified results import / phase review workflow")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

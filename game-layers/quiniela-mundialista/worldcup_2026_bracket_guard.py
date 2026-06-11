@@ -14,7 +14,7 @@ from worldcup_2026_third_place_selector import rank_third_placed_teams
 LAYER_ROOT = Path(__file__).resolve().parent
 DATA_ROOT = LAYER_ROOT / "data"
 BRACKET_GUARD_REPORT_PATH = DATA_ROOT / "worldcup_2026_bracket_guard_report.json"
-DEFAULT_GROUP_STANDINGS_PATH = DATA_ROOT / "worldcup_2026_group_standings_final.json"
+DEFAULT_GROUP_STANDINGS_PATH = DATA_ROOT / "worldcup_2026_standings_snapshot.json"
 
 
 def _load_json(path: str | Path | None) -> dict:
@@ -143,7 +143,7 @@ def evaluate_bracket_readiness(
         guard_status = "blocked_pending_group_results"
     else:
         guard_status = "ready_for_bracket_build"
-    if slots_status == "OK" and guard_status != "ready_for_bracket_build" and group_standings:
+    if slots_status == "OK" and guard_status != "ready_for_bracket_build" and _standings_rows(group_standings):
         guard_status = "partial"
     report = {
         "bracket_guard_status": guard_status,

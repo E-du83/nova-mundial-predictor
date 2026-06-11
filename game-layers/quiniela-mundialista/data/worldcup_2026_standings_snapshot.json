@@ -1,0 +1,9 @@
+{
+  "data_status": "worldcup_2026_standings_snapshot_v1",
+  "standings_status": "pending_results",
+  "groups_calculated": 0,
+  "groups": {},
+  "warnings": [
+    "No verified final World Cup 2026 group results are loaded yet."
+  ]
+}
