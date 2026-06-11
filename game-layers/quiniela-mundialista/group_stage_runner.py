@@ -190,17 +190,20 @@ def _simulate_match(match: dict, teams: dict, mode: str, simulations: int) -> di
 def run_group_stage(mode: str = "quick", fixture_path: str | Path = FIXTURE_PATH) -> dict:
     fixture_bundle = load_worldcup_2026_fixture()
     fixture_data = fixture_bundle["fixture"]
+    guard_report = fixture_bundle.get("guard_report", {})
+    guard_status = fixture_bundle.get("fixture_guard_status", "missing")
+    block_reason = guard_report.get("block_reason", [])
     simulation_mode, simulations = resolve_simulation_mode(mode)
     results = []
 
-    if fixture_bundle["structural_placeholder"]:
+    if guard_status in ("blocked_placeholder", "blocked_invalid"):
         for match in fixture_data.get("matches", []):
             results.append(
                 _pending_match(
                     match,
-                    "pending_group_draw",
+                    "fixture_guard_blocked",
                     ["team_a", "team_b", "kickoff_utc", "venue"],
-                    fixture_status="structural_placeholder",
+                    fixture_status=fixture_bundle["fixture_type"],
                 )
             )
         return {
@@ -214,8 +217,11 @@ def run_group_stage(mode: str = "quick", fixture_path: str | Path = FIXTURE_PATH
             "simulable_matches": 0,
             "fixture_type": fixture_bundle["fixture_type"],
             "fixture_status": fixture_bundle["official_status"],
+            "guard_status": guard_status,
+            "block_reason": block_reason,
+            "ready_for_partial_simulation": fixture_bundle["ready_for_partial_simulation"],
             "ready_for_full_group_simulation": False,
-            "fixture_warning": "placeholder fixture; waiting for official group draw and FIFA fixture snapshot",
+            "fixture_warning": "fixture guard blocked simulation; waiting for verified official fixture snapshot",
             "warnings": fixture_bundle["warnings"],
             "matches": results,
         }
@@ -256,6 +262,9 @@ def run_group_stage(mode: str = "quick", fixture_path: str | Path = FIXTURE_PATH
         "pending_matches": sum(1 for item in results if item["simulation_status"] != "simulated"),
         "fixture_type": fixture_bundle["fixture_type"],
         "fixture_status": fixture_bundle["official_status"],
+        "guard_status": guard_status,
+        "block_reason": block_reason,
+        "ready_for_partial_simulation": fixture_bundle["ready_for_partial_simulation"],
         "ready_for_full_group_simulation": fixture_bundle["ready_for_full_group_simulation"],
         "fixture_warning": (
             "fixture incomplete; only confirmed official matches can be simulated"

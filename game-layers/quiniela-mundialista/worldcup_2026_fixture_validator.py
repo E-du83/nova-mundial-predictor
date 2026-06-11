@@ -21,6 +21,9 @@ PENDING_VALUES = {
     "pending_official_fixture",
     "manual_snapshot_required",
     "pending_verification",
+    "pending_manual_input",
+    "pending_official_source",
+    "template_pending_manual_input",
 }
 
 
@@ -52,6 +55,121 @@ def _valid_utc_or_pending(value) -> bool:
 
 def _valid_venue_or_pending(value) -> bool:
     return value in PENDING_VALUES or (isinstance(value, str) and bool(value.strip()))
+
+
+def _baseline_teams(path: str | Path | None = None) -> set[str]:
+    if path is None:
+        path = LAYER_ROOT.parents[1] / "data" / "worldcup_2026_real_teams_baseline_v1.json"
+    data = _load_json(path)
+    return set(data.keys())
+
+
+def validate_fixture_snapshot(
+    snapshot_path: str | Path,
+    structural_slots_path: str | Path = MATCH_SLOTS_PATH,
+    baseline_path: str | Path | None = None,
+) -> dict:
+    snapshot = _load_json(snapshot_path)
+    structural_slots = _load_json(structural_slots_path).get("matches", [])
+    baseline = _baseline_teams(baseline_path)
+    structural_by_id = {item.get("match_id"): item for item in structural_slots}
+    valid_slot_ids = set(structural_by_id)
+    matches = snapshot.get("matches", [])
+    source_status = snapshot.get("source_status")
+    snapshot_confirmed = source_status == "official_confirmed"
+    errors = []
+    warnings = []
+    valid_matches = []
+    blocked_matches = []
+    seen_slot_ids = set()
+    seen_matchups = set()
+
+    required_snapshot_fields = ("source_status", "source", "captured_at", "captured_by")
+    for field in required_snapshot_fields:
+        if field not in snapshot:
+            errors.append(f"snapshot missing {field}")
+
+    if snapshot.get("total_group_stage_matches_expected", GROUP_STAGE_MATCHES) != GROUP_STAGE_MATCHES:
+        errors.append("snapshot expected group-stage match count must be 72")
+    if len(matches) != GROUP_STAGE_MATCHES:
+        errors.append(f"snapshot must contain exactly 72 matches before import; found {len(matches)}")
+
+    for match in matches:
+        slot_id = match.get("slot_id") or match.get("match_id")
+        match_errors = []
+        if not slot_id:
+            match_errors.append("missing slot_id")
+        elif slot_id not in valid_slot_ids:
+            match_errors.append(f"invalid slot_id {slot_id}")
+        elif slot_id in seen_slot_ids:
+            match_errors.append(f"duplicate slot_id {slot_id}")
+        seen_slot_ids.add(slot_id)
+
+        group = match.get("group")
+        if group not in GROUPS:
+            match_errors.append(f"invalid group {group}")
+        elif slot_id in structural_by_id and structural_by_id[slot_id].get("group") != group:
+            match_errors.append(f"group mismatch for {slot_id}")
+        if match.get("phase") != "group_stage":
+            match_errors.append("phase must be group_stage")
+        if "source_status" not in match:
+            match_errors.append("missing source_status")
+        if "verification_status" not in match:
+            match_errors.append("missing verification_status")
+
+        team_a = match.get("team_a")
+        team_b = match.get("team_b")
+        kickoff = match.get("kickoff_utc")
+        venue = match.get("venue")
+        verification = match.get("verification_status")
+        match_confirmed = snapshot_confirmed or verification == "official_confirmed"
+
+        if team_a not in PENDING_VALUES and team_b not in PENDING_VALUES:
+            matchup = (group, tuple(sorted((str(team_a), str(team_b)))))
+            if matchup in seen_matchups:
+                match_errors.append(f"duplicate matchup in group {group}")
+            seen_matchups.add(matchup)
+
+        if match_confirmed:
+            if team_a in PENDING_VALUES or team_b in PENDING_VALUES:
+                match_errors.append("confirmed snapshot cannot use pending teams")
+            if not _valid_utc_or_pending(kickoff) or kickoff in PENDING_VALUES:
+                match_errors.append("confirmed snapshot requires valid kickoff UTC")
+            if not _valid_venue_or_pending(venue) or venue in PENDING_VALUES:
+                match_errors.append("confirmed snapshot requires verified venue")
+            for team in (team_a, team_b):
+                if team not in PENDING_VALUES and team not in baseline:
+                    match_errors.append(f"team not found in baseline: {team}")
+        else:
+            if team_a in PENDING_VALUES or team_b in PENDING_VALUES:
+                warnings.append(f"{slot_id}: teams pending; not importable as confirmed fixture")
+            for team in (team_a, team_b):
+                if team not in PENDING_VALUES and team not in baseline:
+                    warnings.append(f"{slot_id}: team pending baseline verification: {team}")
+
+        if match_errors:
+            blocked_matches.append({"slot_id": slot_id or "missing", "errors": match_errors})
+        else:
+            valid_matches.append(slot_id)
+
+    if source_status != "official_confirmed":
+        warnings.append("snapshot source_status is not official_confirmed; importer must not update active fixture")
+
+    return {
+        "snapshot_name": snapshot.get("snapshot_name", "missing"),
+        "source_status": source_status or "missing",
+        "snapshot_confirmed": snapshot_confirmed,
+        "matches_in_snapshot": len(matches),
+        "matches_valid": len(valid_matches),
+        "matches_blocked": len(blocked_matches),
+        "valid_slot_ids": valid_matches,
+        "blocked_matches": blocked_matches,
+        "errors": errors,
+        "warnings": sorted(set(warnings)),
+        "validation_status": "valid_confirmed_snapshot"
+        if snapshot_confirmed and not errors and not blocked_matches
+        else "pending_or_blocked",
+    }
 
 
 def validate_worldcup_2026_fixture(

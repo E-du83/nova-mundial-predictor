@@ -23,6 +23,21 @@ def main() -> None:
     print("World Cup 2026 Fixture")
     print(f"- fixture type: {audit['readiness']['worldcup_2026_fixture_type']}")
     print(f"- validation: {audit['readiness']['worldcup_2026_fixture_validation']}")
+    print(f"- importer existe: {'si' if audit['readiness']['worldcup_2026_fixture_importer_exists'] else 'no'}")
+    print(f"- guard existe: {'si' if audit['readiness']['worldcup_2026_fixture_guard_exists'] else 'no'}")
+    print(f"- guard status: {audit['readiness']['worldcup_2026_guard_status']}")
+    print(
+        "- bloquea picks con placeholder: "
+        f"{'si' if audit['readiness']['worldcup_2026_blocks_placeholder_picks'] else 'no'}"
+    )
+    print(
+        "- protegido contra fixture no verificado: "
+        f"{'si' if audit['readiness']['worldcup_2026_protected_against_unverified_fixture'] else 'no'}"
+    )
+    print(
+        "- snapshot oficial cargado: "
+        f"{'si' if audit['readiness']['worldcup_2026_official_snapshot_loaded'] else 'no'}"
+    )
     print(f"- estructura lista: {'si' if audit['readiness']['worldcup_2026_structure_ready'] else 'no'}")
     print(f"- placeholder fixture: {'si' if audit['readiness']['worldcup_2026_fixture_is_placeholder'] else 'no'}")
     print(f"- faltan grupos reales: {'si' if audit['readiness']['worldcup_2026_missing_real_groups'] else 'no'}")

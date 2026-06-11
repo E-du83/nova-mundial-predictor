@@ -223,6 +223,8 @@ def main() -> None:
         "worldcup_2026_match_slot_engine.py",
         "worldcup_2026_fixture_loader.py",
         "worldcup_2026_fixture_validator.py",
+        "worldcup_2026_fixture_snapshot_importer.py",
+        "worldcup_2026_fixture_guard.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -250,6 +252,8 @@ def main() -> None:
         "run_worldcup_2022_profile_validation.py",
         "run_quinigol_timing_calibration.py",
         "run_worldcup_2026_fixture_status.py",
+        "run_worldcup_2026_fixture_import_demo.py",
+        "run_worldcup_2026_fixture_guard.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -279,6 +283,9 @@ def main() -> None:
     print("- worldcup_2026_match_slots.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_match_slots.json"))
     print("- worldcup_2026_group_stage_fixture.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_group_stage_fixture.json"))
     print("- worldcup_2026_fixture_validation_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_fixture_validation_report.json"))
+    print("- worldcup_2026_official_fixture_snapshot_template.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_official_fixture_snapshot_template.json"))
+    print("- worldcup_2026_fixture_import_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_fixture_import_report.json"))
+    print("- worldcup_2026_fixture_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_fixture_guard_report.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -416,7 +423,15 @@ def main() -> None:
     print(f"- confirmed fixture matches: {worldcup_2026_fixture['confirmed_matches']}")
     print(f"- pending fixture matches: {worldcup_2026_fixture['pending_matches']}")
     print(f"- fixture type: {worldcup_2026_fixture['fixture_type']}")
+    print(
+        "- fixture snapshot template: "
+        + _exists(LAYER_ROOT / "data" / "worldcup_2026_official_fixture_snapshot_template.json")
+    )
+    print(f"- fixture importer: {_exists(LAYER_ROOT / 'worldcup_2026_fixture_snapshot_importer.py')}")
+    print(f"- fixture guard: {_exists(LAYER_ROOT / 'worldcup_2026_fixture_guard.py')}")
+    print(f"- import demo: {_exists(LAYER_ROOT / 'run_worldcup_2026_fixture_import_demo.py')}")
     print(f"- fixture validation: {worldcup_2026_fixture['validation_status']}")
+    print(f"- guard status: {worldcup_2026_fixture['fixture_guard_status']}")
     runner_status = "placeholder_waiting_official_fixture"
     if worldcup_2026_fixture["fixture_ready"]:
         runner_status = "ready_for_full_group_simulation"
@@ -424,10 +439,14 @@ def main() -> None:
         runner_status = "partial_fixture_only_confirmed_matches"
     print(f"- group stage runner status: {runner_status}")
     print(
+        "- ready_for_partial_simulation: "
+        f"{str(worldcup_2026_fixture['ready_for_partial_simulation']).lower()}"
+    )
+    print(
         "- ready_for_full_group_simulation: "
         f"{str(worldcup_2026_fixture['ready_for_full_group_simulation']).lower()}"
     )
-    print("- next block recommended: official FIFA fixture snapshot loader / verified group draw import")
+    print("- next block recommended: Full Group Stage Picks Runner v1 after verified fixture import")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

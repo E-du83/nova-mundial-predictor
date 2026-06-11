@@ -52,7 +52,11 @@ def build_system_self_audit() -> dict:
         "worldcup_2026_match_slot_engine.py",
         "worldcup_2026_fixture_loader.py",
         "worldcup_2026_fixture_validator.py",
+        "worldcup_2026_fixture_snapshot_importer.py",
+        "worldcup_2026_fixture_guard.py",
         "run_worldcup_2026_fixture_status.py",
+        "run_worldcup_2026_fixture_import_demo.py",
+        "run_worldcup_2026_fixture_guard.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -72,9 +76,12 @@ def build_system_self_audit() -> dict:
             "Data source clients are offline-first and avoid paid API dependencies.",
             "World Cup 2022 blind-test scaffolding separates prematch inputs, results and leakage audit.",
             "World Cup 2026 now has structural group-stage slots for 12 groups and 72 group matches.",
+            "World Cup 2026 fixture guard blocks full picks while the fixture is placeholder.",
+            "Fixture importer defaults to dry_run and validates manual snapshots before updating active fixture.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
+            "Official verified fixture snapshot has not been imported yet.",
             "World Cup 2026 fixture is structural placeholder, not confirmed matchups.",
             "World Cup 2026 group draw, kickoff UTC and venues are still pending verification.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
@@ -91,9 +98,11 @@ def build_system_self_audit() -> dict:
             "Using 2026 baseline data for 2022 would create invalid historical evaluation.",
             "Quinigol timing sample is only 8 matches, so calibration would overfit.",
             "If placeholder fixture slots are treated as official matches, group simulation would be misleading.",
+            "A future picks runner must not bypass the fixture guard.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
+            "Run fixture import demo in dry_run before applying any official snapshot.",
             "Replace structural placeholder assignments with verified FIFA group draw and fixture data.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
@@ -114,8 +123,9 @@ def build_system_self_audit() -> dict:
             "Do not recalibrate from World Cup 2022 behavioral_backtest until profiles and leakage audit are strong.",
             "Do not recalibrate Quinigol timing from neutral-default backtest or an 8-match sample.",
             "Do not simulate full World Cup 2026 group stage while fixture_type is structural_placeholder.",
+            "Do not bypass Fixture Guard from future Full Group Stage Picks Runner.",
         ],
-        "siguiente_bloque_recomendado": "official FIFA fixture snapshot loader / verified group draw import",
+        "siguiente_bloque_recomendado": "Full Group Stage Picks Runner v1 after verified fixture import",
         "readiness": {
             "missing_modules": missing_modules,
             "real_data_available": {
@@ -129,6 +139,19 @@ def build_system_self_audit() -> dict:
             "ready_for_sale": False,
             "worldcup_2026_fixture_type": worldcup_2026_fixture["fixture_type"],
             "worldcup_2026_fixture_validation": worldcup_2026_fixture["validation_status"],
+            "worldcup_2026_fixture_importer_exists": _exists(
+                LAYER_ROOT / "worldcup_2026_fixture_snapshot_importer.py"
+            ),
+            "worldcup_2026_fixture_guard_exists": _exists(LAYER_ROOT / "worldcup_2026_fixture_guard.py"),
+            "worldcup_2026_guard_status": worldcup_2026_fixture["fixture_guard_status"],
+            "worldcup_2026_blocks_placeholder_picks": worldcup_2026_fixture["fixture_guard_status"]
+            == "blocked_placeholder",
+            "worldcup_2026_protected_against_unverified_fixture": worldcup_2026_fixture[
+                "fixture_guard_status"
+            ]
+            in ("blocked_placeholder", "blocked_invalid", "partial_ready", "ready"),
+            "worldcup_2026_official_snapshot_loaded": worldcup_2026_fixture["official_status"]
+            == "official_confirmed",
             "worldcup_2026_structure_ready": bool(
                 worldcup_2026_fixture["groups_loaded"] == 12
                 and worldcup_2026_fixture["slots_loaded"] == 72

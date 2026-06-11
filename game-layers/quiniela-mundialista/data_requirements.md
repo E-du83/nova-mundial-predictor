@@ -99,6 +99,9 @@ el impacto esperado.
 | World Cup 2026 match slots | `worldcup_2026_match_slots.json` | Si | structural_placeholder | Crea 72 slots estables `WG-A-01` a `WG-L-06` |
 | World Cup 2026 group fixture | `worldcup_2026_group_stage_fixture.json` | Si | pending_official_fixture | Guarda fixture placeholder/parcial/confirmado separado de resultados |
 | World Cup 2026 fixture validation | `worldcup_2026_fixture_validation_report.json` | Si | cleared_placeholder | Valida conteos, grupos A-L, IDs, UTC/sedes pendientes y no cruces ficticios oficiales |
+| World Cup 2026 official fixture snapshot template | `worldcup_2026_official_fixture_snapshot_template.json` | Si | template_pending_manual_input | Plantilla manual para cargar fixture oficial verificado sin scraping |
+| World Cup 2026 fixture import report | `worldcup_2026_fixture_import_report.json` | Si | dry_run/blocking report | Audita si un snapshot se puede importar sin modificar fixture activo en dry_run |
+| World Cup 2026 fixture guard report | `worldcup_2026_fixture_guard_report.json` | Si | blocked_placeholder | Bloquea picks completos hasta tener fixture oficial verificado |
 | Backtesting manifest | `backtesting_manifest.json` | Si | foundation_ready | Lista datasets, leakage risk e integracion pendiente |
 | Report builder | `report_builder.py` | Si | foundation_ready | Genera reportes por partido sin modificar picks |
 | System self audit | `system_self_audit.py` | Si | foundation_ready | Evalua readiness, riesgos, sesgo y sobreajuste |
@@ -157,6 +160,16 @@ el impacto esperado.
 - El loader 2026 debe separar `fixture_structure`, `confirmed_fixture` y
   `generated_placeholder_fixture`. Los resultados futuros nunca deben mezclarse
   dentro del fixture prematch.
+- El importador de snapshot oficial debe correr primero en `dry_run=True`.
+  Si el snapshot no tiene 72 partidos, equipos concretos, grupos A-L, horarios
+  UTC, sedes, fuente y `verification_status=official_confirmed`, no debe
+  modificar `worldcup_2026_group_stage_fixture.json`.
+- `worldcup_2026_fixture_guard.py` es obligatorio para cualquier runner futuro
+  de picks completos. Si `guard_status` no es `ready`, el runner debe bloquear
+  la simulacion completa o limitarse a partidos confirmados cuando sea
+  `partial_ready`.
+- El Bloque F no genera picks completos, no simula grupos completos y no inventa
+  fixture. El siguiente bloque es `Full Group Stage Picks Runner v1`.
 - World Elo solo pesa fuerte si existe snapshot local con `team`, `elo`, `rank`,
   `source`, `date_collected` y `notes`.
 - Open-Meteo solo construye consultas historicas gratis sin API key; si faltan

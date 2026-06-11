@@ -88,6 +88,14 @@ verificado, genera solo slots estructurales `WG-A-01` a `WG-L-06` con
 `pending_group_draw` y `pending_official_fixture`. No inventa cruces, horarios
 ni sedes.
 
+El bloque **Official Fixture Snapshot Importer + Fixture Validation Guard v1**
+prepara la importacion segura de un snapshot oficial/verificado del fixture
+2026. El importador corre por defecto en `dry_run`, valida el snapshot y no
+modifica el fixture activo si faltan equipos, horarios UTC, sedes, fuente o
+verificacion. La guardia bloquea picks completos mientras el fixture siga como
+placeholder o no verificado. El Full Group Stage Picks Runner queda para el
+siguiente bloque.
+
 ## Relacion con el Core
 
 El Core formal sigue viviendo en `src/`:
@@ -146,6 +154,8 @@ alternativas, estrategia, contexto y lenguaje de riesgo.
 - Crea 72 slots estructurales para fase de grupos 2026 y permite reemplazar la
   asignacion cuando exista fixture oficial, manteniendo separados
   `slot_structure`, `fixture_assignment` y `match_result`.
+- Agrega template de snapshot oficial, importador en `dry_run` y guardia para
+  impedir simulaciones completas con fixture placeholder/no verificado.
 
 ## Final Pick
 
@@ -269,6 +279,12 @@ con el equipo favorecido por el marcador, pero no son lo mismo:
   sedes, duplicados, estado pendiente/confirmado y separacion group stage.
 - `worldcup_2026_fixture_loader.py`: carga estructura, fixture, slots y reporte
   de validacion; expone si el fixture es placeholder, parcial o confirmado.
+- `worldcup_2026_fixture_snapshot_importer.py`: valida un snapshot manual
+  verificado y actualiza solo `fixture_assignment` si `dry_run=false` y la
+  validacion pasa.
+- `worldcup_2026_fixture_guard.py`: decide si puede haber simulacion parcial o
+  completa; bloquea el Full Group Stage Picks Runner futuro si el fixture no
+  esta confirmado.
 - `tournament_context_engine.py`: prepara fase, grupo, jornada, orden, presion,
   riesgo de rotacion e importancia de diferencia de goles.
 - `venue_climate_engine.py`: prepara perfil historico de sede/clima.
@@ -628,6 +644,43 @@ No se deben inventar ejemplos como partidos reales. Para reemplazar un slot,
 mantener el `match_id` estable y actualizar solo `fixture_assignment`, equipos,
 `kickoff_utc`, sede y estado con fuente oficial verificada.
 
+## Official Fixture Snapshot Importer v1
+
+El archivo `data/worldcup_2026_official_fixture_snapshot_template.json` es una
+plantilla manual para cargar el fixture oficial cuando exista. Debe contener:
+
+- 72 partidos de fase de grupos;
+- `slot_id` estable `WG-A-01` a `WG-L-06`;
+- grupo A-L;
+- equipos concretos;
+- `kickoff_utc` en UTC;
+- sede, ciudad y pais;
+- fuente oficial;
+- `source_status=official_confirmed`;
+- `verification_status=official_confirmed`.
+
+El importador:
+
+- corre por defecto con `dry_run=True`;
+- valida antes de aplicar;
+- bloquea snapshots pendientes o incompletos;
+- no cambia el fixture activo si hay errores;
+- conserva `slot_structure` y `match_result`;
+- actualiza solo `fixture_assignment` y campos prematch cuando el snapshot es
+  oficial/verificado.
+
+La guardia (`worldcup_2026_fixture_guard.py`) revisa fixture type, status,
+equipos, baseline, UTC, sedes, duplicados y reporte de validacion. Con el estado
+actual debe quedar:
+
+- `guard_status=blocked_placeholder`;
+- `ready_for_partial_simulation=false`;
+- `ready_for_full_group_simulation=false`.
+
+Este bloque no genera picks, no simula los 72 partidos y no inventa fixture. El
+siguiente bloque recomendado es **Full Group Stage Picks Runner v1**, solo
+despues de importar un snapshot oficial y pasar la guardia.
+
 ## Decision Weighting
 
 - Pick principal: marcador recomendado para jugar.
@@ -690,6 +743,8 @@ game-layers/quiniela-mundialista/
 |-- worldcup_2026_match_slot_engine.py
 |-- worldcup_2026_fixture_loader.py
 |-- worldcup_2026_fixture_validator.py
+|-- worldcup_2026_fixture_snapshot_importer.py
+|-- worldcup_2026_fixture_guard.py
 |-- tournament_context_engine.py
 |-- venue_climate_engine.py
 |-- final_pick_engine.py
@@ -725,6 +780,8 @@ game-layers/quiniela-mundialista/
 |-- run_worldcup_2022_profile_validation.py
 |-- run_quinigol_timing_calibration.py
 |-- run_worldcup_2026_fixture_status.py
+|-- run_worldcup_2026_fixture_import_demo.py
+|-- run_worldcup_2026_fixture_guard.py
 |-- run_decision_weighting_demo.py
 |-- run_match_intelligence_demo.py
 |-- run_friendly_test_demo.py
@@ -750,6 +807,9 @@ game-layers/quiniela-mundialista/
     |-- worldcup_2026_group_stage_fixture.json
     |-- worldcup_2026_match_slots.json
     |-- worldcup_2026_fixture_validation_report.json
+    |-- worldcup_2026_official_fixture_snapshot_template.json
+    |-- worldcup_2026_fixture_import_report.json
+    |-- worldcup_2026_fixture_guard_report.json
     |-- backtesting_manifest.json
     |-- group_stage_prediction_report.json
     |-- player_ratings_seed.json
@@ -772,6 +832,8 @@ python -B game-layers/quiniela-mundialista/run_worldcup_2022_profile_validation.
 python -B game-layers/quiniela-mundialista/run_worldcup_2022_blind_test.py
 python -B game-layers/quiniela-mundialista/run_quinigol_timing_calibration.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_import_demo.py
+python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_guard.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py

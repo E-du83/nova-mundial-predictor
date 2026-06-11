@@ -20,6 +20,8 @@ def main() -> None:
             "simulations": result["simulations"],
             "fixture_type": result["fixture_type"],
             "fixture_status": result["fixture_status"],
+            "guard_status": result["guard_status"],
+            "block_reason": result["block_reason"],
             "fixture_warning": result["fixture_warning"],
         },
     )
@@ -33,7 +35,13 @@ def main() -> None:
     print(f"- simulable matches: {result['simulable_matches']}")
     print(f"- fixture type: {result['fixture_type']}")
     print(f"- fixture status: {result['fixture_status']}")
+    print(f"- guard status: {result['guard_status']}")
+    print(
+        "- full picks blocked: "
+        f"{'yes' if not result['ready_for_full_group_simulation'] else 'no'}"
+    )
     print(f"- warning: {result['fixture_warning']}")
+    print("- block reasons: " + ("; ".join(result["block_reason"]) or "none"))
     if result["simulable_matches"]:
         first = next(item for item in result["matches"] if item["simulation_status"] == "simulated")
         print(f"- ejemplo: {first['match']} | pick {first['pick_principal']} | marcador {first['marcador']}")

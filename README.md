@@ -16,6 +16,17 @@ python -B game-layers/quiniela-mundialista/run_worldcup_2026_fixture_status.py
 Este bloque no inventa cruces oficiales y no toca el Core ni el baseline
 mundialista.
 
+## Official fixture snapshot importer
+
+La capa tambien incluye un importador seguro para cargar en el futuro un
+snapshot oficial/verificado del fixture 2026. Por defecto corre en `dry_run`,
+valida 72 partidos, equipos, grupos, horarios UTC, sedes, fuente y estado de
+verificacion, y bloquea cualquier fixture pendiente o no verificado.
+
+Este bloque no genera picks completos. El runner real de picks de fase de
+grupos queda para el siguiente bloque, despues de que la guardia del fixture
+marque `ready`.
+
 Versión actual: **v1.5.0**
 
 Este proyecto es un motor probabilístico para analizar el Mundial 2026 con simulación de partidos, grupos, mejores terceros, cuotas, comparación entre casas, movimiento de cuotas y CLV.
