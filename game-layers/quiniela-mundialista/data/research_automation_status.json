@@ -1,0 +1,18 @@
+{
+  "data_status": "research_automation_status_v1",
+  "generated_at": "2026-06-11T01:11:45Z",
+  "prompt_builder": "OK",
+  "snapshot_schema": "OK",
+  "snapshot_validator": "OK",
+  "snapshot_normalizer": "OK",
+  "snapshot_store": "OK",
+  "ai_client_safe_mode": "OK",
+  "api_calls_enabled": false,
+  "api_call_executed": false,
+  "dry_run_default": true,
+  "snapshots_directory": "OK",
+  "last_demo_status": "OK",
+  "files_written": 0,
+  "template_validation_status": "partial",
+  "synthetic_validation_status": "valid"
+}

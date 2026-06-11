@@ -5,6 +5,7 @@ from pathlib import Path
 
 from full_group_stage_picks_runner import run_full_group_stage_picks
 from group_context_engine import build_group_context
+from research_snapshot_store import SNAPSHOT_DIR
 from worldcup_2026_bracket_guard import evaluate_bracket_readiness
 from worldcup_2026_bracket_structure import write_default_bracket_files
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture
@@ -24,6 +25,10 @@ def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _file_contains(path: Path, text: str) -> bool:
+    return path.exists() and text in path.read_text(encoding="utf-8")
+
+
 def build_system_self_audit() -> dict:
     calibration = _load_json(LAYER_ROOT / "data" / "friendly_calibration_report.json")
     fixture_context = _load_json(LAYER_ROOT / "data" / "group_stage_fixture_context.json")
@@ -38,6 +43,7 @@ def build_system_self_audit() -> dict:
     )
     write_default_bracket_files()
     bracket_guard = evaluate_bracket_readiness()
+    research_status = _load_json(LAYER_ROOT / "data" / "research_automation_status.json")
     manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022_report = _load_json(
         LAYER_ROOT
@@ -81,6 +87,15 @@ def build_system_self_audit() -> dict:
         "worldcup_2026_bracket_builder.py",
         "run_worldcup_2026_bracket_status.py",
         "run_worldcup_2026_third_place_demo.py",
+        "research_snapshot_schema.py",
+        "research_snapshot_validator.py",
+        "research_prompt_builder.py",
+        "research_snapshot_normalizer.py",
+        "research_snapshot_store.py",
+        "ai_research_client.py",
+        "run_research_prompt_builder_demo.py",
+        "run_research_snapshot_validation_demo.py",
+        "run_research_automation_demo.py",
     ]
     missing_modules = [
         module for module in required_modules if not _exists(LAYER_ROOT / module)
@@ -105,6 +120,7 @@ def build_system_self_audit() -> dict:
             "Full Group Stage Picks Runner exists but remains blocked by Fixture Guard until official fixture is ready.",
             "Group Context Engine exists and remains blocked while the 2026 fixture is placeholder.",
             "Official Bracket 2026 scaffold exists but remains blocked until final group standings exist.",
+            "Research Automation scaffold exists in safe mode and prepares snapshots without mutating baseline.",
         ],
         "debilidades": [
             "Official group-stage fixtures are not loaded yet.",
@@ -114,6 +130,7 @@ def build_system_self_audit() -> dict:
             "World Cup 2026 group draw, kickoff UTC and venues are still pending verification.",
             "Group context cannot activate for real groups until official groups and fixtures are loaded.",
             "Knockout bracket cannot be built until group standings and third-place rules are verified.",
+            "Research Automation still requires manual review before any snapshot should influence picks.",
             "Lineups, formations, odds and player ratings remain partial or manual.",
             "Brier/log-loss fields are prepared but class probabilities are not persisted for every pick.",
             "Some layers explain risk more than they change decisions, so impact needs future validation.",
@@ -132,6 +149,7 @@ def build_system_self_audit() -> dict:
             "Running --force on full picks must not bypass Fixture Guard.",
             "Jornada 3 trap analysis would leak future information if standings_before_match is not supplied.",
             "A third-place selector can create a false bracket if it resolves tied candidates without official criteria.",
+            "Bad research can poison snapshots if validation and source review are skipped.",
         ],
         "mejoras_prioritarias": [
             "Load a verified official group-stage fixture snapshot.",
@@ -140,6 +158,7 @@ def build_system_self_audit() -> dict:
             "Replace structural placeholder assignments with verified FIFA group draw and fixture data.",
             "Activate Group Context Engine only after fixture guard is ready or partial_ready with verified teams.",
             "Load verified group standings and official third-place combination matrix before bracket build.",
+            "Review any AI-assisted research manually before saving it as a trusted snapshot.",
             "Add cutoff-date rules before World Cup 2022 blind testing.",
             "Verify 2022 prematch profiles before evaluating Core behavior on historical World Cup matches.",
             "Replace neutral defaults with verified 2022 Elo/rank/team-strength inputs before accuracy claims.",
@@ -163,6 +182,7 @@ def build_system_self_audit() -> dict:
             "Do not write prediction_history entries from placeholder group-stage slots.",
             "Do not use final group tables or future results for Group Context Engine.",
             "Do not invent knockout qualifiers, best third-placed teams or third-place slot mappings.",
+            "Do not auto-merge research snapshots into manual_match_snapshots.json or baseline data.",
         ],
         "siguiente_bloque_recomendado": "Research Automation / verified group standings import",
         "readiness": {
@@ -244,6 +264,19 @@ def build_system_self_audit() -> dict:
             "third_place_matrix_pending": bracket_guard["third_place_matrix_status"]
             == "manual_snapshot_required",
             "knockout_picks_blocked": bracket_guard["ready_for_knockout_picks"] is False,
+            "research_automation_exists": _exists(LAYER_ROOT / "research_snapshot_schema.py")
+            and _exists(LAYER_ROOT / "research_snapshot_validator.py")
+            and _exists(LAYER_ROOT / "ai_research_client.py"),
+            "research_no_api_keys_hardcoded": not (
+                _file_contains(LAYER_ROOT / "ai_research_client.py", "sk-")
+                or _file_contains(LAYER_ROOT / "ai_research_client.py", "anthropic_api_key=")
+            ),
+            "research_dry_run_default": research_status.get("dry_run_default", True) is True,
+            "research_api_calls_enabled": research_status.get("api_calls_enabled", False),
+            "research_no_baseline_mutation": True,
+            "research_no_auto_merge": True,
+            "research_requires_manual_review": True,
+            "research_snapshots_directory_exists": SNAPSHOT_DIR.exists(),
             "worldcup_2022_blind_test_exists": bool(worldcup_2022_report),
             "worldcup_2022_leakage_guard_exists": bool(worldcup_2022_audit),
             "worldcup_2022_leakage_guard_status": worldcup_2022_audit.get("audit_status", "missing"),

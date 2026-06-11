@@ -1,0 +1,83 @@
+{
+  "snapshot_id": "pending_manual_input",
+  "match": "pending_manual_input",
+  "team_a": "pending_manual_input",
+  "team_b": "pending_manual_input",
+  "competition": "pending_manual_input",
+  "phase": "pending_manual_input",
+  "kickoff_utc": "pending_manual_input",
+  "captured_at": "pending_manual_input",
+  "captured_by": "pending_manual_input",
+  "snapshot_type": "manual_research",
+  "source_status": "pending_verification",
+  "overall_confidence": "insufficient",
+  "sources": [],
+  "odds_1x2": {
+    "home": "pending_manual_input",
+    "draw": "pending_manual_input",
+    "away": "pending_manual_input",
+    "source": "pending_manual_input",
+    "captured_at": "pending_manual_input",
+    "confidence": "pending_manual_input"
+  },
+  "over_under": {},
+  "probable_lineups": {
+    "team_a": [],
+    "team_b": [],
+    "source": "pending_manual_input",
+    "confidence": "pending_manual_input"
+  },
+  "formations": {
+    "team_a": "pending_manual_input",
+    "team_b": "pending_manual_input",
+    "source": "pending_manual_input",
+    "confidence": "pending_manual_input"
+  },
+  "injuries_or_absences": {
+    "team_a": [],
+    "team_b": []
+  },
+  "key_players": {
+    "team_a": [],
+    "team_b": []
+  },
+  "player_ratings": {
+    "team_a": {},
+    "team_b": {},
+    "source": "pending_manual_input",
+    "confidence": "pending_manual_input"
+  },
+  "form_snapshot": {
+    "team_a": {},
+    "team_b": {}
+  },
+  "stats_snapshot": {
+    "btts": "pending_manual_input",
+    "over_2_5": "pending_manual_input",
+    "clean_sheet": "pending_manual_input",
+    "h2h": "pending_manual_input",
+    "corners": "pending_manual_input",
+    "cards": "pending_manual_input"
+  },
+  "tactical_notes": {
+    "team_a": "pending_manual_input",
+    "team_b": "pending_manual_input",
+    "matchup": "pending_manual_input"
+  },
+  "data_quality_flags": [
+    "template_pending_manual_input"
+  ],
+  "missing_data": [
+    "sources",
+    "lineups",
+    "formations",
+    "odds",
+    "player_ratings"
+  ],
+  "warnings": [
+    "Template only. Do not use for picks before manual review and validation."
+  ],
+  "valid_for_tactical_bridge": false,
+  "valid_for_market_weighting": false,
+  "valid_for_prediction_context": false
+}

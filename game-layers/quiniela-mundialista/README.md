@@ -885,6 +885,9 @@ python -B game-layers/quiniela-mundialista/run_full_group_stage_picks.py --mode 
 python -B game-layers/quiniela-mundialista/run_group_context_demo.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_bracket_status.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_third_place_demo.py
+python -B game-layers/quiniela-mundialista/run_research_prompt_builder_demo.py
+python -B game-layers/quiniela-mundialista/run_research_snapshot_validation_demo.py
+python -B game-layers/quiniela-mundialista/run_research_automation_demo.py
 python -B game-layers/quiniela-mundialista/run_decision_weighting_demo.py
 python -B game-layers/quiniela-mundialista/run_match_intelligence_demo.py
 python -B game-layers/quiniela-mundialista/run_research_snapshot_demo.py
@@ -1012,3 +1015,43 @@ El bracket queda bloqueado porque todavia faltan:
 No se inventan clasificados, mejores terceros ni cruces. Los slots de
 `worldcup_2026_bracket_slots.json` quedan con `team_a` y `team_b` en
 `pending_group_results`. Este bloque no genera picks de eliminatorias.
+
+## Research Automation v1
+
+Research Automation prepara investigacion previa al partido sin llamar APIs por
+defecto. La capa incluye:
+
+- `research_prompt_builder.py`: genera prompts estructurados.
+- `research_snapshot_schema.py`: define campos obligatorios.
+- `research_snapshot_validator.py`: valida fuentes, confianza, cuotas,
+  alineaciones, formaciones, lesiones y ratings.
+- `research_snapshot_normalizer.py`: normaliza snapshots para el formato usado
+  por `manual_snapshot_engine.py` y `tactical_input_bridge.py`.
+- `research_snapshot_store.py`: guarda snapshots en
+  `data/research_snapshots/`, con `dry_run=True` por defecto.
+- `ai_research_client.py`: cliente seguro; `provider=manual` por defecto y sin
+  llamadas externas.
+
+Campos clave del snapshot:
+
+- `match`, `team_a`, `team_b`, `competition`, `phase`, `kickoff_utc`;
+- `captured_at`, `captured_by`, `snapshot_type`, `source_status`;
+- `sources`, `overall_confidence`;
+- `odds_1x2`, `over_under`;
+- `probable_lineups`, `formations`, `injuries_or_absences`;
+- `key_players`, `player_ratings`, `form_snapshot`, `stats_snapshot`;
+- `tactical_notes`, `missing_data`, `warnings`.
+
+Uso antes de un partido:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_research_prompt_builder_demo.py
+python -B game-layers/quiniela-mundialista/run_research_snapshot_validation_demo.py
+python -B game-layers/quiniela-mundialista/run_research_automation_demo.py
+```
+
+El flujo no modifica `manual_match_snapshots.json`, no toca
+`data/worldcup_2026_real_teams_baseline_v1.json` y no cambia picks
+automaticamente. Si en el futuro se conecta a OpenAI o Anthropic, las claves
+deben vivir fuera del repo como variables de entorno (`OPENAI_API_KEY` o
+`ANTHROPIC_API_KEY`) y la llamada real debe implementarse de forma explicita.

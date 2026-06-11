@@ -1,0 +1,21 @@
+{
+  "data_status": "research_snapshot_validation_report_v1",
+  "generated_at": "2026-06-11T01:11:45Z",
+  "template_validation_status": "partial",
+  "synthetic_validation_status": "valid",
+  "valid_for_tactical_bridge": true,
+  "valid_for_market_weighting": true,
+  "valid_for_prediction_context": true,
+  "template_missing_data": [
+    "captured_at",
+    "match",
+    "snapshot_id",
+    "sources",
+    "team_a",
+    "team_b"
+  ],
+  "synthetic_errors": [],
+  "warnings": [
+    "Synthetic snapshot is validation-only and was not saved as a real snapshot."
+  ]
+}

@@ -24,6 +24,7 @@ from simulation_config import SIMULATION_MODES  # noqa: E402
 from tactical_input_bridge import build_adjusted_match_inputs  # noqa: E402
 from full_group_stage_picks_runner import run_full_group_stage_picks  # noqa: E402
 from group_context_engine import build_group_context  # noqa: E402
+from research_snapshot_store import SNAPSHOT_DIR  # noqa: E402
 from worldcup_2026_bracket_guard import evaluate_bracket_readiness  # noqa: E402
 from worldcup_2026_bracket_structure import write_default_bracket_files  # noqa: E402
 from worldcup_2026_fixture_loader import load_worldcup_2026_fixture  # noqa: E402
@@ -160,6 +161,7 @@ def main() -> None:
     )
     write_default_bracket_files()
     bracket_guard = evaluate_bracket_readiness()
+    research_automation_status = _load_json(LAYER_ROOT / "data" / "research_automation_status.json")
     backtesting_manifest = _load_json(LAYER_ROOT / "data" / "backtesting_manifest.json")
     worldcup_2022 = load_worldcup_2022_datasets()
     worldcup_2022_report = _load_json(
@@ -249,6 +251,12 @@ def main() -> None:
         "worldcup_2026_third_place_selector.py",
         "worldcup_2026_bracket_guard.py",
         "worldcup_2026_bracket_builder.py",
+        "research_snapshot_schema.py",
+        "research_snapshot_validator.py",
+        "research_prompt_builder.py",
+        "research_snapshot_normalizer.py",
+        "research_snapshot_store.py",
+        "ai_research_client.py",
     ]
     for module in modules:
         print(f"- {module}: {_exists(LAYER_ROOT / module)}")
@@ -282,6 +290,9 @@ def main() -> None:
         "run_group_context_demo.py",
         "run_worldcup_2026_bracket_status.py",
         "run_worldcup_2026_third_place_demo.py",
+        "run_research_prompt_builder_demo.py",
+        "run_research_snapshot_validation_demo.py",
+        "run_research_automation_demo.py",
     ]
     for demo in demos:
         print(f"- {demo}: {_exists(LAYER_ROOT / demo)}")
@@ -325,6 +336,10 @@ def main() -> None:
     print("- worldcup_2026_third_place_rules.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_third_place_rules.json"))
     print("- worldcup_2026_bracket_guard_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_guard_report.json"))
     print("- worldcup_2026_bracket_projection_report.json: " + _exists(LAYER_ROOT / "data" / "worldcup_2026_bracket_projection_report.json"))
+    print("- research_snapshot_template.json: " + _exists(LAYER_ROOT / "data" / "research_snapshot_template.json"))
+    print("- research_snapshot_validation_report.json: " + _exists(LAYER_ROOT / "data" / "research_snapshot_validation_report.json"))
+    print("- research_prompt_template.md: " + _exists(LAYER_ROOT / "data" / "research_prompt_template.md"))
+    print("- research_automation_status.json: " + _exists(LAYER_ROOT / "data" / "research_automation_status.json"))
     print("- backtesting_manifest.json: " + _exists(LAYER_ROOT / "data" / "backtesting_manifest.json"))
     print("- world_elo_snapshot_template.csv: " + _exists(LAYER_ROOT / "data" / "world_elo_snapshot_template.csv"))
     print("- worldcup_venues_seed.json: " + _exists(LAYER_ROOT / "data" / "worldcup_venues_seed.json"))
@@ -559,6 +574,19 @@ def main() -> None:
     )
     print(f"- third-place matrix status: {bracket_guard['third_place_matrix_status']}")
     print("- next block recommended: Research Automation / verified group standings import")
+    print("")
+
+    print("RESEARCH AUTOMATION v1")
+    print(f"- prompt builder: {_exists(LAYER_ROOT / 'research_prompt_builder.py')}")
+    print(f"- snapshot schema: {_exists(LAYER_ROOT / 'research_snapshot_schema.py')}")
+    print(f"- snapshot validator: {_exists(LAYER_ROOT / 'research_snapshot_validator.py')}")
+    print(f"- snapshot normalizer: {_exists(LAYER_ROOT / 'research_snapshot_normalizer.py')}")
+    print(f"- snapshot store: {_exists(LAYER_ROOT / 'research_snapshot_store.py')}")
+    print(f"- ai client safe mode: {_exists(LAYER_ROOT / 'ai_research_client.py')}")
+    print(f"- API calls enabled: {str(research_automation_status.get('api_calls_enabled', False)).lower()}")
+    print(f"- dry run default: {str(research_automation_status.get('dry_run_default', True)).lower()}")
+    print("- snapshots directory: " + ("OK" if SNAPSHOT_DIR.exists() else "missing"))
+    print("- next block recommended: Manual research snapshot review / optional API connector")
     print("")
 
     print("WORLD CUP 2022 HISTORICAL BLIND TEST v1")

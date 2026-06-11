@@ -448,3 +448,26 @@ Validacion:
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_bracket_status.py
 python -B game-layers/quiniela-mundialista/run_worldcup_2026_third_place_demo.py
 ```
+
+## Quiniela Mundialista: Research Automation v1
+
+La capa `game-layers/quiniela-mundialista/` ahora incluye un flujo seguro para
+preparar investigacion previa a un partido:
+
+- genera prompts estructurados para ChatGPT u otra IA;
+- valida snapshots JSON investigativos;
+- normaliza el snapshot para uso futuro con `manual_snapshot_engine.py` y
+  `tactical_input_bridge.py`;
+- permite guardado separado en `data/research_snapshots/`;
+- mantiene `dry_run=True` por defecto.
+
+No llama APIs automaticamente, no guarda API keys, no crea `.env`, no modifica
+el baseline mundialista y no cambia picks automaticamente.
+
+Validacion:
+
+```bash
+python -B game-layers/quiniela-mundialista/run_research_prompt_builder_demo.py
+python -B game-layers/quiniela-mundialista/run_research_snapshot_validation_demo.py
+python -B game-layers/quiniela-mundialista/run_research_automation_demo.py
+```

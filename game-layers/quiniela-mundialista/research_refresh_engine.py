@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from manual_snapshot_engine import find_manual_snapshot, load_manual_snapshots
+from research_snapshot_store import find_research_snapshot_for_match
 
 
 PENDING_VALUES = {
@@ -113,6 +114,7 @@ def build_research_refresh(
 
     snapshot = _raw_snapshot(snapshots_data, team_a, team_b)
     normalized = find_manual_snapshot(snapshots_data, team_a, team_b)
+    research_snapshot = find_research_snapshot_for_match(team_a, team_b)
     result_status = _real_result_status(results_data, team_a, team_b)
 
     missing_critical = []
@@ -181,6 +183,15 @@ def build_research_refresh(
         "snapshot_sources": snapshot.get("primary_sources")
         or snapshot.get("sources_used")
         or normalized.get("sources_used", []),
+        "research_automation": {
+            "snapshot_available": bool(research_snapshot.get("path")),
+            "snapshot_id": research_snapshot.get("snapshot_id", "not_available"),
+            "validation_status": research_snapshot.get("validation_status", "missing"),
+            "valid_for_tactical_bridge": research_snapshot.get("valid_for_tactical_bridge", False),
+            "valid_for_market_weighting": research_snapshot.get("valid_for_market_weighting", False),
+            "valid_for_prediction_context": research_snapshot.get("valid_for_prediction_context", False),
+            "auto_applied": False,
+        },
         "cross_checked_with": snapshot.get("cross_checked_with", []),
         "result_status": result_status,
     }

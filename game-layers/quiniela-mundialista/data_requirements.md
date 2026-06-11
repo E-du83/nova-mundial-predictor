@@ -377,3 +377,43 @@ Estados esperados:
 - `blocked_third_place_rules` si faltan reglas/matriz oficial de terceros;
 - `ready_for_bracket_build` solo cuando standings y reglas esten verificados;
 - `ready_for_knockout_picks=false` hasta tener bracket real confirmado.
+
+## Research Automation v1
+
+Research Automation admite snapshots investigativos separados del baseline y de
+`manual_match_snapshots.json`.
+
+Campos obligatorios:
+
+- identificacion: `snapshot_id`, `match`, `team_a`, `team_b`;
+- contexto: `competition`, `phase`, `kickoff_utc`;
+- auditoria: `captured_at`, `captured_by`, `snapshot_type`,
+  `source_status`, `overall_confidence`;
+- fuentes: `sources` con trazabilidad;
+- datos deportivos: `probable_lineups`, `formations`,
+  `injuries_or_absences`, `key_players`, `player_ratings`,
+  `form_snapshot`, `stats_snapshot`, `tactical_notes`;
+- mercado visible si existe: `odds_1x2`, `over_under`;
+- control: `data_quality_flags`, `missing_data`, `warnings`.
+
+Reglas:
+
+- `dry_run=True` por defecto.
+- No guardar API keys en el repo.
+- No crear `.env` con claves reales.
+- No hacer scraping ni llamadas externas durante validacion.
+- No modificar baseline mundialista.
+- No modificar `manual_match_snapshots.json` sin una accion explicita futura.
+- Si falta dato, usar `pending_manual_input`, `pending_verification` o
+  `not_available`.
+
+Validez por uso:
+
+- `valid_for_tactical_bridge=true` requiere alineaciones, formaciones y ratings
+  suficientes.
+- `valid_for_market_weighting=true` requiere cuotas 1X2 completas y numericas.
+- `valid_for_prediction_context=true` requiere fuentes suficientes y
+  `source_status` aceptable.
+
+Los snapshots AI-assisted deben revisarse manualmente antes de guardarse o
+usarse como input operativo.

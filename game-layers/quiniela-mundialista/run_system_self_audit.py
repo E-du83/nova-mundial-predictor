@@ -108,6 +108,18 @@ def main() -> None:
         f"{'si' if audit['readiness']['third_place_matrix_pending'] else 'no'}"
     )
     print(f"- knockout picks bloqueados: {'si' if audit['readiness']['knockout_picks_blocked'] else 'no'}")
+    print("Research Automation")
+    print(f"- existe: {'si' if audit['readiness']['research_automation_exists'] else 'no'}")
+    print(f"- sin API keys hardcoded: {'si' if audit['readiness']['research_no_api_keys_hardcoded'] else 'no'}")
+    print(f"- dry-run por defecto: {'si' if audit['readiness']['research_dry_run_default'] else 'no'}")
+    print(f"- API calls enabled: {'si' if audit['readiness']['research_api_calls_enabled'] else 'no'}")
+    print(f"- no muta baseline: {'si' if audit['readiness']['research_no_baseline_mutation'] else 'no'}")
+    print(f"- no auto-merge: {'si' if audit['readiness']['research_no_auto_merge'] else 'no'}")
+    print(f"- requiere revision manual: {'si' if audit['readiness']['research_requires_manual_review'] else 'no'}")
+    print(
+        "- snapshots directory existe: "
+        f"{'si' if audit['readiness']['research_snapshots_directory_exists'] else 'no'}"
+    )
     print("World Cup 2022 Blind Test")
     print(f"- existe: {'si' if audit['readiness']['worldcup_2022_blind_test_exists'] else 'no'}")
     print(f"- leakage guard: {audit['readiness']['worldcup_2022_leakage_guard_status']}")
